@@ -16,12 +16,12 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class Sizeable {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.getwidth", Sizeable::systemCallSizeableGetWidth);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.getheight", Sizeable::systemCallSizeableGetHeight);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sizeable.getwidth", Sizeable::systemCallSizeableGetWidth);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sizeable.getheight", Sizeable::systemCallSizeableGetHeight);
 
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.getsize", Sizeable::systemCallSizeableSetSize);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.setwidth", Sizeable::systemCallSizeableSetWidth);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.setheight", Sizeable::systemCallSizeableSetHeight);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sizeable.getsize", Sizeable::systemCallSizeableSetSize);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sizeable.setwidth", Sizeable::systemCallSizeableSetWidth);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sizeable.setheight", Sizeable::systemCallSizeableSetHeight);
     }
 
     private static QAMessage systemCallSizeableGetWidth(RunningApp app, QAMessage message){

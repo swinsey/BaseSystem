@@ -59,7 +59,7 @@
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>de.awesome.smarthome.td.carlauncher.Main</mainClass>
+                                    <mainClass>de.silveryard.basesystem.carlauncher.Main</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>

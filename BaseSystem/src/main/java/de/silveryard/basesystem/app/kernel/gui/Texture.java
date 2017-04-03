@@ -20,11 +20,11 @@ import java.nio.file.Paths;
 abstract class Texture {
     public static void enableKernel(){
         Kernel kernel = Kernel.getInstance();
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texture.load", Texture::systemCallTextureLoad);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texture.unload", Texture::systemCallTextureUnload);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.load", Texture::systemCallTextureLoad);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.unload", Texture::systemCallTextureUnload);
 
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texture.getwidth", Texture::systemCallTextureGetWidth);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texture.getheight", Texture::systemCallTextureGetHeight);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.getwidth", Texture::systemCallTextureGetWidth);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.getheight", Texture::systemCallTextureGetHeight);
     }
 
     public static QAMessage systemCallTextureLoad(RunningApp app, QAMessage message){

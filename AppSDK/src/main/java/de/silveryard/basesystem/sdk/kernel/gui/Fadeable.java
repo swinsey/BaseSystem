@@ -28,7 +28,7 @@ public abstract class Fadeable {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.fadeable.get",  params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.fadeable.get",  params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -50,7 +50,7 @@ public abstract class Fadeable {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(alpha));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.fadeable.set", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.fadeable.set", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

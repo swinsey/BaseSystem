@@ -38,7 +38,7 @@ public abstract class Sprite {
         params.add(Parameter.createInt(positionY));
         params.add(Parameter.createInt(width));
         params.add(Parameter.createInt(height));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sprite.create", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sprite.create", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -60,7 +60,7 @@ public abstract class Sprite {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(spriteID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sprite.gettexturesprite", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sprite.gettexturesprite", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

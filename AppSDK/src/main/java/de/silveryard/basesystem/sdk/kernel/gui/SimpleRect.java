@@ -43,7 +43,7 @@ public abstract class SimpleRect {
         params.add(Parameter.createInt(color.getR()));
         params.add(Parameter.createInt(color.getG()));
         params.add(Parameter.createInt(color.getB()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.create", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.create", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -65,7 +65,7 @@ public abstract class SimpleRect {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getfilled", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getfilled", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -86,7 +86,7 @@ public abstract class SimpleRect {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
         params.add(Parameter.createBoolean(filled));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setfilled", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setfilled", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -107,7 +107,7 @@ public abstract class SimpleRect {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getcolorr", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getcolorr", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -128,7 +128,7 @@ public abstract class SimpleRect {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getcolorg", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getcolorg", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -149,7 +149,7 @@ public abstract class SimpleRect {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getcolorb", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getcolorb", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -172,7 +172,7 @@ public abstract class SimpleRect {
         params.add(Parameter.createInt(color.getR()));
         params.add(Parameter.createInt(color.getG()));
         params.add(Parameter.createInt(color.getB()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolor", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolor", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -192,7 +192,7 @@ public abstract class SimpleRect {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
         params.add(Parameter.createInt(colorR));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolorr", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolorr", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -212,7 +212,7 @@ public abstract class SimpleRect {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
         params.add(Parameter.createInt(colorG));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolorg", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolorg", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -232,7 +232,7 @@ public abstract class SimpleRect {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleRectID));
         params.add(Parameter.createInt(colorB));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolorb", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolorb", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

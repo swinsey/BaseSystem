@@ -15,8 +15,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class Sprite {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sprite.create", Sprite::systemCallSpriteCreate);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.sprite.gettexturesprite", Sprite::systemCallSpriteGetTextureSprite);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sprite.create", Sprite::systemCallSpriteCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sprite.gettexturesprite", Sprite::systemCallSpriteGetTextureSprite);
     }
 
     private static QAMessage systemCallSpriteCreate(RunningApp app, QAMessage message){

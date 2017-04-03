@@ -16,8 +16,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class Fadeable {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.fadeable.get", Fadeable::systemCallFadeableGet);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.fadeable.set", Fadeable::systemCallFadeableSet);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.fadeable.get", Fadeable::systemCallFadeableGet);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.fadeable.set", Fadeable::systemCallFadeableSet);
     }
 
     private static QAMessage systemCallFadeableGet(RunningApp app, QAMessage message){

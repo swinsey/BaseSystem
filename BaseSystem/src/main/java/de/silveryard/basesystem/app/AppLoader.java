@@ -14,15 +14,15 @@ import java.util.function.Consumer;
  */
 class AppLoader {
     /**
-     * de.awesome.smarthome.system.initapp
+     * de.silveryard.basesystem.system.initapp
      */
     private static final String COMMANDHASH_INITAPP = "427f8150c474bcad4152b18eef6fa9ee";
     /**
-     * de.awesome.smarthome.system.initsystem
+     * de.silveryard.basesystem.system.initsystem
      */
     private static final String COMMANDHASH_INITSYSTEM = "6b9994d2c83b1c047d5c436c79fa9b4f";
     /**
-     * de.awesome.smarthome.system.initend
+     * de.silveryard.basesystem.system.initend
      */
     private static final String COMMANDHASH_INITEND = "bae5a28dbc29ebe6de10eeaa11bc34f9";
 

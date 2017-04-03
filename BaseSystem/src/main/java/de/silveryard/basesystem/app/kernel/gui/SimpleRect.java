@@ -15,16 +15,16 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class SimpleRect {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.create", SimpleRect::systemCallSimpleRectCreate);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getfilled", SimpleRect::systemCallSimpleRectGetFilled);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setfilled", SimpleRect::systemCallSimpleRectSetFilled);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getcolorr", SimpleRect::systemCallSimpleRectGetColorR);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getcolorg", SimpleRect::systemCallSimpleRectGetColorG);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.getcolorb", SimpleRect::systemCallSimpleRectGetColorB);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolor", SimpleRect::systemCallSimpleRectSetColor);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolorr", SimpleRect::systemCallSimpleRectSetColorR);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolorg", SimpleRect::systemCallSimpleRectSetColorG);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.simplerect.setcolorb", SimpleRect::systemCallSimpleRectSetColorB);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.create", SimpleRect::systemCallSimpleRectCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getfilled", SimpleRect::systemCallSimpleRectGetFilled);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setfilled", SimpleRect::systemCallSimpleRectSetFilled);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getcolorr", SimpleRect::systemCallSimpleRectGetColorR);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getcolorg", SimpleRect::systemCallSimpleRectGetColorG);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.getcolorb", SimpleRect::systemCallSimpleRectGetColorB);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolor", SimpleRect::systemCallSimpleRectSetColor);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolorr", SimpleRect::systemCallSimpleRectSetColorR);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolorg", SimpleRect::systemCallSimpleRectSetColorG);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simplerect.setcolorb", SimpleRect::systemCallSimpleRectSetColorB);
     }
 
     private static QAMessage systemCallSimpleRectCreate(RunningApp app, QAMessage message){

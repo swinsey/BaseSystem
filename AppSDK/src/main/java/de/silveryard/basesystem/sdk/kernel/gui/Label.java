@@ -50,7 +50,7 @@ public abstract class Label {
         params.add(Parameter.createInt(color.getG()));
         params.add(Parameter.createInt(color.getB()));
         params.add(Parameter.createInt(color.getA()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.create", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.create", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -72,7 +72,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getfont", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getfont", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -93,7 +93,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createInt(fontID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.setfont", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.setfont", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -114,7 +114,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.gettext", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.gettext", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -135,7 +135,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createString(text));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.settext", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.settext", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -156,7 +156,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.gethorizontalalignment", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.gethorizontalalignment", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -177,7 +177,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createInt(horizontalAlignment.getValue()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.sethorizontalalignment", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.sethorizontalalignment", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -198,7 +198,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getverticalalignment", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getverticalalignment", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -219,7 +219,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createInt(verticalAlignment.getValue()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.setverticalalignment", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.setverticalalignment", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -240,7 +240,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolor", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getcolor", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -266,7 +266,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolorr", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getcolorr", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -287,7 +287,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolorg", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getcolorg", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -308,7 +308,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolorb", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getcolorb", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -333,7 +333,7 @@ public abstract class Label {
         params.add(Parameter.createInt(color.getG()));
         params.add(Parameter.createInt(color.getB()));
         params.add(Parameter.createInt(color.getA()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolor", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.setcolor", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -353,7 +353,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createInt(colorR));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolorr", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.setcolorr", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -373,7 +373,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createInt(colorG));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolorg", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.setcolorg", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -393,7 +393,7 @@ public abstract class Label {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
         params.add(Parameter.createInt(colorB));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolorb", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.setcolorb", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -414,7 +414,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getinternalwidth", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getinternalwidth", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -435,7 +435,7 @@ public abstract class Label {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(labelID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.label.getinternalheight", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.label.getinternalheight", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

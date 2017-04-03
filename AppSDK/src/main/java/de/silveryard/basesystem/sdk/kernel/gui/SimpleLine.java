@@ -42,7 +42,7 @@ public abstract class SimpleLine {
         params.add(Parameter.createInt(colorR));
         params.add(Parameter.createInt(colorG));
         params.add(Parameter.createInt(colorB));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.create", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.create", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -64,7 +64,7 @@ public abstract class SimpleLine {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.getendpointx", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getendpointx", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -85,7 +85,7 @@ public abstract class SimpleLine {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.getendpointy", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getendpointy", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -109,7 +109,7 @@ public abstract class SimpleLine {
         params.add(Parameter.createInt(simpleLineID));
         params.add(Parameter.createInt(positionX));
         params.add(Parameter.createInt(positionY));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setendpoint", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setendpoint", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -129,7 +129,7 @@ public abstract class SimpleLine {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
         params.add(Parameter.createInt(positionX));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setendpointx", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setendpointx", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -149,7 +149,7 @@ public abstract class SimpleLine {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
         params.add(Parameter.createInt(positionY));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setendpointy", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setendpointy", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -170,7 +170,7 @@ public abstract class SimpleLine {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.getcolorr", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getcolorr", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -191,7 +191,7 @@ public abstract class SimpleLine {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.getcolorg", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getcolorg", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -212,7 +212,7 @@ public abstract class SimpleLine {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.getcolorb", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getcolorb", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -238,7 +238,7 @@ public abstract class SimpleLine {
         params.add(Parameter.createInt(colorR));
         params.add(Parameter.createInt(colorG));
         params.add(Parameter.createInt(colorB));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setcolor", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolor", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -258,7 +258,7 @@ public abstract class SimpleLine {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
         params.add(Parameter.createInt(colorR));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setcolorr", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolorr", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -278,7 +278,7 @@ public abstract class SimpleLine {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
         params.add(Parameter.createInt(colorG));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setcolorg", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolorg", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -298,7 +298,7 @@ public abstract class SimpleLine {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(simpleLineID));
         params.add(Parameter.createInt(colorB));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.simpleline.setcolorb", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolorb", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

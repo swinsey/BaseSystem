@@ -19,25 +19,25 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 abstract class Label {
     public static void enableKernel(){
         Kernel kernel = Kernel.getInstance();
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.create", Label::systemCallLabelCreate);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getfont", Label::systemCalLabelGetFont);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.setfont", Label::systemCallLabelSetFont);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.gettext", Label::systemCallLabelGetText);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.settext", Label::systemCalLabelSetText);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.gethorizontalalignment", Label::systemCallLabelGetHorizontalAlignment);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.sethorizontalalignment", Label::systemCallLabelSetHorizontalAlignment);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getverticalalignment", Label::systemCallLabelGetVerticalAlignment);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.setverticalalignemt", Label::systemCallLabelSetVerticalAlignment);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolor", Label::systemCallLabelGetColor);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolorr", Label::systemCallLabelGetColorR);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolorg", Label::systemCallLabelGetColorG);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getcolorb", Label::systemCallLabelGetColorB);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolor", Label::systemCallLabelSetColor);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolorr", Label::systemCallLabelSetColorR);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolorg", Label::systemCallLabelSetColorG);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.setcolorb", Label::systemCallLabelSetColorB);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getinternalwidth", Label::systemCallLabelGetInternalWidth);
-        kernel.registerSystemCall("de.awesome.smarthome.td.systemcall.gui.label.getinternalheight", Label::systemCallLabelGetInternalHeight);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.create", Label::systemCallLabelCreate);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getfont", Label::systemCalLabelGetFont);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.setfont", Label::systemCallLabelSetFont);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.gettext", Label::systemCallLabelGetText);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.settext", Label::systemCalLabelSetText);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.gethorizontalalignment", Label::systemCallLabelGetHorizontalAlignment);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.sethorizontalalignment", Label::systemCallLabelSetHorizontalAlignment);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getverticalalignment", Label::systemCallLabelGetVerticalAlignment);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.setverticalalignemt", Label::systemCallLabelSetVerticalAlignment);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getcolor", Label::systemCallLabelGetColor);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getcolorr", Label::systemCallLabelGetColorR);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getcolorg", Label::systemCallLabelGetColorG);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getcolorb", Label::systemCallLabelGetColorB);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.setcolor", Label::systemCallLabelSetColor);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.setcolorr", Label::systemCallLabelSetColorR);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.setcolorg", Label::systemCallLabelSetColorG);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.setcolorb", Label::systemCallLabelSetColorB);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getinternalwidth", Label::systemCallLabelGetInternalWidth);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.label.getinternalheight", Label::systemCallLabelGetInternalHeight);
     }
 
     private static QAMessage systemCallLabelCreate(RunningApp app, QAMessage message){

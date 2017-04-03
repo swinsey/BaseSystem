@@ -30,7 +30,7 @@ public abstract class RenderObject {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectId));
         params.add(Parameter.createInt(layer));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.renderobject.setlayer", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.renderobject.setlayer", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -50,7 +50,7 @@ public abstract class RenderObject {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectId));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.renderobject.getlayer", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.renderobject.getlayer", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -73,7 +73,7 @@ public abstract class RenderObject {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectId));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.renderobject.setdirty", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.renderobject.setdirty", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

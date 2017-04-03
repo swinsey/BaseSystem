@@ -29,7 +29,7 @@ public abstract class Moveable {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
-        QAMessage message = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.moveable.getposition", params);
+        QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.moveable.getposition", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(message.getParameters().get(1).getInt());
@@ -51,7 +51,7 @@ public abstract class Moveable {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
-        QAMessage message = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.moveable.getpositionx", params);
+        QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.moveable.getpositionx", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(message.getParameters().get(1).getInt());
@@ -72,7 +72,7 @@ public abstract class Moveable {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
-        QAMessage message = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.moveable.getpositiony", params);
+        QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.moveable.getpositiony", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(message.getParameters().get(1).getInt());
@@ -96,7 +96,7 @@ public abstract class Moveable {
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(positionX));
         params.add(Parameter.createInt(positionY));
-        QAMessage message = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.moveable.setposition", params);
+        QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.moveable.setposition", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(message.getParameters().get(1).getInt());
@@ -116,7 +116,7 @@ public abstract class Moveable {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(positionX));
-        QAMessage message = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.moveable.setpositionx", params);
+        QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.moveable.setpositionx", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(message.getParameters().get(1).getInt());
@@ -136,7 +136,7 @@ public abstract class Moveable {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(positionY));
-        QAMessage message = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.moveable.setpositiony", params);
+        QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.moveable.setpositiony", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(message.getParameters().get(1).getInt());

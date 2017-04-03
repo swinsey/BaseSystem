@@ -21,7 +21,7 @@ public abstract class Screen {
      */
     public static void systemCallScreenGetWidth(
             Wrapper<ReturnCode> outReturnCode, Wrapper<GuiReturnCode> outGuiReturnCode, Wrapper<Integer> outWidth){
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.screen.getscreenwidth", new ArrayList<>());
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.screen.getscreenwidth", new ArrayList<>());
 
         int returnCodeInt = response.getParameters().get(0).getInt();
         int guiReturnCodeInt = response.getParameters().get(1).getInt();
@@ -39,7 +39,7 @@ public abstract class Screen {
      */
     public static void systemCallScreenGetHeight(
             Wrapper<ReturnCode> outReturnCode, Wrapper<GuiReturnCode> outGuiReturnCode, Wrapper<Integer> outHeight){
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.screen.getscreenheight", new ArrayList<>());
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.screen.getscreenheight", new ArrayList<>());
 
         int returnCodeInt = response.getParameters().get(0).getInt();
         int guiReturnCodeInt = response.getParameters().get(1).getInt();
@@ -62,7 +62,7 @@ public abstract class Screen {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectId));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.screen.addrenderobject", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.screen.addrenderobject", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -79,7 +79,7 @@ public abstract class Screen {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectId));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.screen.removerenderobject", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.screen.removerenderobject", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

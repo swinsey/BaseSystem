@@ -38,7 +38,7 @@ public abstract class TextureSprite {
         params.add(Parameter.createInt(sourceY));
         params.add(Parameter.createInt(sourceWidth));
         params.add(Parameter.createInt(sourceHeight));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.create", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.create", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -60,7 +60,7 @@ public abstract class TextureSprite {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureSpriteID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.gettexture", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.gettexture", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -82,7 +82,7 @@ public abstract class TextureSprite {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureSpriteID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourcex", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourcex", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -103,7 +103,7 @@ public abstract class TextureSprite {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureSpriteID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourcey", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourcey", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -124,7 +124,7 @@ public abstract class TextureSprite {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureSpriteID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourcewidth", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourcewidth", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -145,7 +145,7 @@ public abstract class TextureSprite {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureSpriteID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourceheight", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourceheight", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

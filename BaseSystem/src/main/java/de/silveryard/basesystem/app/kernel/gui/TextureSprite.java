@@ -16,12 +16,12 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class TextureSprite {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.create", TextureSprite::systemCallTextureSpriteCreate);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.gettexture", TextureSprite::systemCallTextureSpriteGetTexture);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourcex", TextureSprite::systemCallTextureSpriteGetSourceX);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourcey", TextureSprite::systemCallTextureSpriteGetSourceY);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourcewidth", TextureSprite::systemCallTextureSpriteGetSourceWidth);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.texturesprite.getsourceheight", TextureSprite::systemCallTextureSpriteGetSourceHeight);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.create", TextureSprite::systemCallTextureSpriteCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.gettexture", TextureSprite::systemCallTextureSpriteGetTexture);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourcex", TextureSprite::systemCallTextureSpriteGetSourceX);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourcey", TextureSprite::systemCallTextureSpriteGetSourceY);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourcewidth", TextureSprite::systemCallTextureSpriteGetSourceWidth);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.texturesprite.getsourceheight", TextureSprite::systemCallTextureSpriteGetSourceHeight);
     }
 
     private static QAMessage systemCallTextureSpriteCreate(RunningApp app, QAMessage message){

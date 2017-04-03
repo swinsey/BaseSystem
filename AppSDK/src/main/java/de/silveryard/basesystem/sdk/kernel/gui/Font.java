@@ -29,7 +29,7 @@ public abstract class Font {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(font));
         params.add(Parameter.createInt(size));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.font.loadsystemfont", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.font.loadsystemfont", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -50,7 +50,7 @@ public abstract class Font {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(fontId));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.font.getsize", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.font.getsize", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

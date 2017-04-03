@@ -22,11 +22,11 @@ import java.util.List;
  */
 public abstract class AppManager {
     public static void enableInterface(){
-        NetworkInterface.registerQaCommand("de.awesome.smarthome.td.networkinterface.appmanager.getInstalledApps", AppManager::handleGetInstalledApps);
-        NetworkInterface.registerQaCommand("de.awesome.smarthome.td.networkinterface.appmanager.uninstallApp", AppManager::handleUninstallApp);
-        NetworkInterface.registerQaCommand("de.awesome.smarthome.td.networkinterface.appmanager.installApp", AppManager::handleInstallApp);
-        NetworkInterface.registerQaCommand("de.awesome.smarthome.td.networkinterface.appmanager.getIcon", AppManager::handleGetIcon);
-        NetworkInterface.registerQaCommand("de.awesome.smarthome.td.networkinterface.appmanager.getVersion", AppManager::handleGetVersion);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getInstalledApps", AppManager::handleGetInstalledApps);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.uninstallApp", AppManager::handleUninstallApp);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.installApp", AppManager::handleInstallApp);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getIcon", AppManager::handleGetIcon);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getVersion", AppManager::handleGetVersion);
     }
 
     private static QAMessage handleGetInstalledApps(QAMessage message, byte[] data){

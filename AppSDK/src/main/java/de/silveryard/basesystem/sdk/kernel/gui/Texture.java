@@ -26,7 +26,7 @@ public abstract class Texture {
             Wrapper<ReturnCode> outReturnCode, Wrapper<GuiReturnCode> outGuiReturnCode, Wrapper<Integer> outTextureId){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(path.toString()));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texture.load", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texture.load", params);
 
         int returnCodeInt = response.getParameters().get(0).getInt();
         int guiReturnCodeInt = response.getParameters().get(1).getInt();
@@ -47,7 +47,7 @@ public abstract class Texture {
             Wrapper<ReturnCode> outReturnCode, Wrapper<GuiReturnCode> outGuiReturnCode){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texture.unload", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texture.unload", params);
 
         int returnCodeInt = response.getParameters().get(0).getInt();
         int guiReturnCodeInt = response.getParameters().get(1).getInt();
@@ -68,7 +68,7 @@ public abstract class Texture {
             Wrapper<ReturnCode> outReturnCode, Wrapper<GuiReturnCode> outGuiReturnCode, Wrapper<Integer> outWidth){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texture.getwidth", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texture.getwidth", params);
 
         int returnCodeInt = response.getParameters().get(0).getInt();
         int guiReturnCodeInt = response.getParameters().get(1).getInt();
@@ -90,7 +90,7 @@ public abstract class Texture {
             Wrapper<ReturnCode> outReturnCode, Wrapper<GuiReturnCode> outGuiReturnCode, Wrapper<Integer> outHeight){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(textureID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.texture.getheight", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.texture.getheight", params);
 
         int returnCodeInt = response.getParameters().get(0).getInt();
         int guiReturnCodeInt = response.getParameters().get(1).getInt();

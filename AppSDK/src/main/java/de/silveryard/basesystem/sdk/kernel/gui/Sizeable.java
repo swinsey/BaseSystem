@@ -28,7 +28,7 @@ public abstract class Sizeable {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.getwidth", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sizeable.getwidth", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -49,7 +49,7 @@ public abstract class Sizeable {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.getheight", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sizeable.getheight", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -73,7 +73,7 @@ public abstract class Sizeable {
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(width));
         params.add(Parameter.createInt(height));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.setsize", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sizeable.setsize", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -93,7 +93,7 @@ public abstract class Sizeable {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(width));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.setwidth", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sizeable.setwidth", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -113,7 +113,7 @@ public abstract class Sizeable {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(renderObjectID));
         params.add(Parameter.createInt(height));
-        QAMessage response = Kernel.systemCall("de.awesome.smarthome.td.systemcall.gui.sizeable.setheight", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.gui.sizeable.setheight", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());

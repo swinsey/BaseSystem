@@ -14,9 +14,9 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class RenderObject {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.renderobject.setlayer", RenderObject::systemCallRenderObjectSetLayer);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.renderobject.getlayer", RenderObject::systemCallRenderObjectGetLayer);
-        Kernel.getInstance().registerSystemCall("de.awesome.smarthome.td.systemcall.gui.renderobject.setdirty", RenderObject::systemCallRenderObjectSetDirty);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.renderobject.setlayer", RenderObject::systemCallRenderObjectSetLayer);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.renderobject.getlayer", RenderObject::systemCallRenderObjectGetLayer);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.renderobject.setdirty", RenderObject::systemCallRenderObjectSetDirty);
     }
 
     private static QAMessage systemCallRenderObjectSetLayer(RunningApp app, QAMessage message){
