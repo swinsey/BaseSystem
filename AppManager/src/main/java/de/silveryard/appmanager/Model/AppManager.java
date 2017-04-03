@@ -1,7 +1,7 @@
 package de.silveryard.appmanager.Model;
 
-import de.awesome.smarthome.highlevelprotocols.qa.QAMessage;
-import de.awesome.smarthome.transport.Parameter;
+import de.silveryard.transport.Parameter;
+import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

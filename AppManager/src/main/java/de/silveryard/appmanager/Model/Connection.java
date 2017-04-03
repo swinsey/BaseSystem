@@ -2,11 +2,11 @@ package de.silveryard.appmanager.Model;
 
 import de.silveryard.appmanager.Utility.IAction;
 import de.silveryard.appmanager.Utility.Util;
-import de.awesome.smarthome.filecache.FileCache;
-import de.awesome.smarthome.highlevelprotocols.qa.QAMessage;
-import de.awesome.smarthome.transport.Message;
-import de.awesome.smarthome.transport.Parameter;
-import de.awesome.smarthome.transport.Transport;
+import de.silveryard.transport.Message;
+import de.silveryard.transport.Parameter;
+import de.silveryard.transport.Transport;
+import de.silveryard.transport.filecache.FileCache;
+import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
 import java.io.InputStream;
 import java.io.OutputStream;

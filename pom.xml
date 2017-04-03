@@ -4,38 +4,19 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.awesome.smarthome</groupId>
+    <groupId>de.silveryard</groupId>
     <artifactId>repo-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <name>Builds all subprojects in this repository</name>
 
     <modules>
-		<!--General-->
-        <module>Transport</module>
-		
-		<!--Server-->
-		<!--<module>Server</module>
-        <module>PPF</module>
-		<module>PPFCreator</module>
-		<module>PluginAPI</module>
-		<module>PluginExecutor</module>-->
-		
-		<!--Touch Display-->
-		<module>TouchDisplay</module>
-		<module>AppSDK</module>
 		<module>APF</module>
 		<module>APFCreator</module>
 		<module>AppManager</module>
-		
-		<!--Car-->
-		<module>Car/Auxiliary</module>
-		<module>Car/CarSDK</module>
-		
-		<!--Plugins-->
-		<!--<module>TestPlugin</module>
-		<module>Hue</module>
-        <module>Alarm</module>-->
+		<module>AppSDK</module>
+		<module>BaseSystem</module>
+		<module>Transport</module>
     </modules>
 
     <build>
