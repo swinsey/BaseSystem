@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.silveryard</groupId>
-    <artifactId>repo-parent</artifactId>
+    <artifactId>repo-parent-basesystem</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>Builds all subprojects in this repository</name>
+    <name>Base System</name>
 
     <modules>
 		<module>APF</module>
