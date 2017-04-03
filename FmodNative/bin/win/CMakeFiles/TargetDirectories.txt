@@ -1,3 +1,0 @@
-D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/FmodNative.dir
-D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/ALL_BUILD.dir
-D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/ZERO_CHECK.dir
