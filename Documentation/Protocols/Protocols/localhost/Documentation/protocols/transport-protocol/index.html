@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<!-- Mirrored from localhost/Documentation/protocols/transport-protocol/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Apr 2017 18:16:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://localhost/Documentation/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://localhost/Documentation/wp-content/themes/twentyfifteen/js/html5.js"></script>
+	<![endif]-->
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Transport Protocol &#8211; Documentation</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link href='https://fonts.gstatic.com/' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Documentation &raquo; Feed" href="http://localhost/Documentation/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Documentation &raquo; Comments Feed" href="http://localhost/Documentation/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/localhost\/Documentation\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='twentyfifteen-jetpack-css'  href='../../wp-content/plugins/jetpack/modules/theme-tools/compat/twentyfifteen6996.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Noto+Sans%3A400italic%2C700italic%2C400%2C700%7CNoto+Serif%3A400italic%2C700italic%2C400%2C700%7CInconsolata%3A400%2C700&amp;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='../../wp-content/plugins/jetpack/_inc/genericons/genericons/genericons128b.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-style-css'  href='../../wp-content/themes/twentyfifteen/stylefe9d.css?ver=4.7.3' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='http://localhost/Documentation/wp-content/themes/twentyfifteen/css/ie.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='http://localhost/Documentation/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='../../wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://localhost/Documentation/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost/Documentation/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost/Documentation/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.7.3" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='http://localhost/Documentation/?p=136' />
+<link rel="alternate" type="application/json+oembed" href="http://localhost/Documentation/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%2FDocumentation%2Fprotocols%2Ftransport-protocol%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://localhost/Documentation/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%2FDocumentation%2Fprotocols%2Ftransport-protocol%2F&amp;format=xml" />
+	<style type="text/css" id="twentyfifteen-header-css">
+			.site-header {
+			padding-top: 14px;
+			padding-bottom: 14px;
+		}
+
+		.site-branding {
+			min-height: 42px;
+		}
+
+		@media screen and (min-width: 46.25em) {
+			.site-header {
+				padding-top: 21px;
+				padding-bottom: 21px;
+			}
+			.site-branding {
+				min-height: 56px;
+			}
+		}
+		@media screen and (min-width: 55em) {
+			.site-header {
+				padding-top: 25px;
+				padding-bottom: 25px;
+			}
+			.site-branding {
+				min-height: 62px;
+			}
+		}
+		@media screen and (min-width: 59.6875em) {
+			.site-header {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+			.site-branding {
+				min-height: 0;
+			}
+		}
+			.site-title,
+		.site-description {
+			clip: rect(1px, 1px, 1px, 1px);
+			position: absolute;
+		}
+		</style>
+	</head>
+
+<body class="page-template-default page page-id-136 page-child parent-pageid-117">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<div id="sidebar" class="sidebar">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="http://localhost/Documentation/" rel="home">Documentation</a></p>
+									<button class="secondary-toggle">Menu and widgets</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div id="secondary" class="secondary">
+
+		
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="text-3" class="widget widget_text"><h2 class="widget-title">Documentation</h2>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-6" class="widget widget_nav_menu"><h2 class="widget-title">Protocols</h2><div class="menu-menu_protocols-container"><ul id="menu-menu_protocols" class="menu"><li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a href="../overview/index.html">Overview</a></li>
+<li id="menu-item-132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-132"><a href="../license/index.html">License</a></li>
+<li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-136 current_page_item menu-item-138"><a href="index.html">Transport Protocol</a></li>
+<li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-155"><a href="../file-cache-protocol/index.html">File Cache Protocol</a></li>
+<li id="menu-item-154" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-154"><a href="../highlevel-protocol/index.html">Highlevel Protocol</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="../qa-protocol/index.html">QA Protocol</a></li>
+<li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="../event-protocol/index.html">Event Protocol</a></li>
+</ul></div></aside>			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-136" class="post-136 page type-page status-publish hentry category-protocols">
+	
+	<header class="entry-header">
+		<h1 class="entry-title">Transport Protocol</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>The transport protocol is the base protocol for all other higher level protocols in this document.<br />
+It builds on top of raw tcp sockets.</p>
+<hr />
+<h2>Brief description</h2>
+<p>Transport communication consists of two entities, connected over some sort of stream. One entity provides a set of functions (commands) that can be called by the other entity. Every command has a name and a set of parameters that can contain data of different types. The transport protocol only adressed calling these commands. Handling responses is not part of the specification.</p>
+<hr />
+<h2>Definitions</h2>
+<ul>
+<li>The term &#8220;the receiver&#8221; is used for the entity providing commands</li>
+<li>The term &#8220;the sender&#8221; is used for the entity calling the receivers commands</li>
+<li>The term &#8220;entity&#8221; is used when either a receiver or a sender is adressed</li>
+<li>All numeric values are decimal unless otherwise noted</li>
+<li>Strings are case sensitive. &#8220;Abc&#8221; is not equal to &#8220;aBc&#8221;. Strings include GUIDs and Hashes. String parameter values can be case sensitive or case insensitive depending on the commands implementation</li>
+<li>GUIDs are 128 bit (16 byte)  values that are statistically unique withour an authority managing these values. Every entity can generate GUIDs independently and assume that they are unique accross all entities. The string representation of a GUID consists of 32 characters of either 0-9 or a-f. Note the lack of &#8216;-&#8216; that is often used to separate character groups in a GUID. Also only lowercase letters are used.</li>
+<li>Hashes are 128 (16 byte) values are GUIDs generated from a string, a byte array or a files content. For Hash generation the Message-Digest Algorithm 5 (MD5) is used. Hashes are defines to be equal when the Hashs source values are equal and differend when the source values are different.</li>
+<li>A byte is an 8 bit value. Devices with non-8-bit bytes may need to take care of this definition</li>
+<li>Each message can have 255 parameters consisting of up to 255 bytes. So a maximum of 65535 bytes can be send within a single message (plus metadata)</li>
+</ul>
+<h3>Datatypes</h3>
+<p>While a parameters content can be structured as the user like, there are some standartized datatypes. Using these specifications are good practice and some receivers may depend on this.</p>
+<h4>Boolean</h4>
+<p>Boolean or bool values are represented as single bytes. True is the value 1 and False the value 0</p>
+<h4>Integer</h4>
+<p>Integer or int values are represented by 4 bytes. Individual bytes are ordered in network byte order also known as big endian.</p>
+<h4>String</h4>
+<p>String values are UTF8 encoded</p>
+<hr />
+<h2>Structure</h2>
+<p>&nbsp;</p>
+<pre>Message {
+    byte[8]                   messageStart
+    GUID                      senderGUID
+    GUID                      receiverGUID
+    Hash                      commandHash
+    byte                      parameterCount
+    Parameter[parameterCount] parameters
+    byte[8]                   messageEnd
+}
+
+GUID {
+    byte[16] value
+}
+
+Hash {
+    GUID value
+}
+
+Parameter {
+    byte         length
+    byte[length] data
+}</pre>
+<hr />
+<h2>Detail</h2>
+<h3>Message</h3>
+<h4>messageStart</h4>
+<p>8 byte sequence of values that indicates the start of a new message. Consists of the first 8 values of the fibonacci sequence (1, 2, 3, 5, 8, 13, 21, 34)</p>
+<h4>senderGUID</h4>
+<p>Unique identifier to identify the sender of this message. Has to stay the same as long as the connection is open (and accross multiple connections if you want to be identified accross connections). Usually a device should generate a GUID on first startup and keep it always the same.</p>
+<h4>receiverGUID</h4>
+<p>Unique identifier to identify the receiver of this message.</p>
+<h4>commandHash</h4>
+<p>Hash of the command name to call. Usually a command name should have the reverse domain naming convention (e.g. &#8220;de.awesome.some.command&#8221;). This is good practice to ensure unique command names while maintaining readability. Hashing this name ensures that event very long names can be represented by a short value.</p>
+<h4>parameterCount</h4>
+<p>Number of parameters contained in this message. Up to 255 parameters are supported</p>
+<h4>parameters</h4>
+<p>List of parameters. See them as arguments for the command to call</p>
+<h4>messageEnd</h4>
+<p>8 byte sequence of values that indicates the end of a message. Consists of the first 8 prime numbers (1, 3, 5, 7, 11, 13, 17, 19)</p>
+<h3>GUID</h3>
+<h4>value</h4>
+<p>16 byte value. See &#8220;Definition&#8221;</p>
+<h3>Hash</h3>
+<h4>value</h4>
+<p>GUID value. See &#8220;Definition&#8221;</p>
+<h3>Parameter</h3>
+<h4>length</h4>
+<p>Length of the parameter in bytes. A parameter can have up to 255 bytes</p>
+<h4>data</h4>
+<p>Binary representation of the parameters data</p>
+			</div><!-- .entry-content -->
+
+	
+</article><!-- #post-## -->
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<script type='text/javascript' src='../../wp-content/themes/twentyfifteen/js/skip-link-focus-fixd01e.js?ver=20141010'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var screenReaderText = {"expand":"<span class=\"screen-reader-text\">expand child menu<\/span>","collapse":"<span class=\"screen-reader-text\">collapse child menu<\/span>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/themes/twentyfifteen/js/functions8337.js?ver=20150330'></script>
+<script type='text/javascript' src='../../wp-includes/js/wp-embed.minfe9d.js?ver=4.7.3'></script>
+
+</body>
+
+<!-- Mirrored from localhost/Documentation/protocols/transport-protocol/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Apr 2017 18:16:45 GMT -->
+</html>

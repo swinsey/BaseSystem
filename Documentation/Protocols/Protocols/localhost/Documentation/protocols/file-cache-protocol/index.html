@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<!-- Mirrored from localhost/Documentation/protocols/file-cache-protocol/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Apr 2017 18:16:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://localhost/Documentation/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://localhost/Documentation/wp-content/themes/twentyfifteen/js/html5.js"></script>
+	<![endif]-->
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>File Cache Protocol &#8211; Documentation</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link href='https://fonts.gstatic.com/' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Documentation &raquo; Feed" href="http://localhost/Documentation/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Documentation &raquo; Comments Feed" href="http://localhost/Documentation/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/localhost\/Documentation\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='twentyfifteen-jetpack-css'  href='../../wp-content/plugins/jetpack/modules/theme-tools/compat/twentyfifteen6996.css?ver=4.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Noto+Sans%3A400italic%2C700italic%2C400%2C700%7CNoto+Serif%3A400italic%2C700italic%2C400%2C700%7CInconsolata%3A400%2C700&amp;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='../../wp-content/plugins/jetpack/_inc/genericons/genericons/genericons128b.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-style-css'  href='../../wp-content/themes/twentyfifteen/stylefe9d.css?ver=4.7.3' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='http://localhost/Documentation/wp-content/themes/twentyfifteen/css/ie.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='http://localhost/Documentation/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='../../wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://localhost/Documentation/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost/Documentation/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost/Documentation/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.7.3" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='http://localhost/Documentation/?p=144' />
+<link rel="alternate" type="application/json+oembed" href="http://localhost/Documentation/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%2FDocumentation%2Fprotocols%2Ffile-cache-protocol%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://localhost/Documentation/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%2FDocumentation%2Fprotocols%2Ffile-cache-protocol%2F&amp;format=xml" />
+	<style type="text/css" id="twentyfifteen-header-css">
+			.site-header {
+			padding-top: 14px;
+			padding-bottom: 14px;
+		}
+
+		.site-branding {
+			min-height: 42px;
+		}
+
+		@media screen and (min-width: 46.25em) {
+			.site-header {
+				padding-top: 21px;
+				padding-bottom: 21px;
+			}
+			.site-branding {
+				min-height: 56px;
+			}
+		}
+		@media screen and (min-width: 55em) {
+			.site-header {
+				padding-top: 25px;
+				padding-bottom: 25px;
+			}
+			.site-branding {
+				min-height: 62px;
+			}
+		}
+		@media screen and (min-width: 59.6875em) {
+			.site-header {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+			.site-branding {
+				min-height: 0;
+			}
+		}
+			.site-title,
+		.site-description {
+			clip: rect(1px, 1px, 1px, 1px);
+			position: absolute;
+		}
+		</style>
+	</head>
+
+<body class="page-template-default page page-id-144 page-child parent-pageid-117">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<div id="sidebar" class="sidebar">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="http://localhost/Documentation/" rel="home">Documentation</a></p>
+									<button class="secondary-toggle">Menu and widgets</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div id="secondary" class="secondary">
+
+		
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="text-3" class="widget widget_text"><h2 class="widget-title">Documentation</h2>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-6" class="widget widget_nav_menu"><h2 class="widget-title">Protocols</h2><div class="menu-menu_protocols-container"><ul id="menu-menu_protocols" class="menu"><li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a href="../overview/index.html">Overview</a></li>
+<li id="menu-item-132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-132"><a href="../license/index.html">License</a></li>
+<li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138"><a href="../transport-protocol/index.html">Transport Protocol</a></li>
+<li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-144 current_page_item menu-item-155"><a href="index.html">File Cache Protocol</a></li>
+<li id="menu-item-154" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-154"><a href="../highlevel-protocol/index.html">Highlevel Protocol</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="../qa-protocol/index.html">QA Protocol</a></li>
+<li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="../event-protocol/index.html">Event Protocol</a></li>
+</ul></div></aside>			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-144" class="post-144 page type-page status-publish hentry category-protocols">
+	
+	<header class="entry-header">
+		<h1 class="entry-title">File Cache Protocol</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<h2>Brief Description</h2>
+<p>The file cache protocol is a protocol build directly on top of the transport protocol and is used to transfer files of arbitrary size when calling a command at a receiver entity.</p>
+<p>This protocol is needed when a file to be transfered may exceed the maximum number of bytes that can be send within a single transport message.</p>
+<hr />
+<h2>Functionality</h2>
+<p>Normally a command call over the transport protocol consists of a single message. When transfering files, a single message may not be enough. The file cache protocol encapuslates multiple messages. For higher application logic levels these act as a single normal network call.</p>
+<hr />
+<h2>Command Hashes</h2>
+<table style="width: 560px;">
+<tbody>
+<tr style="height: 56px;">
+<td style="width: 163.567px; height: 56px;">Name</td>
+<td style="width: 123px; height: 56px;">Command Name</td>
+<td style="width: 118px; height: 56px;">Command Hash</td>
+</tr>
+<tr style="height: 23px;">
+<td style="width: 163.567px; height: 23px;">UPLOAD_START</td>
+<td style="width: 123px; height: 23px;">de.awesome.smarthome.filecache.uploadstart</td>
+<td style="width: 118px; height: 23px;">ef9531a094aaac4a3f3a0f4cd02c4db6</td>
+</tr>
+<tr style="height: 8px;">
+<td style="width: 163.567px; height: 8px;">UPLOAD_PROGRESS</td>
+<td style="width: 123px; height: 8px;">de.awesome.smarthome.filecache.uploadprogress</td>
+<td style="width: 118px; height: 8px;">620c728f9ca9d8075ad354dff6804d83</td>
+</tr>
+<tr style="height: 28px;">
+<td style="width: 163.567px; height: 28px;">UPLOAD_FINISH</td>
+<td style="width: 123px; height: 28px;">de.awesome.smarthome.filecache.uploadfinish</td>
+<td style="width: 118px; height: 28px;">3682a7b006c08d8ec4070abdffee976f</td>
+</tr>
+<tr style="height: 28px;">
+<td style="width: 163.567px; height: 28px;">UPLOAD_CONFIRM_SUCCESS</td>
+<td style="width: 123px; height: 28px;">de.awesome.smarthome.filecache.uploadsuccess</td>
+<td style="width: 118px; height: 28px;">79f9cde1281e278866943537ebb53526</td>
+</tr>
+<tr style="height: 28px;">
+<td style="width: 163.567px; height: 28px;">UPLOAD_REQUEST_PACKAGE</td>
+<td style="width: 123px; height: 28px;">de.awesome.smarthome.filecache.uploadrequestpackage</td>
+<td style="width: 118px; height: 28px;">47cb0562ea7fdf63d8e5869aa9752370</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Example Communication Workflow</h2>
+<p><img class="alignnone wp-image-161" src="../../wp-content/uploads/2017/04/Sequenzdiagramm-300x249.png" alt="" width="646" height="536" srcset="http://localhost/Documentation/wp-content/uploads/2017/04/Sequenzdiagramm-300x249.png 300w, http://localhost/Documentation/wp-content/uploads/2017/04/Sequenzdiagramm-768x637.png 768w, http://localhost/Documentation/wp-content/uploads/2017/04/Sequenzdiagramm.png 870w" sizes="(max-width: 646px) 100vw, 646px" /></p>
+<hr />
+<h2>Detailed Workflow</h2>
+<h3>1. Initialization</h3>
+<p>A file upload begins with an UPLOAD_START message. It contains necessary metadata for the file and the command to call.</p>
+<pre>Parameters:
+    String                    transportID
+    Integer                   dataLength
+    String                    commandHash
+    Integer                   parameterCount
+    Parameter[parameterCount] parameters
+</pre>
+<h4>transportID</h4>
+<p>An identifier,  that describes the transport. This identifier stays the same for all messages of this upload. This identifier needs to be unique, so a GUID is reasonable</p>
+<h4>dataLength</h4>
+<p>Size of the file to send in bytes</p>
+<h4>commandHash</h4>
+<p>After the file upload has finished, a command is called on the receiver</p>
+<h4>parameterCount</h4>
+<p>Number of parameters for the command</p>
+<h4>parameters</h4>
+<p>List of parameters to append to the final command call</p>
+<h3>2. Upload</h3>
+<p>In the upload phase the sender sends UPLOAD_PROGRESS messages to the receiver. These contain the files data</p>
+<pre>Parameters:
+    String          transportID
+    Integer         index
+    ByteArray[n][m] data
+</pre>
+<h4>transportID</h4>
+<p>Identifier specified in UPLOAD_START</p>
+<h4>index</h4>
+<p>UPLOAD_PROGRESS messages contain a 0 based index. This is used so the receiver can assemble the single message in right order.</p>
+<h4>data</h4>
+<p>This is more a list of parameters than a single parameter. They contain the byte data of the file to send. There are m parameters with n bytes per parameter.</p>
+<p>For the last message, m is the needed number of parameters for the remaining data. Otherwise m is 253</p>
+<p>For the last parameter in the last message n is the amound of the remaining data. Otherwise n is 255</p>
+<h3>3. Call to finish</h3>
+<p>After all file data has been transfert the sender notifies the receiver with a UPLOAD_FINISH message that he thinks he is done.</p>
+<pre>Parameters:
+    String transportID
+</pre>
+<h4>transportID</h4>
+<p>Identifier specified in UPLOAD_START</p>
+<h3>4. Resending missing packages (Optional)</h3>
+<p>If there are any messages that are lost during transmissions, the receiver can request individual packages via UPLOAD_REQUEST_PACKAGE</p>
+<pre>Parameters:
+    String transportID
+    int index
+</pre>
+<h4>transportID</h4>
+<p>Identifier specified in UPLOAD_START</p>
+<h4>index</h4>
+<p>0 based index of the package that needs to be resent</p>
+<h3>5. Finishing up</h3>
+<p>When the receiver has everything he needs, he sends a confirmation message to the sender (UPLOAD_CONFIRM_SUCCESS). Afterwards he calls the command specified in UPLOAD_START with the passed parameters and the files data.</p>
+<pre>Parameters:
+    String transportID
+</pre>
+<h4>transportID</h4>
+<p>Identifier specified in UPLOAD_START</p>
+			</div><!-- .entry-content -->
+
+	
+</article><!-- #post-## -->
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<script type='text/javascript' src='../../wp-content/themes/twentyfifteen/js/skip-link-focus-fixd01e.js?ver=20141010'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var screenReaderText = {"expand":"<span class=\"screen-reader-text\">expand child menu<\/span>","collapse":"<span class=\"screen-reader-text\">collapse child menu<\/span>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/themes/twentyfifteen/js/functions8337.js?ver=20150330'></script>
+<script type='text/javascript' src='../../wp-includes/js/wp-embed.minfe9d.js?ver=4.7.3'></script>
+
+</body>
+
+<!-- Mirrored from localhost/Documentation/protocols/file-cache-protocol/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Apr 2017 18:16:45 GMT -->
+</html>
