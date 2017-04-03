@@ -1,4 +1,4 @@
-package de.silveryard.smarthome.apf;
+package de.silveryard.apf;
 
 /**
  * Java Representation of an application package file (.apf)

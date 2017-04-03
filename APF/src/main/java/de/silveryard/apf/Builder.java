@@ -1,4 +1,4 @@
-package de.silveryard.smarthome.apf;
+package de.silveryard.apf;
 
 /**
  * The builder class is responsible to convert ApplicationPackageFile objects to binary form

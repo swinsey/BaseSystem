@@ -1,4 +1,4 @@
-package de.silveryard.smarthome.apf;
+package de.silveryard.apf;
 
 /**
  * Created by Sebif on 22.02.2017.
