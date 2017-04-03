@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readonlydirectory',['readonlyDirectory',['../classde_1_1awesome_1_1smarthome_1_1system_1_1kernel_1_1_app_s_d_k.html#a3a705780fb10c80d3c336b63fa0af80e',1,'de::awesome::smarthome::system::kernel::AppSDK']]],
-  ['right',['RIGHT',['../enumde_1_1awesome_1_1smarthome_1_1system_1_1kernel_1_1gui_1_1_horizontal_alignment.html#a30bd8281d7a725e2be53123f3e4b1962',1,'de::awesome::smarthome::system::kernel::gui::HorizontalAlignment']]]
+  ['readonlydirectory',['readonlyDirectory',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app_s_d_k.html#a672a1ffda8ac178c9f8d4779f513d5c5',1,'de::silveryard::basesystem::sdk::kernel::AppSDK']]],
+  ['right',['RIGHT',['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_horizontal_alignment.html#a44807eaf11f1002bb0319fa10a8dfda6',1,'de::silveryard::basesystem::sdk::kernel::gui::HorizontalAlignment']]]
 ];
