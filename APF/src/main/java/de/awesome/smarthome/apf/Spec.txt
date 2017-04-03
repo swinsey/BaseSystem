@@ -1,0 +1,36 @@
+byte[4] magicNumbers (ASCII .apf)
+byte[2] fileVersion
+String[1] appName
+String[1] appIdentifier
+byte[1] appMajorVersion
+byte[1] appMinorVersion
+byte[1] appIconCount
+AppIcon[appIconCount] appIcons
+byte[1] splashImageCount
+SplashImage[splashImageCount] splashImages
+byte[4] binaryLength
+byte[binaryLength] binaryData
+byte[2] fileCount
+File[fileCount] files
+
+[String]:
+byte[1] stringLength
+byte[stringLength] string
+
+[AppIcon]:
+byte[2] iconSize
+byte[4] dataLength
+byte[dataLength] data
+
+[SplashImage]:
+byte[2] imageWidth
+byte[2] imageHeight
+byte[4] dataLength
+byte[dataLength] data
+
+[File]:
+String[1] filename
+byte[1] subDirCount
+String[subDirCount] subDirs
+byte[4] dataLength
+byte[dataLength] data

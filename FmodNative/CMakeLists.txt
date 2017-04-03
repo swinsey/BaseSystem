@@ -1,0 +1,44 @@
+cmake_minimum_required(VERSION 3.3)
+project(FmodNative)
+
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/build")
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin/")
+message(STATUS "Runtime: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+
+if(WIN32)
+	set(FMOD_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/fmod/win/inc)
+	set(FMOD_LIBRARY ${PROJECT_SOURCE_DIR}/fmod/win/lib/fmodL64_vc.lib)
+else()
+	set(FMOD_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/fmod/rasp/inc)
+	set(FMOD_LIBRARY ${PROJECT_SOURCE_DIR}/fmod/rasp/lib/armhf/libfmodL.so.9.3)
+endif(WIN32)
+
+find_package(JNI)
+
+include_directories(
+        ${JNI_INCLUDE_DIRS}
+		${FMOD_INCLUDE_DIR})
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+set(SOURCE_FILES
+    src/helper.cpp 
+	src/Wrapper.cpp 
+	src/Integer.cpp 
+	src/Boolean.cpp 
+	src/Float.cpp 
+	src/FmodResult.cpp 
+	src/FmodOutputType.cpp 
+	src/FmodSpeakerMode.cpp 
+	src/FmodSoundFormat.cpp 
+	src/FmodSoundType.cpp
+	src/FmodChannelOrder.cpp 
+	src/de_awesome_smarthome_td_sound_FmodSystem.cpp 
+	src/de_awesome_smarthome_td_sound_FmodSound.cpp
+	src/de_awesome_smarthome_td_sound_FmodChannel.cpp
+	src/de_awesome_smarthome_td_sound_FmodCreateSoundExInfo.cpp)
+
+add_library(FmodNative SHARED ${SOURCE_FILES})
+target_link_libraries(FmodNative
+        ${JNI_LIBRARIES}
+		${FMOD_LIBRARY})

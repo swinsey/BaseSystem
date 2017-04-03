@@ -1,0 +1,1 @@
+"%~dp0\3rdParty\apache-maven-3.3.9\bin\mvn" -f "%~dp0\pom.xml" install & pause

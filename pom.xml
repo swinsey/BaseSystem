@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.awesome.smarthome</groupId>
+    <artifactId>repo-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>Builds all subprojects in this repository</name>
+
+    <modules>
+		<!--General-->
+        <module>Transport</module>
+		
+		<!--Server-->
+		<!--<module>Server</module>
+        <module>PPF</module>
+		<module>PPFCreator</module>
+		<module>PluginAPI</module>
+		<module>PluginExecutor</module>-->
+		
+		<!--Touch Display-->
+		<module>TouchDisplay</module>
+		<module>AppSDK</module>
+		<module>APF</module>
+		<module>APFCreator</module>
+		<module>AppManager</module>
+		
+		<!--Car-->
+		<module>Car/Auxiliary</module>
+		<module>Car/CarSDK</module>
+		
+		<!--Plugins-->
+		<!--<module>TestPlugin</module>
+		<module>Hue</module>
+        <module>Alarm</module>-->
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

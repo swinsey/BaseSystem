@@ -1,0 +1,37 @@
+[0]: create | validate
+
+validate:
+[1]: filePath
+
+create:
+[1]: appName
+[2]: appIdentifier
+[3]: majorVersion
+[4]: minorVersion
+[5]: sourceDir
+
+SourceDir:
+
+root
+|
+|----app.jar
+|
+|----icons
+|    |
+|    |----icon_64x64.png
+|    |
+|    |----icon_128x128.png
+|
+|----splashImages
+|    |
+|    |----splash_800x400.png
+|
+|----files
+|    |
+|    |----file1.txt
+|    |
+|    |----file2.sqlite
+|    |
+|    |----dir1
+|    |    |
+|    |    |---file3.png

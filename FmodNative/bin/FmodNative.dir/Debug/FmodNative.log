@@ -1,0 +1,4 @@
+﻿  Building Custom Rule D:/Projects/SmartHome/FmodNative/CMakeLists.txt
+  CMake does not need to re-run because D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\generate.stamp is up-to-date.
+  main.cpp
+  FmodNative.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\Debug\FmodNative.dll
