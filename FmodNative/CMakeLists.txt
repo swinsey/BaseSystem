@@ -33,10 +33,10 @@ set(SOURCE_FILES
 	src/FmodSoundFormat.cpp 
 	src/FmodSoundType.cpp
 	src/FmodChannelOrder.cpp 
-	src/de_awesome_smarthome_td_sound_FmodSystem.cpp 
-	src/de_awesome_smarthome_td_sound_FmodSound.cpp
-	src/de_awesome_smarthome_td_sound_FmodChannel.cpp
-	src/de_awesome_smarthome_td_sound_FmodCreateSoundExInfo.cpp)
+	src/de_silveryard_basesystem_sound_FmodSystem.cpp 
+	src/de_silveryard_basesystem_sound_FmodSound.cpp
+	src/de_silveryard_basesystem_sound_FmodChannel.cpp
+	src/de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp)
 
 add_library(FmodNative SHARED ${SOURCE_FILES})
 target_link_libraries(FmodNative

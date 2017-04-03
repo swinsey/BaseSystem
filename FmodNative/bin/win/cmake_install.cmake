@@ -1,8 +1,8 @@
-# Install script for directory: D:/Projects/SmartHome/FmodNative
+# Install script for directory: D:/Projects/BaseSystem/FmodNative
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files/FmodNative")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/FmodNative")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Projects/SmartHome/FmodNative/bin/win/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Projects/BaseSystem/FmodNative/bin/win/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

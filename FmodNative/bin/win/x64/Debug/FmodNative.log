@@ -1,0 +1,38 @@
+﻿  Building Custom Rule D:/Projects/BaseSystem/FmodNative/CMakeLists.txt
+  CMake does not need to re-run because D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\generate.stamp is up-to-date.
+  helper.cpp
+D:\Projects\BaseSystem\FmodNative\src\helper.cpp(50): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(530): note: see declaration of 'strdup'
+  Wrapper.cpp
+  Integer.cpp
+  Boolean.cpp
+  Float.cpp
+  FmodResult.cpp
+  FmodOutputType.cpp
+  FmodSpeakerMode.cpp
+  FmodSoundFormat.cpp
+  FmodSoundType.cpp
+  FmodChannelOrder.cpp
+  de_silveryard_basesystem_sound_FmodSystem.cpp
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(187): warning C4244: 'initializing': conversion from 'jlong' to 'long', possible loss of data
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(188): warning C4312: 'reinterpret_cast': conversion from 'long' to 'FMOD_CREATESOUNDEXINFO *' of greater size
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(198): warning C4311: 'reinterpret_cast': pointer truncation from 'FMOD::Sound *' to 'long'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(198): warning C4302: 'reinterpret_cast': truncation from 'FMOD::Sound *' to 'long'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(208): warning C4244: 'initializing': conversion from 'jlong' to 'long', possible loss of data
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(209): warning C4312: 'reinterpret_cast': conversion from 'long' to 'FMOD_CREATESOUNDEXINFO *' of greater size
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(219): warning C4311: 'reinterpret_cast': pointer truncation from 'FMOD::Sound *' to 'long'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(219): warning C4302: 'reinterpret_cast': truncation from 'FMOD::Sound *' to 'long'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(234): warning C4311: 'reinterpret_cast': pointer truncation from 'FMOD::Channel *' to 'long'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(234): warning C4302: 'reinterpret_cast': truncation from 'FMOD::Channel *' to 'long'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(309): warning C4244: 'initializing': conversion from 'jlong' to 'long', possible loss of data
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp(310): warning C4312: 'reinterpret_cast': conversion from 'long' to 'FMOD::Sound *' of greater size
+  de_silveryard_basesystem_sound_FmodSound.cpp
+  de_silveryard_basesystem_sound_FmodChannel.cpp
+  de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp(198): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(530): note: see declaration of 'strdup'
+D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp(214): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(530): note: see declaration of 'strdup'
+  Generating Code...
+     Creating library D:/Projects/BaseSystem/FmodNative/bin/win/Debug/FmodNative.lib and object D:/Projects/BaseSystem/FmodNative/bin/win/Debug/FmodNative.exp
+  FmodNative.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\x64\Debug\FmodNative.dll

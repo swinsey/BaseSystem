@@ -1,58 +1,58 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\helper.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\Wrapper.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\Wrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\Integer.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\Integer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\Boolean.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\Boolean.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\Float.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\Float.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\FmodResult.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\FmodResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\FmodOutputType.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\FmodOutputType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\FmodSpeakerMode.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\FmodSpeakerMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\FmodSoundFormat.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\FmodSoundFormat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\FmodSoundType.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\FmodSoundType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\FmodChannelOrder.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\FmodChannelOrder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\de_awesome_smarthome_td_sound_FmodSystem.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\de_awesome_smarthome_td_sound_FmodSound.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\de_awesome_smarthome_td_sound_FmodChannel.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\SmartHome\FmodNative\src\de_awesome_smarthome_td_sound_FmodCreateSoundExInfo.cpp">
+    <ClCompile Include="D:\Projects\BaseSystem\FmodNative\src\de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Projects\SmartHome\FmodNative\CMakeLists.txt" />
+    <CustomBuild Include="D:\Projects\BaseSystem\FmodNative\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{83879647-A0F0-367A-8A4B-9752CC168AE8}</UniqueIdentifier>
+      <UniqueIdentifier>{0612F0DF-A29C-3D94-A8DD-23055C335A36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

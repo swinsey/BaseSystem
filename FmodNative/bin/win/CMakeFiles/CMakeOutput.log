@@ -9,40 +9,40 @@ The output was:
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:10.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:34:56.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
   Creating directory "Debug\CompilerIdC.tlog\".
 InitializeBuildStatus:
   Creating "Debug\CompilerIdC.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TC /errorReport:queue CMakeCCompilerId.c
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
   CMakeCCompilerId.c
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X64 Debug\CMakeCCompilerId.obj
-  CompilerIdC.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdC\.\CompilerIdC.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdC\.\CompilerIdC.exe
 PostBuildEvent:
   for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
   :VCEnd
-  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\cl.exe
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\cl.exe
 FinalizeBuildStatus:
   Deleting file "Debug\CompilerIdC.tlog\unsuccessfulbuild".
   Touching "Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdC\CompilerIdC.vcxproj" (default targets).
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdC\CompilerIdC.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.86
+Time Elapsed 00:00:01.05
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
 
-The C compiler identification is MSVC, found in "D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/3.7.2/CompilerIdC/CompilerIdC.exe"
+The C compiler identification is MSVC, found in "D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/3.7.2/CompilerIdC/CompilerIdC.exe"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler:  
@@ -54,231 +54,231 @@ The output was:
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:11.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:34:57.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
   Creating directory "Debug\CompilerIdCXX.tlog\".
 InitializeBuildStatus:
   Creating "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /errorReport:queue CMakeCXXCompilerId.cpp
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
   CMakeCXXCompilerId.cpp
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X64 Debug\CMakeCXXCompilerId.obj
-  CompilerIdCXX.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdCXX\.\CompilerIdCXX.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdCXX\.\CompilerIdCXX.exe
 PostBuildEvent:
   for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
   :VCEnd
-  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\cl.exe
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\cl.exe
 FinalizeBuildStatus:
   Deleting file "Debug\CompilerIdCXX.tlog\unsuccessfulbuild".
   Touching "Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdCXX\CompilerIdCXX.vcxproj" (default targets).
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\3.7.2\CompilerIdCXX\CompilerIdCXX.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.88
+Time Elapsed 00:00:01.00
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
 
-The CXX compiler identification is MSVC, found in "D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/3.7.2/CompilerIdCXX/CompilerIdCXX.exe"
+The CXX compiler identification is MSVC, found in "D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/3.7.2/CompilerIdCXX/CompilerIdCXX.exe"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp
+Change Dir: D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_b7b09.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_6b25d.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:12.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_b7b09.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:34:58.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_6b25d.vcxproj" on node 1 (default targets).
 PrepareForBuild:
-  Creating directory "cmTC_b7b09.dir\Debug\".
-  Creating directory "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
-  Creating directory "cmTC_b7b09.dir\Debug\cmTC_b7b09.tlog\".
+  Creating directory "cmTC_6b25d.dir\Debug\".
+  Creating directory "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_6b25d.dir\Debug\cmTC_6b25d.tlog\".
 InitializeBuildStatus:
-  Creating "cmTC_b7b09.dir\Debug\cmTC_b7b09.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+  Creating "cmTC_6b25d.dir\Debug\cmTC_6b25d.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b7b09.dir\Debug\\" /Fd"cmTC_b7b09.dir\Debug\vc141.pdb" /Gd /TC /errorReport:queue D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCCompiler.c
-  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x64
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b25d.dir\Debug\\" /Fd"cmTC_6b25d.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCCompiler.c
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b7b09.dir\Debug\\" /Fd"cmTC_b7b09.dir\Debug\vc141.pdb" /Gd /TC /errorReport:queue D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCCompiler.c
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b25d.dir\Debug\\" /Fd"cmTC_6b25d.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCCompiler.c
   testCCompiler.c
   
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_b7b09.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_b7b09.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_b7b09.lib" /MACHINE:X64  /machine:x64 cmTC_b7b09.dir\Debug\testCCompiler.obj
-  cmTC_b7b09.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_b7b09.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_6b25d.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_6b25d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_6b25d.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_6b25d.dir\Debug\testCCompiler.obj
+  cmTC_6b25d.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_6b25d.exe
 FinalizeBuildStatus:
-  Deleting file "cmTC_b7b09.dir\Debug\cmTC_b7b09.tlog\unsuccessfulbuild".
-  Touching "cmTC_b7b09.dir\Debug\cmTC_b7b09.tlog\cmTC_b7b09.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_b7b09.vcxproj" (default targets).
+  Deleting file "cmTC_6b25d.dir\Debug\cmTC_6b25d.tlog\unsuccessfulbuild".
+  Touching "cmTC_6b25d.dir\Debug\cmTC_6b25d.tlog\cmTC_6b25d.lastbuildstate".
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_6b25d.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.41
+Time Elapsed 00:00:01.23
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp
+Change Dir: D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_4b9ff.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_a61f0.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:14.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_4b9ff.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:35:00.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_a61f0.vcxproj" on node 1 (default targets).
 PrepareForBuild:
-  Creating directory "cmTC_4b9ff.dir\Debug\".
-  Creating directory "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
-  Creating directory "cmTC_4b9ff.dir\Debug\cmTC_4b9ff.tlog\".
+  Creating directory "cmTC_a61f0.dir\Debug\".
+  Creating directory "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_a61f0.dir\Debug\cmTC_a61f0.tlog\".
 InitializeBuildStatus:
-  Creating "cmTC_4b9ff.dir\Debug\cmTC_4b9ff.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+  Creating "cmTC_a61f0.dir\Debug\cmTC_a61f0.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4b9ff.dir\Debug\\" /Fd"cmTC_4b9ff.dir\Debug\vc141.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
-  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x64
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a61f0.dir\Debug\\" /Fd"cmTC_a61f0.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4b9ff.dir\Debug\\" /Fd"cmTC_4b9ff.dir\Debug\vc141.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a61f0.dir\Debug\\" /Fd"cmTC_a61f0.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
   CMakeCCompilerABI.c
   
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_4b9ff.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_4b9ff.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_4b9ff.lib" /MACHINE:X64  /machine:x64 cmTC_4b9ff.dir\Debug\CMakeCCompilerABI.obj
-  cmTC_4b9ff.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_4b9ff.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_a61f0.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_a61f0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_a61f0.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_a61f0.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_a61f0.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_a61f0.exe
 FinalizeBuildStatus:
-  Deleting file "cmTC_4b9ff.dir\Debug\cmTC_4b9ff.tlog\unsuccessfulbuild".
-  Touching "cmTC_4b9ff.dir\Debug\cmTC_4b9ff.tlog\cmTC_4b9ff.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_4b9ff.vcxproj" (default targets).
+  Deleting file "cmTC_a61f0.dir\Debug\cmTC_a61f0.tlog\unsuccessfulbuild".
+  Touching "cmTC_a61f0.dir\Debug\cmTC_a61f0.tlog\cmTC_a61f0.lastbuildstate".
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_a61f0.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.11
+Time Elapsed 00:00:01.09
 
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp
+Change Dir: D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_6aaf6.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_c6716.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:15.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_6aaf6.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:35:01.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_c6716.vcxproj" on node 1 (default targets).
 PrepareForBuild:
-  Creating directory "cmTC_6aaf6.dir\Debug\".
-  Creating directory "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
-  Creating directory "cmTC_6aaf6.dir\Debug\cmTC_6aaf6.tlog\".
+  Creating directory "cmTC_c6716.dir\Debug\".
+  Creating directory "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_c6716.dir\Debug\cmTC_c6716.tlog\".
 InitializeBuildStatus:
-  Creating "cmTC_6aaf6.dir\Debug\cmTC_6aaf6.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+  Creating "cmTC_c6716.dir\Debug\cmTC_c6716.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6aaf6.dir\Debug\\" /Fd"cmTC_6aaf6.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
-  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x64
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c6716.dir\Debug\\" /Fd"cmTC_c6716.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6aaf6.dir\Debug\\" /Fd"cmTC_6aaf6.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c6716.dir\Debug\\" /Fd"cmTC_c6716.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
   testCXXCompiler.cxx
   
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_6aaf6.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_6aaf6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_6aaf6.lib" /MACHINE:X64  /machine:x64 cmTC_6aaf6.dir\Debug\testCXXCompiler.obj
-  cmTC_6aaf6.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_6aaf6.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_c6716.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_c6716.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_c6716.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_c6716.dir\Debug\testCXXCompiler.obj
+  cmTC_c6716.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_c6716.exe
 FinalizeBuildStatus:
-  Deleting file "cmTC_6aaf6.dir\Debug\cmTC_6aaf6.tlog\unsuccessfulbuild".
-  Touching "cmTC_6aaf6.dir\Debug\cmTC_6aaf6.tlog\cmTC_6aaf6.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_6aaf6.vcxproj" (default targets).
+  Deleting file "cmTC_c6716.dir\Debug\cmTC_c6716.tlog\unsuccessfulbuild".
+  Touching "cmTC_c6716.dir\Debug\cmTC_c6716.tlog\cmTC_c6716.lastbuildstate".
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_c6716.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.95
+Time Elapsed 00:00:01.00
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp
+Change Dir: D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_dd4e3.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_28a9d.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:16.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_dd4e3.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:35:02.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_28a9d.vcxproj" on node 1 (default targets).
 PrepareForBuild:
-  Creating directory "cmTC_dd4e3.dir\Debug\".
-  Creating directory "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
-  Creating directory "cmTC_dd4e3.dir\Debug\cmTC_dd4e3.tlog\".
+  Creating directory "cmTC_28a9d.dir\Debug\".
+  Creating directory "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_28a9d.dir\Debug\cmTC_28a9d.tlog\".
 InitializeBuildStatus:
-  Creating "cmTC_dd4e3.dir\Debug\cmTC_dd4e3.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+  Creating "cmTC_28a9d.dir\Debug\cmTC_28a9d.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_dd4e3.dir\Debug\\" /Fd"cmTC_dd4e3.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
-  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x64
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_28a9d.dir\Debug\\" /Fd"cmTC_28a9d.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_dd4e3.dir\Debug\\" /Fd"cmTC_dd4e3.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_28a9d.dir\Debug\\" /Fd"cmTC_28a9d.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
   CMakeCXXCompilerABI.cpp
   
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_dd4e3.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_dd4e3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_dd4e3.lib" /MACHINE:X64  /machine:x64 cmTC_dd4e3.dir\Debug\CMakeCXXCompilerABI.obj
-  cmTC_dd4e3.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_dd4e3.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_28a9d.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_28a9d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_28a9d.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_28a9d.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_28a9d.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_28a9d.exe
 FinalizeBuildStatus:
-  Deleting file "cmTC_dd4e3.dir\Debug\cmTC_dd4e3.tlog\unsuccessfulbuild".
-  Touching "cmTC_dd4e3.dir\Debug\cmTC_dd4e3.tlog\cmTC_dd4e3.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_dd4e3.vcxproj" (default targets).
+  Deleting file "cmTC_28a9d.dir\Debug\cmTC_28a9d.tlog\unsuccessfulbuild".
+  Touching "cmTC_28a9d.dir\Debug\cmTC_28a9d.tlog\cmTC_28a9d.lastbuildstate".
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_28a9d.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.95
+Time Elapsed 00:00:01.20
 
 
 
 
 Detecting CXX [] compiler features compiled with the following output:
-Change Dir: D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp
+Change Dir: D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_2a6cf.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Run Build Command:"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_b5ae0.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
 Microsoft (R) Build Engine version 15.1.548.43366
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 23.03.2017 17:34:18.
-Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_2a6cf.vcxproj" on node 1 (default targets).
+Build started 03.04.2017 17:35:04.
+Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_b5ae0.vcxproj" on node 1 (default targets).
 PrepareForBuild:
-  Creating directory "cmTC_2a6cf.dir\Debug\".
-  Creating directory "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
-  Creating directory "cmTC_2a6cf.dir\Debug\cmTC_2a6cf.tlog\".
+  Creating directory "cmTC_b5ae0.dir\Debug\".
+  Creating directory "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\".
+  Creating directory "cmTC_b5ae0.dir\Debug\cmTC_b5ae0.tlog\".
 InitializeBuildStatus:
-  Creating "cmTC_2a6cf.dir\Debug\cmTC_2a6cf.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+  Creating "cmTC_b5ae0.dir\Debug\cmTC_b5ae0.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2a6cf.dir\Debug\\" /Fd"cmTC_2a6cf.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\feature_tests.cxx
-  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x64
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b5ae0.dir\Debug\\" /Fd"cmTC_b5ae0.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\feature_tests.cxx
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.10.25017 for x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2a6cf.dir\Debug\\" /Fd"cmTC_2a6cf.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\feature_tests.cxx
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b5ae0.dir\Debug\\" /Fd"cmTC_b5ae0.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\feature_tests.cxx
   feature_tests.cxx
   
 Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_2a6cf.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_2a6cf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/SmartHome/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_2a6cf.lib" /MACHINE:X64  /machine:x64 cmTC_2a6cf.dir\Debug\feature_tests.obj
-  cmTC_2a6cf.vcxproj -> D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_2a6cf.exe
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_b5ae0.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_b5ae0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Projects/BaseSystem/FmodNative/bin/win/CMakeFiles/CMakeTmp/Debug/cmTC_b5ae0.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_b5ae0.dir\Debug\feature_tests.obj
+  cmTC_b5ae0.vcxproj -> D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\Debug\cmTC_b5ae0.exe
 FinalizeBuildStatus:
-  Deleting file "cmTC_2a6cf.dir\Debug\cmTC_2a6cf.tlog\unsuccessfulbuild".
-  Touching "cmTC_2a6cf.dir\Debug\cmTC_2a6cf.tlog\cmTC_2a6cf.lastbuildstate".
-Done Building Project "D:\Projects\SmartHome\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_2a6cf.vcxproj" (default targets).
+  Deleting file "cmTC_b5ae0.dir\Debug\cmTC_b5ae0.tlog\unsuccessfulbuild".
+  Touching "cmTC_b5ae0.dir\Debug\cmTC_b5ae0.tlog\cmTC_b5ae0.lastbuildstate".
+Done Building Project "D:\Projects\BaseSystem\FmodNative\bin\win\CMakeFiles\CMakeTmp\cmTC_b5ae0.vcxproj" (default targets).
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.97
+Time Elapsed 00:00:01.18
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
