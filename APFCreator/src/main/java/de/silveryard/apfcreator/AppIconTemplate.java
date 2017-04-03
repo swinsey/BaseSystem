@@ -1,13 +1,13 @@
-package de.awesome.smarthome.apfcreator;
+package de.silveryard.apfcreator;
 
-import de.awesome.smarthome.apf.AppIcon;
+import de.silveryard.apf.AppIcon;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static de.awesome.smarthome.apfcreator.Assert.*;
+import static de.silveryard.apfcreator.Assert.*;
 
 /**
  * Created by Sebif on 24.02.2017.

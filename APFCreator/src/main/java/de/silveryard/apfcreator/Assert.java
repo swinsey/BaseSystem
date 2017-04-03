@@ -1,4 +1,4 @@
-package de.awesome.smarthome.apfcreator;
+package de.silveryard.apfcreator;
 
 /**
  * Created by Sebif on 24.02.2017.

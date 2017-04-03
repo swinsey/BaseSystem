@@ -1,10 +1,10 @@
-package de.awesome.smarthome.apfcreator;
+package de.silveryard.apfcreator;
 
-import de.awesome.smarthome.apf.ApplicationPackageFile;
+import de.silveryard.apf.ApplicationPackageFile;
 
 import java.math.BigDecimal;
 
-import static de.awesome.smarthome.apfcreator.Assert.*;
+import static de.silveryard.apfcreator.Assert.*;
 
 /**
  * Created by Sebif on 23.02.2017.

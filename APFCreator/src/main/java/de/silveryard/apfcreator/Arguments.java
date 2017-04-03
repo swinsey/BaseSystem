@@ -1,4 +1,4 @@
-package de.awesome.smarthome.apfcreator;
+package de.silveryard.apfcreator;
 
 import java.nio.file.Path;
 
