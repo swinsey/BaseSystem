@@ -1,8 +1,8 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
-import de.awesome.smarthome.appmanager.Model.App;
-import de.awesome.smarthome.appmanager.Model.AppManager;
-import de.awesome.smarthome.appmanager.Utility.IActionP1;
+import de.silveryard.appmanager.Model.App;
+import de.silveryard.appmanager.Model.AppManager;
+import de.silveryard.appmanager.Utility.IActionP1;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -45,7 +45,7 @@ public class ControllerAppListItem extends Parent {
 
     public ControllerAppListItem(App app, IActionP1<ControllerAppListItem> clickHandler){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/awesome/smarthome/appmanager/fxml/applistitem.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/silveryard/appmanager/fxml/applistitem.fxml"));
             loader.setController(this);
             Parent parent = loader.load();
             this.getChildren().add(parent);

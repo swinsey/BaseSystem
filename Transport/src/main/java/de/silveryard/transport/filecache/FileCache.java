@@ -2,7 +2,6 @@ package de.silveryard.transport.filecache;
 
 import de.silveryard.transport.MessageHandler;
 import de.silveryard.transport.Parameter;
-import de.awesome.smarthome.transport.*;
 import de.silveryard.transport.Message;
 
 import java.util.*;

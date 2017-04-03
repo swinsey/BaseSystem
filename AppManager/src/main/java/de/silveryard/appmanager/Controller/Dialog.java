@@ -1,6 +1,6 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
-import de.awesome.smarthome.appmanager.Utility.GraphicsManager;
+import de.silveryard.appmanager.Utility.GraphicsManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

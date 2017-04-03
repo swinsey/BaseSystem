@@ -1,7 +1,7 @@
-package de.awesome.smarthome.appmanager.Model;
+package de.silveryard.appmanager.Model;
 
-import de.awesome.smarthome.appmanager.Utility.IAction;
-import de.awesome.smarthome.appmanager.Utility.Util;
+import de.silveryard.appmanager.Utility.IAction;
+import de.silveryard.appmanager.Utility.Util;
 import de.awesome.smarthome.filecache.FileCache;
 import de.awesome.smarthome.highlevelprotocols.qa.QAMessage;
 import de.awesome.smarthome.transport.Message;

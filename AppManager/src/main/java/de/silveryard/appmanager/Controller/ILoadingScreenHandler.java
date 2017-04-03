@@ -1,6 +1,6 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
-import de.awesome.smarthome.appmanager.Utility.IActionP1;
+import de.silveryard.appmanager.Utility.IActionP1;
 
 /**
  * Created by Sebif on 18.03.2017.

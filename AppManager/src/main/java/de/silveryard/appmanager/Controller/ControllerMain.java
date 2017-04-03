@@ -1,10 +1,10 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
-import de.awesome.smarthome.appmanager.Model.App;
-import de.awesome.smarthome.appmanager.Model.AppManager;
-import de.awesome.smarthome.appmanager.Model.Connection;
-import de.awesome.smarthome.appmanager.Utility.GraphicsManager;
-import de.awesome.smarthome.appmanager.Utility.IActionP1;
+import de.silveryard.appmanager.Model.App;
+import de.silveryard.appmanager.Model.AppManager;
+import de.silveryard.appmanager.Model.Connection;
+import de.silveryard.appmanager.Utility.GraphicsManager;
+import de.silveryard.appmanager.Utility.IActionP1;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -73,7 +73,7 @@ public class ControllerMain extends Application {
         stage.setTitle("App Manager");
         stage.setMaximized(true);
         GraphicsManager.setIcons(stage);
-        URL resource = getClass().getResource("/de/awesome/smarthome/appmanager/fxml/main.fxml");
+        URL resource = getClass().getResource("/de/silveryard/appmanager/fxml/main.fxml");
         FXMLLoader loader = new FXMLLoader(resource);
         loader.setController(this);
         Parent root = loader.load();

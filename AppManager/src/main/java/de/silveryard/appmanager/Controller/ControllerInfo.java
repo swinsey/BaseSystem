@@ -1,6 +1,6 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
-import de.awesome.smarthome.appmanager.Utility.GraphicsManager;
+import de.silveryard.appmanager.Utility.GraphicsManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,7 +23,7 @@ public class ControllerInfo extends Dialog {
     private Button btnGood;
 
     protected ControllerInfo(Stage primaryStage, String title, InfoType type, String text, String goodText, String badText) {
-        super(primaryStage, title, "/de/awesome/smarthome/appmanager/fxml/info.fxml", 400, 200);
+        super(primaryStage, title, "/de/silveryard/appmanager/fxml/info.fxml", 400, 200);
 
         tbText.setText(text);
         if(goodText == null){

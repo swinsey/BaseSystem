@@ -1,4 +1,4 @@
-package de.awesome.smarthome.appmanager.Model;
+package de.silveryard.appmanager.Model;
 
 import de.awesome.smarthome.highlevelprotocols.qa.QAMessage;
 import de.awesome.smarthome.transport.Parameter;

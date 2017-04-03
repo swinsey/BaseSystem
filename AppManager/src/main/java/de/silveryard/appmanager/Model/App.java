@@ -1,4 +1,4 @@
-package de.awesome.smarthome.appmanager.Model;
+package de.silveryard.appmanager.Model;
 
 /**
  * Created by Sebif on 18.03.2017.

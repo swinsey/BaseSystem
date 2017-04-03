@@ -1,4 +1,4 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
 /**
  * Created by Sebif on 14.03.2017.

@@ -1,6 +1,6 @@
-package de.awesome.smarthome.appmanager.Controller;
+package de.silveryard.appmanager.Controller;
 
-import de.awesome.smarthome.appmanager.Utility.IAction;
+import de.silveryard.appmanager.Utility.IAction;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,7 +19,7 @@ public class ControllerLoadingScreen extends Dialog {
     private ILoadingScreenHandler handler;
 
     protected ControllerLoadingScreen(Stage primaryStage, String title, ILoadingScreenHandler handler) {
-        super(primaryStage, title, "/de/awesome/smarthome/appmanager/fxml/loadingscreen.fxml", 400, 200);
+        super(primaryStage, title, "/de/silveryard/appmanager/fxml/loadingscreen.fxml", 400, 200);
         this.handler = handler;
         Thread thread = new Thread(this::runThread);
         thread.start();

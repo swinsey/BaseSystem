@@ -1,4 +1,4 @@
-package de.awesome.smarthome.appmanager.Utility;
+package de.silveryard.appmanager.Utility;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.File;
