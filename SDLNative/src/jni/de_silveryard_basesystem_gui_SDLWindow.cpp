@@ -2,7 +2,7 @@
 // Created by Beppo on 01/02/17.
 //
 
-#include "de_awesome_smarthome_td_gui_SDLWindow.h"
+#include "de_silveryard_basesystem_gui_SDLWindow.h"
 #include "../window.h"
 #include "../texture.h"
 #include "../label.h"
@@ -94,7 +94,7 @@ namespace{
     }
 };
 
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowInit
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowInit
         (JNIEnv* env, jclass obj, jstring title, jint width, jint height, jboolean show_cursor){
     if(!init_jni(env)){
         return -1;
@@ -105,37 +105,37 @@ JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowInit
     env->ReleaseStringUTFChars(title, native_title);
     return result;
 }
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDispose
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowDispose
         (JNIEnv* env, jclass obj){
     return window_dispose();
 }
-JNIEXPORT jboolean JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowIsInitialized
+JNIEXPORT jboolean JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowIsInitialized
         (JNIEnv* env, jclass obj){
     return window_is_initialized() ? JNI_TRUE : JNI_FALSE;
 }
 
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowGetWidth
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowGetWidth
         (JNIEnv* env, jclass obj){
     return window_get_width();
 }
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowGetHeight
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowGetHeight
         (JNIEnv* env, jclass obj){
     return window_get_height();
 }
 
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowUpdateScreen
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowUpdateScreen
         (JNIEnv* env, jclass obj){
     window_update_screen();
 }
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowSetDrawColor
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowSetDrawColor
         (JNIEnv* env, jclass obj, jbyte r, jbyte g, jbyte b, jbyte a){
     window_set_draw_color(r, g, b, a);
 }
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowClear
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowClear
         (JNIEnv* env, jclass obj){
     window_clear();
 }
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawRect
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowDrawRect
         (JNIEnv* env, jclass obj,
          jint x, jint y, jint width, jint height,
          jboolean fill){
@@ -146,11 +146,11 @@ JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawRect
     r.height = height;
     window_draw_rect(&r, fill == JNI_TRUE);
 }
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawLine
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowDrawLine
         (JNIEnv* env, jclass obj, jint x, jint y, jint x2, jint y2){
     window_draw_line(x, y, x2, y2);
 }
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawTexture
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowDrawTexture
 (JNIEnv* env, jclass obj, jint tex,
 	jint srcX, jint srcY, jint srcWidth, jint srcHeight,
 	jint dstX, jint dstY, jint dstWidth, jint dstHeight,
@@ -176,7 +176,7 @@ JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawText
 
 	window_draw_texture(texture, &src_r, &dst_r, angle);
 }
-JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawLabel
+JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowDrawLabel
         (JNIEnv* env, jclass obj, jint label, jint x, jint y){
     SDL_Texture* texture;
     int res = label_get_texture(label, &texture);
@@ -208,7 +208,7 @@ JNIEXPORT void JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowDrawLabe
     window_draw_texture(texture, &src_r, &dst_r);
 }
 
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowPollEvent
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowPollEvent
         (JNIEnv* env, jclass clazz){
     SDL_Event e;
     if(window_poll_event(&e)){
@@ -219,14 +219,14 @@ JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowPollEven
     }
 }
 
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowGetMouseX
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowGetMouseX
 (JNIEnv* env, jclass clazz) {
 	int x, y;
 	window_get_mouse(&x, &y);
 	return x;
 }
 
-JNIEXPORT jint JNICALL Java_de_awesome_smarthome_td_gui_SDLWindow_windowGetMouseY
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLWindow_windowGetMouseY
 (JNIEnv* env, jclass clazz) {
 	int x, y;
 	window_get_mouse(&x, &y);

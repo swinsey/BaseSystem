@@ -33,7 +33,22 @@ include_directories(
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-    src/main.cpp src/window.h src/window.cpp src/jni/de_awesome_smarthome_td_gui_SDLWindow.h src/jni/de_awesome_smarthome_td_gui_SDLWindow.cpp src/texture.h src/texture.cpp src/jni/de_awesome_smarthome_td_gui_SDLTexture.h src/jni/de_awesome_smarthome_td_gui_SDLTexture.cpp src/font.h src/font.cpp src/label.h src/label.cpp src/jni/de_awesome_smarthome_td_gui_SDLFont.h src/jni/de_awesome_smarthome_td_gui_SDLFont.cpp src/jni/de_awesome_smarthome_td_gui_SDLLabel.h src/jni/de_awesome_smarthome_td_gui_SDLLabel.cpp)
+	src/window.h 
+	src/window.cpp 
+	src/texture.h 
+	src/texture.cpp 
+	src/font.h 
+	src/font.cpp 
+	src/label.h 
+	src/label.cpp 
+	src/jni/de_silveryard_basesystem_gui_SDLWindow.h 
+	src/jni/de_silveryard_basesystem_gui_SDLWindow.cpp 
+	src/jni/de_silveryard_basesystem_gui_SDLTexture.h 
+	src/jni/de_silveryard_basesystem_gui_SDLTexture.cpp 
+	src/jni/de_silveryard_basesystem_gui_SDLFont.h 
+	src/jni/de_silveryard_basesystem_gui_SDLFont.cpp 
+	src/jni/de_silveryard_basesystem_gui_SDLLabel.h 
+	src/jni/de_silveryard_basesystem_gui_SDLLabel.cpp)
 
 add_library(SDLNative SHARED ${SOURCE_FILES})
 target_link_libraries(SDLNative
