@@ -1,17 +1,14 @@
-import de.awesome.smarthome.filecache.FileCache;
-import de.awesome.smarthome.transport.Message;
-import de.awesome.smarthome.transport.Transport;
+import de.silveryard.transport.filecache.FileCache;
+import de.silveryard.transport.Message;
+import de.silveryard.transport.Transport;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.net.ConnectException;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.UUID;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.function.Consumer;
 
 /**

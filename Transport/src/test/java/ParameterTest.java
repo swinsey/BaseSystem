@@ -1,4 +1,4 @@
-import de.awesome.smarthome.transport.Parameter;
+import de.silveryard.transport.Parameter;
 import org.junit.Test;
 
 import java.util.Arrays;

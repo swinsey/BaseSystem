@@ -1,21 +1,16 @@
-import com.sun.corba.se.spi.activation.Server;
-import de.awesome.smarthome.transport.Message;
-import de.awesome.smarthome.transport.Parameter;
-import de.awesome.smarthome.transport.Transport;
+import de.silveryard.transport.Message;
+import de.silveryard.transport.Parameter;
+import de.silveryard.transport.Transport;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
