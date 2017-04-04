@@ -57,11 +57,6 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            <archive>
-                                <manifest>
-                                    <mainClass>de.silveryard.basesystem.carlauncher.Main</mainClass>
-                                </manifest>
-                            </archive>
                         </configuration>
                     </execution>
                 </executions>
