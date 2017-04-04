@@ -175,9 +175,12 @@ if not exist "%TRANSPORT_SRC_PATH%" (
   echo Failed to build Transport
   goto :end
 )
-copy "%TRANSPORT_SRC_PATH%" "%TRANSPORT_DST_PATH%"
+copy "%TRANSPORT_SRC_PATH%" "%TRANSPORT_DST_PATH%" 
 
 echo ok
+cd "%REPO_PATH%"
+EXIT 0 /B
 
 :end
 cd "%REPO_PATH%"
+EXIT 1 /B
