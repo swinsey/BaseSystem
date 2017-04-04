@@ -179,8 +179,8 @@ copy "%TRANSPORT_SRC_PATH%" "%TRANSPORT_DST_PATH%"
 
 echo ok
 cd "%REPO_PATH%"
-EXIT 0 /B
+EXIT /b 0
 
 :end
 cd "%REPO_PATH%"
-EXIT 1 /B
+EXIT /b 1
