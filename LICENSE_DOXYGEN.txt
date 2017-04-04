@@ -1,0 +1,4 @@
+Doxygen is licensed under the GNU Gneral Public License v2.
+ 
+More information can be viewed here:
+https://github.com/doxygen/doxygen/blob/master/LICENSE

@@ -1,11 +1,15 @@
-HTTrack3.48-22+htsswf+htsjava launched on Sun, 02 Apr 2017 20:16:39 at http://localhost/Documentation/protocols/overview/ +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.zip +*.tar +*.tgz +*.gz +*.rar +*.z +*.exe +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +*localhost/Documentation/protocols/*
-(winhttrack -qiC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://localhost/Documentation/protocols/overview/ -O1 "D:\Projects\SmartHome\Documentation\Protocols\Protocols" +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.zip +*.tar +*.tgz +*.gz +*.rar +*.z +*.exe +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +*localhost/Documentation/protocols/* )
+HTTrack3.48-22+htsswf+htsjava launched on Tue, 04 Apr 2017 12:52:56 at http://localhost/Documentation/protocols/overview/ +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.zip +*.tar +*.tgz +*.gz +*.rar +*.z +*.exe +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +*localhost/Documentation/protocols/*
+(winhttrack -qiC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://localhost/Documentation/protocols/overview/ -O1 "D:\Projects\BaseSystem\Documentation\Protocols\Protocols" +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.zip +*.tar +*.tgz +*.gz +*.rar +*.z +*.exe +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +*localhost/Documentation/protocols/* )
 
 Information, Warnings and Errors reported for this mirror:
 note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
 	such as username/password authentication for websites mirrored in this project
 	do not share these files/folders if you want these information to remain private
 
+12:52:57	Warning: 	warning: file size on disk (97190) does not have the expected size (97184))
+12:52:58	Warning: 	warning: file size on disk (10057) does not have the expected size (10056))
+12:53:01	Warning: 	warning: file size on disk (753) does not have the expected size (727))
+12:53:02	Warning: 	warning: file size on disk (6098) does not have the expected size (5920))
 
-HTTrack Website Copier/3.48-22 mirror complete in 8 seconds : 21 links scanned, 20 files written (507458 bytes overall), 7 files updated [108050 bytes received at 13506 bytes/sec], 5.2 requests per connection
-(No errors, 0 warnings, 0 messages)
+HTTrack Website Copier/3.48-22 mirror complete in 8 seconds : 21 links scanned, 20 files written (495398 bytes overall), 7 files updated [95774 bytes received at 11971 bytes/sec], 3.0 requests per connection
+(No errors, 4 warnings, 0 messages)

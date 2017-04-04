@@ -1,0 +1,4 @@
+cloc is licensed under the GNU Gneral Public License, v2.
+ 
+More information can be viewed here:
+http://cloc.sourceforge.net/#License
