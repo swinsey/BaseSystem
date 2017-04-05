@@ -90,20 +90,25 @@ $(document).ready(function(){initNavTree('classde_1_1silveryard_1_1basesystem_1_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a5e29140bab170ab2795c68b71e425663"><td class="memItemLeft" align="right" valign="top">static synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a5e29140bab170ab2795c68b71e425663">initialize</a> (int port, <a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app.html">App</a> app)  throws Exception </td></tr>
+<tr class="memitem:a5e29140bab170ab2795c68b71e425663"><td class="memItemLeft" align="right" valign="top">static synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a5e29140bab170ab2795c68b71e425663">initialize</a> (int port, <a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app.html">App</a> app)  throws Exception</td></tr>
 <tr class="separator:a5e29140bab170ab2795c68b71e425663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16343bd9169caaf8fdd5fe7a113e83c4"><td class="memItemLeft" align="right" valign="top">static synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a16343bd9169caaf8fdd5fe7a113e83c4">initialize</a> (int port, <a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app.html">App</a> app, boolean logging)  throws Exception </td></tr>
+<tr class="separator:a16343bd9169caaf8fdd5fe7a113e83c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf52ce1dbb10e596a11c28997e48a63f"><td class="memItemLeft" align="right" valign="top">static synchronized boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#acf52ce1dbb10e596a11c28997e48a63f">isIsInitializing</a> ()</td></tr>
 <tr class="separator:acf52ce1dbb10e596a11c28997e48a63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab027dd94f197a5b9d5bbb1f0b00f3457"><td class="memItemLeft" align="right" valign="top">static synchronized boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#ab027dd94f197a5b9d5bbb1f0b00f3457">isConnectionActive</a> ()</td></tr>
 <tr class="separator:ab027dd94f197a5b9d5bbb1f0b00f3457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66207a4e22a53915a41c50924c3f26c1"><td class="memItemLeft" align="right" valign="top">static synchronized QAMessage&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a66207a4e22a53915a41c50924c3f26c1">systemCall</a> (String command, List&lt; Parameter &gt; params)</td></tr>
 <tr class="separator:a66207a4e22a53915a41c50924c3f26c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4031dc03d91c456b1e74b7f20ac895f6"><td class="memItemLeft" align="right" valign="top"><a id="a4031dc03d91c456b1e74b7f20ac895f6"></a>
+static synchronized void&#160;</td><td class="memItemRight" valign="bottom"><b>registerForCommand</b> (String command, MessageHandler handler)</td></tr>
+<tr class="separator:a4031dc03d91c456b1e74b7f20ac895f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Created by Sebif on 20.02.2017. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5e29140bab170ab2795c68b71e425663"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e29140bab170ab2795c68b71e425663">&#9670;&nbsp;</a></span>initialize()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e29140bab170ab2795c68b71e425663">&#9670;&nbsp;</a></span>initialize() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,6 +144,62 @@ Static Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">port</td><td>Port to connect to </td></tr>
     <tr><td class="paramname">app</td><td>Application instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Exception</td><td>Thrown if something goes wrong </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a16343bd9169caaf8fdd5fe7a113e83c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16343bd9169caaf8fdd5fe7a113e83c4">&#9670;&nbsp;</a></span>initialize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static synchronized void de.silveryard.basesystem.sdk.kernel.Kernel.initialize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app.html">App</a>&#160;</td>
+          <td class="paramname"><em>app</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>logging</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws Exception</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializes the kernel </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Port to connect to </td></tr>
+    <tr><td class="paramname">app</td><td>Application instance </td></tr>
+    <tr><td class="paramname">logging</td><td>If true the kernel will log messages when sending system calls </td></tr>
   </table>
   </dd>
 </dl>
