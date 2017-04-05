@@ -3,6 +3,9 @@ package de.silveryard.basesystem.sdk.kernel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by Sebif on 10.03.2017.
@@ -16,6 +19,8 @@ public abstract class AppSDK {
      * Path to the apps readonly directory
      */
     public static Path readonlyDirectory;
+
+    private static volatile List<Action> pendingActions;
 
     /**
      * @param args Argument list:
@@ -41,11 +46,19 @@ public abstract class AppSDK {
             while(Kernel.isIsInitializing()){
                 Thread.sleep(200);
             }
+            pendingActions = new Vector<>();
 
             app.onAppLoaded();
 
             while(Kernel.isConnectionActive()){
-                Thread.sleep(1000);
+                synchronized (pendingActions){
+                    while(pendingActions.size() > 0){
+                        Action action = pendingActions.get(0);
+                        pendingActions.remove(0);
+                        action.invoke();
+                    }
+                }
+                Thread.sleep(200);
             }
 
             Thread.sleep(100);
@@ -56,5 +69,9 @@ public abstract class AppSDK {
             t.printStackTrace();
             java.lang.System.exit(1);
         }
+    }
+
+    public static synchronized void runOnMainThread(Action action){
+        pendingActions.add(action);
     }
 }
