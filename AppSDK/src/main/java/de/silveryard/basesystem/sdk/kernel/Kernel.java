@@ -187,7 +187,7 @@ public abstract class Kernel {
             QAMessage qaMessage = new QAMessage(message);
 
             if((logging & KERNEL_LOGGING_QACACHE) == KERNEL_LOGGING_QACACHE){
-                System.out.print("QA ID: " + message.getCommandHash());
+                System.out.print("QA ID: " + qaMessage.getUUID());
                 System.out.println("QA Cache: ");
                 for(String key : qaMessageCache.keySet()){
                     System.out.println("    " + key);
