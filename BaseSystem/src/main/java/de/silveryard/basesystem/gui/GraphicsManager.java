@@ -13,7 +13,7 @@ import java.util.List;
 public class GraphicsManager implements IDisposable{
     private static GraphicsManager instance;
 
-    public static void initialize(String title, int width, int height, boolean showCursor){
+    public static void initialize(String title, int width, int height, boolean showCursor, FontCollection systemFontCollection){
         if(instance != null){
             throw new RuntimeException("Already initialized");
         }
@@ -23,15 +23,16 @@ public class GraphicsManager implements IDisposable{
             throw new RuntimeException("Failed initializing window. Error Code: " + result);
         }
 
-        instance = new GraphicsManager(title, width, height);
+        instance = new GraphicsManager(title, width, height, systemFontCollection);
     }
     public static GraphicsManager getInstance(){
         return instance;
     }
 
-    private String title;
-    private int    width;
-    private int    height;
+    private String         title;
+    private int            width;
+    private int            height;
+    private FontCollection systemFontCollection;
 
     private boolean quitRequested;
     private boolean dirtyFlag;
@@ -44,10 +45,11 @@ public class GraphicsManager implements IDisposable{
 
     private List<Action> nextFrameActions;
 
-    private GraphicsManager(String title, int width, int height){
-        this.title  = title;
-        this.width  = width;
-        this.height = height;
+    private GraphicsManager(String title, int width, int height, FontCollection systemFontCollection){
+        this.title                = title;
+        this.width                = width;
+        this.height               = height;
+        this.systemFontCollection = systemFontCollection;
 
         this.dirtyFlag = true;
         this.mouseDown = false;
@@ -68,6 +70,9 @@ public class GraphicsManager implements IDisposable{
     }
     public int getHeight(){
         return height;
+    }
+    public FontCollection getSystemFontCollection(){
+        return systemFontCollection;
     }
 
     public void setDirty(){

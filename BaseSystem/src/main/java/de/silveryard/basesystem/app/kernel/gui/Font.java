@@ -21,7 +21,7 @@ abstract class Font {
     }
 
     private static QAMessage systemCallFontLoadSystemFont(RunningApp app, QAMessage message){
-        /*final Wrapper<ReturnCode> returnCode = new Wrapper<>();
+        final Wrapper<ReturnCode> returnCode = new Wrapper<>();
         returnCode.value = ReturnCode.OK;
 
         final Wrapper<GuiReturnCode> guiReturnCode = new Wrapper<>();
@@ -36,7 +36,7 @@ abstract class Font {
         graphicsManager.runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Font font = SystemResources.getInstance().getFontCollection().get(fontName, size);
+                de.silveryard.basesystem.gui.Font font = GraphicsManager.getInstance().getSystemFontCollection().get(fontName, size);
                 if(font == null){
                     returnCode.value = ReturnCode.ERROR;
                     guiReturnCode.value = GuiReturnCode.UNKNOWN_ERROR;
@@ -51,8 +51,6 @@ abstract class Font {
         Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
-    */
-        return Kernel.getInstance().createResponse(message, ReturnCode.NOT_IMPLEMENTED.getValue(), GuiReturnCode.UNKNOWN_ERROR.getValue(), Parameter.createInt(-1));
     }
     private static QAMessage systemCallFontGetSize(RunningApp app, QAMessage message){
         final Wrapper<ReturnCode> returnCode = new Wrapper<>();
