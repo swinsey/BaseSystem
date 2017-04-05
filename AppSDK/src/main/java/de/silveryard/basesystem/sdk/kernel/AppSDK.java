@@ -23,8 +23,9 @@ public abstract class AppSDK {
      *             [1] Data Directory Path
      *             [2] Readonly Directory Path
      * @param  app
+     * @param kernelLogging
      */
-    public static void appMain(String[] args, App app){
+    public static void appMain(String[] args, App app, boolean kernelLogging){
         try{
             assert (args.length == 3);
 
@@ -35,7 +36,7 @@ public abstract class AppSDK {
             assert(Files.exists(dataDirectory) && Files.isDirectory(dataDirectory));
             assert(Files.exists(readonlyDirectory) && Files.isDirectory(readonlyDirectory));
 
-            Kernel.initialize(portNr, app);
+            Kernel.initialize(portNr, app, kernelLogging);
 
             while(Kernel.isIsInitializing()){
                 Thread.sleep(200);
