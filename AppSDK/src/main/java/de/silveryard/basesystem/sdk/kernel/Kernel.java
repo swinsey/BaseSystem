@@ -31,7 +31,7 @@ public abstract class Kernel {
      */
     public static final int KERNEL_LOGGING_SYSTEMCALLS = 0x001;
     /**
-     * When set the kernel will log the complete qa cache each time a message arrives.
+     * When set the kernel will log the complete qa cache each time a qa message arrives.
      * Generates lots of output
      */
     public static final int KERNEL_LOGGING_QACACHE = 0x002;
@@ -171,12 +171,6 @@ public abstract class Kernel {
         if((logging & KERNEL_LOGGING_INCOMING_MESSAGES) == KERNEL_LOGGING_INCOMING_MESSAGES){
             System.out.println("Incoming Message: " + message.getCommandHash());
         }
-        if((logging & KERNEL_LOGGING_QACACHE) == KERNEL_LOGGING_QACACHE){
-            System.out.println("QA Cache: ");
-            for(String key : qaMessageCache.keySet()){
-                System.out.println("    " + key);
-            }
-        }
 
         if(commandHandlers.containsKey(message.getCommandHash())){
             if((logging & KERNEL_LOGGING_INCOMING_COMMANDS) == KERNEL_LOGGING_INCOMING_COMMANDS){
@@ -191,6 +185,15 @@ public abstract class Kernel {
 
         try {
             QAMessage qaMessage = new QAMessage(message);
+
+            if((logging & KERNEL_LOGGING_QACACHE) == KERNEL_LOGGING_QACACHE){
+                System.out.print("QA ID: " + message.getCommandHash());
+                System.out.println("QA Cache: ");
+                for(String key : qaMessageCache.keySet()){
+                    System.out.println("    " + key);
+                }
+            }
+
             if (!qaMessageCache.containsKey(qaMessage.getUUID())) {
                 System.out.println("Unknown Message: " + qaMessage.getUUID());
             }
