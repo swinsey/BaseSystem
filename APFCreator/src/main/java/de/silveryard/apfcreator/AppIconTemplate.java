@@ -32,7 +32,6 @@ public class AppIconTemplate {
 
         try {
             image = ImageIO.read(path.toFile());
-            System.out.println("Image: " + image + " W: " + image.getWidth() + " H: " + image.getHeight());
         }catch(Exception e){
             assertTrue(false, "Could not read icon '" + path.toString() + "': " + e.getMessage());
         }
