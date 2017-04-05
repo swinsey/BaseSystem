@@ -43,6 +43,7 @@ public abstract class Kernel {
     private static App app;
     private static Map<String, QAMessage> qaMessageCache;
     private static Map<String, List<MessageHandler>> commandHandlers;
+    private static boolean logging = false;
 
     /**
      * Initializes the kernel
@@ -50,12 +51,24 @@ public abstract class Kernel {
      * @param app Application instance
      * @throws Exception Thrown if something goes wrong
      */
-    public static synchronized void initialize(int port, App app) throws Exception {
+    public static synchronized void initialize(int port, App app) throws Exception{
+        initialize(port, app, false);
+    }
+
+    /**
+     * Initializes the kernel
+     * @param port Port to connect to
+     * @param app Application instance
+     * @param logging If true the kernel will log messages when sending system calls
+     * @throws Exception Thrown if something goes wrong
+     */
+    public static synchronized void initialize(int port, App app, boolean logging) throws Exception {
         Kernel.app = app;
         socket = new Socket("127.0.0.1", port);
         transport = new Transport(socket.getOutputStream(), socket.getInputStream(), Kernel::handleMessage);
         qaMessageCache = new HashMap<>();
         commandHandlers = new HashMap<>();
+        Kernel.logging = logging;
 
         isInitializing = true;
         Message initapp = new Message(SYSTEM_ID, SYSTEM_ID, COMMANDHASH_INITAPP, new ArrayList<>());
@@ -84,6 +97,10 @@ public abstract class Kernel {
      * @return Response of the systemcall
      */
     public static synchronized QAMessage systemCall(String command, List<Parameter> params){
+        if(logging){
+            System.out.println("SystemCall: " + command);
+        }
+
         QAMessage qaMessage = new QAMessage(false, SYSTEM_ID, SYSTEM_ID, MD5.generateMd5(command), params);
         qaMessageCache.put(qaMessage.getUUID(), null);
         transport.send(qaMessage.getMessage());
