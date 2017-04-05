@@ -41,8 +41,8 @@ namespace{
     }
 
     bool init_classes(JNIEnv* env){
-        if(!try_get_class(env, "de/awesome/smarthome/td/gui/SDLEventTypes", &class_eventtypes)) return false;
-        if(!try_get_class(env, "de/awesome/smarthome/td/gui/SDLEvent", &class_event)) return false;
+        if(!try_get_class(env, "de/silveryard/basesystem/gui/SDLEventTypes", &class_eventtypes)) return false;
+        if(!try_get_class(env, "de/silveryard/basesystem/gui/SDLEvent", &class_event)) return false;
         return true;
     }
     bool init_fields(JNIEnv* env){
