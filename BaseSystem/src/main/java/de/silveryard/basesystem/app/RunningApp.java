@@ -43,6 +43,9 @@ public class RunningApp implements IDisposable {
         return frame;
     }
 
+    public void sendMessage(Message message){
+        appLoader.sendMessage(message);
+    }
     private void handleMessage(Message message){
         QAMessage qaMessage = new QAMessage(message);
         QAMessage qaResponse = Kernel.getInstance().handleSystemCall(this, qaMessage);
