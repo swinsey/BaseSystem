@@ -1,9 +1,7 @@
 package de.silveryard.basesystem.sdk.kernel;
 
+import de.silveryard.transport.*;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
-import de.silveryard.transport.Message;
-import de.silveryard.transport.Parameter;
-import de.silveryard.transport.Transport;
 
 import java.net.Socket;
 import java.util.ArrayList;
@@ -43,7 +41,8 @@ public abstract class Kernel {
     private static Socket socket;
     private static Transport transport;
     private static App app;
-    private static volatile Map<String, QAMessage> qaMessageCache;
+    private static Map<String, QAMessage> qaMessageCache;
+    private static Map<String, List<MessageHandler>> commandHandlers;
 
     /**
      * Initializes the kernel
@@ -56,6 +55,7 @@ public abstract class Kernel {
         socket = new Socket("127.0.0.1", port);
         transport = new Transport(socket.getOutputStream(), socket.getInputStream(), Kernel::handleMessage);
         qaMessageCache = new HashMap<>();
+        commandHandlers = new HashMap<>();
 
         isInitializing = true;
         Message initapp = new Message(SYSTEM_ID, SYSTEM_ID, COMMANDHASH_INITAPP, new ArrayList<>());
@@ -102,6 +102,15 @@ public abstract class Kernel {
         return qaMessage;
     }
 
+    public static synchronized void registerForCommand(String command, MessageHandler handler){
+        String hash = MD5.generateMd5(command);
+        if(!commandHandlers.containsKey(hash)){
+            commandHandlers.put(hash, new ArrayList<>());
+        }
+
+        commandHandlers.get(hash).add(handler);
+    }
+
     private static void handleMessage(Message message){
         if(isInitializing){
             if(!message.getCommandHash().equals(COMMANDHASH_INITSYSTEM)){
@@ -111,13 +120,26 @@ public abstract class Kernel {
             Message initend = new Message(SYSTEM_ID, SYSTEM_ID, COMMANDHASH_INITEND, new ArrayList<>());
             transport.send(initend);
             isInitializing = false;
-        }else {
+            return;
+        }
+
+        if(commandHandlers.containsKey(message.getCommandHash())){
+            List<MessageHandler> handlers = commandHandlers.get(message.getCommandHash());
+            for(int i = 0; i < handlers.size(); i++){
+                handlers.get(i).handle(message);
+            }
+            return;
+        }
+
+        try {
             QAMessage qaMessage = new QAMessage(message);
-            if(!qaMessageCache.containsKey(qaMessage.getUUID())){
-                throw new RuntimeException("Unknown message!");
+            if (!qaMessageCache.containsKey(qaMessage.getUUID())) {
+                System.out.println("Unknown Message: " + qaMessage.getUUID());
             }
 
             qaMessageCache.put(qaMessage.getUUID(), qaMessage);
+        }catch(InvalidMessageException e){
+            return;
         }
     }
 }
