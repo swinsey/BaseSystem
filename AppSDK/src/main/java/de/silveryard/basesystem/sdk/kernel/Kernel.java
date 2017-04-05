@@ -23,6 +23,29 @@ public abstract class Kernel {
      */
 
     /**
+     * The kernel will log no messages
+     */
+    public static final int KERNEL_LOGGING_NONE = 0x000;
+    /**
+     * When set the kernel will log a message each time a systemcall is made
+     */
+    public static final int KERNEL_LOGGING_SYSTEMCALLS = 0x001;
+    /**
+     * When set the kernel will log the complete qa cache each time a message arrives.
+     * Generates lots of output
+     */
+    public static final int KERNEL_LOGGING_QACACHE = 0x002;
+    /**
+     * When set the kernel will log a message each time a command is invoked
+     */
+    public static final int KERNEL_LOGGING_INCOMING_COMMANDS = 0x004;
+    /**
+     * When set the kernel will log a message each time a message arrives.
+     * This includes systemcall responses
+     */
+    public static final int KERNEL_LOGGING_INCOMING_MESSAGES = 0x008;
+
+    /**
      * de.silveryard.basesystem.system.initapp
      */
     private static final String COMMANDHASH_INITAPP = "427f8150c474bcad4152b18eef6fa9ee";
@@ -43,7 +66,7 @@ public abstract class Kernel {
     private static App app;
     private static Map<String, QAMessage> qaMessageCache;
     private static Map<String, List<MessageHandler>> commandHandlers;
-    private static boolean logging = false;
+    private static int logging;
 
     /**
      * Initializes the kernel
@@ -52,7 +75,7 @@ public abstract class Kernel {
      * @throws Exception Thrown if something goes wrong
      */
     public static synchronized void initialize(int port, App app) throws Exception{
-        initialize(port, app, false);
+        initialize(port, app, KERNEL_LOGGING_NONE);
     }
 
     /**
@@ -62,7 +85,7 @@ public abstract class Kernel {
      * @param logging If true the kernel will log messages when sending system calls
      * @throws Exception Thrown if something goes wrong
      */
-    public static synchronized void initialize(int port, App app, boolean logging) throws Exception {
+    public static synchronized void initialize(int port, App app, int logging) throws Exception {
         Kernel.app = app;
         socket = new Socket("127.0.0.1", port);
         transport = new Transport(socket.getOutputStream(), socket.getInputStream(), Kernel::handleMessage);
@@ -97,7 +120,7 @@ public abstract class Kernel {
      * @return Response of the systemcall
      */
     public static synchronized QAMessage systemCall(String command, List<Parameter> params){
-        if(logging){
+        if((logging & KERNEL_LOGGING_SYSTEMCALLS) == KERNEL_LOGGING_SYSTEMCALLS){
             System.out.println("SystemCall: " + command);
         }
 
@@ -119,6 +142,11 @@ public abstract class Kernel {
         return qaMessage;
     }
 
+    /**
+     * Registers a handler for a specific command. Each time the command is called from the system, the handler will be invoked
+     * @param command Command to listen for
+     * @param handler Handler that gets invoked when the command is received
+     */
     public static synchronized void registerForCommand(String command, MessageHandler handler){
         String hash = MD5.generateMd5(command);
         if(!commandHandlers.containsKey(hash)){
@@ -140,7 +168,20 @@ public abstract class Kernel {
             return;
         }
 
+        if((logging & KERNEL_LOGGING_INCOMING_MESSAGES) == KERNEL_LOGGING_INCOMING_MESSAGES){
+            System.out.println("Incoming Message: " + message.getCommandHash());
+        }
+        if((logging & KERNEL_LOGGING_QACACHE) == KERNEL_LOGGING_QACACHE){
+            System.out.println("QA Cache: ");
+            for(String key : qaMessageCache.keySet()){
+                System.out.println("    " + key);
+            }
+        }
+
         if(commandHandlers.containsKey(message.getCommandHash())){
+            if((logging & KERNEL_LOGGING_INCOMING_COMMANDS) == KERNEL_LOGGING_INCOMING_COMMANDS){
+                System.out.println("Command: " + message.getCommandHash());
+            }
             List<MessageHandler> handlers = commandHandlers.get(message.getCommandHash());
             for(int i = 0; i < handlers.size(); i++){
                 handlers.get(i).handle(message);

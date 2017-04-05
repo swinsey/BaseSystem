@@ -25,7 +25,7 @@ public abstract class AppSDK {
      * @param  app
      * @param kernelLogging
      */
-    public static void appMain(String[] args, App app, boolean kernelLogging){
+    public static void appMain(String[] args, App app, int kernelLogging){
         try{
             assert (args.length == 3);
 
