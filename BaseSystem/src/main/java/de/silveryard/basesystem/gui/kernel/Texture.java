@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -20,11 +20,11 @@ import java.nio.file.Paths;
 abstract class Texture {
     public static void enableKernel(){
         Kernel kernel = Kernel.getInstance();
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.load", Texture::systemCallTextureLoad);
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.unload", Texture::systemCallTextureUnload);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.texture.load", Texture::systemCallTextureLoad);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.texture.unload", Texture::systemCallTextureUnload);
 
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.getwidth", Texture::systemCallTextureGetWidth);
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.texture.getheight", Texture::systemCallTextureGetHeight);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.texture.getwidth", Texture::systemCallTextureGetWidth);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.texture.getheight", Texture::systemCallTextureGetHeight);
     }
 
     public static QAMessage systemCallTextureLoad(RunningApp app, QAMessage message){

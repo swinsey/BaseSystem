@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -15,19 +15,19 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class SimpleLine {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.create", SimpleLine::systemCallSimpleLineCreate);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getendpointx", SimpleLine::systemCallSimpleLineGetEndpointX);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getendpointy", SimpleLine::systemCallSimpleLineGetEndpointY);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setendpoint", SimpleLine::systemCallSimpleLineSetEndpoint);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setendpointx", SimpleLine::systemCallSimpleLineSetEndpointX);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setendpointy", SimpleLine::systemCallSimpleLineSetEndpointY);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getcolorr", SimpleLine::systemCallSimpleLineGetColorR);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getcolorg", SimpleLine::systemCallSimpleLineGetColorG);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.getcolorb", SimpleLine::systemCallSimpleLineGetColorB);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolor", SimpleLine::systemCallSimpleLineSetColor);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolorr", SimpleLine::systemCallSimpleLineSetColorR);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolorg", SimpleLine::systemCallSimpleLineSetColorG);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.simpleline.setcolorb", SimpleLine::systemCallSimpleLineSetColorB);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.create", SimpleLine::systemCallSimpleLineCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.getendpointx", SimpleLine::systemCallSimpleLineGetEndpointX);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.getendpointy", SimpleLine::systemCallSimpleLineGetEndpointY);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setendpoint", SimpleLine::systemCallSimpleLineSetEndpoint);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setendpointx", SimpleLine::systemCallSimpleLineSetEndpointX);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setendpointy", SimpleLine::systemCallSimpleLineSetEndpointY);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.getcolorr", SimpleLine::systemCallSimpleLineGetColorR);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.getcolorg", SimpleLine::systemCallSimpleLineGetColorG);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.getcolorb", SimpleLine::systemCallSimpleLineGetColorB);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setcolor", SimpleLine::systemCallSimpleLineSetColor);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setcolorr", SimpleLine::systemCallSimpleLineSetColorR);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setcolorg", SimpleLine::systemCallSimpleLineSetColorG);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.simpleline.setcolorb", SimpleLine::systemCallSimpleLineSetColorB);
     }
 
     private static QAMessage systemCallSimpleLineCreate(RunningApp app, QAMessage message){

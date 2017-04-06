@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -16,8 +16,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 abstract class Font {
     public static void enableKernel(){
         Kernel kernel = Kernel.getInstance();
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.font.loadsystemfont", Font::systemCallFontLoadSystemFont);
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.font.getsize", Font::systemCallFontGetSize);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.font.loadsystemfont", Font::systemCallFontLoadSystemFont);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.font.getsize", Font::systemCallFontGetSize);
     }
 
     private static QAMessage systemCallFontLoadSystemFont(RunningApp app, QAMessage message){

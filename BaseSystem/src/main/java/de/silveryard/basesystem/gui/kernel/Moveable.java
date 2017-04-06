@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -16,12 +16,12 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class Moveable {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.moveable.getposition", Moveable::systemCallMoveableGetPosition);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.moveable.getpositionx", Moveable::systemCallMoveableGetPositionX);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.moveable.getpositiony", Moveable::systemCallMoveableGetPositionY);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.moveable.setposition", Moveable::systemCallMoveableSetPosition);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.moveable.setpositionx", Moveable::systemCallMoveableSetPositionX);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.moveable.setpositiony", Moveable::systemCallMoveableSetPositionY);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.moveable.getposition", Moveable::systemCallMoveableGetPosition);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.moveable.getpositionx", Moveable::systemCallMoveableGetPositionX);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.moveable.getpositiony", Moveable::systemCallMoveableGetPositionY);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.moveable.setposition", Moveable::systemCallMoveableSetPosition);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.moveable.setpositionx", Moveable::systemCallMoveableSetPositionX);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.moveable.setpositiony", Moveable::systemCallMoveableSetPositionY);
     }
 
     private static QAMessage systemCallMoveableGetPosition(RunningApp app, QAMessage message){

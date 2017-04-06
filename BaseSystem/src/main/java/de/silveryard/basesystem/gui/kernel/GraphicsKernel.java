@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 
 /**

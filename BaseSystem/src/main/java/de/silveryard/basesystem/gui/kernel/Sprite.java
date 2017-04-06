@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -15,8 +15,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class Sprite {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sprite.create", Sprite::systemCallSpriteCreate);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.sprite.gettexturesprite", Sprite::systemCallSpriteGetTextureSprite);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sprite.create", Sprite::systemCallSpriteCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sprite.gettexturesprite", Sprite::systemCallSpriteGetTextureSprite);
     }
 
     private static QAMessage systemCallSpriteCreate(RunningApp app, QAMessage message){

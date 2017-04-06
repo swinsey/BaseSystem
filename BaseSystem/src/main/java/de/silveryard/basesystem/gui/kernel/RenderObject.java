@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -14,9 +14,9 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class RenderObject {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.renderobject.setlayer", RenderObject::systemCallRenderObjectSetLayer);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.renderobject.getlayer", RenderObject::systemCallRenderObjectGetLayer);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.renderobject.setdirty", RenderObject::systemCallRenderObjectSetDirty);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.renderobject.setlayer", RenderObject::systemCallRenderObjectSetLayer);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.renderobject.getlayer", RenderObject::systemCallRenderObjectGetLayer);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.renderobject.setdirty", RenderObject::systemCallRenderObjectSetDirty);
     }
 
     private static QAMessage systemCallRenderObjectSetLayer(RunningApp app, QAMessage message){

@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.app.kernel.gui;
+package de.silveryard.basesystem.gui.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
@@ -16,8 +16,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class Fadeable {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.fadeable.get", Fadeable::systemCallFadeableGet);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.gui.fadeable.set", Fadeable::systemCallFadeableSet);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.fadeable.get", Fadeable::systemCallFadeableGet);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.fadeable.set", Fadeable::systemCallFadeableSet);
     }
 
     private static QAMessage systemCallFadeableGet(RunningApp app, QAMessage message){
