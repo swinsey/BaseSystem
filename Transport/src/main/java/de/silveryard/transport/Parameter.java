@@ -43,6 +43,16 @@ public class Parameter {
     }
 
     /**
+     * Creates a new parameter that contains a float value
+     * @param f Value
+     * @return Created parameter
+     */
+    public static Parameter createFloat(float f){
+        int representation = Float.floatToIntBits(f);
+        return createInt(representation);
+    }
+
+    /**
      * Creates a new parameter that contains a string value
      * @param str Value
      * @return Created parameter
@@ -118,6 +128,22 @@ public class Parameter {
             return null;
         }
         return ByteBuffer.wrap(data).getInt();
+    }
+
+    /**
+     * @return Returns the parameter as float value
+     */
+    public Float getFloat(){
+        if(size != 4 || data.length != 4){
+            return null;
+        }
+
+        Integer representation = getInt();
+        if(representation == null){
+            return null;
+        }
+
+        return Float.intBitsToFloat(representation);
     }
 
     /**
