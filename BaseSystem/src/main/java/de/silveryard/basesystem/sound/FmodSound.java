@@ -1,11 +1,12 @@
 package de.silveryard.basesystem.sound;
 
+import de.silveryard.basesystem.util.IDisposable;
 import de.silveryard.basesystem.util.Wrapper;
 
 /**
  * Created by Sebif on 27.03.2017.
  */
-public class FmodSound {
+public class FmodSound implements IDisposable{
     private long handle;
 
     public FmodSound(){
@@ -18,4 +19,9 @@ public class FmodSound {
     public native FmodResult getLength(Wrapper<Integer> length, int lengthType);
 
     public native FmodResult release();
+
+    @Override
+    public void dispose() {
+        release();
+    }
 }

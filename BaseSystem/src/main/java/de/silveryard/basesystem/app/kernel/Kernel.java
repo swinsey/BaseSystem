@@ -2,7 +2,6 @@ package de.silveryard.basesystem.app.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.util.Utils;
-import de.silveryard.transport.Message;
 import de.silveryard.transport.Parameter;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 

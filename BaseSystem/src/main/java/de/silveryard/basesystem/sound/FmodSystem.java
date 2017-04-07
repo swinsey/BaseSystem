@@ -6,7 +6,15 @@ import de.silveryard.basesystem.util.Wrapper;
  * Created by Sebif on 25.03.2017.
  */
 public class FmodSystem {
-    public static native FmodSystem createSystem();
+    private static FmodSystem instance;
+
+    public static void createFmodSystem(){
+        instance = createSystem();
+    }
+    public static FmodSystem getInstance(){
+        return instance;
+    }
+    private static native FmodSystem createSystem();
 
     private long handle;
 

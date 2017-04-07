@@ -1,11 +1,14 @@
 package de.silveryard.basesystem.sound;
 
+import de.silveryard.basesystem.util.IDisposable;
+
 /**
  * Created by Sebif on 27.03.2017.
  */
-public class FmodCreateSoundExInfo {
+public class FmodCreateSoundExInfo implements IDisposable{
     private long handle;
 
+    @Override
     public native void dispose();
     public native long getHandle();
 
