@@ -17,11 +17,11 @@ public abstract class FmodSound {
      * Creates a new FmodSound object
      * @param outReturnCode General Return Code
      * @param outSoundReturnCode Sound Return Code
-     * @param outSoundId ID of the created sound
+     * @param outchannelID ID of the created sound
      */
     public static void systemCallSoundFmodSoundCreate(
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode,
-            Wrapper<Integer> outSoundId
+            Wrapper<Integer> outchannelID
     ){
 
         List<Parameter> params = new ArrayList<>();
@@ -29,24 +29,24 @@ public abstract class FmodSound {
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(message.getParameters().get(1).getInt());
-        outSoundId.value = message.getParameters().get(2).getInt();
+        outchannelID.value = message.getParameters().get(2).getInt();
     }
 
     /**
      * Fetches the length of a given sound
-     * @param soundId ID of the FmodSound
+     * @param channelID ID of the FmodSound
      * @param outReturnCode General Return Code
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      * @param outLength Length of the sound
      */
     public static void systemCallSoundFmodSoundGetLength(
-            int soundId,
+            int channelID,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode,
             Wrapper<FmodResult> outFmodResult, Wrapper<Integer> outLength
     ){
         List<Parameter> params = new ArrayList<>();
-        params.add(Parameter.createInt(soundId));
+        params.add(Parameter.createInt(channelID));
         QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodsound.getlength", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());
