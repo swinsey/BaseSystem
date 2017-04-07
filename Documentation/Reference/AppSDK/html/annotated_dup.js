@@ -24,6 +24,21 @@ var annotated_dup =
                 [ "TextureSprite", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_texture_sprite.html", null ],
                 [ "VerticalAlignment", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_vertical_alignment.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_vertical_alignment" ]
               ] ],
+              [ "sound", null, [
+                [ "FmodChannel", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_channel.html", null ],
+                [ "FmodChannelOrder", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_channel_order.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_channel_order" ],
+                [ "FmodInitFlags", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_init_flags.html", null ],
+                [ "FmodMode", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_mode.html", null ],
+                [ "FmodOutputType", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_output_type.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_output_type" ],
+                [ "FmodResult", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_result.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_result" ],
+                [ "FmodSound", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_sound.html", null ],
+                [ "FmodSoundFormat", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_sound_format.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_sound_format" ],
+                [ "FmodSoundType", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_sound_type.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_sound_type" ],
+                [ "FmodSpeakerMode", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_speaker_mode.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_speaker_mode" ],
+                [ "FmodSystem", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_system.html", null ],
+                [ "FmodTimeUnit", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_time_unit.html", null ],
+                [ "SoundReturnCode", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_sound_return_code.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_sound_return_code" ]
+              ] ],
               [ "Action", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_action.html", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_action" ],
               [ "App", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app" ],
               [ "AppSDK", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app_s_d_k.html", null ],

@@ -7,6 +7,7 @@ var searchData=
   ['getdata',['getData',['../classde_1_1silveryard_1_1transport_1_1_parameter.html#afd8f83600fe299d79bc6912803dae272',1,'de::silveryard::transport::Parameter']]],
   ['getdestinationid',['getDestinationID',['../classde_1_1silveryard_1_1transport_1_1_message.html#acc180e1f5fb943b67b9e70ab0071d338',1,'de::silveryard::transport::Message']]],
   ['getenumvalue',['getEnumValue',['../enumde_1_1silveryard_1_1transport_1_1highlevelprotocols_1_1event_1_1_event_message_type.html#a359629b1b8e54cf899a50ad2cbaefa80',1,'de::silveryard::transport::highlevelprotocols::event::EventMessageType']]],
+  ['getfloat',['getFloat',['../classde_1_1silveryard_1_1transport_1_1_parameter.html#a753c6b41eb322f1e06c0f73ceb47fb14',1,'de::silveryard::transport::Parameter']]],
   ['getint',['getInt',['../classde_1_1silveryard_1_1transport_1_1_parameter.html#a3e22268c75f65c5310eb67ce581a7484',1,'de::silveryard::transport::Parameter']]],
   ['getmessage',['getMessage',['../classde_1_1silveryard_1_1transport_1_1highlevelprotocols_1_1qa_1_1_q_a_message.html#ac66b46e83cf7642d63c048cb03391967',1,'de::silveryard::transport::highlevelprotocols::qa::QAMessage']]],
   ['getparameters',['getParameters',['../classde_1_1silveryard_1_1transport_1_1highlevelprotocols_1_1qa_1_1_q_a_message.html#acd432e8d2439b50abd81b87ef528f66f',1,'de::silveryard::transport::highlevelprotocols::qa::QAMessage']]],

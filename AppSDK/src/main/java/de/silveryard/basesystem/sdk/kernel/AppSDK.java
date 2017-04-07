@@ -71,6 +71,10 @@ public abstract class AppSDK {
         }
     }
 
+    /**
+     * Runs a given action on the main thread
+     * @param action Action to run
+     */
     public static synchronized void runOnMainThread(Action action){
         pendingActions.add(action);
     }
