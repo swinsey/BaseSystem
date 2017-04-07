@@ -184,7 +184,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 
 	FMOD_CREATESOUNDEXINFO* info = NULL;
 	if (exInfo != NULL) {
-		long infoPtr = Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getHandle(env, exInfo);
+		long long infoPtr = Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getHandle(env, exInfo);
 		info = reinterpret_cast<FMOD_CREATESOUNDEXINFO*>(infoPtr);
 	}
 	const char* name_or_data = NULL;
@@ -195,7 +195,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 	FMOD::Sound* native_sound;
 	FMOD_RESULT result = system->createSound(name_or_data, static_cast<FMOD_MODE>(mode), info, &native_sound);
 
-	Java_de_silveryard_basesystem_sound_FmodSound_setHandle(env, sound, reinterpret_cast<long>(native_sound));
+	Java_de_silveryard_basesystem_sound_FmodSound_setHandle(env, sound, reinterpret_cast<long long>(native_sound));
 
 	return fmodresult_get_enum_value(env, result);
 }
@@ -205,7 +205,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 	
 	FMOD_CREATESOUNDEXINFO* info = NULL;
 	if (exInfo != NULL) {
-		long infoPtr = Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getHandle(env, exInfo);
+		long long infoPtr = Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getHandle(env, exInfo);
 		info = reinterpret_cast<FMOD_CREATESOUNDEXINFO*>(infoPtr);
 	}
 	const char* name_or_data = NULL;
@@ -216,7 +216,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 	FMOD::Sound* native_sound;
 	FMOD_RESULT result = system->createStream(name_or_data, static_cast<FMOD_MODE>(mode), info, &native_sound);
 
-	Java_de_silveryard_basesystem_sound_FmodSound_setHandle(env, sound, reinterpret_cast<long>(native_sound));
+	Java_de_silveryard_basesystem_sound_FmodSound_setHandle(env, sound, reinterpret_cast<long long>(native_sound));
 
 	return fmodresult_get_enum_value(env, result);
 }
@@ -231,7 +231,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_playSou
 	FMOD::Channel* native_channel;
 	FMOD_RESULT result = system->playSound(native_sound, NULL, paused, &native_channel);
 
-	Java_de_silveryard_basesystem_sound_FmodChannel_setHandle(env, channel, reinterpret_cast<long>(native_channel));
+	Java_de_silveryard_basesystem_sound_FmodChannel_setHandle(env, channel, reinterpret_cast<long long>(native_channel));
 
 	return fmodresult_get_enum_value(env, result);
 }
@@ -306,7 +306,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_recordS
 	_init(env);
 
 	FMOD::System* system = get_handle<FMOD::System>(env, _field_handle, obj);
-	long soundPtr = Java_de_silveryard_basesystem_sound_FmodSound_getHandle(env, sound);
+	long long soundPtr = Java_de_silveryard_basesystem_sound_FmodSound_getHandle(env, sound);
 	FMOD::Sound* native_sound = reinterpret_cast<FMOD::Sound*>(soundPtr);
 	FMOD_RESULT result = system->recordStart(id, native_sound, loop);
 

@@ -6,6 +6,10 @@
 #include "de_silveryard_basesystem_gui_SDLLabel.h"
 #include "../label.h"
 
+#if defined(WIN32)
+#define strdup _strdup
+#endif
+
 JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLLabel_labelCreate
         (JNIEnv* env, jclass obj, jint font, jstring text,
          jbyte r, jbyte g, jbyte b, jbyte a, jint width){
@@ -39,7 +43,7 @@ JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLLabel_labelSetFont
 
 JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLLabel_labelSetColor
         (JNIEnv* env, jclass obj, jint label, jchar r, jchar g, jchar b, jchar a){
-    return label_set_color(label, r, g, b, a);
+    return label_set_color(label, static_cast<char>(r), static_cast<char>(g), static_cast<char>(b), static_cast<char>(a));
 }
 
 JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_SDLLabel_labelSetWidth

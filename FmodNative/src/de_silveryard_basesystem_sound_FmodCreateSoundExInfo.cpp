@@ -7,6 +7,10 @@
 #include "FmodChannelOrder.h"
 #include "de_silveryard_basesystem_sound_FmodCreateSoundExInfo.h"
 
+#if defined(WIN32)
+#define strdup _strdup
+#endif
+
 namespace {
 	bool _initialized = false;
 
