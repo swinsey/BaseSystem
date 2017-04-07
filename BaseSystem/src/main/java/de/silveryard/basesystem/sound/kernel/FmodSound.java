@@ -14,8 +14,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class FmodSound {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsound.create", FmodSound::systemCallSoundFmodSoundCreate);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsound.getlength", FmodSound::systemCallSoundFmodSoundGetLength);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsound.create", FmodSound::systemCallSoundFmodSoundCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsound.getlength", FmodSound::systemCallSoundFmodSoundGetLength);
     }
 
     public static QAMessage systemCallSoundFmodSoundCreate(RunningApp app, QAMessage message){

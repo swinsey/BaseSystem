@@ -14,29 +14,29 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class FmodChannel {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.create", FmodChannel::systemCallSoundFmodChannelCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.create", FmodChannel::systemCallSoundFmodChannelCreate);
 
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.stop", FmodChannel::systemCallSoundFmodChannelStop);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setpaused", FmodChannel::systemCallSoundFmodChannelSetPaused);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getpaused", FmodChannel::systemCallSoundFmodChannelGetPaused);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setvolume", FmodChannel::systemCallSoundFmodChannelSetVolume);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getvolume", FmodChannel::systemCallSoundFmodChannelGetVolume);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setvolumeramp", FmodChannel::systemCallSoundFmodChannelSetVolumeRamp);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getvolumeramp", FmodChannel::systemCallSoundFmodChannelGetVolumeRamp);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getaudibility", FmodChannel::systemCallSoundFmodChannelGetAudibility);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setpitch", FmodChannel::systemCallSoundFmodChannelSetPitch);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getpitch", FmodChannel::systemCallSoundFmodChannelGetPitch);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setmute", FmodChannel::systemCallSoundFmodChannelSetMute);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getmute", FmodChannel::systemCallSoundFmodChannelGetMute);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.stop", FmodChannel::systemCallSoundFmodChannelStop);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setpaused", FmodChannel::systemCallSoundFmodChannelSetPaused);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getpaused", FmodChannel::systemCallSoundFmodChannelGetPaused);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setvolume", FmodChannel::systemCallSoundFmodChannelSetVolume);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getvolume", FmodChannel::systemCallSoundFmodChannelGetVolume);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setvolumeramp", FmodChannel::systemCallSoundFmodChannelSetVolumeRamp);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getvolumeramp", FmodChannel::systemCallSoundFmodChannelGetVolumeRamp);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getaudibility", FmodChannel::systemCallSoundFmodChannelGetAudibility);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setpitch", FmodChannel::systemCallSoundFmodChannelSetPitch);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getpitch", FmodChannel::systemCallSoundFmodChannelGetPitch);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setmute", FmodChannel::systemCallSoundFmodChannelSetMute);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getmute", FmodChannel::systemCallSoundFmodChannelGetMute);
 
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.isplaying", FmodChannel::systemCallSoundFmodChannelIsPlaying);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.isplaying", FmodChannel::systemCallSoundFmodChannelIsPlaying);
 
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setfrequency", FmodChannel::systemCallSoundFmodChannelSetFrequency);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getfrequency", FmodChannel::systemCallSoundFmodChannelGetFrequency);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setpriority", FmodChannel::systemCallSoundFmodChannelSetPriority);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getpriority", FmodChannel::systemCallSoundFmodChannelGetPriority);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.setposition", FmodChannel::systemCallSoundFmodChannelSetPosition);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodchannel.getposition", FmodChannel::systemCallSoundFmodChannelGetPosition);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setfrequency", FmodChannel::systemCallSoundFmodChannelSetFrequency);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getfrequency", FmodChannel::systemCallSoundFmodChannelGetFrequency);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setpriority", FmodChannel::systemCallSoundFmodChannelSetPriority);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getpriority", FmodChannel::systemCallSoundFmodChannelGetPriority);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setposition", FmodChannel::systemCallSoundFmodChannelSetPosition);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getposition", FmodChannel::systemCallSoundFmodChannelGetPosition);
 
     }
 

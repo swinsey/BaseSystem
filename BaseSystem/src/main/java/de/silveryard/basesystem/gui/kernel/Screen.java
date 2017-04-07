@@ -18,10 +18,10 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 abstract class Screen {
     public static void enableKernel() {
         Kernel kernel = Kernel.getInstance();
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.screen.getscreenwidth", Screen::systemCallScreenGetScreenWidth);
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.screen.getscreenheight", Screen::systemCallScreenGetScreenHeight);
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.screen.addrenderobject", Screen::systemCallScreenAddRenderObject);
-        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.kernel.screen.removerenderobject", Screen::systemCallScreenRemoveRenderObject);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.screen.getscreenwidth", Screen::systemCallScreenGetScreenWidth);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.screen.getscreenheight", Screen::systemCallScreenGetScreenHeight);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.screen.addrenderobject", Screen::systemCallScreenAddRenderObject);
+        kernel.registerSystemCall("de.silveryard.basesystem.systemcall.gui.screen.removerenderobject", Screen::systemCallScreenRemoveRenderObject);
     }
 
     private static QAMessage systemCallScreenGetScreenWidth(RunningApp app, QAMessage message){

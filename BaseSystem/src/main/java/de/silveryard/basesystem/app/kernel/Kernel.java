@@ -68,6 +68,7 @@ public class Kernel {
             ISystemCallHandler handler = systemCalls.get(message.getMessage().getCommandHash());
             response = handler.invoke(app, message);
         }else{
+            System.out.println("Unknown SystemCall: " + message.getMessage().getCommandHash());
             List<Parameter> params = new ArrayList<>();
             params.add(Parameter.createInt(ReturnCode.NOT_IMPLEMENTED.getValue()));
             response = new QAMessage(message, params);

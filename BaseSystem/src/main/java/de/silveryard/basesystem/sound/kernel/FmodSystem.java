@@ -17,24 +17,24 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 abstract class FmodSystem {
     public static void enableKernel(){
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.setoutput", FmodSystem::systemCallSoundFmodSystemSetOutput);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getoutput", FmodSystem::systemCallSoundFmodSystemGetOutput);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getnumdrivers", FmodSystem::systemCallSoundFmodSystemGetNumDrivers);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getdriverinfo", FmodSystem::systemCallSoundFmodSystemGetDriverInfo);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.setdriver", FmodSystem::systemCallSoundFmodSystemSetDriver);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getdriver", FmodSystem::systemCallSoundFmodSystemGetDriver);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.setoutput", FmodSystem::systemCallSoundFmodSystemSetOutput);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getoutput", FmodSystem::systemCallSoundFmodSystemGetOutput);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getnumdrivers", FmodSystem::systemCallSoundFmodSystemGetNumDrivers);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getdriverinfo", FmodSystem::systemCallSoundFmodSystemGetDriverInfo);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.setdriver", FmodSystem::systemCallSoundFmodSystemSetDriver);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getdriver", FmodSystem::systemCallSoundFmodSystemGetDriver);
 
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.createsound", FmodSystem::systemCallSoundFmodSystemCreateSound);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.createstream", FmodSystem::systemCallSoundFmodSystemCreateStream);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.createsound", FmodSystem::systemCallSoundFmodSystemCreateSound);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.createstream", FmodSystem::systemCallSoundFmodSystemCreateStream);
 
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.playsound", FmodSystem::systemCallSoundFmodSystemPlaySound);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.playsound", FmodSystem::systemCallSoundFmodSystemPlaySound);
 
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getrecordnumdrivers", FmodSystem::systemCallSoundFmodSystemGetRecordNumDrivers);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getrecorddriverinfo", FmodSystem::systemCallSoundFmodSystemGetRecordDriverInfo);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.getrecordposition", FmodSystem::systemCallSoundFmodSystemGetRecordPosition);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.recordstart", FmodSystem::systemCallSoundFmodSystemRecordStart);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.recordstop", FmodSystem::systemCallSoundFmodSystemRecordStop);
-        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.kernel.sound.fmodsystem.isrecording", FmodSystem::systemCallSoundFmodSystemIsRecording);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getrecordnumdrivers", FmodSystem::systemCallSoundFmodSystemGetRecordNumDrivers);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getrecorddriverinfo", FmodSystem::systemCallSoundFmodSystemGetRecordDriverInfo);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.getrecordposition", FmodSystem::systemCallSoundFmodSystemGetRecordPosition);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.recordstart", FmodSystem::systemCallSoundFmodSystemRecordStart);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.recordstop", FmodSystem::systemCallSoundFmodSystemRecordStop);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodsystem.isrecording", FmodSystem::systemCallSoundFmodSystemIsRecording);
     }
 
     private static QAMessage systemCallSoundFmodSystemSetOutput(RunningApp app, QAMessage message){
