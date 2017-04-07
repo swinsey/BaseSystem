@@ -24,7 +24,7 @@ namespace {
 		}
 		_initialized = true;
 
-		_class = env->FindClass("de/awesome/smarthome/td/sound/FmodCreateSoundExInfo");
+		_class = env->FindClass("de/silveryard/basesystem/sound/FmodCreateSoundExInfo");
 		_field_handle = env->GetFieldID(_class, "handle", "J");
 
 		FMOD_CREATESOUNDEXINFO* info = new FMOD_CREATESOUNDEXINFO();

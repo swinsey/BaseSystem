@@ -12,8 +12,8 @@ namespace {
 		}
 		_initialized = true;
 
-		_class = env->FindClass("de/awesome/smarthome/td/sound/FmodSpeakerMode");
-		_method_getenumvalue = env->GetStaticMethodID(_class, "getEnumValue", "(I)Lde/awesome/smarthome/td/sound/FmodSpeakerMode;");
+		_class = env->FindClass("de/silveryard/basesystem/sound/FmodSpeakerMode");
+		_method_getenumvalue = env->GetStaticMethodID(_class, "getEnumValue", "(I)Lde/silveryard/basesystem/sound/FmodSpeakerMode;");
 		_method_getvalue = env->GetMethodID(_class, "getValue", "()I");
 	}
 }

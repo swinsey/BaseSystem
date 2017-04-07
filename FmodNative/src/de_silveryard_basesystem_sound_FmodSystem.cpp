@@ -25,7 +25,7 @@ namespace {
 		}
 		_initialized = true;
 
-		_class = env->FindClass("de/awesome/smarthome/td/sound/FmodSystem");
+		_class = env->FindClass("de/silveryard/basesystem/sound/FmodSystem");
 		_field_handle = env->GetFieldID(_class, "handle", "J");
 		_method_ctr = env->GetMethodID(_class, "<init>", "(J)V");
 	}
