@@ -20,7 +20,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemSetOutput(
+    public static void systemCallSoundFmodSystemSetOutput(
             FmodOutputType outputType,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -40,7 +40,7 @@ public abstract class FmodSystem {
      * @param outFmodResult Fmod Result
      * @param outOutputType Output type
      */
-    private static void systemCallSoundFmodSystemGetOutput(
+    public static void systemCallSoundFmodSystemGetOutput(
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<FmodOutputType> outOutputType
     ){
@@ -60,7 +60,7 @@ public abstract class FmodSystem {
      * @param outFmodResult Fmod Result
      * @param outNumDrivers Number of output drivers
      */
-    private static void systemCallSoundFmodSystemGetNumDrivers(
+    public static void systemCallSoundFmodSystemGetNumDrivers(
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<Integer> outNumDrivers
     ){
@@ -85,7 +85,7 @@ public abstract class FmodSystem {
      * @param outSpeakerMode Drivers speaker mode
      * @param outSpeakerModeChannels Number of channels of the drivers speaker mode
      */
-    private static void systemCallSoundFmodSystemGetDriverInfo(
+    public static void systemCallSoundFmodSystemGetDriverInfo(
             int id,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<String> outName, Wrapper<String> outGuid, Wrapper<Integer> outSystemrate,
@@ -112,7 +112,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemSetDriver(
+    public static void systemCallSoundFmodSystemSetDriver(
             int driver,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -132,7 +132,7 @@ public abstract class FmodSystem {
      * @param outFmodResult Fmod Result
      * @param outDriver Output driver id
      */
-    private static void systemCallSoundFmodSystemGetDriver(
+    public static void systemCallSoundFmodSystemGetDriver(
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<Integer> outDriver
     ){
@@ -156,7 +156,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemCreateSound(
+    public static void systemCallSoundFmodSystemCreateSound(
             String nameOrData, int mode, int fmodCreateSoundExInfoID, int soundID,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -182,7 +182,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return COde
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemCreateStream(
+    public static void systemCallSoundFmodSystemCreateStream(
             String nameOrData, int mode, int fmodCreateSoundExInfoID, int soundID,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -208,7 +208,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemPlaySound(
+    public static void systemCallSoundFmodSystemPlaySound(
             int soundID, boolean paused, int channelID,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -232,7 +232,7 @@ public abstract class FmodSystem {
      * @param outNumDrivers Number of record drivers
      * @param outNumConnected Number of record drivers currently connected
      */
-    private static void systemCallSoundFmodSystemGetRecordNumDrivers(
+    public static void systemCallSoundFmodSystemGetRecordNumDrivers(
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<Integer> outNumDrivers, Wrapper<Integer> outNumConnected
     ){
@@ -259,7 +259,7 @@ public abstract class FmodSystem {
      * @param outSpeakerModeChannels Number of channels of the drivers speaker mode
      * @param outState Drivers current state
      */
-    private static void systemCallSoundFmodSystemGetRecordDriverInfo(
+    public static void systemCallSoundFmodSystemGetRecordDriverInfo(
             int id,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<String> outName, Wrapper<String> outGuid, Wrapper<Integer> outSystemRate,
@@ -288,7 +288,7 @@ public abstract class FmodSystem {
      * @param outFmodResult Fmod Result
      * @param outPosition Position value
      */
-    private static void systemCallSoundFmodSystemGetRecordPosition(
+    public static void systemCallSoundFmodSystemGetRecordPosition(
             int id,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<Integer> outPosition
@@ -312,7 +312,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemRecordStart(
+    public static void systemCallSoundFmodSystemRecordStart(
             int id, int soundID, boolean loop,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -334,7 +334,7 @@ public abstract class FmodSystem {
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
      */
-    private static void systemCallSoundFmodSystemRecordStop(
+    public static void systemCallSoundFmodSystemRecordStop(
             int id,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
@@ -355,7 +355,7 @@ public abstract class FmodSystem {
      * @param outFmodResult Fmod Result
      * @param outIsPlaying 'isPlaying' flag
      */
-    private static void systemCallSoundFmodSystemIsRecording(
+    public static void systemCallSoundFmodSystemIsRecording(
             int id,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<Boolean> outIsPlaying
