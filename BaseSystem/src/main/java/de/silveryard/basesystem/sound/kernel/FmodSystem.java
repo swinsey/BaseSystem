@@ -150,7 +150,7 @@ abstract class FmodSystem {
         int infoId = message.getParameters().get(2).getInt();
         int soundId = message.getParameters().get(3).getInt();
         FmodCreateSoundExInfo info = Utils.as(FmodCreateSoundExInfo.class, app.getRegisteredObject(infoId));
-        FmodSound sound = Utils.as(FmodSound.class, soundId);
+        FmodSound sound = Utils.as(FmodSound.class, app.getRegisteredObject(soundId));
 
         if(infoId != -1 && info == null){
             return Kernel.getInstance().createResponse(message,
@@ -182,7 +182,7 @@ abstract class FmodSystem {
         int infoId = message.getParameters().get(2).getInt();
         int soundId = message.getParameters().get(3).getInt();
         FmodCreateSoundExInfo info = Utils.as(FmodCreateSoundExInfo.class, app.getRegisteredObject(infoId));
-        FmodSound sound = Utils.as(FmodSound.class, soundId);
+        FmodSound sound = Utils.as(FmodSound.class, app.getRegisteredObject(soundId));
 
         if(infoId != -1 && info == null){
             return Kernel.getInstance().createResponse(message,
@@ -213,8 +213,8 @@ abstract class FmodSystem {
         int soundId = message.getParameters().get(0).getInt();
         boolean paused = message.getParameters().get(1).getBoolean();
         int channelId = message.getParameters().get(2).getInt();
-        FmodSound sound = Utils.as(FmodSound.class, soundId);
-        FmodChannel channel = Utils.as(FmodChannel.class, channelId);
+        FmodSound sound = Utils.as(FmodSound.class, app.getRegisteredObject(soundId));
+        FmodChannel channel = Utils.as(FmodChannel.class, app.getRegisteredObject(channelId));
 
         if(sound == null){
             return Kernel.getInstance().createResponse(message,
