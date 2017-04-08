@@ -228,6 +228,10 @@ public class Sprite extends RenderObject implements IFadeable, IMoveable, ISizea
         }
     }
 
+    /**
+     * Returns the renderobjects internal id
+     * @return Identifier that identifies this renderobject
+     */
     @Override
     public int getId() {
         return 0;

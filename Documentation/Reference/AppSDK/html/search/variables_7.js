@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['kernel_5flogging_5fincoming_5fcommands',['KERNEL_LOGGING_INCOMING_COMMANDS',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#aeff3893ad50c2bcef77c3ec8a814d93e',1,'de::silveryard::basesystem::sdk::kernel::Kernel']]],
-  ['kernel_5flogging_5fincoming_5fmessages',['KERNEL_LOGGING_INCOMING_MESSAGES',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a955c88e70bbc475ef5475d79935e8e20',1,'de::silveryard::basesystem::sdk::kernel::Kernel']]],
-  ['kernel_5flogging_5fnone',['KERNEL_LOGGING_NONE',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a489ee07b21ea362992559004adb1f2a5',1,'de::silveryard::basesystem::sdk::kernel::Kernel']]],
-  ['kernel_5flogging_5fqacache',['KERNEL_LOGGING_QACACHE',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#a6547509ea72b9e6eedf99f785e8c4276',1,'de::silveryard::basesystem::sdk::kernel::Kernel']]],
-  ['kernel_5flogging_5fsystemcalls',['KERNEL_LOGGING_SYSTEMCALLS',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_kernel.html#ab234fd8b1aa9c1f906c63aafff27cf64',1,'de::silveryard::basesystem::sdk::kernel::Kernel']]]
+  ['integerwrapper',['integerWrapper',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_render_object.html#a826397f584f22115824b0aa7d2593270',1,'de::silveryard::basesystem::sdk::gui::RenderObject']]],
+  ['invalid_5fid',['INVALID_ID',['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_gui_return_code.html#a14d53fcdae54ff1aa992c6d8e60d7ca5',1,'de.silveryard.basesystem.sdk.kernel.gui.GuiReturnCode.INVALID_ID()'],['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_sound_return_code.html#a6d60020dd13e88e1913bddf8dd703710',1,'de.silveryard.basesystem.sdk.kernel.sound.SoundReturnCode.INVALID_ID()']]],
+  ['invalid_5fmessage',['INVALID_MESSAGE',['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_return_code.html#acfb6e0aecdd13c8e1164f7aceb819ffc',1,'de::silveryard::basesystem::sdk::kernel::ReturnCode']]],
+  ['invalid_5fresponse',['INVALID_RESPONSE',['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_return_code.html#a2f5fd6bbcf51a90ca2bcc0dda118d2ba',1,'de::silveryard::basesystem::sdk::kernel::ReturnCode']]]
 ];

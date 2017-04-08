@@ -1,5 +1,6 @@
 var searchData=
 [
   ['datadirectory',['dataDirectory',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app_s_d_k.html#afcc6f7e94e7f0d921aef3d3c36c85d0e',1,'de::silveryard::basesystem::sdk::kernel::AppSDK']]],
+  ['dispose',['dispose',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_font.html#a30fc9743b440f46ec521781a1a0767b9',1,'de.silveryard.basesystem.sdk.gui.Font.dispose()'],['../interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_disposable.html#a0078bed3f09ac6aaa6bffa0fe8ecc320',1,'de.silveryard.basesystem.sdk.gui.IDisposable.dispose()'],['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_render_object.html#ae715ecfa855ee44243162c3dd43bb7eb',1,'de.silveryard.basesystem.sdk.gui.RenderObject.dispose()'],['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_texture.html#a317a7596e8cec1dbf4cce15840141cae',1,'de.silveryard.basesystem.sdk.gui.Texture.dispose()'],['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_texture_sprite.html#adb6da5b5dd58b0f3135070da45147302',1,'de.silveryard.basesystem.sdk.gui.TextureSprite.dispose()']]],
   ['dsound',['DSOUND',['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_output_type.html#a9cbef664e29d7a05f385684921e993bc',1,'de::silveryard::basesystem::sdk::kernel::sound::FmodOutputType']]]
 ];

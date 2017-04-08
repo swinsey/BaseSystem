@@ -12,8 +12,17 @@ import static de.silveryard.basesystem.sdk.kernel.gui.RenderObject.*;
  * Created by Sebif on 08.04.2017.
  */
 public abstract class RenderObject implements IDisposable {
+    /**
+     * Wrapper for systemcalls return code results
+     */
     protected final Wrapper<ReturnCode> returnCodeWrapper = new Wrapper<>();
+    /**
+     * Wrapper for systemcalls gui return code results
+     */
     protected final Wrapper<GuiReturnCode> guiReturnCodeWrapper = new Wrapper<>();
+    /**
+     * Wrapper for systemcalls integer results
+     */
     protected final Wrapper<Integer> integerWrapper = new Wrapper<>();
 
     /**

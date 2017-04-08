@@ -4,6 +4,22 @@ var annotated_dup =
       [ "silveryard", null, [
         [ "basesystem", null, [
           [ "sdk", null, [
+            [ "gui", null, [
+              [ "Font", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_font.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_font" ],
+              [ "IDisposable", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_disposable.html", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_disposable" ],
+              [ "IFadeable", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_fadeable.html", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_fadeable" ],
+              [ "IMoveable", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_moveable.html", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_moveable" ],
+              [ "ISizeable", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_sizeable.html", "interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_i_sizeable" ],
+              [ "Label", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_label.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_label" ],
+              [ "Position", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_position.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_position" ],
+              [ "RenderObject", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_render_object.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_render_object" ],
+              [ "Screen", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_screen.html", null ],
+              [ "SimpleLine", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_simple_line.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_simple_line" ],
+              [ "SimpleRect", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_simple_rect.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_simple_rect" ],
+              [ "Sprite", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_sprite.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_sprite" ],
+              [ "Texture", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_texture.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_texture" ],
+              [ "TextureSprite", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_texture_sprite.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_texture_sprite" ]
+            ] ],
             [ "kernel", null, [
               [ "gui", null, [
                 [ "Color", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_color.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1gui_1_1_color" ],
@@ -46,7 +62,9 @@ var annotated_dup =
               [ "MD5", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_m_d5.html", null ],
               [ "ReturnCode", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_return_code.html", "enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_return_code" ],
               [ "Wrapper", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_wrapper.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_wrapper" ]
-            ] ]
+            ] ],
+            [ "GuiKernelException", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1_gui_kernel_exception.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1_gui_kernel_exception" ],
+            [ "KernelException", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1_kernel_exception.html", "classde_1_1silveryard_1_1basesystem_1_1sdk_1_1_kernel_exception" ]
           ] ]
         ] ]
       ] ]

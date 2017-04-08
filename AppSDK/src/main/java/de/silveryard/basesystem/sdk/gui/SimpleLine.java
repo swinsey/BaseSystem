@@ -248,6 +248,10 @@ public class SimpleLine extends RenderObject implements IDisposable, IMoveable {
         }
     }
 
+    /**
+     * Returns the renderobjects internal id
+     * @return Identifier that identifies this renderobject
+     */
     @Override
     public int getId() {
         return simpleLineId;

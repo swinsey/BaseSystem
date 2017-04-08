@@ -1,6 +1,7 @@
 var searchData=
 [
   ['action',['Action',['../interfacede_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_action.html',1,'de::silveryard::basesystem::sdk::kernel']]],
+  ['addrenderobject',['addRenderObject',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1gui_1_1_screen.html#a71813b788c73bc813129c12275d669f8',1,'de::silveryard::basesystem::sdk::gui::Screen']]],
   ['alsa',['ALSA',['../enumde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1sound_1_1_fmod_output_type.html#a5c081109bbff693f6292c11e747ec3d3',1,'de::silveryard::basesystem::sdk::kernel::sound::FmodOutputType']]],
   ['app',['App',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app.html',1,'de::silveryard::basesystem::sdk::kernel']]],
   ['appmain',['appMain',['../classde_1_1silveryard_1_1basesystem_1_1sdk_1_1kernel_1_1_app_s_d_k.html#a9050497f626a4ea1ee59a0849fd29b0c',1,'de::silveryard::basesystem::sdk::kernel::AppSDK']]],
