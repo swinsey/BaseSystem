@@ -117,7 +117,7 @@ public abstract class SimpleLine {
     /**
      * Sets the end x position of a given simple line
      * @param simpleLineID ID of the simple line
-     * @param positionX Y Position Value
+     * @param positionX X Position Value
      * @param outReturnCode General Return Code
      * @param outGuiReturnCode Gui Return Code
      */
@@ -244,7 +244,7 @@ public abstract class SimpleLine {
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
     /**
-     * Sets the blue value of a given simple line
+     * Sets the red value of a given simple line
      * @param simpleLineID ID of the simple line
      * @param colorR Red value 0-255
      * @param outReturnCode General Return Code
@@ -264,7 +264,7 @@ public abstract class SimpleLine {
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
     /**
-     * Sets the blue value of a given simple line
+     * Sets the green value of a given simple line
      * @param simpleLineID ID of the simple line
      * @param colorG Green value 0-255
      * @param outReturnCode General Return Code
