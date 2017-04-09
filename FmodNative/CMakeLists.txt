@@ -8,6 +8,7 @@ message(STATUS "Runtime: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 if(WIN32)
 	set(FMOD_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/fmod/win/inc)
 	set(FMOD_LIBRARY ${PROJECT_SOURCE_DIR}/fmod/win/lib/fmodL64_vc.lib)
+	set(ADDITIONAL_LIBRARIES comctl32)
 else()
 	set(FMOD_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/fmod/rasp/inc)
 	set(FMOD_LIBRARY ${PROJECT_SOURCE_DIR}/fmod/rasp/lib/armhf/libfmodL.so.9.3)
@@ -36,9 +37,14 @@ set(SOURCE_FILES
 	src/de_silveryard_basesystem_sound_FmodSystem.cpp 
 	src/de_silveryard_basesystem_sound_FmodSound.cpp
 	src/de_silveryard_basesystem_sound_FmodChannel.cpp
-	src/de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp)
+	src/de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp
+	src/de_silveryard_basesystem_sound_SystemVolume.cpp
+	src/SystemVolumeWindows.cpp
+	src/SystemVolumeFallback.cpp
+	)
 
 add_library(FmodNative SHARED ${SOURCE_FILES})
 target_link_libraries(FmodNative
         ${JNI_LIBRARIES}
-		${FMOD_LIBRARY})
+		${FMOD_LIBRARY}
+		${ADDITIONAL_LIBRARIES})
