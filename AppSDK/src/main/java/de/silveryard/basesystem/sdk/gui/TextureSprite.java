@@ -59,6 +59,16 @@ public class TextureSprite implements IDisposable {
     ){
         this(texture, 0, 0, texture.getWidth(), texture.getHeight());
     }
+    /**
+     * Wraps an existing textureSprite
+     * @param textureSpriteId ID of the existing textureSprite
+     */
+    public TextureSprite(
+            int textureSpriteId
+    ){
+        this.textureSpriteId = textureSpriteId;
+        this.texture = null; //TODO
+    }
 
     /**
      * Returns the id of this texture sprite
