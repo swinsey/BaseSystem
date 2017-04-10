@@ -112,33 +112,26 @@ abstract class Label {
         final Wrapper<Integer> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        Object obj = app.getRegisteredObject(labelId);
+        de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-                de.silveryard.basesystem.gui.Font font = label.getFont();
-                result.value = app.getId(font);
-            }
-        });
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-        Utils.waitForWrapper(result);
-
+        de.silveryard.basesystem.gui.Font font = label.getFont();
+        result.value = app.getId(font);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
     }
     private static QAMessage systemCallLabelSetFont(RunningApp app, QAMessage message){
@@ -148,46 +141,45 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final int fontId = message.getParameters().get(1).getInt();
+
+        final Object objLabel = app.getRegisteredObject(labelId);
+        final Object objFont = app.getRegisteredObject(fontId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, objLabel);
+        final de.silveryard.basesystem.gui.Font font = Utils.as(de.silveryard.basesystem.gui.Font.class, objFont);
+
+        if(objLabel == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+        if(objFont == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+        if(font == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_FONT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object objLabel = app.getRegisteredObject(labelId);
-                Object objFont = app.getRegisteredObject(fontId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, objLabel);
-                de.silveryard.basesystem.gui.Font font = Utils.as(de.silveryard.basesystem.gui.Font.class, objFont);
-
-                if(objLabel == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-                if(objFont == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-                if(font == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_FONT;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setFont(font);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -198,34 +190,27 @@ abstract class Label {
         final Wrapper<String> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = "";
-                    return;
-                }
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = "";
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = "";
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createString(result.value));
+        }
 
-                result.value = label.getText();
-            }
-        });
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = "";
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createString(result.value));
+        }
 
-        Utils.waitForWrapper(result);
+        result.value = label.getText();
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createString(result.value));
-
     }
     private static QAMessage systemCalLabelSetText(RunningApp app, QAMessage message){
         final Wrapper<ReturnCode> returnCode = new Wrapper<>(ReturnCode.OK);
@@ -234,26 +219,26 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final String text = message.getParameters().get(1).getString();
+
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setText(text);
                 result.value = -1;
             }
@@ -270,32 +255,24 @@ abstract class Label {
         final Wrapper<HorizontalAlignment> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = HorizontalAlignment.LEFT;
-                    return;
-                }
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = HorizontalAlignment.LEFT;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = HorizontalAlignment.LEFT;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value.getValue()));
+        }
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = HorizontalAlignment.LEFT;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value.getValue()));
+        }
 
-                result.value = label.getHorizontalAlignment();
-            }
-        });
-
-        Utils.waitForWrapper(result);
-
+        result.value = label.getHorizontalAlignment();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value.getValue()));
     }
     private static QAMessage systemCallLabelSetHorizontalAlignment(RunningApp app, QAMessage message){
@@ -305,32 +282,30 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final HorizontalAlignment alignment = HorizontalAlignment.getEnumValue(message.getParameters().get(1).getInt());
+
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setHorizontalAlignment(alignment);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -341,32 +316,25 @@ abstract class Label {
         final Wrapper<VerticalAlignment> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = VerticalAlignment.TOP;
-                    return;
-                }
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = VerticalAlignment.TOP;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = VerticalAlignment.TOP;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value.getValue()));
+        }
 
-                result.value = label.getVerticalAlignment();
-            }
-        });
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = VerticalAlignment.TOP;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value.getValue()));
+        }
 
-        Utils.waitForWrapper(result);
-
+        result.value = label.getVerticalAlignment();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value.getValue()));
     }
     private static QAMessage systemCallLabelSetVerticalAlignment(RunningApp app, QAMessage message){
@@ -376,26 +344,27 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final VerticalAlignment alignment = VerticalAlignment.getEnumValue(message.getParameters().get(1).getInt());
+
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setVerticalAlignment(alignment);
                 result.value = -1;
             }
@@ -404,7 +373,6 @@ abstract class Label {
         Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
-
     }
 
     private static QAMessage systemCallLabelGetColor(RunningApp app, QAMessage message){
@@ -417,35 +385,29 @@ abstract class Label {
         final Wrapper<Byte> colorA = new Wrapper<>((byte)0);
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(colorR.value), Parameter.createInt(colorG.value), Parameter.createInt(colorB.value));
+        }
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(colorR.value), Parameter.createInt(colorG.value), Parameter.createInt(colorB.value));
+        }
 
-                colorR.value = label.getColorR();
-                colorG.value = label.getColorG();
-                colorB.value = label.getColorB();
-                colorA.value = label.getAlpha();
-                result.value = -1;
-            }
-        });
-
-        Utils.waitForWrapper(result);
+        colorR.value = label.getColorR();
+        colorG.value = label.getColorG();
+        colorB.value = label.getColorB();
+        colorA.value = label.getAlpha();
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(colorR.value), Parameter.createInt(colorG.value), Parameter.createInt(colorB.value));
@@ -456,32 +418,25 @@ abstract class Label {
         final Wrapper<Byte> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-                result.value = label.getColorR();
-            }
-        });
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-        Utils.waitForWrapper(result);
-
+        result.value = label.getColorR();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
     }
     private static QAMessage systemCallLabelGetColorG(RunningApp app, QAMessage message){
@@ -490,32 +445,25 @@ abstract class Label {
         final Wrapper<Byte> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        Object obj = app.getRegisteredObject(labelId);
+        de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-                result.value = label.getColorG();
-            }
-        });
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-        Utils.waitForWrapper(result);
-
+        result.value = label.getColorG();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
     }
     private static QAMessage systemCallLabelGetColorB(RunningApp app, QAMessage message){
@@ -524,32 +472,25 @@ abstract class Label {
         final Wrapper<Byte> result = new Wrapper<>();
 
         final int labelId = message.getParameters().get(0).getInt();
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        Object obj = app.getRegisteredObject(labelId);
+        de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-                result.value = label.getColorB();
-            }
-        });
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-        Utils.waitForWrapper(result);
-
+        result.value = label.getColorB();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
     }
 
@@ -563,33 +504,32 @@ abstract class Label {
         final byte colorG = message.getParameters().get(2).getInt().byteValue();
         final byte colorB = message.getParameters().get(3).getInt().byteValue();
         final byte colorA = message.getParameters().get(4).getInt().byteValue();
+
+        Object obj = app.getRegisteredObject(labelId);
+        de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setColor(colorR, colorG, colorB);
                 label.setAlpha(colorA);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -600,32 +540,33 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final byte colorR = message.getParameters().get(1).getInt().byteValue();
+
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
 
                 label.setColorR(colorR);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -636,32 +577,31 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final byte colorG = message.getParameters().get(1).getInt().byteValue();
+
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setColorG(colorG);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -672,32 +612,31 @@ abstract class Label {
 
         final int labelId = message.getParameters().get(0).getInt();
         final byte colorB = message.getParameters().get(1).getInt().byteValue();
+
+        final Object obj = app.getRegisteredObject(labelId);
+        final de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(label == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(labelId);
-                de.silveryard.basesystem.gui.Label label = Utils.as(de.silveryard.basesystem.gui.Label.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(label == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_LABEL;
-                    result.value = -1;
-                    return;
-                }
-
                 label.setColorB(colorB);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }

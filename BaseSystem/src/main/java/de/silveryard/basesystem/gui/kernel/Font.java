@@ -63,32 +63,23 @@ abstract class Font {
 
         final int fontId = message.getParameters().get(0).getInt();
 
-        GraphicsManager graphicsManager = GraphicsManager.getInstance();
-        graphicsManager.runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(fontId);
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        Object obj = app.getRegisteredObject(fontId);
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-                de.silveryard.basesystem.gui.Font font = Utils.as(de.silveryard.basesystem.gui.Font.class, obj);
-                if(font == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_FONT;
-                    result.value = -1;
-                    return;
-                }
+        de.silveryard.basesystem.gui.Font font = Utils.as(de.silveryard.basesystem.gui.Font.class, obj);
+        if(font == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_FONT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
+        }
 
-                result.value = font.getSize();
-            }
-        });
-
-        Utils.waitForWrapper(result);
-
+        result.value = font.getSize();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(), Parameter.createInt(result.value));
     }
 }

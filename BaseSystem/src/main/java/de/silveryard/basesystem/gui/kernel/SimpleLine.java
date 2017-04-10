@@ -66,31 +66,27 @@ abstract class SimpleLine {
 
         final int lineID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = line.getX2();
-            }
-        });
+        result.value = line.getX2();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -101,31 +97,26 @@ abstract class SimpleLine {
 
         final int lineID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = line.getY2();
-            }
-        });
-
-        Utils.waitForWrapper(result);
+        result.value = line.getY2();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -139,32 +130,31 @@ abstract class SimpleLine {
         final int endpointX = message.getParameters().get(1).getInt();
         final int endpointY = message.getParameters().get(2).getInt();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
                 line.setPoint2(endpointX, endpointY);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleLineSetEndpointX(RunningApp app, QAMessage message){
@@ -175,32 +165,31 @@ abstract class SimpleLine {
         final int lineID = message.getParameters().get(0).getInt();
         final int endpointX = message.getParameters().get(1).getInt();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
                 line.setX2(endpointX);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleLineSetEndpointY(RunningApp app, QAMessage message){
@@ -211,32 +200,32 @@ abstract class SimpleLine {
         final int lineID = message.getParameters().get(0).getInt();
         final int endpointY = message.getParameters().get(1).getInt();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
                 line.setY2(endpointY);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
 
@@ -247,31 +236,27 @@ abstract class SimpleLine {
 
         final int lineID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = (int)line.getColorR();
-            }
-        });
+        result.value = (int)line.getColorR();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -282,31 +267,27 @@ abstract class SimpleLine {
 
         final int lineID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = (int)line.getColorG();
-            }
-        });
+        result.value = (int)line.getColorG();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -317,31 +298,27 @@ abstract class SimpleLine {
 
         final int lineID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = (int)line.getColorB();
-            }
-        });
+        result.value = (int)line.getColorB();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -356,32 +333,31 @@ abstract class SimpleLine {
         final byte colorG = message.getParameters().get(2).getInt().byteValue();
         final byte colorB = message.getParameters().get(3).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
-                line.setColor(colorR, colorG, colorB);
+                                line.setColor(colorR, colorG, colorB);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleLineSetColorR(RunningApp app, QAMessage message){
@@ -392,32 +368,31 @@ abstract class SimpleLine {
         final int lineID = message.getParameters().get(0).getInt();
         final byte colorR = message.getParameters().get(1).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
                 line.setColorR(colorR);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleLineSetColorG(RunningApp app, QAMessage message){
@@ -428,32 +403,31 @@ abstract class SimpleLine {
         final int lineID = message.getParameters().get(0).getInt();
         final byte colorG = message.getParameters().get(1).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
                 line.setColorG(colorG);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleLineSetColorB(RunningApp app, QAMessage message){
@@ -464,32 +438,31 @@ abstract class SimpleLine {
         final int lineID = message.getParameters().get(0).getInt();
         final byte colorB = message.getParameters().get(1).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(lineID);
+        de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(line == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(lineID);
-                de.silveryard.basesystem.gui.SimpleLine line = Utils.as(de.silveryard.basesystem.gui.SimpleLine.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(line == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLELINE;
-                    result.value = -1;
-                    return;
-                }
-
                 line.setColorB(colorB);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
 }

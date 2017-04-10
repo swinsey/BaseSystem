@@ -62,33 +62,32 @@ abstract class Screen {
 
         final Wrapper<Boolean> operationDone = new Wrapper<>();
         final int renderObjectId = message.getParameters().get(0).getInt();
+
+        final Object obj = app.getRegisteredObject(renderObjectId);
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        final RenderObject renderObject = Utils.as(RenderObject.class, obj);
+        if(renderObject == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager graphicsManager = GraphicsManager.getInstance();
         graphicsManager.runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    operationDone.value = true;
-                    return;
-                }
-
-                RenderObject renderObject = Utils.as(RenderObject.class, obj);
-                if(renderObject == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
-                    operationDone.value = true;
-                    return;
-                }
-
                 Frame frame = app.getFrame();
                 frame.addObjectToRenderList(renderObject);
                 operationDone.value = true;
             }
         });
-
-        Utils.waitForWrapper(operationDone);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -101,33 +100,32 @@ abstract class Screen {
 
         final Wrapper<Boolean> operationDone = new Wrapper<>();
         final int renderObjectId = message.getParameters().get(0).getInt();
+
+        final Object obj = app.getRegisteredObject(renderObjectId);
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        final RenderObject renderObject = Utils.as(RenderObject.class, obj);
+        if(renderObject == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager graphicsManager = GraphicsManager.getInstance();
         graphicsManager.runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    operationDone.value = true;
-                    return;
-                }
-
-                RenderObject renderObject = Utils.as(RenderObject.class, obj);
-                if(renderObject == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
-                    operationDone.value = true;
-                    return;
-                }
-
                 Frame frame = app.getFrame();
                 frame.removeObjectFromRenderList(renderObject);
                 operationDone.value = true;
             }
         });
-
-        Utils.waitForWrapper(operationDone);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }

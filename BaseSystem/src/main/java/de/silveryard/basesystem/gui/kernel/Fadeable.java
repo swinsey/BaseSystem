@@ -27,31 +27,26 @@ abstract class Fadeable {
 
         final int fadeableId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(fadeableId);
-                IFadeable fadeable = Utils.as(IFadeable.class, obj);
+        Object obj = app.getRegisteredObject(fadeableId);
+        IFadeable fadeable = Utils.as(IFadeable.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(fadeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_FADEABLE;
-                    result.value = -1;
-                    return;
-                }
+        if(fadeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_FADEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = fadeable.getAlpha();
-            }
-        });
-
-        Utils.waitForWrapper(result);
+        result.value = fadeable.getAlpha();
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
@@ -59,37 +54,31 @@ abstract class Fadeable {
     private static QAMessage systemCallFadeableSet(RunningApp app, QAMessage message){
         final Wrapper<ReturnCode> returnCode = new Wrapper<>(ReturnCode.OK);
         final Wrapper<GuiReturnCode> guiReturnCode = new Wrapper<>(GuiReturnCode.OK);
-        final Wrapper<Byte> result = new Wrapper<>();
 
         final int fadeableId = message.getParameters().get(0).getInt();
         final byte alpha = message.getParameters().get(1).getInt().byteValue();
 
+        final Object obj = app.getRegisteredObject(fadeableId);
+        final IFadeable fadeable = Utils.as(IFadeable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(fadeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_FADEABLE;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(fadeableId);
-                IFadeable fadeable = Utils.as(IFadeable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(fadeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_FADEABLE;
-                    result.value = -1;
-                    return;
-                }
-
                 fadeable.setAlpha(alpha);
-                result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }

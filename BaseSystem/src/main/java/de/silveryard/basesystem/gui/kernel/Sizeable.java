@@ -30,32 +30,26 @@ abstract class Sizeable {
         final Wrapper<Integer> result = new Wrapper<>();
         final int renderObjectId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                ISizeable sizeable = Utils.as(ISizeable.class, obj);
+        Object obj = app.getRegisteredObject(renderObjectId);
+        ISizeable sizeable = Utils.as(ISizeable.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(sizeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
-                    result.value = -1;
-                    return;
-                }
+        if(sizeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = sizeable.getWidth();
-            }
-        });
-
-        Utils.waitForWrapper(result);
-
+        result.value = sizeable.getWidth();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -65,32 +59,26 @@ abstract class Sizeable {
         final Wrapper<Integer> result = new Wrapper<>();
         final int renderObjectId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                ISizeable sizeable = Utils.as(ISizeable.class, obj);
+        Object obj = app.getRegisteredObject(renderObjectId);
+        ISizeable sizeable = Utils.as(ISizeable.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(sizeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
-                    result.value = -1;
-                    return;
-                }
+        if(sizeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = sizeable.getHeight();
-            }
-        });
-
-        Utils.waitForWrapper(result);
-
+        result.value = sizeable.getHeight();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -103,32 +91,30 @@ abstract class Sizeable {
         final int width = message.getParameters().get(1).getInt();
         final int height = message.getParameters().get(2).getInt();
 
+        Object obj = app.getRegisteredObject(renderObjectId);
+        ISizeable sizeable = Utils.as(ISizeable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(sizeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                ISizeable sizeable = Utils.as(ISizeable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(sizeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
-                    result.value = -1;
-                    return;
-                }
-
                 sizeable.setSize(width, height);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -139,32 +125,30 @@ abstract class Sizeable {
         final int renderObjectId = message.getParameters().get(0).getInt();
         final int width = message.getParameters().get(1).getInt();
 
+        Object obj = app.getRegisteredObject(renderObjectId);
+        ISizeable sizeable = Utils.as(ISizeable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(sizeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                ISizeable sizeable = Utils.as(ISizeable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(sizeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
-                    result.value = -1;
-                    return;
-                }
-
                 sizeable.setWidth(width);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -175,32 +159,29 @@ abstract class Sizeable {
         final int renderObjectId = message.getParameters().get(0).getInt();
         final int height = message.getParameters().get(1).getInt();
 
+        Object obj = app.getRegisteredObject(renderObjectId);
+        ISizeable sizeable = Utils.as(ISizeable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+        if(sizeable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                ISizeable sizeable = Utils.as(ISizeable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(sizeable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIZEABLE;
-                    result.value = -1;
-                    return;
-                }
-
                 sizeable.setHeight(height);
                 result.value = -1;
             }
         });
-
-        Utils.waitForWrapper(result);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }

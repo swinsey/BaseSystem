@@ -32,33 +32,28 @@ abstract class Moveable {
         final Wrapper<Boolean> operationDone = new Wrapper<>();
         final int renderObjectID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectID);
-                IMoveable moveable = Utils.as(IMoveable.class, obj);
+        Object obj = app.getRegisteredObject(renderObjectID);
+        IMoveable moveable = Utils.as(IMoveable.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    operationDone.value = true;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(positionX.value), Parameter.createInt(positionY.value));
+        }
 
-                if(moveable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
-                    operationDone.value = true;
-                    return;
-                }
+        if(moveable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(positionX.value), Parameter.createInt(positionY.value));
+        }
 
-                positionX.value = moveable.getPositionX();
-                positionY.value = moveable.getPositionY();
-                operationDone.value = true;
-            }
-        });
-
-        Utils.waitForWrapper(operationDone);
+        positionX.value = moveable.getPositionX();
+        positionY.value = moveable.getPositionY();
+        operationDone.value = true;
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(positionX.value), Parameter.createInt(positionY.value));
@@ -69,32 +64,26 @@ abstract class Moveable {
         final Wrapper<Integer> result = new Wrapper<>();
         final int renderObjectID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectID);
-                IMoveable moveable = Utils.as(IMoveable.class, obj);
+        Object obj = app.getRegisteredObject(renderObjectID);
+        IMoveable moveable = Utils.as(IMoveable.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(moveable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
-                    result.value = -1;
-                    return;
-                }
+        if(moveable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = moveable.getPositionX();
-            }
-        });
-
-        Utils.waitForWrapper(result);
-
+        result.value = moveable.getPositionX();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -104,32 +93,26 @@ abstract class Moveable {
         final Wrapper<Integer> result = new Wrapper<>();
         final int renderObjectID = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectID);
-                IMoveable moveable = Utils.as(IMoveable.class, obj);
+        Object obj = app.getRegisteredObject(renderObjectID);
+        IMoveable moveable = Utils.as(IMoveable.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(moveable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
-                    result.value = -1;
-                    return;
-                }
+        if(moveable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = moveable.getPositionY();
-            }
-        });
-
-        Utils.waitForWrapper(result);
-
+        result.value = moveable.getPositionY();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -142,32 +125,30 @@ abstract class Moveable {
         final int positionX = message.getParameters().get(1).getInt();
         final int positionY = message.getParameters().get(2).getInt();
 
+        final Object obj = app.getRegisteredObject(renderObjectID);
+        final IMoveable moveable = Utils.as(IMoveable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+        if(moveable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectID);
-                IMoveable moveable = Utils.as(IMoveable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    operationDone.value = true;
-                    return;
-                }
-
-                if(moveable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
-                    operationDone.value = true;
-                    return;
-                }
-
                 moveable.setPosition(positionX, positionY);
                 operationDone.value = true;
             }
         });
-
-        Utils.waitForWrapper(operationDone);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -178,32 +159,30 @@ abstract class Moveable {
         final int renderObjectID = message.getParameters().get(0).getInt();
         final int positionX = message.getParameters().get(1).getInt();
 
+        Object obj = app.getRegisteredObject(renderObjectID);
+        IMoveable moveable = Utils.as(IMoveable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(moveable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectID);
-                IMoveable moveable = Utils.as(IMoveable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    operationDone.value = true;
-                    return;
-                }
-
-                if(moveable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
-                    operationDone.value = true;
-                    return;
-                }
-
                 moveable.setPositionX(positionX);
                 operationDone.value = true;
             }
         });
-
-        Utils.waitForWrapper(operationDone);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
@@ -214,32 +193,30 @@ abstract class Moveable {
         final int renderObjectID = message.getParameters().get(0).getInt();
         final int positionY = message.getParameters().get(1).getInt();
 
+        Object obj = app.getRegisteredObject(renderObjectID);
+        IMoveable moveable = Utils.as(IMoveable.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(moveable == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
+            operationDone.value = true;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectID);
-                IMoveable moveable = Utils.as(IMoveable.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    operationDone.value = true;
-                    return;
-                }
-
-                if(moveable == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_MOVEABLE;
-                    operationDone.value = true;
-                    return;
-                }
-
                 moveable.setPositionY(positionY);
                 operationDone.value = true;
             }
         });
-
-        Utils.waitForWrapper(operationDone);
 
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }

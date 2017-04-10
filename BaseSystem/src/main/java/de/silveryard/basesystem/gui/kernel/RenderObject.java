@@ -27,32 +27,31 @@ abstract class RenderObject {
         final int renderObjectId = message.getParameters().get(0).getInt();
         final int layer = message.getParameters().get(1).getInt();
 
+        final Object obj = app.getRegisteredObject(renderObjectId);
+        final de.silveryard.basesystem.gui.RenderObject renderObj = Utils.as(de.silveryard.basesystem.gui.RenderObject.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
+        }
+
+        if(renderObj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                de.silveryard.basesystem.gui.RenderObject renderObj = Utils.as(de.silveryard.basesystem.gui.RenderObject.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(renderObj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
-                    result.value = -1;
-                    return;
-                }
-
                 renderObj.setLayer(layer);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallRenderObjectGetLayer(RunningApp app, QAMessage message){
@@ -62,31 +61,24 @@ abstract class RenderObject {
 
         final int renderObjectId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                de.silveryard.basesystem.gui.RenderObject renderObj = Utils.as(de.silveryard.basesystem.gui.RenderObject.class, obj);
+        Object obj = app.getRegisteredObject(renderObjectId);
+        de.silveryard.basesystem.gui.RenderObject renderObj = Utils.as(de.silveryard.basesystem.gui.RenderObject.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
+        }
 
-                if(renderObj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
-                    result.value = -1;
-                    return;
-                }
+        if(renderObj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
+        }
 
-                result.value = renderObj.getLayer();
-            }
-        });
-
-        Utils.waitForWrapper(result);
+        result.value = renderObj.getLayer();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallRenderObjectSetDirty(RunningApp app, QAMessage message){
@@ -96,32 +88,32 @@ abstract class RenderObject {
 
         final int renderObjectId = message.getParameters().get(0).getInt();
 
+        Object obj = app.getRegisteredObject(renderObjectId);
+        de.silveryard.basesystem.gui.RenderObject renderObj = Utils.as(de.silveryard.basesystem.gui.RenderObject.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
+        }
+
+        if(renderObj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
+        }
+
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(renderObjectId);
-                de.silveryard.basesystem.gui.RenderObject renderObj = Utils.as(de.silveryard.basesystem.gui.RenderObject.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(renderObj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_RENDEROBJECT;
-                    result.value = -1;
-                    return;
-                }
-
                 renderObj.setDirty();
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(),guiReturnCode.value.getValue());
     }
 }

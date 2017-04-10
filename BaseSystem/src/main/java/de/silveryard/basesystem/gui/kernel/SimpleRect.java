@@ -66,31 +66,27 @@ abstract class SimpleRect {
 
         final int rectId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = false;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = false;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createBoolean(result.value));
+        }
 
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = false;
-                    return;
-                }
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = false;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createBoolean(result.value));
+        }
 
-                result.value = rect.getFilled();
-            }
-        });
+        result.value = rect.getFilled();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createBoolean(result.value));
     }
@@ -102,32 +98,31 @@ abstract class SimpleRect {
         final int rectId = message.getParameters().get(0).getInt();
         final boolean filled = message.getParameters().get(1).getBoolean();
 
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
-
                 rect.setFilled(filled);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
 
@@ -137,32 +132,26 @@ abstract class SimpleRect {
         final Wrapper<Byte> result = new Wrapper<>();
 
         final int rectId = message.getParameters().get(0).getInt();
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
-
-                result.value = rect.getColorR();
-            }
-        });
-
-        Utils.waitForWrapper(result);
+        result.value = rect.getColorR();
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -173,31 +162,27 @@ abstract class SimpleRect {
 
         final int rectId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = rect.getColorG();
-            }
-        });
+        result.value = rect.getColorG();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -208,31 +193,27 @@ abstract class SimpleRect {
 
         final int rectId = message.getParameters().get(0).getInt();
 
-        GraphicsManager.getInstance().runNextFrame(new Action() {
-            @Override
-            public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
 
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
+                    Parameter.createInt(result.value));
+        }
 
-                result.value = rect.getColorB();
-            }
-        });
+        result.value = rect.getColorB();
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue(),
                 Parameter.createInt(result.value));
     }
@@ -247,32 +228,31 @@ abstract class SimpleRect {
         final byte colorG = message.getParameters().get(2).getInt().byteValue();
         final byte colorB = message.getParameters().get(3).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
-
                 rect.setColor(colorR, colorG, colorB);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleRectSetColorR(RunningApp app, QAMessage message){
@@ -283,32 +263,31 @@ abstract class SimpleRect {
         final int rectId = message.getParameters().get(0).getInt();
         final byte colorR = message.getParameters().get(1).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
-
                 rect.setColorR(colorR);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleRectSetColorG(RunningApp app, QAMessage message){
@@ -319,32 +298,31 @@ abstract class SimpleRect {
         final int rectId = message.getParameters().get(0).getInt();
         final byte colorG = message.getParameters().get(1).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
-
                 rect.setColorG(colorG);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
     private static QAMessage systemCallSimpleRectSetColorB(RunningApp app, QAMessage message){
@@ -355,32 +333,31 @@ abstract class SimpleRect {
         final int rectId = message.getParameters().get(0).getInt();
         final byte colorB = message.getParameters().get(1).getInt().byteValue();
 
+        Object obj = app.getRegisteredObject(rectId);
+        de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
+
+        if(obj == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.INVALID_ID;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
+        if(rect == null){
+            returnCode.value = ReturnCode.ERROR;
+            guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
+            result.value = -1;
+            return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
+        }
+
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
-                Object obj = app.getRegisteredObject(rectId);
-                de.silveryard.basesystem.gui.SimpleRect rect = Utils.as(de.silveryard.basesystem.gui.SimpleRect.class, obj);
-
-                if(obj == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.INVALID_ID;
-                    result.value = -1;
-                    return;
-                }
-
-                if(rect == null){
-                    returnCode.value = ReturnCode.ERROR;
-                    guiReturnCode.value = GuiReturnCode.NOT_A_SIMPLERECT;
-                    result.value = -1;
-                    return;
-                }
-
                 rect.setColorB(colorB);
                 result.value = -1;
             }
         });
 
-        Utils.waitForWrapper(result);
         return Kernel.getInstance().createResponse(message, returnCode.value.getValue(), guiReturnCode.value.getValue());
     }
 }
