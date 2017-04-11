@@ -12,9 +12,6 @@ import java.util.stream.Stream;
  * Created by CHofm on 08.01.2017.
  */
 public class Transport {
-
-    private static final byte[] MESSAGE_START_SEQUENCE = new byte[]{1,2,3,5,8,13,21,34};
-    private static final byte[] MESSAGE_END_SEQUENCE = new byte[]{1,3,5,7,11,13,17,19};
     private final static char[] hexArray = "0123456789abcdef".toCharArray();
     private static char[] hexChars = new char[32];
 
@@ -84,7 +81,7 @@ public class Transport {
      */
     public synchronized boolean send(Message m){
         try {
-            outStream.write(messageToBytes(m));
+            outStream.write(m.toBytes());
             return true;
         } catch (IOException e) {
             return false;
@@ -132,58 +129,6 @@ public class Transport {
         return new String(hexChars);
     }
 
-    /**
-     *  Dissembles a message into a byte array
-     */
-    private byte[] messageToBytes(Message m){
-        return concatArrays(
-                MESSAGE_START_SEQUENCE,
-                DatatypeConverter.parseHexBinary(m.getSenderID().toLowerCase()),
-                DatatypeConverter.parseHexBinary(m.getDestinationID().toLowerCase()),
-                DatatypeConverter.parseHexBinary(m.getCommandHash().toLowerCase()),
-                new byte[]{(byte)m.getParams().size()},
-                extractParams(m.getParams()),
-                MESSAGE_END_SEQUENCE
-        );
-    }
-
-    /**
-     * Produces a new byte array from a list of given byte arrays.
-     * @param arrays a list of arrays to be merged into one single array
-     * @return a single byte array containing all arrays in the right order and internal order.
-     */
-    private byte[] concatArrays(byte[]... arrays){
-        int totalLength = Stream.of(arrays).mapToInt(a -> a.length).sum();
-        int offset = 0;
-
-        byte[] res = new byte[totalLength];
-
-        for(byte[] b : arrays){
-            for(byte by : b){
-                res[offset++] = by;
-            }
-        }
-        return res;
-    }
-
-    /**
-     * Creates a byte array from a list of parameters
-     * @param params the list of parameters to be dissembled into a single byte array
-     * @return the byte array containing the parameters dissembled to bytes
-     */
-    private byte[] extractParams(List<Parameter> params){
-        byte[] byteParams = new byte[params.stream().mapToInt(p -> p.getSize() + 1).sum()];
-        int offset = 0;
-
-        for(Parameter p : params){
-            byteParams[offset++] = (byte)p.getSize();
-            for(byte b : p.getData()){
-                byteParams[offset++] = b;
-            }
-        }
-        return byteParams;
-    }
-
     private boolean findNextMessage(){
         nextStartIndex = -1;
         nextMsgLength = -1;
@@ -191,7 +136,7 @@ public class Transport {
         int startSeqPointer = 0;
 
         for(int i = 0; i < buffer.size(); i++) {
-            startSeqPointer = (buffer.get(i) == MESSAGE_START_SEQUENCE[startSeqPointer])
+            startSeqPointer = (buffer.get(i) == Message.MESSAGE_START_SEQUENCE[startSeqPointer])
                     ? startSeqPointer + 1
                     : 0;
 
@@ -217,7 +162,7 @@ public class Transport {
                 }
 
                 for(int k = index; k < index + 8; k++) {
-                    if(!(buffer.get(k) == MESSAGE_END_SEQUENCE[k - index])){
+                    if(!(buffer.get(k) == Message.MESSAGE_END_SEQUENCE[k - index])){
                         throw new InvalidMessageException("No end sequence found");
                     }
                 }

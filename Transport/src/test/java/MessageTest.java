@@ -2,6 +2,7 @@ import de.silveryard.transport.Message;
 import de.silveryard.transport.Parameter;
 import org.junit.*;
 
+import javax.xml.bind.DatatypeConverter;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,25 +25,21 @@ public class MessageTest {
        uid3 = UUID.randomUUID().toString().replaceAll("-", "");
 
         List<Parameter> params = new LinkedList<>();
+        params.add(Parameter.createInt(2));
+        params.add(Parameter.createInt(-140));
+        /*params.add(Parameter.createBoolean(false));
+        params.add(Parameter.createBoolean(true));
+        params.add(Parameter.createFloat(0f));
+        params.add(Parameter.createFloat(-1.9379f));
+        params.add(Parameter.createString("Hello World"));
+        params.add(Parameter.createString(""));
+        params.add(Parameter.createByteArray(Message.MESSAGE_START_SEQUENCE));
+        */m = new Message(uid1, uid2, uid3, params);
+    }
 
-        Random r = new Random();
-
-        IntStream
-                .range(0, 150)
-                .forEach(i -> {
-                    switch(r.nextInt(3)){
-                        case 0:
-                            params.add(Parameter.createBoolean(System.currentTimeMillis() % 2 == 0 ? true : false));
-                            break;
-                        case 1:
-                            params.add(Parameter.createInt(r.nextInt()));
-                            break;
-                        case 2:
-                            params.add(Parameter.createString(UUID.randomUUID().toString() + UUID.randomUUID().toString()));
-                            break;
-                    }
-                });
-        m = new Message(uid1, uid2, uid3, params);
+    @Test
+    public void toBytes(){
+        m.toBytes();
     }
 
     @Test(expected = IllegalArgumentException.class)

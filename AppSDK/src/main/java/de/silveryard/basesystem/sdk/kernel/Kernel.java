@@ -1,5 +1,6 @@
 package de.silveryard.basesystem.sdk.kernel;
 
+import de.silveryard.basesystem.sdk.kernel.gui.GuiReturnCode;
 import de.silveryard.transport.*;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
@@ -130,7 +131,7 @@ public abstract class Kernel {
 
         while(qaMessageCache.get(qaMessage.getUUID()) == null){
             try {
-                Thread.sleep(10);
+                Thread.sleep(0);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 throw new RuntimeException(e);
@@ -154,6 +155,15 @@ public abstract class Kernel {
         }
 
         commandHandlers.get(hash).add(handler);
+    }
+
+    /**
+     * Dummy systemcall. Takes no params and returns nothing
+     * @param outReturnCode General Return Code
+     */
+    public static void systemCallDummy(Wrapper<ReturnCode> outReturnCode){
+        QAMessage response = systemCall("de.silveryard.basesystem.systemcall.dummy", new ArrayList<>());
+        outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
     }
 
     private static void handleMessage(Message message){
