@@ -1,5 +1,7 @@
 package de.silveryard.basesystem.app;
 
+import de.silveryard.basesystem.logging.LogManager;
+import de.silveryard.basesystem.logging.LogMessageType;
 import de.silveryard.basesystem.util.Networking;
 import de.silveryard.transport.Message;
 
@@ -74,13 +76,13 @@ class AppLoader {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    String line;
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(p.getInputStream()));
-                    while ((line = in.readLine()) != null) {
-                        System.out.println(line);
-                    }
+                        try {
+                            String line;
+                            BufferedReader in = new BufferedReader(
+                                    new InputStreamReader(p.getInputStream()));
+                            while ((line = in.readLine()) != null) {
+                                LogManager.getInstance().log("App", line, LogMessageType.OUT);
+                            }
                     in.close();
                 }catch(Exception e){
                     throw new RuntimeException(e);
@@ -97,7 +99,7 @@ class AppLoader {
                     BufferedReader in = new BufferedReader(
                             new InputStreamReader(p.getErrorStream()));
                     while ((line = in.readLine()) != null) {
-                        System.out.println(line);
+                        LogManager.getInstance().log("App", line, LogMessageType.ERROR);
                     }
                     in.close();
                 }catch(Exception e){

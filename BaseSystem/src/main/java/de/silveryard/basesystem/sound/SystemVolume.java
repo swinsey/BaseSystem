@@ -1,7 +1,5 @@
 package de.silveryard.basesystem.sound;
 
-import de.silveryard.basesystem.util.IDisposable;
-
 /**
  * Created by Sebif on 09.04.2017.
  */
