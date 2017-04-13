@@ -208,6 +208,41 @@ if not exist "%TRANSPORT_SRC_PATH%" (
 )
 copy "%TRANSPORT_SRC_PATH%" "%TRANSPORT_DST_PATH%" 
 
+REM Building Documentation
+ECHO Building Documentation
+
+SET DOCUMENTATION_DIR_PATH=%BUILD_PATH%\Documentation
+
+if not exist "%DOCUMENTATION_DIR_PATH%" mkdir "%DOCUMENTATION_DIR_PATH%"
+
+REM Building Reference
+ECHO Building Reference
+
+SET DOC_REFERENCE_PATH=%DOCUMENTATION_DIR_PATH%\Reference
+SET DOC_DOXYGEN_PATH=%REPO_PATH%3rdParty\doxygen\bin\doxygen.exe
+SET DOC_APF_SRC_PATH=%REPO_PATH%APF
+SET DOC_APPSDK_SRC_PATH=%REPO_PATH%AppSDK
+SET DOC_BASESYSTEM_SRC_PATH=%REPO_PATH%BaseSystem
+SET DOC_TRANSPORT_SRC_PATH=%REPO_PATH%Transport
+
+if not exist "%DOC_REFERENCE_PATH%" mkdir "%DOC_REFERENCE_PATH%"
+if not exist "%DOC_REFERENCE_PATH%\APF" mkdir "%DOC_REFERENCE_PATH%\APF"
+if not exist "%DOC_REFERENCE_PATH%\AppSDK" mkdir "%DOC_REFERENCE_PATH%\AppSDK"
+if not exist "%DOC_REFERENCE_PATH%\BaseSystem" mkdir "%DOC_REFERENCE_PATH%\BaseSystem"
+if not exist "%DOC_REFERENCE_PATH%\Transport" mkdir "%DOC_REFERENCE_PATH%\Transport"
+
+cd "%DOC_APF_SRC_PATH%"
+call "%DOC_DOXYGEN_PATH%"
+
+cd "%DOC_APPSDK_SRC_PATH%"
+call "%DOC_DOXYGEN_PATH%"
+
+cd "%DOC_BASESYSTEM_SRC_PATH%"
+call "%DOC_DOXYGEN_PATH%"
+
+cd "%DOC_TRANSPORT_SRC_PATH%"
+call "%DOC_DOXYGEN_PATH%"
+
 echo ok
 cd "%REPO_PATH%"
 ENDLOCAL

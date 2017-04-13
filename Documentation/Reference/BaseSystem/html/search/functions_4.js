@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['enableinterface',['enableInterface',['../classde_1_1silveryard_1_1basesystem_1_1app_1_1networkinterface_1_1_app_manager.html#a24ef4cb3b33d3fccd10e0dcd3f19b069',1,'de.silveryard.basesystem.app.networkinterface.AppManager.enableInterface()'],['../classde_1_1silveryard_1_1basesystem_1_1logging_1_1_network_interface_1_1_log_manager.html#a65b9f4f81aa1e9931fb9ebb6ba97dd79',1,'de.silveryard.basesystem.logging.NetworkInterface.LogManager.enableInterface()']]],
-  ['enablekernel',['enableKernel',['../classde_1_1silveryard_1_1basesystem_1_1gui_1_1kernel_1_1_graphics_kernel.html#a8540154159e5005a0cc719425876a0ea',1,'de.silveryard.basesystem.gui.kernel.GraphicsKernel.enableKernel()'],['../classde_1_1silveryard_1_1basesystem_1_1sound_1_1kernel_1_1_sound_kernel.html#af97fa930404c3238ffcb7b9a245fde94',1,'de.silveryard.basesystem.sound.kernel.SoundKernel.enableKernel()']]],
-  ['endinitialize',['endInitialize',['../classde_1_1silveryard_1_1basesystem_1_1app_1_1kernel_1_1_kernel.html#a9c4029cfea31546a7453f3e6975e4304',1,'de.silveryard.basesystem.app.kernel.Kernel.endInitialize()'],['../classde_1_1silveryard_1_1basesystem_1_1networkinterface_1_1_network_interface.html#a469281b4de30bab39213ad7dc92ad4ce',1,'de.silveryard.basesystem.networkinterface.NetworkInterface.endInitialize()']]],
-  ['endinitializekernel',['endInitializeKernel',['../classde_1_1silveryard_1_1basesystem_1_1app_1_1kernel_1_1_kernel.html#a50d123881ea3e8f12866ff130170b7e6',1,'de::silveryard::basesystem::app::kernel::Kernel']]]
-];
