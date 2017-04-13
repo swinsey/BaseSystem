@@ -9,9 +9,17 @@ import java.util.List;
  */
 public class LogManager {
     private static LogManager instance;
+    /**
+     * Initializes this log manager
+     * @param logToConsole When true, everything will be logged to the console
+     */
     public static void initialize(boolean logToConsole){
         instance = new LogManager(logToConsole);
     }
+    /**
+     * Singleton getter
+     * @return LogManager instance
+     */
     public static LogManager getInstance(){
         return instance;
     }
@@ -78,15 +86,29 @@ public class LogManager {
         }
     }
 
+    /**
+     * Logs a message. Should only be called by AppLoader
+     * @param logger Identity that logged this message. System on system logs and the apps name on app logs
+     * @param message Message that got logged
+     * @param type Stream that was used to log the message
+     */
     public synchronized void log(String logger, String message, LogMessageType type){
         for(int i = 0; i < listeners.size(); i++){
             listeners.get(i).logMessage(logger, message, type);
         }
     }
 
+    /**
+     * Registers a new log listener. This listener will be notyfied every time a message gets logged
+     * @param listener Listener to register
+     */
     public synchronized void registerListener(ILogListener listener){
         listeners.add(listener);
     }
+    /**
+     * Unregisters a log listener. This listener will no longer receive notifications
+     * @param listener Listener to remove
+     */
     public synchronized void unregisterListener(ILogListener listener){
         listeners.remove(listener);
     }

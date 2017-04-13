@@ -11,6 +11,10 @@ import java.security.MessageDigest;
 public class Utils {
     private static String startupPath;
 
+    /**
+     * Returns the path to the directory where the executable is located
+     * @return Path to the executables directory
+     */
     public static String getStartupPath(){
         if(startupPath != null)
             return startupPath;
@@ -35,9 +39,19 @@ public class Utils {
         return decodedPath;
     }
 
+    /**
+     * Generates a MD5 from a given string
+     * @param string String value
+     * @return Generated MD5
+     */
     public static String generateMd5(String string){
         return generateMd5(string.getBytes());
     }
+    /**
+     * Generates a MD5 from a given byte array
+     * @param data Data value
+     * @return Generated MD5
+     */
     public static String generateMd5(byte[] data){
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -49,6 +63,11 @@ public class Utils {
             return null;
         }
     }
+    /**
+     * Generates a MD5 from a given File from the FileSystem
+     * @param file File Path
+     * @return Generated MD5
+     */
     public static String generateMd5(File file){
         if(!file.exists()){
             return null;
@@ -78,6 +97,11 @@ public class Utils {
         }
     }
 
+    /**
+     * Recursively deletes a directory
+     * @param f Path to a directory
+     * @throws IOException Thrown when subsequent calls fail
+     */
     public static void deleteDirectory(File f) throws IOException {
         if (f.isDirectory()) {
             for (File c : f.listFiles())
@@ -87,6 +111,13 @@ public class Utils {
             throw new FileNotFoundException("Failed to delete file: " + f);
     }
 
+    /**
+     * Java implementation of C#´s 'as' operator
+     * Converts an object to a given class safely
+     * @param clazz Class to cast the object to
+     * @param o Object to cast
+     * @return The casted object on success. Null otherwise
+     */
     public static <T> T as(Class<T> clazz, Object o){
         if(o == null){
             return null;
@@ -97,6 +128,11 @@ public class Utils {
         return null;
     }
 
+    /**
+     * Waits until a wrapper value becomes non-null.
+     * Requires another thread, that sets the wrappers value while this thread is waiting
+     * @param wrapper Wrapper to wait for
+     */
     public static void waitForWrapper(Wrapper<?> wrapper){
         while(wrapper.value == null){
             try {

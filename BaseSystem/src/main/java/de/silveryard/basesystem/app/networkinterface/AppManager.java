@@ -21,6 +21,9 @@ import java.util.List;
  * Created by Sebif on 16.03.2017.
  */
 public abstract class AppManager {
+    /**
+     * Enables the NetworkInterface
+     */
     public static void enableInterface(){
         NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getInstalledApps", AppManager::handleGetInstalledApps);
         NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.uninstallApp", AppManager::handleUninstallApp);

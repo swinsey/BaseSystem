@@ -17,11 +17,20 @@ import java.util.List;
  */
 public class AppManager implements IDisposable {
     private static AppManager instance;
+    /**
+     * Initializes the application manager
+     * @param appDirectory Directory where apps are installed
+     * @param dataDirectory Directory where apps can store data
+     */
     public static void initialize(Path appDirectory, Path dataDirectory){
         if(instance == null){
             instance = new AppManager(appDirectory, dataDirectory);
         }
     }
+    /**
+     * Singleton getter
+     * @return
+     */
     public static AppManager getInstance(){
         return instance;
     }
@@ -53,19 +62,38 @@ public class AppManager implements IDisposable {
         onAppStoppedHandlers = new ArrayList<>();
     }
 
+    /**
+     * @return Returns the appidentifiers of all installed apps on this system
+     */
     public synchronized List<String> getInstalledApps(){
         return appDB.getInstalledApps();
     }
 
+    /**
+     * Registers a handler that is called when an app is installed successfully
+     * @param handler Handler
+     */
     public synchronized void registerOnAppInstalledHandler(ActionP1<String> handler){
         onAppInstalledHandlers.add(handler);
     }
+    /**
+     * Registers a handler that is called when an app is uninstalled successfully
+     * @param handler Handler
+     */
     public synchronized void registerOnAppUninstalledHandler(ActionP1<String> handler){
         onAppUninstalledHandlers.add(handler);
     }
+    /**
+     * Registers a handler that is called when an app is started successfully
+     * @param handler Handler
+     */
     public synchronized void registerOnAppStartedHandler(ActionP1<String> handler){
         onAppStartedHandlers.add(handler);
     }
+    /**
+     * Registers a handler that is called when an app stops running
+     * @param handler Handler
+     */
     public synchronized void registerOnAppStoppedHandler(ActionP1<String> handler){
         onAppStoppedHandlers.add(handler);
     }
@@ -91,19 +119,47 @@ public class AppManager implements IDisposable {
         }
     }
 
+    /**
+     * Returns the name of a given app
+     * @param appIdentifier Application identifier
+     * @return The apps name on success. A value of AppManagerResult otherwise
+     */
     public synchronized LRValue<String, AppManagerResult> getAppName(String appIdentifier){
         return appDB.getAppName(appIdentifier);
     }
+    /**
+     * Returns the path to an icon for a given app with a given desired size
+     * @param appIdentifier Application identifier
+     * @param desiredSize Desired size to get an icon for. The path returned will match the icon that is closest to the desired size
+     * @return The icons path on success. A value of AppManagerResult otherwise
+     */
     public synchronized LRValue<Path, AppManagerResult> getAppIcon(String appIdentifier, int desiredSize){
         return appDB.getAppIcon(appIdentifier, desiredSize);
     }
+    /**
+     * Returns the path to a splash image for a given app with a given desired width and desired height
+     * @param appIdentifier Application identifier
+     * @param desiredWidth Desired width to get a splash image for. The path returned will match the image that is closed to the desired size
+     * @param desiredHeight Desired height to get a splash image for. The path returned will match the image that is closed to the desired size
+     * @return The images path on success. A value of AppManagerResult otherwise
+     */
     public synchronized LRValue<Path, AppManagerResult> getSplashImage(String appIdentifier, int desiredWidth, int desiredHeight){
         return appDB.getAppSplashImage(appIdentifier, desiredWidth, desiredHeight);
     }
+    /**
+     * Returns the version of a given app
+     * @param appIdentifier Application identifier
+     * @return 2 value array on success. [0] = MajorVersion [1} = MinorVersion. A value of AppManagerResult otherwise
+     */
     public synchronized LRValue<Short[], AppManagerResult> getAppVersion(String appIdentifier){
         return appDB.getAppVersion(appIdentifier);
     }
 
+    /**
+     * Uninstalls a given app
+     * @param appIdentifier Application identifier
+     * @return AppManagerResult that indicates the result of the operation
+     */
     public synchronized AppManagerResult uninstallApp(String appIdentifier){
         if(isAppRunning(appIdentifier)){
             AppManagerResult stopApp = stopApp(appIdentifier);
@@ -118,9 +174,21 @@ public class AppManager implements IDisposable {
         }
         return result;
     }
+    /**
+     * Installs an app from a file from the filesystem.
+     * Force flag is not set
+     * @param path Path to an existing ApplicationPackageFile (.apf)
+     * @return AppManagerResult that indicates the result of the operation
+     */
     public synchronized AppManagerResult installApp(Path path){
         return installApp(path, false);
     }
+    /**
+     * Installs an app from a file from the filesystem
+     * @param path Path to an existing ApplicationPackageFile (.apf)
+     * @param force If set, an application will be installed even when an equal or never version of the app is already installed
+     * @return AppManagerResult that indicates the result of the operation
+     */
     public synchronized AppManagerResult installApp(Path path, boolean force){
         try {
             byte[] data = Files.readAllBytes(path);
@@ -130,9 +198,21 @@ public class AppManager implements IDisposable {
             return AppManagerResult.UNKNOWN_ERROR;
         }
     }
+    /**
+     * Installs an app from a byte array.
+     * Force flag is not set
+     * @param data Byte array containing the content of an ApplicationPackageFile (.apf)
+     * @return AppManagerResult that indicates the result of the operation
+     */
     public synchronized AppManagerResult installApp(byte[] data){
         return installApp(data, false);
     }
+    /**
+     * Installs an app from a byte array
+     * @param data Byte array containing the content of an ApplicationPackageFile (.apf)
+     * @param force If set, an application will be installed even when an equal or never version of the app is already installed
+     * @return AppManagerResult that indicates the result of the operation
+     */
     public synchronized AppManagerResult installApp(byte[] data, boolean force){
         try {
             Parser parser = new Parser(data);
@@ -148,6 +228,11 @@ public class AppManager implements IDisposable {
         }
     }
 
+    /**
+     * Starts a given app
+     * @param appIdentifier Application identifier
+     * @return RunningApp instance on success. A value of AppManagerResult otherwise
+     */
     public synchronized LRValue<RunningApp, AppManagerResult> startApp(String appIdentifier){
         if(!getInstalledApps().contains(appIdentifier)){
             return LRValue.createRValue(AppManagerResult.NOT_INSTALLED);
@@ -186,6 +271,11 @@ public class AppManager implements IDisposable {
         onAppStarted(appIdentifier);
         return LRValue.createLValue(runningApp);
     }
+    /**
+     * Stops a given app
+     * @param appIdentifier Application identifier
+     * @return AppManagerResult that indicates the result of the operation
+     */
     public synchronized AppManagerResult stopApp(String appIdentifier){
         if(!getInstalledApps().contains(appIdentifier)){
             return AppManagerResult.NOT_INSTALLED;
@@ -213,6 +303,11 @@ public class AppManager implements IDisposable {
         return AppManagerResult.OK;
     }
 
+    /**
+     * Returns if a given application is currently running
+     * @param appIdentifier Application identifier
+     * @return True if the app is currently running. False otherwise
+     */
     public synchronized boolean isAppRunning(String appIdentifier){
         for(int i = 0; i < runningApps.size(); i++){
             if(runningApps.get(i).getAppIdentifier().equals(appIdentifier)){
@@ -221,6 +316,11 @@ public class AppManager implements IDisposable {
         }
         return false;
     }
+    /**
+     * Returns a RunningApp of a given currently running app
+     * @param appIdentifier Application identifier
+     * @return An instance of RunningApp on success. A value of AppManagerResult otherwise
+     */
     public synchronized LRValue<RunningApp, AppManagerResult> getRunningApp(String appIdentifier){
         if(!getInstalledApps().contains(appIdentifier)){
             return LRValue.createRValue(AppManagerResult.NOT_INSTALLED);

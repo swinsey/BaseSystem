@@ -5,7 +5,7 @@ import java.io.PrintStream;
 /**
  * Created by Sebif on 12.04.2017.
  */
-public class ConsoleLogListener implements ILogListener {
+class ConsoleLogListener implements ILogListener {
     private final PrintStream outStream;
     private final PrintStream errStream;
     private final StringBuilder stringBuilder;

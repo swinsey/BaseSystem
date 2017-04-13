@@ -19,6 +19,18 @@ public class NineSliceSprite extends RenderObject implements IMoveable, ISizeabl
     private int height;
     private byte alpha;
 
+    /**
+     * Constructor
+     * @param sprite Sprite to render
+     * @param leftSlice Left offset
+     * @param rightSlice Right offset
+     * @param topSlice Top offset
+     * @param bottomSlice Bottom offset
+     * @param x X position
+     * @param y Y position
+     * @param width Width
+     * @param height Height
+     */
     public NineSliceSprite(
             TextureSprite sprite,
             int leftSlice, int rightSlice, int topSlice, int bottomSlice,
@@ -97,6 +109,9 @@ public class NineSliceSprite extends RenderObject implements IMoveable, ISizeabl
         setDirty();
     }
 
+    /**
+     * Draws this object
+     */
     @Override
     public void draw(){
         sprite.getTexture().setAlpha(alpha);

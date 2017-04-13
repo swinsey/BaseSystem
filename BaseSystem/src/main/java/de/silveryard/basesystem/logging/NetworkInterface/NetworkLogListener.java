@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Sebif on 12.04.2017.
  */
-public class NetworkLogListener implements ILogListener {
+class NetworkLogListener implements ILogListener {
     private static final String SOURCE_ID = "00000000000000000000000000000000";
 
     private final String commandHash;

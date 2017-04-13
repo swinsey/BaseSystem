@@ -13,6 +13,15 @@ public class Sprite extends RenderObject implements IMoveable, ISizeable, IFadea
     private double angle;
     private byte alpha;
 
+    /**
+     * Constructor
+     * @param textureSprite TextureSprite to render
+     * @param targetX X position
+     * @param targetY Y position
+     * @param targetWidth Width
+     * @param targetHeight Height
+     * @param angle Rotation angle
+     */
     public Sprite(TextureSprite textureSprite, int targetX, int targetY, int targetWidth, int targetHeight, double angle){
         this.textureSprite = textureSprite;
         this.targetX       = targetX;
@@ -23,13 +32,25 @@ public class Sprite extends RenderObject implements IMoveable, ISizeable, IFadea
         this.alpha         = (byte)255;
     }
 
+    /**
+     * Returns the used texture sprite
+     * @return TextureSprite instance
+     */
     public TextureSprite getTextureSprite(){
         return textureSprite;
     }
 
+    /**
+     * Returns the sprites angle
+     * @return Rotation angle
+     */
     public double getAngle() {
         return angle;
     }
+    /**
+     * Sets the sprites angle
+     * @param angle Rotation angle
+     */
     public void setAngle(double angle){
         this.angle = angle;
     }
@@ -96,6 +117,9 @@ public class Sprite extends RenderObject implements IMoveable, ISizeable, IFadea
         setDirty();
     }
 
+    /**
+     * Draws this object
+     */
     @Override
     public void draw() {
         textureSprite.getTexture().setAlpha(alpha);

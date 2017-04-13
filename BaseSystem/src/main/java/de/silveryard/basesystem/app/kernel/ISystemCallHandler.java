@@ -8,5 +8,11 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 @FunctionalInterface
 public interface ISystemCallHandler {
+    /**
+     * Invoked when a systemcall is invoked
+     * @param app App that call the systemcall
+     * @param message SystemCall Message
+     * @return Response
+     */
     QAMessage invoke(RunningApp app, QAMessage message);
 }

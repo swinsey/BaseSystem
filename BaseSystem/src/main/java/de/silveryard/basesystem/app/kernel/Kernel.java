@@ -12,12 +12,23 @@ import java.util.*;
  */
 public class Kernel {
     private static Kernel instance;
+    /**
+     * Singleton getter
+     * @return Singleton instance
+     */
     public static Kernel getInstance(){
         return instance;
     }
+    /**
+     * Starts the initialization
+     * Registering systemcalls is only possible during initialization
+     */
     public static void beginInitialize(){
         instance = new Kernel();
     }
+    /**
+     * Finalizes the initialization
+     */
     public static void endInitialize(){
         instance.endInitializeKernel();
     }
@@ -34,6 +45,10 @@ public class Kernel {
         systemCalls = new HashMap<>();
     }
 
+    /**
+     * Finalizes the initialization.
+     * Called by endInitialize
+     */
     public void endInitializeKernel(){
         if(!initializing){
             throw new RuntimeException("Kernel aready finished initializing");
@@ -43,6 +58,11 @@ public class Kernel {
         initializing = false;
     }
 
+    /**
+     * Registers a new systemcall the kernel listens for
+     * @param command Systemcall command name e.g. 'de.silveryard.testsystem.testsyscall'
+     * @param handler Handler that handles the systemcall when it is called
+     */
     public void registerSystemCall(String command, ISystemCallHandler handler){
         if(!initializing){
             throw new RuntimeException("Cannot register initialization after endInitializeKernel has been called");
@@ -53,6 +73,9 @@ public class Kernel {
         systemCalls.put(md5, handler);
     }
 
+    /**
+     * @return Returns a list of all registered systemcalls
+     */
     public List<String> dump(){
         List<String> calls = new ArrayList<>();
         for(String key : hashToSystemCallMap.keySet()){
@@ -62,6 +85,12 @@ public class Kernel {
         return calls;
     }
 
+    /**
+     * Redirects a systemcall to the handler in charge
+     * @param app App invoking the systemcall
+     * @param message Systemcall Message
+     * @return Response
+     */
     public QAMessage handleSystemCall(RunningApp app, QAMessage message){
         QAMessage response = null;
 
@@ -77,6 +106,14 @@ public class Kernel {
 
         return response;
     }
+    /**
+     * Helper functin to create a response for a systemcall
+     * @param source Systemcall message to create the response for
+     * @param genericReturnCode Value of ReturnCode
+     * @param specificReturnCode A more specific return code value
+     * @param result An optional list of parameters to be included in the response
+     * @return Response message
+     */
     public QAMessage createResponse(QAMessage source, int genericReturnCode, int specificReturnCode, Parameter... result){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(genericReturnCode));

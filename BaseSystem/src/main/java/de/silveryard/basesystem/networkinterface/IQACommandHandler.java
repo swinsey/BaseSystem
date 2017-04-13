@@ -7,5 +7,11 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
  */
 @FunctionalInterface
 public interface IQACommandHandler {
+    /**
+     * Called when a qa command is called
+     * @param message Command message
+     * @param data Data sent with this command. Optional and null when not used
+     * @return Command Response
+     */
     QAMessage handle(QAMessage message, byte[] data);
 }

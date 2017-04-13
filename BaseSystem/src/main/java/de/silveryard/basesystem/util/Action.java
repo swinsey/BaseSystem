@@ -5,5 +5,8 @@ package de.silveryard.basesystem.util;
  */
 @FunctionalInterface
 public interface Action {
+    /**
+     * Called when the action gets invoked
+     */
     void invoke();
 }

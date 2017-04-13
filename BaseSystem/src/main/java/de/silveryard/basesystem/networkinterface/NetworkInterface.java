@@ -20,6 +20,9 @@ public class NetworkInterface {
     private static Map<String, ICommandHandler> commandHandlers;
     private static Map<String, IQACommandHandler> qaCommandHanders;
 
+    /**
+     * Begins the initialization. Commands can only be registered while initializing
+     */
     public static void beginInitialize(){
         initializing = true;
 
@@ -32,6 +35,9 @@ public class NetworkInterface {
         commandHandlers = new HashMap<>();
         qaCommandHanders = new HashMap<>();
     }
+    /**
+     * Finishes up the initialization
+     */
     public static void endInitialize(){
         if(!initializing){
             throw new RuntimeException("Already ended initialization");
@@ -39,6 +45,11 @@ public class NetworkInterface {
         initializing = false;
     }
 
+    /**
+     * Registers a new command
+     * @param command Command to listen for
+     * @param handler Handler to handle the event
+     */
     public static void registerCommand(String command, ICommandHandler handler){
         if(!initializing){
             throw new RuntimeException("Cannot register command after initialization has finished");
@@ -48,6 +59,11 @@ public class NetworkInterface {
         commandHashMapping.put(md5, command);
         commandHandlers.put(md5, handler);
     }
+    /**
+     * Registers a new qa command
+     * @param command Command to listen for
+     * @param handler Handler to handle the event
+     */
     public static void registerQaCommand(String command, IQACommandHandler handler){
         if(!initializing){
             throw new RuntimeException("Cannot register command after initialization has finished");
@@ -58,6 +74,10 @@ public class NetworkInterface {
         qaCommandHanders.put(md5, handler);
     }
 
+    /**
+     * Returns a list of registered commands
+     * @return List of commands
+     */
     public static List<String> dump(){
         List<String> interfaceCalls = new ArrayList<>();
         for(String key : commandHashMapping.keySet()){
@@ -67,6 +87,11 @@ public class NetworkInterface {
         return interfaceCalls;
     }
 
+    /**
+     * Sends a new message to a receiver
+     * @param message Message to be sent
+     * @return True if the message could successfully be sent. False otherwise
+     */
     public static boolean sendMessage(Message message){
         return network.send(message);
     }

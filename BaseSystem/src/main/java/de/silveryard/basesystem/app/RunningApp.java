@@ -23,6 +23,11 @@ public class RunningApp implements IDisposable {
     private int nextObjectId;
     private Map<Integer, Object> objects;
 
+    /**
+     * Constructor
+     * @param appIdentifier Application identifier
+     * @param appLoader AppLoader that loaded the application
+     */
     public RunningApp(String appIdentifier, AppLoader appLoader){
         this.appIdentifier = appIdentifier;
         this.appLoader = appLoader;
@@ -36,13 +41,23 @@ public class RunningApp implements IDisposable {
         appLoader.setSystemMessageHandler(this::handleMessage);
     }
 
+    /**
+     * @return Returns the application identifier of this RunningApp
+     */
     public String getAppIdentifier(){
         return appIdentifier;
     }
+    /**
+     * @return Returns the gui frame of this RunningApp
+     */
     public Frame getFrame(){
         return frame;
     }
 
+    /**
+     * Sends a message to the app
+     * @param message Message to send
+     */
     public void sendMessage(Message message){
         appLoader.sendMessage(message);
     }
@@ -52,12 +67,22 @@ public class RunningApp implements IDisposable {
         appLoader.sendMessage(qaResponse.getMessage());
     }
 
+    /**
+     * Registers a new object to the apps internal cache
+     * @param obj Object to register
+     * @return Identifier that uniquely identifies the registered object
+     */
     public int registerObject(Object obj){
         int i = nextObjectId;
         nextObjectId++;
         objects.put(i, obj);
         return i;
     }
+    /**
+     * Returns an object from the apps internal cache based on an identifier
+     * @param objectId Identifier that references a registered object
+     * @return An object instance on success. Null otherwise
+     */
     public Object getRegisteredObject(int objectId){
         if(objects.containsKey(objectId)){
             return objects.get(objectId);
@@ -65,9 +90,18 @@ public class RunningApp implements IDisposable {
             return null;
         }
     }
+    /**
+     * Unregisters an object from the apps internal cache based on an identifier
+     * @param objectId Identifier that references a registered object
+     */
     public void unregisterObject(int objectId){
         objects.remove(objectId);
     }
+    /**
+     * Returns the reference identifier from a given registered object
+     * @param obj A already registered object
+     * @return Reference identifier on success. -1 otherwise
+     */
     public Integer getId(Object obj){
         for(Integer key : objects.keySet()){
             if(objects.get(key) == obj){

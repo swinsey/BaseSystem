@@ -3,7 +3,7 @@ package de.silveryard.basesystem.gui;
 /**
  * Created by beppo on 04/02/17.
  */
-public class FontCollectionElement {
+class FontCollectionElement {
     private Font font;
     private String name;
     private int size;

@@ -13,6 +13,14 @@ import java.util.List;
 public class GraphicsManager implements IDisposable{
     private static GraphicsManager instance;
 
+    /**
+     * Initializes the graphics manager
+     * @param title Window title. Only shown when the system is rendered into a window
+     * @param width Window width. X resolution when the system is not rendered into a window
+     * @param height Window height. Y resolution when the system is not rendered into a window
+     * @param showCursor Flag if a cursor should be shown. Set to false on platforms that use Touch for input
+     * @param systemFontCollection A font collection that contains all system fonts this system provides
+     */
     public static void initialize(String title, int width, int height, boolean showCursor, FontCollection systemFontCollection){
         if(instance != null){
             throw new RuntimeException("Already initialized");
@@ -25,6 +33,10 @@ public class GraphicsManager implements IDisposable{
 
         instance = new GraphicsManager(title, width, height, systemFontCollection);
     }
+    /**
+     * Singleton getter
+     * @return GraphicsManager instance
+     */
     public static GraphicsManager getInstance(){
         return instance;
     }
@@ -62,42 +74,81 @@ public class GraphicsManager implements IDisposable{
         nextFrameActions = new ArrayList<>();
     }
 
+    /**
+     * Returns the window title
+     * @return Window title
+     */
     public String getTitle(){
         return title;
     }
+    /**
+     * Returns the screens width
+     * @return Width value
+     */
     public int getWidth(){
         return width;
     }
+    /**
+     * Returns the screens height
+     * @return Height value
+     */
     public int getHeight(){
         return height;
     }
+    /**
+     * Returns the system font collection
+     * @return FontCollection instance
+     */
     public FontCollection getSystemFontCollection(){
         return systemFontCollection;
     }
 
+    /**
+     * Sets the GraphicsManager dirty. It will rerender the screen on the next frame
+     */
     public void setDirty(){
         dirtyFlag = true;
     }
 
+    /**
+     * Creates a new frame. This frame will be disposed when the GraphicsManager is disposed
+     * @return Frame instance
+     */
     public Frame createFrame(){
         Frame frame = new Frame(this::setDirty);
         frames.add(frame);
         return frame;
     }
 
+    /**
+     * Adds a frame to the render list. GraphicsManager will render all frames on this list
+     * @param frame Frame to add
+     */
     public void addFrameToRenderList(Frame frame){
         fRenderList.add(frame);
         setDirty();
     }
+    /**
+     * Removes a frame from the render list. GraphicsManager will only render frames on this list
+     * @param frame Frame to remove
+     */
     public void removeFrameFromRenderList(Frame frame){
         fRenderList.remove(frame);
         setDirty();
     }
 
+    /**
+     * Check if the quit button is pressed (red x in the window corner)
+     * @return True if the button is pressed. False otherwise
+     */
     public boolean isQuitRequested(){
         return quitRequested;
     }
 
+    /**
+     * Runs an action on the gui thread on the next frame
+     * @param action Action to execute
+     */
     public void runNextFrame(Action action){
         nextFrameActions.add(action);
         setDirty();
@@ -112,6 +163,9 @@ public class GraphicsManager implements IDisposable{
         SDLWindow.windowDispose();
     }
 
+    /**
+     * Renders the screen
+     */
     public void render(){
         runActions();
         handleEvents();

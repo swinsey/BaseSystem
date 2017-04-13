@@ -13,6 +13,12 @@ import java.util.Map;
  * Created by beppo on 04/02/17.
  */
 public class TexturePacker {
+    /**
+     * Creates a new texture atlas from a given texture and a json information file
+     * @param texture Texture to use
+     * @param jsonPath Path to a json file. This file is created by TexturePacker and contains information about the atlases single images and their names
+     * @return TextureAtlas instance
+     */
     public static TextureAtlas createSprites(Texture texture, Path jsonPath){
         Map<String, TextureSprite> sprites = new HashMap<>();
 

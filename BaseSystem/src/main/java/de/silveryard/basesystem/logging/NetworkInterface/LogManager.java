@@ -7,6 +7,9 @@ import de.silveryard.transport.Message;
  * Created by Sebif on 12.04.2017.
  */
 public abstract class LogManager {
+    /**
+     * Enables the interface
+     */
     public static void enableInterface(){
         NetworkInterface.registerCommand("de.silveryard.basesystem.networkinterface.logviewer.registerLogListener", LogManager::registerLogListener);
     }

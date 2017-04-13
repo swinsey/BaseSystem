@@ -5,6 +5,9 @@ package de.silveryard.basesystem.gui.kernel;
  * Created by Sebif on 13.03.2017.
  */
 public abstract class GraphicsKernel {
+    /**
+     * Enables the graphics kernel
+     */
     public static void enableKernel(){
         Screen.enableKernel();
         RenderObject.enableKernel();

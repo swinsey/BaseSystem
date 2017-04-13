@@ -1,0 +1,27 @@
+var enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type =
+[
+    [ "SystemVolumeChannelType", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a1d3a3b90d082fcaa1a07a71afcbc506a", null ],
+    [ "getValue", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a599ad67205da06024456361605646541", null ],
+    [ "CHANNEL_TYPE_5_1_FRONT_CENTER", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a25bbf6ab583ff9da7a8ac17920deaf2f", null ],
+    [ "CHANNEL_TYPE_5_1_FRONT_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a68704db3835aa7c4fc42f77bdd548866", null ],
+    [ "CHANNEL_TYPE_5_1_FRONT_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a43036e9e879ca7fcd58ee20149c69af9", null ],
+    [ "CHANNEL_TYPE_5_1_REAR_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#af3fef4d44c85476b40235ae8de15cbaa", null ],
+    [ "CHANNEL_TYPE_5_1_REAR_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a96c9752c43b43ac9049a4e15f03c0240", null ],
+    [ "CHANNEL_TYPE_5_1_SUB", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a5a30acb69aa2eeed8b96a366b69ad295", null ],
+    [ "CHANNEL_TYPE_7_1_FRONT_CENTER", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#aae9b59dd8b8ef06a04de76dd023ccb24", null ],
+    [ "CHANNEL_TYPE_7_1_FRONT_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a943e53db1b10456255341605f201f48c", null ],
+    [ "CHANNEL_TYPE_7_1_FRONT_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#afc9412486734b161b3f36062cd57935a", null ],
+    [ "CHANNEL_TYPE_7_1_REAR_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#ab88c5732fea75ec04664f2c8069e2790", null ],
+    [ "CHANNEL_TYPE_7_1_REAR_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a74ce7c1f9fe55c7ca5753880d5bf0c55", null ],
+    [ "CHANNEL_TYPE_7_1_SIDE_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#aa44b68ad845f2ff68d3ca69cf85d75d5", null ],
+    [ "CHANNEL_TYPE_7_1_SIDE_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a683e5c19356fbb2b9b6bdaec1df34657", null ],
+    [ "CHANNEL_TYPE_7_1_SUB", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a35db1b4378736c07856bc161b4cca31d", null ],
+    [ "CHANNEL_TYPE_INVALID", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#adf4ede7d8ced43d684b327535d3e7f99", null ],
+    [ "CHANNEL_TYPE_MONO", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#af6c684713d1e3595af980e4a54545398", null ],
+    [ "CHANNEL_TYPE_QUAD_FRONT_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a01125d75315ad7746be10afac4d6aced", null ],
+    [ "CHANNEL_TYPE_QUAD_FRONT_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#ad86194b8e1b5757874288f59f50b8b6c", null ],
+    [ "CHANNEL_TYPE_QUAD_REAR_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#aac782b9e43624578d9c1aa82629a56aa", null ],
+    [ "CHANNEL_TYPE_QUAD_REAR_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#ad81b886aace0c8b766584e75839c1931", null ],
+    [ "CHANNEL_TYPE_STEREO_LEFT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a4e3f9875b30a0d3aa9c744bdfd43c924", null ],
+    [ "CHANNEL_TYPE_STEREO_RIGHT", "enumde_1_1silveryard_1_1basesystem_1_1sound_1_1_system_volume_channel_type.html#a3ae42bdaa88093ca9dca11981d241e1b", null ]
+];
