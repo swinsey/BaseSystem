@@ -215,6 +215,16 @@ SET DOCUMENTATION_DIR_PATH=%BUILD_PATH%\Documentation
 
 if not exist "%DOCUMENTATION_DIR_PATH%" mkdir "%DOCUMENTATION_DIR_PATH%"
 
+REM Coyping Documents
+ECHO Copying Documents
+
+SET DOCUMENTS_SRC_PATH=%REPO_PATH%Documents
+SET DOCUMENTS_DST_PATH=%DOCUMENTATION_DIR_PATH%\Documents
+
+if not exist "%DOCUMENTS_DST_PATH%" mkdir "%DOCUMENTS_DST_PATH%"
+
+xcopy "%DOCUMENTS_SRC_PATH%" "%DOCUMENTS_DST_PATH%" /s /e
+
 REM Building Reference
 ECHO Building Reference
 
