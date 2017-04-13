@@ -16,6 +16,7 @@
 		<module>AppManager</module>
 		<module>AppSDK</module>
 		<module>BaseSystem</module>
+		<module>LogViewer</module>
 		<module>Transport</module>
     </modules>
 

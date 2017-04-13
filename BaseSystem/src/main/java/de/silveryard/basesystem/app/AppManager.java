@@ -174,7 +174,13 @@ public class AppManager implements IDisposable {
         }
         Path readonlyPath = readonlyPathResult.getLValue();
 
-        AppLoader appLoader = AppLoader.create(binaryPath, dataPath, readonlyPath);
+        LRValue<String, AppManagerResult> appNameResult = appDB.getAppName(appIdentifier);
+        if(appNameResult.isRValue()){
+            return LRValue.createRValue(appNameResult.getRValue());
+        }
+        String appName = appNameResult.getLValue();
+
+        AppLoader appLoader = AppLoader.create(appName, binaryPath, dataPath, readonlyPath);
         RunningApp runningApp = new RunningApp(appIdentifier, appLoader);
         runningApps.add(runningApp);
         onAppStarted(appIdentifier);

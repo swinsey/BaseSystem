@@ -40,6 +40,13 @@ AppManager/.idea/**/tasks.xml
 AppManager/.idea/dictionaries
 AppManager/.idea/**/libraries
 
+LogViewer/out/
+LogViewer/target/
+LogViewer/.idea/**/workspace.xml
+LogViewer/.idea/**/tasks.xml
+LogViewer/.idea/dictionaries
+LogViewer/.idea/**/libraries
+
 build/
 FmodNative/bin/
 SDLNative/bin/

@@ -1,7 +1,7 @@
-package de.silveryard.basesystem.logging;
+package de.silveryard.logviewer.Model;
 
 /**
- * Created by Sebif on 12.04.2017.
+ * Created by Sebif on 13.04.2017.
  */
 public enum LogMessageType {
     OUT(1),

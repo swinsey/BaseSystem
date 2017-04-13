@@ -119,9 +119,22 @@ if not exist "%APPMANAGER_SRC_EXE_PATH%" (
   echo Failed to build AppManager
   goto :end
 )
-xcopy %APPMANAGER_SRC_PATH% %APPMANAGER_DST_PATH% /s /e
+xcopy "%APPMANAGER_SRC_PATH%" "%APPMANAGER_DST_PATH%" /s /e
 
-Copying APFCreator
+REM Copying LogViewer
+echo Copying LogViewer
+
+SET LOGVIEWER_SRC_PATH=%REPO_PATH%LogViewer\target\jfx\native\LogViewer
+SET LOGVIEWER_SRC_EXE_PATH=%LOGVIEWER_SRC_PATH%\LogViewer.exe
+SET LOGVIEWER_DST_PATH=%TOOLS_PATH%\LogViewer\
+
+if not exist "%LOGVIEWER_SRC_EXE_PATH%" (
+  echo Failed to build LogViewer
+  goto :end
+)
+xcopy "%LOGVIEWER_SRC_PATH%" "%LOGVIEWER_DST_PATH%" /s /e
+
+REM Copying APFCreator
 echo Copying APFCreator
 
 SET APFCREATOR_SRC_PATH=%REPO_PATH%APFCreator\target\APFCreator-%APFCREATOR_VERSION%-jar-with-dependencies.jar

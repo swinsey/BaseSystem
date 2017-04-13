@@ -67,6 +67,10 @@ public class NetworkInterface {
         return interfaceCalls;
     }
 
+    public static boolean sendMessage(Message message){
+        return network.send(message);
+    }
+
     private static void handleMessage(Message message){
         boolean result = handleMessageInternal(message, null);
         if(result){

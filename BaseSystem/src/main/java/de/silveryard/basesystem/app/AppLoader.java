@@ -30,10 +30,10 @@ class AppLoader {
 
     private static final String SYSTEM_ID = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF";
 
-    public static AppLoader create(Path binaryPath, Path dataDirPath, Path readonlyPath){
+    public static AppLoader create(String appName, Path binaryPath, Path dataDirPath, Path readonlyPath){
 
         try{
-            AppLoader loader = new AppLoader(binaryPath, dataDirPath, readonlyPath);
+            AppLoader loader = new AppLoader(appName, binaryPath, dataDirPath, readonlyPath);
             return loader;
         }catch(Exception e){
             throw new RuntimeException(e);
@@ -51,11 +51,13 @@ class AppLoader {
     private volatile InitState initializing;
     private Path dataDirPath;
     private Path readonlyDirPath;
+    private String appName;
     private Consumer<Message> systemMessageHandler;
 
-    private AppLoader(Path binaryPath, Path dataDirPath, Path readonlyPath) throws Exception{
+    private AppLoader(String appName, Path binaryPath, Path dataDirPath, Path readonlyPath) throws Exception{
         networking = new Networking();
 
+        this.appName = appName;
         this.dataDirPath = dataDirPath;
         this.readonlyDirPath = readonlyPath;
 
@@ -81,7 +83,7 @@ class AppLoader {
                             BufferedReader in = new BufferedReader(
                                     new InputStreamReader(p.getInputStream()));
                             while ((line = in.readLine()) != null) {
-                                LogManager.getInstance().log("App", line, LogMessageType.OUT);
+                                LogManager.getInstance().log(appName, line, LogMessageType.OUT);
                             }
                     in.close();
                 }catch(Exception e){
@@ -99,7 +101,7 @@ class AppLoader {
                     BufferedReader in = new BufferedReader(
                             new InputStreamReader(p.getErrorStream()));
                     while ((line = in.readLine()) != null) {
-                        LogManager.getInstance().log("App", line, LogMessageType.ERROR);
+                        LogManager.getInstance().log(appName, line, LogMessageType.ERROR);
                     }
                     in.close();
                 }catch(Exception e){
