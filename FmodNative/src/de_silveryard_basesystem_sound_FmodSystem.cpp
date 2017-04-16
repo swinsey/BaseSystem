@@ -299,6 +299,9 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_getReco
 	unsigned int pos;
 	FMOD_RESULT result = system->getRecordPosition(id, &pos);
 
+	jobject pos_boxed = integer_create(env, static_cast<int>(pos));
+	wrapper_set_value(env, position, pos_boxed);
+
 	return fmodresult_get_enum_value(env, result);
 }
 JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_recordStart
