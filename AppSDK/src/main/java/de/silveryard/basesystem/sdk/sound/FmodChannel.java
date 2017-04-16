@@ -1,6 +1,5 @@
 package de.silveryard.basesystem.sdk.sound;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import de.silveryard.basesystem.sdk.KernelException;
 import de.silveryard.basesystem.sdk.SoundKernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
@@ -362,8 +361,8 @@ public class FmodChannel {
      * @param position
      * @return
      */
-    public synchronized FmodResult getPosition(Wrapper<Integer> position){
-        systemCallSoundFmodChannelGetPosition(id, returnCodeWrapper, soundReturnCodeWrapper, fmodResultWrapper, position);
+    public synchronized FmodResult getPosition(Wrapper<Integer> position, int posType){
+        systemCallSoundFmodChannelGetPosition(id, posType, returnCodeWrapper, soundReturnCodeWrapper, fmodResultWrapper, position);
 
         if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
             throw new SoundKernelException(soundReturnCodeWrapper.value);

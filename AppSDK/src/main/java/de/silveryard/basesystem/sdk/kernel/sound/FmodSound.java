@@ -41,12 +41,13 @@ public abstract class FmodSound {
      * @param outLength Length of the sound
      */
     public static void systemCallSoundFmodSoundGetLength(
-            int channelID,
+            int channelID, int lengthType,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode,
             Wrapper<FmodResult> outFmodResult, Wrapper<Integer> outLength
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(channelID));
+        params.add(Parameter.createInt(lengthType));
         QAMessage message = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodsound.getlength", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(message.getParameters().get(0).getInt());

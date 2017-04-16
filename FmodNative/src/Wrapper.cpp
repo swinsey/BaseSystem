@@ -13,7 +13,7 @@ namespace {
 		}
 		_initialized = true;
 
-		_class = env->FindClass("de/awesome/smarthome/td/util/Wrapper");
+		_class = env->FindClass("de/silveryard/basesystem/util/Wrapper");
 		_field_value = env->GetFieldID(_class, "value", "Ljava/lang/Object;");
 		_method_ctr_default = env->GetMethodID(_class, "<init>", "()V");
 		_method_ctr_value = env->GetMethodID(_class, "<init>", "(Ljava/lang/Object;)V");

@@ -1,6 +1,5 @@
 package de.silveryard.basesystem.sdk.kernel;
 
-import de.silveryard.basesystem.sdk.kernel.gui.GuiReturnCode;
 import de.silveryard.transport.*;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 

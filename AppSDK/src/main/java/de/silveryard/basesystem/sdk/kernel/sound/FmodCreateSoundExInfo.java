@@ -44,7 +44,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getlength", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -64,7 +64,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(length));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setlength", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -84,7 +84,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getfileoffset", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -104,7 +104,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(fileOffset));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setfileoffset", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -124,7 +124,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getnumchannels", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -144,7 +144,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(numChannels));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setnumchannels", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -164,7 +164,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getdefaultfrequency", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -184,7 +184,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(defaultFrequency));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setdefaultfrequency", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -204,7 +204,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getformat", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -224,7 +224,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(format.getValue()));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setformat", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -244,7 +244,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getdecodebuffersize", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -264,7 +264,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(decodeBufferSize));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setdecodebuffersize", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -284,7 +284,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getinitialsubsound", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -304,7 +304,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(initialSubSound));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setinitialsubsound", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -324,7 +324,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getnumsubsounds", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -344,7 +344,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(numSubSounds));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setnumsubsounds", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -364,7 +364,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getinclusionlist", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -392,7 +392,7 @@ public abstract class FmodCreateSoundExInfo {
         for(int i = 0; i < inclusionList.length; i++){
             params.add(Parameter.createInt(inclusionList[i]));
         }
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setinclusionlist", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -412,7 +412,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getdlsname", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -432,7 +432,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createString(dlsName));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setdslname", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -452,7 +452,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getencryptionkey", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -472,7 +472,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createString(encryptionKey));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setencryptionkey", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -492,7 +492,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getmaxpolyphony", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -512,7 +512,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(maxPolyphony));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setmaxpolyphony", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -532,7 +532,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getsuggestedsoundtype", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -552,7 +552,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(suggestedSoundType.getValue()));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setsuggestedsoundtype", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -572,7 +572,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getfilebuffersize", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -592,7 +592,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(fileBufferSize));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setfilebuffersize", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -612,7 +612,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getchannelorder", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -632,7 +632,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(channelOrder.getValue()));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setchannelorder", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -652,7 +652,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getchannelmask", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -672,7 +672,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(channelMask));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setchannelmask", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -692,7 +692,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getinitialseekposition", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -712,7 +712,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(initialSeekPosition));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setinitialseekposition", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -732,7 +732,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getinitialseekpostype", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -752,7 +752,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(initialSeekPosType));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setinitialseekpostype", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -772,7 +772,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getignoresetfilesystem", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -792,7 +792,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(ignoreSetFilesystem));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setignoresetfilesystem", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -812,7 +812,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getaudioqueuepolicy", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -832,7 +832,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(audioQueuePolicy));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setaudioqueuepolicy", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -852,7 +852,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getminmidigranularity", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -872,7 +872,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(minMidiGranularity));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setminmidigranularity", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -892,7 +892,7 @@ public abstract class FmodCreateSoundExInfo {
     ){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.getnonblockthreadid", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
@@ -912,7 +912,7 @@ public abstract class FmodCreateSoundExInfo {
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(id));
         params.add(Parameter.createInt(nonBlockThreadId));
-        QAMessage response = Kernel.systemCall("", params);
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodscreatesoundexinfo.setnonblockthreadid", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());

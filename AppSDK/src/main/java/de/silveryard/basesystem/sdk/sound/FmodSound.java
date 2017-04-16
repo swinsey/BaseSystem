@@ -7,7 +7,8 @@ import de.silveryard.basesystem.sdk.kernel.Wrapper;
 import de.silveryard.basesystem.sdk.kernel.sound.FmodResult;
 import de.silveryard.basesystem.sdk.kernel.sound.SoundReturnCode;
 
-import static de.silveryard.basesystem.sdk.kernel.sound.FmodSound.*;
+import static de.silveryard.basesystem.sdk.kernel.sound.FmodSound.systemCallSoundFmodSoundCreate;
+import static de.silveryard.basesystem.sdk.kernel.sound.FmodSound.systemCallSoundFmodSoundGetLength;
 
 /**
  * Created by Sebif on 15.04.2017.
@@ -54,8 +55,8 @@ public class FmodSound {
      * @param length
      * @return
      */
-    public synchronized FmodResult getLength(Wrapper<Integer> length){
-        systemCallSoundFmodSoundGetLength(id, returnCodeWrapper, soundReturnCodeWrapper, fmodResultWrapper, length);
+    public synchronized FmodResult getLength(Wrapper<Integer> length, int lengthType){
+        systemCallSoundFmodSoundGetLength(id, lengthType, returnCodeWrapper, soundReturnCodeWrapper, fmodResultWrapper, length);
 
         if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
             throw new SoundKernelException(soundReturnCodeWrapper.value);

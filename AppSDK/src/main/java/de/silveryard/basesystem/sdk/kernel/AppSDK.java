@@ -57,7 +57,7 @@ public abstract class AppSDK {
                         action.invoke();
                     }
                 }
-                Thread.sleep(200);
+                Thread.sleep(32);
             }
 
             Thread.sleep(100);

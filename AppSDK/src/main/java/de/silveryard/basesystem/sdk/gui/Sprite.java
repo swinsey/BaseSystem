@@ -9,11 +9,8 @@ import de.silveryard.basesystem.sdk.kernel.gui.GuiReturnCode;
 import static de.silveryard.basesystem.sdk.kernel.gui.Fadeable.systemCallFadeableGet;
 import static de.silveryard.basesystem.sdk.kernel.gui.Fadeable.systemCallFadeableSet;
 import static de.silveryard.basesystem.sdk.kernel.gui.Moveable.*;
-import static de.silveryard.basesystem.sdk.kernel.gui.Moveable.systemCallMoveableSetPositionX;
-import static de.silveryard.basesystem.sdk.kernel.gui.Moveable.systemCallMoveableSetPositionY;
 import static de.silveryard.basesystem.sdk.kernel.gui.Sizeable.*;
-import static de.silveryard.basesystem.sdk.kernel.gui.Sizeable.systemCallSizeableSetHeight;
-import static de.silveryard.basesystem.sdk.kernel.gui.Sprite.*;
+import static de.silveryard.basesystem.sdk.kernel.gui.Sprite.systemCallSpriteCreate;
 
 /**
  * Created by Sebif on 08.04.2017.

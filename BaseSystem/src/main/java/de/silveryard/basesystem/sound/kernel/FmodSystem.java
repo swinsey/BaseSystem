@@ -146,6 +146,9 @@ abstract class FmodSystem {
     private static QAMessage systemCallSoundFmodSystemCreateSound(RunningApp app, QAMessage message){
         de.silveryard.basesystem.sound.FmodSystem system = de.silveryard.basesystem.sound.FmodSystem.getInstance();
         String nameOrData = message.getParameters().get(0).getString();
+        if(nameOrData.equals("")){
+            nameOrData = null;
+        }
         int mode = message.getParameters().get(1).getInt();
         int infoId = message.getParameters().get(2).getInt();
         int soundId = message.getParameters().get(3).getInt();
@@ -178,6 +181,9 @@ abstract class FmodSystem {
     private static QAMessage systemCallSoundFmodSystemCreateStream(RunningApp app, QAMessage message){
         de.silveryard.basesystem.sound.FmodSystem system = de.silveryard.basesystem.sound.FmodSystem.getInstance();
         String nameOrData = message.getParameters().get(0).getString();
+        if(nameOrData.equals("")){
+            nameOrData = null;
+        }
         int mode = message.getParameters().get(1).getInt();
         int infoId = message.getParameters().get(2).getInt();
         int soundId = message.getParameters().get(3).getInt();

@@ -445,13 +445,14 @@ public abstract class FmodChannel {
      * @param outPosition Position value
      */
     public static void systemCallSoundFmodChannelGetPosition(
-            int channelID,
+            int channelID, int posType,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult,
             Wrapper<Integer> outPosition
     ){
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createInt(channelID));
+        params.add(Parameter.createInt(posType));
         QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.getposition", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());

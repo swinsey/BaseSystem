@@ -160,6 +160,9 @@ public abstract class FmodSystem {
             String nameOrData, int mode, int fmodCreateSoundExInfoID, int soundID,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
+        if(nameOrData == null){
+            nameOrData = "";
+        }
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(nameOrData));
@@ -186,6 +189,9 @@ public abstract class FmodSystem {
             String nameOrData, int mode, int fmodCreateSoundExInfoID, int soundID,
             Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode, Wrapper<FmodResult> outFmodResult
     ){
+        if(nameOrData == null){
+            nameOrData = "";
+        }
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(nameOrData));
