@@ -43,6 +43,25 @@ public class Parameter {
     }
 
     /**
+     * Creates a new parameter that contains a long value
+     * @param l Value
+     * @return Created parameter
+     */
+    public static Parameter createLong(long l){
+        byte[] data = new byte[8];
+        data[0] = (byte)((l >> 56) & 0xFF);
+        data[1] = (byte)((l >> 48) & 0xFF);
+        data[2] = (byte)((l >> 40) & 0xFF);
+        data[3] = (byte)((l >> 32) & 0xFF);
+        data[4] = (byte)((l >> 24) & 0xFF);
+        data[5] = (byte)((l >> 16) & 0xFF);
+        data[6] = (byte)((l >> 8) & 0xFF);
+        data[7] = (byte)(l & 0xFF);
+
+        return new Parameter(data);
+    }
+
+    /**
      * Creates a new parameter that contains a float value
      * @param f Value
      * @return Created parameter
@@ -128,6 +147,17 @@ public class Parameter {
             return null;
         }
         return ByteBuffer.wrap(data).getInt();
+    }
+
+    /**
+     * @return Returns the parameter as long value
+     */
+    public Long getLong(){
+        if(size != 8 || data.length != 8){
+            return null;
+        }
+
+        return ByteBuffer.wrap(data).getLong();
     }
 
     /**
