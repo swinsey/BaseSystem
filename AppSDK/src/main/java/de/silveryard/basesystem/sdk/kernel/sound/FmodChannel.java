@@ -33,6 +33,28 @@ public abstract class FmodChannel {
     }
 
     /**
+     * Returns the channels internal native handle
+     * @param channelID The given channels id
+     * @param outReturnCode General Return Code
+     * @param outSoundReturnCode Sound Return Code
+     * @param outHandle Fmod Result
+     */
+    public static void systemCallSoundFmodChannelGetHandle(
+            int channelID,
+            Wrapper<ReturnCode> outReturnCode, Wrapper<SoundReturnCode> outSoundReturnCode,
+            Wrapper<Long> outHandle
+    ){
+
+        List<Parameter> params = new ArrayList<>();
+        params.add(Parameter.createInt(channelID));
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.gethandle", params);
+
+        outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
+        outSoundReturnCode.value = SoundReturnCode.getEnumValue(response.getParameters().get(1).getInt());
+        outHandle.value = response.getParameters().get(2).getLong();
+    }
+
+    /**
      * Stops the given channel playing
      * @param channelID The given channels id
      * @param outReturnCode General Return Code

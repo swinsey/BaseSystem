@@ -15,6 +15,7 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 abstract class FmodChannel {
     public static void enableKernel(){
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.create", FmodChannel::systemCallSoundFmodChannelCreate);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.gethandle", FmodChannel::systemCallSoundFmodChannelGetHandle);
 
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.stop", FmodChannel::systemCallSoundFmodChannelStop);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.sound.fmodchannel.setpaused", FmodChannel::systemCallSoundFmodChannelSetPaused);
@@ -44,6 +45,21 @@ abstract class FmodChannel {
         de.silveryard.basesystem.sound.FmodChannel channel = new de.silveryard.basesystem.sound.FmodChannel();
         int id = app.registerObject(channel);
         return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), SoundReturnCode.OK.getValue(), Parameter.createInt(id));
+    }
+
+    public static QAMessage systemCallSoundFmodChannelGetHandle(RunningApp app, QAMessage message){
+        int id = message.getParameters().get(0).getInt();
+        de.silveryard.basesystem.sound.FmodChannel channel = Utils.as(de.silveryard.basesystem.sound.FmodChannel.class, app.getRegisteredObject(id));
+
+        if(channel == null){
+            return Kernel.getInstance().createResponse(message,
+                    ReturnCode.ERROR.getValue(), SoundReturnCode.INVALID_ID.getValue(),
+                    Parameter.createInt(-1));
+        }
+
+        return Kernel.getInstance().createResponse(message,
+                ReturnCode.OK.getValue(), SoundReturnCode.OK.getValue(),
+                Parameter.createLong(channel.getHandle()));
     }
 
     public static QAMessage systemCallSoundFmodChannelStop(RunningApp app, QAMessage message){

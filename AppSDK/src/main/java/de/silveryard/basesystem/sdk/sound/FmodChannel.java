@@ -17,6 +17,7 @@ public class FmodChannel {
     private final Wrapper<SoundReturnCode> soundReturnCodeWrapper;
     private final Wrapper<Integer> integerWrapper;
     private final Wrapper<FmodResult> fmodResultWrapper;
+    private final Wrapper<Long> longWrapper;
 
     private final int id;
 
@@ -28,6 +29,7 @@ public class FmodChannel {
         soundReturnCodeWrapper = new Wrapper<>();
         integerWrapper = new Wrapper<>();
         fmodResultWrapper = new Wrapper<>();
+        longWrapper = new Wrapper<>();
 
         systemCallSoundFmodChannelCreate(returnCodeWrapper, soundReturnCodeWrapper, integerWrapper);
 
@@ -47,6 +49,23 @@ public class FmodChannel {
      */
     public int getId(){
         return id;
+    }
+
+    /**
+     * Returns the channels internal native handle
+     * @return Native handle
+     */
+    public long getHandle(){
+        systemCallSoundFmodChannelGetHandle(id, returnCodeWrapper, soundReturnCodeWrapper, longWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return longWrapper.value;
     }
 
     /**
