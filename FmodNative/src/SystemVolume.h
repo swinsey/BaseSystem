@@ -34,6 +34,13 @@ const int CHANNEL_TYPE_7_1_SUB = 21;
 int sysvol_init();
 void sysvol_dispose();
 
+//////
+//Output
+//////
+
+int sysvol_get_num_output_devices();
+const char* sysvol_get_output_device_name(int index);
+
 bool sysvol_get_mute();
 void sysvol_set_mute(bool mute);
 
@@ -44,5 +51,23 @@ int sysvol_get_num_output_channels();
 int sys_vol_get_output_channel_type(int index);
 float sysvol_get_output_volume(int index);
 void sysvol_set_output_volume(int index, float volume);
+
+//////
+//Input
+//////
+
+int sysvol_get_num_input_devices();
+const char* sysvol_get_input_device_name(int index);
+
+bool sysvol_get_input_mute();
+void sysvol_set_input_mute(bool mute);
+
+float sysvol_get_input_master_volume();
+void sysvol_set_input_master_volume(float volume);
+
+int sysvol_get_num_input_channels();
+int sysvol_get_input_channel_type(int index);
+float sysvol_get_input_volume(int index);
+void sysvol_set_input_volume(int index, float volume);
 
 #endif

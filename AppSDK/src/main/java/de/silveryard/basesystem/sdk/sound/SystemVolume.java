@@ -147,4 +147,132 @@ public abstract class SystemVolume {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+
+    /**
+     * Fetches the mute flag of the systems input driver
+     * @return Mute flag value
+     */
+    public static boolean getInputMute(){
+        systemCallSoundSystemVolumeGetInputMute(returnCodeWrapper, soundReturnCodeWrapper, booleanWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return booleanWrapper.value;
+    }
+    /**
+     * Sets the mute flag of the systems input driver
+     * @param mute Mute flag value
+     */
+    public static void setInputMute(boolean mute){
+        systemCallSoundSystemVolumeSetInputMute(mute, returnCodeWrapper, soundReturnCodeWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+    }
+
+    /**
+     * Fetches the master volume of the systems input driver
+     * @return Master volume value
+     */
+    public static float getInputMasterVolume(){
+        systemCallSoundSystemVolumeGetInputMasterVolume(returnCodeWrapper, soundReturnCodeWrapper, floatWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return floatWrapper.value;
+    }
+    /**
+     * Sets the master volume of the systems input driver
+     * @param volume Master volume value
+     */
+    public static void setInputMasterVolume(float volume){
+        systemCallSoundSystemVolumeSetInputMasterVolume(volume, returnCodeWrapper, soundReturnCodeWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+    }
+
+    /**
+     * Fetches the number of channels of the systems input driver
+     * @return Number of channels
+     */
+    public static int getNumInputChannels(){
+        systemCallSoundSystemVolumeGetNumInputChannels(returnCodeWrapper, soundReturnCodeWrapper, integerWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return integerWrapper.value;
+    }
+    /**
+     * Fetches the type of a given channel of the systems input driver
+     * @param index Channel index
+     * @return Channel type
+     */
+    public static SystemVolumeChannelType getInputChannelType(int index){
+        systemCallSoundSystemVolumeGetInputChannelType(index, returnCodeWrapper, soundReturnCodeWrapper, channelTypeWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return channelTypeWrapper.value;
+    }
+    /**
+     * Fetches the volume of a given channel of the systems input driver
+     * @param index Channel index
+     * @return Volume value
+     */
+    public static float getInputChannelVolume(int index){
+        systemCallSoundSystemVolumeGetInputChannelVolume(index, returnCodeWrapper, soundReturnCodeWrapper, floatWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return floatWrapper.value;
+    }
+    /**
+     * Sets the volume of a given channel of the systems input driver
+     * @param index Channel index
+     * @param volume Volume value
+     */
+    public static void setInputChannelVolume(int index, float volume){
+        systemCallSoundSystemVolumeSetInputChannelVolume(index, volume, returnCodeWrapper, soundReturnCodeWrapper);
+
+        if(soundReturnCodeWrapper.value != SoundReturnCode.OK){
+            throw new SoundKernelException(soundReturnCodeWrapper.value);
+        }
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+    }
 }
