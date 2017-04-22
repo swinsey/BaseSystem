@@ -1,0 +1,9 @@
+[submodule "SDLNative/sdl/linux/SDL2"]
+	path = SDLNative/sdl/linux/SDL2
+	url = https://github.com/davidsiaw/SDL2
+[submodule "SDLNative/sdl/linux/SDL2_image"]
+	path = SDLNative/sdl/linux/SDL2_image
+	url = https://github.com/davidsiaw/SDL2_image
+[submodule "SDLNative/sdl/linux/SDL2_ttf"]
+	path = SDLNative/sdl/linux/SDL2_ttf
+	url = https://github.com/davidsiaw/SDL2_ttf
