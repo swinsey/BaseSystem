@@ -1,4 +1,4 @@
-apt-get install libfreetype6-dev autoconf automake openjdk-8-jdk openjfx
+apt-get install libfreetype6-dev autoconf automake openjdk-8-jdk maven xorg-dev openjfx
 
 # Defining Directories
 REPO_PATH=$(dirname "$0")
