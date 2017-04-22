@@ -33,10 +33,10 @@ void sysvol_set_master_volume(float volume) {
 
 }
 
-int sysvol_get_num_input_channels() {
+int sysvol_get_num_output_channels() {
 	return 0;
 }
-int sys_vol_get_input_channel_type(int index) {
+int sys_vol_get_output_channel_type(int index) {
 	return CHANNEL_TYPE_INVALID;
 }
 float sysvol_get_output_volume(int index) {
@@ -59,9 +59,9 @@ const char* sysvol_get_input_device_name(int index) {
 bool sysvol_get_input_mute() {
 	return false;
 }
-void sysvol_set_input_mute(bool mute)[
-
-]
+void sysvol_set_input_mute(bool mute){
+    
+}
 
 float sysvol_get_input_master_volume() {
 	return 0;

@@ -189,7 +189,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 	}
 	const char* name_or_data = NULL;
 	if(nameOrData != NULL){
-		name_or_data = env->GetStringUTFChars(nameOrData, false);
+		name_or_data = env->GetStringUTFChars(nameOrData, NULL);
 	}
 	FMOD::System* system = get_handle<FMOD::System>(env, _field_handle, obj);
 	FMOD::Sound* native_sound;
@@ -210,7 +210,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 	}
 	const char* name_or_data = NULL;
 	if (nameOrData != NULL) {
-		name_or_data = env->GetStringUTFChars(nameOrData, false);
+		name_or_data = env->GetStringUTFChars(nameOrData, NULL);
 	}
 	FMOD::System* system = get_handle<FMOD::System>(env, _field_handle, obj);
 	FMOD::Sound* native_sound;

@@ -183,7 +183,7 @@ JNIEXPORT void JNICALL Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo
 
 	FMOD_CREATESOUNDEXINFO* info = get_handle<FMOD_CREATESOUNDEXINFO>(env, _field_handle, obj);
 	info->inclusionlistnum = env->GetArrayLength(inclusionList);
-	info->inclusionlist = reinterpret_cast<int*>(env->GetIntArrayElements(inclusionList, false));
+	info->inclusionlist = reinterpret_cast<int*>(env->GetIntArrayElements(inclusionList, NULL));
 }
 
 JNIEXPORT jstring JNICALL Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getDlsName
@@ -199,7 +199,7 @@ JNIEXPORT void JNICALL Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo
 	_init(env, obj);
 
 	FMOD_CREATESOUNDEXINFO* info = get_handle<FMOD_CREATESOUNDEXINFO>(env, _field_handle, obj);
-	info->dlsname = strdup(env->GetStringUTFChars(dlsName, false));
+	info->dlsname = strdup(env->GetStringUTFChars(dlsName, NULL));
 }
 
 JNIEXPORT jstring JNICALL Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getEncryptionKey
@@ -215,7 +215,7 @@ JNIEXPORT void JNICALL Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo
 	_init(env, obj);
 
 	FMOD_CREATESOUNDEXINFO* info = get_handle<FMOD_CREATESOUNDEXINFO>(env, _field_handle, obj);
-	info->encryptionkey = strdup(env->GetStringUTFChars(encryptionKey, false));
+	info->encryptionkey = strdup(env->GetStringUTFChars(encryptionKey, NULL));
 }
 
 JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_sound_FmodCreateSoundExInfo_getMaxPolyphony
