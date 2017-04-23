@@ -33,10 +33,10 @@ if not exist "%MSBUILD_PATH%" (
 
 REM Defining Directories
 SET REPO_PATH=%~dp0
-SET BUILD_PATH=%REPO_PATH%build
+SET BUILD_PATH=%REPO_PATH%build\bin
 SET TOOLS_PATH=%BUILD_PATH%\Tools
 SET LIBS_PATH=%BUILD_PATH%\Libs
-SET STAGING_AREA_PATH=%BUILD_PATH%\StagingArea
+SET STAGING_AREA_PATH=%REPO_PATH%build\StagingArea
 
 REM Cleaning up
 ECHO Cleaning up

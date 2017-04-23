@@ -421,20 +421,20 @@ int sysvol_get_num_input_channels() {
 }
 int sysvol_get_input_channel_type(int index) {
 	//TODO Return Real values
-	switch (sysvol_get_num_input_channels()) {
+	switch (sysvol_get_num_output_channels()) {
 	case 1: {
 		if (index == 0) {
-			return CHANNEL_TYPE_MONO;
+			return CHANNEL_TYPE_FRONT_LEFT;
 		}
 		break;
 	}
 	case 2: {
 		switch (index) {
 		case 0: {
-			return CHANNEL_TYPE_STEREO_LEFT;
+			return CHANNEL_TYPE_FRONT_LEFT;
 		}
 		case 1: {
-			return CHANNEL_TYPE_STEREO_RIGHT;
+			return CHANNEL_TYPE_FRONT_RIGHT;
 		}
 		}
 		break;
@@ -442,16 +442,16 @@ int sysvol_get_input_channel_type(int index) {
 	case 4: {
 		switch (index) {
 		case 0: {
-			return CHANNEL_TYPE_QUAD_FRONT_LEFT;
+			return CHANNEL_TYPE_FRONT_LEFT;
 		}
 		case 1: {
-			return CHANNEL_TYPE_QUAD_FRONT_RIGHT;
+			return CHANNEL_TYPE_FRONT_RIGHT;
 		}
 		case 2: {
-			return CHANNEL_TYPE_QUAD_REAR_LEFT;
+			return CHANNEL_TYPE_REAR_LEFT;
 		}
 		case 3: {
-			return CHANNEL_TYPE_QUAD_REAR_RIGHT;
+			return CHANNEL_TYPE_REAR_RIGHT;
 		}
 		}
 		break;
@@ -459,22 +459,22 @@ int sysvol_get_input_channel_type(int index) {
 	case 6: {
 		switch (index) {
 		case 0: {
-			return CHANNEL_TYPE_5_1_FRONT_LEFT;
+			return CHANNEL_TYPE_FRONT_LEFT;
 		}
 		case 1: {
-			return CHANNEL_TYPE_5_1_FRONT_CENTER;
+			return CHANNEL_TYPE_FRONT_CENTER;
 		}
 		case 2: {
-			return CHANNEL_TYPE_5_1_FRONT_RIGHT;
+			return CHANNEL_TYPE_FRONT_RIGHT;
 		}
 		case 3: {
-			return CHANNEL_TYPE_5_1_REAR_LEFT;
+			return CHANNEL_TYPE_REAR_LEFT;
 		}
 		case 4: {
-			return CHANNEL_TYPE_5_1_REAR_RIGHT;
+			return CHANNEL_TYPE_REAR_RIGHT;
 		}
 		case 5: {
-			return CHANNEL_TYPE_5_1_SUB;
+			return CHANNEL_TYPE_SUB;
 		}
 		}
 		break;
@@ -482,28 +482,28 @@ int sysvol_get_input_channel_type(int index) {
 	case 8: {
 		switch (index) {
 		case 0: {
-			return CHANNEL_TYPE_7_1_FRONT_LEFT;
+			return CHANNEL_TYPE_FRONT_LEFT;
 		}
 		case 1: {
-			return CHANNEL_TYPE_7_1_FRONT_CENTER;
+			return CHANNEL_TYPE_FRONT_CENTER;
 		}
 		case 2: {
-			return CHANNEL_TYPE_7_1_FRONT_RIGHT;
+			return CHANNEL_TYPE_FRONT_RIGHT;
 		}
 		case 3: {
-			return CHANNEL_TYPE_7_1_SIDE_LEFT;
+			return CHANNEL_TYPE_SIDE_LEFT;
 		}
 		case 4: {
-			return CHANNEL_TYPE_7_1_SIDE_RIGHT;
+			return CHANNEL_TYPE_SIDE_RIGHT;
 		}
 		case 5: {
-			return CHANNEL_TYPE_7_1_REAR_LEFT;
+			return CHANNEL_TYPE_REAR_LEFT;
 		}
 		case 6: {
-			return CHANNEL_TYPE_7_1_REAR_RIGHT;
+			return CHANNEL_TYPE_REAR_RIGHT;
 		}
 		case 7: {
-			return CHANNEL_TYPE_7_1_SUB;
+			return CHANNEL_TYPE_SUB;
 		}
 		}
 		break;

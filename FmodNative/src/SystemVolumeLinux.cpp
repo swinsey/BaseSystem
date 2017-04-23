@@ -1,12 +1,13 @@
 #include "SystemVolume.h"
+
+#if defined(__linux__)
+
 #include <alsa/asoundlib.h>
 #include <alsa/mixer.h>
 #include <vector>
 #include <map>
 #include <string>
 #include <string.h>
-
-#if defined(__linux__)
 
 using namespace std;
 
