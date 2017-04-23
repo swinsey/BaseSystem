@@ -332,7 +332,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
                 break;
             }
             case CENTER:{
-                drawX = (width / 2) - (internalWidth / 2);
+                drawX = 0 - (internalWidth / 2);
                 break;
             }
             case RIGHT:{
@@ -346,7 +346,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
                 break;
             }
             case CENTER:{
-                drawY = (height / 2) - (internalHeight / 2);
+                drawY = 0 - (internalHeight / 2);
                 break;
             }
             case BOTTOM:{

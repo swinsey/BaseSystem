@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="APF" />
+        <module name="APFCreator" />
+        <module name="AppManager" />
+        <module name="AppSDK" />
+        <module name="BaseSystem" />
+        <module name="LogViewer" />
+        <module name="Transport" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="APF" target="1.8" />
+      <module name="APFCreator" target="1.8" />
+      <module name="AppManager" target="1.8" />
+      <module name="AppSDK" target="1.8" />
+      <module name="BaseSystem" target="1.8" />
+      <module name="LogViewer" target="1.8" />
+      <module name="repo-parent-basesystem" target="1.5" />
+      <module name="Transport" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
