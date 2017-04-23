@@ -18,6 +18,7 @@ else()
     
 	set(FMOD_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/fmod/linux/inc)
 	set(FMOD_LIBRARY ${PROJECT_SOURCE_DIR}/fmod/linux/lib/${ARCH}/libfmodL.so.9.3)
+	set(ADDITIONAL_LIBRARIES asound)
 endif(WIN32)
 
 find_package(JNI)
@@ -46,6 +47,7 @@ set(SOURCE_FILES
 	src/de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp
 	src/de_silveryard_basesystem_sound_SystemVolume.cpp
 	src/SystemVolumeWindows.cpp
+	src/SystemVolumeLinux.cpp
 	src/SystemVolumeFallback.cpp
 	)
 

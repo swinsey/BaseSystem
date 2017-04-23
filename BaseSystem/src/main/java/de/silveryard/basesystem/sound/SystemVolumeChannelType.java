@@ -9,89 +9,42 @@ public enum SystemVolumeChannelType {
      */
     CHANNEL_TYPE_INVALID(-1),
     /**
-     * Single speaker in a mono setup
+     * Front left speaker
      */
-    CHANNEL_TYPE_MONO(1),
+    CHANNEL_TYPE_FRONT_LEFT(1),
     /**
-     * Left speaker in a stereo setup
+     * Front center speaker
      */
-    CHANNEL_TYPE_STEREO_LEFT(2),
+    CHANNEL_TYPE_FRONT_CENTER(2),
     /**
-     * Right speaker in a stereo setup
+     * Front right speaker
      */
-    CHANNEL_TYPE_STEREO_RIGHT(3),
+    CHANNEL_TYPE_FRONT_RIGHT(3),
     /**
-     * Front left speaker in a 4-speaker setup
+     * Side left speaker
      */
-    CHANNEL_TYPE_QUAD_FRONT_LEFT(4),
+    CHANNEL_TYPE_SIDE_LEFT(4),
     /**
-     * Front right speaker in a 4-speaker setup
+     * Side right speaker
      */
-    CHANNEL_TYPE_QUAD_FRONT_RIGHT(5),
+    CHANNEL_TYPE_SIDE_RIGHT(5),
     /**
-     * Rear left speaker in a 4-speaker setup
+     * Rear left speaker
      */
-    CHANNEL_TYPE_QUAD_REAR_LEFT(6),
+    CHANNEL_TYPE_REAR_LEFT(6),
     /**
-     * Rear right speaker in a 4-speaker setup
+     * Rear center speaker
      */
-    CHANNEL_TYPE_QUAD_REAR_RIGHT(7),
+    CHANNEL_TYPE_REAR_CENTER(7),
     /**
-     * Front left speaker in a 5.1 setup
+     * Rear right speaker
      */
-    CHANNEL_TYPE_5_1_FRONT_LEFT(8),
+    CHANNEL_TYPE_REAR_RIGHT(8),
     /**
-     * Front center speaker in a 5.1 setup
+     * Subwoofer
      */
-    CHANNEL_TYPE_5_1_FRONT_CENTER(9),
-    /**
-     * Front right speaker in a 5.1 setup
-     */
-    CHANNEL_TYPE_5_1_FRONT_RIGHT(10),
-    /**
-     * Rear left speaker in a 5.1 setup
-     */
-    CHANNEL_TYPE_5_1_REAR_LEFT(11),
-    /**
-     * Rear right speaker in a 5.1 setup
-     */
-    CHANNEL_TYPE_5_1_REAR_RIGHT(12),
-    /**
-     * Subwoofer in a 5.1 setup
-     */
-    CHANNEL_TYPE_5_1_SUB(13),
-    /**
-     * Front left speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_FRONT_LEFT(14),
-    /**
-     * Front center speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_FRONT_CENTER(15),
-    /**
-     * Front right speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_FRONT_RIGHT(16),
-    /**
-     * Side left speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_SIDE_LEFT(17),
-    /**
-     * Side right speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_SIDE_RIGHT(18),
-    /**
-     * Rear left speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_REAR_LEFT(19),
-    /**
-     * Rear right speaker in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_REAR_RIGHT(20),
-    /**
-     * Subwoofer in a 7.1 setup
-     */
-    CHANNEL_TYPE_7_1_SUB(21);
+    CHANNEL_TYPE_SUB(9);
+
 
     /**
      * Converts an integer value to an enum value
