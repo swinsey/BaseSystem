@@ -5,6 +5,7 @@ import de.silveryard.transport.Message;
 import de.silveryard.transport.Parameter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,6 +13,9 @@ import java.util.UUID;
  * Created by Beppo on 28.01.2017.
  */
 public class QAMessage {
+    private static final byte[] HIGHLEVELPROTOCOL = "HIGHLEVELPROTOCOL".getBytes();
+    private static final byte[] QA = "QA".getBytes();
+
     private Message message;
     private String uuid;
     private List<Parameter> parameters;
@@ -48,13 +52,11 @@ public class QAMessage {
             throw new InvalidMessageException("The given message is not a qa message");
         }
 
-        String firstParam = message.getParams().get(0).getString();
-        if(firstParam == null || !firstParam.equals("HIGHLEVELPROTOCOL")){
+        if(!(Arrays.equals(message.getParams().get(0).getData(), HIGHLEVELPROTOCOL))){
             throw new InvalidMessageException("The given message is not a highlevelprotocol message");
         }
 
-        String secondParam = message.getParams().get(1).getString();
-        if(secondParam == null || !secondParam.equals("QA")){
+        if(!(Arrays.equals(message.getParams().get(1).getData(), QA))){
             throw new InvalidMessageException("The given message is not a qa message");
         }
 
@@ -77,8 +79,8 @@ public class QAMessage {
      */
     private QAMessage(boolean isResponse, String uuid, String senderID, String destinationID, String commandHash, List<Parameter> params){
         List<Parameter> messageParams = new ArrayList<>();
-        messageParams.add(Parameter.createString("HIGHLEVELPROTOCOL")); //Highlevel Protocol Identifier
-        messageParams.add(Parameter.createString("QA")); //Highlevel QA Protocol
+        messageParams.add(Parameter.createByteArray(HIGHLEVELPROTOCOL)); //Highlevel Protocol Identifier
+        messageParams.add(Parameter.createByteArray(QA)); //Highlevel QA Protocol
 
         this.isResponse = isResponse;
         messageParams.add(Parameter.createBoolean(this.isResponse)); //Is Response
