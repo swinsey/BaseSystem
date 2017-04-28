@@ -27,7 +27,11 @@ public class ControllerLoadingScreen extends Dialog {
 
     private void runThread(){
         handler.invoke(this::statusSetter);
-        runOnUIThread(getStage()::close);
+        try {
+            runOnUIThread(getStage()::close);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     private void statusSetter(String status){
         runOnUIThread(new IAction() {
