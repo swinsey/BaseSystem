@@ -2,6 +2,7 @@ package de.silveryard.transport.filecache;
 
 import de.silveryard.transport.Parameter;
 
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public interface FileReceiveHandler {
      * @param uuid File GUID
      * @param commandHash Command Hash
      * @param params List of parameters
-     * @param data File datat
+     * @param path Path to the file
      */
-    void handle(String sourceID, String uuid, String commandHash, List<Parameter> params, byte[] data);
+    void handle(String sourceID, String uuid, String commandHash, List<Parameter> params, Path path);
 }

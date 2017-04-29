@@ -13,7 +13,7 @@ import java.util.List;
  */
 public abstract class AppManager {
     public static List<App> refreshAppList(){
-        QAMessage response = Connection.sendMessage("de.awesome.smarthome.td.networkinterface.appmanager.getInstalledApps", new ArrayList<>());
+        QAMessage response = Connection.sendMessage("de.silveryard.basesystem.networkinterface.appmanager.getInstalledApps", new ArrayList<>());
 
         List<App> apps = new ArrayList<>();
         int index = 0;
@@ -31,7 +31,7 @@ public abstract class AppManager {
     public static int uninstallApp(App app){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(app.getAppIdentifier()));
-        QAMessage response = Connection.sendMessage("de.awesome.smarthome.td.networkinterface.appmanager.uninstallApp", params);
+        QAMessage response = Connection.sendMessage("de.silveryard.basesystem.networkinterface.appmanager.uninstallApp", params);
         return response.getParameters().get(0).getInt();
     }
     public static int installApp(Path path, boolean force){
@@ -45,14 +45,14 @@ public abstract class AppManager {
 
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createBoolean(force));
-        QAMessage response = Connection.sendMessage("de.awesome.smarthome.td.networkinterface.appmanager.installApp", params, data);
+        QAMessage response = Connection.sendMessage("de.silveryard.basesystem.networkinterface.appmanager.installApp", params, data);
         return response.getParameters().get(0).getInt();
     }
     public static byte[] getAppIcon(String appIdentifier, int desiredSize){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(appIdentifier));
         params.add(Parameter.createInt(desiredSize));
-        QAMessage response = Connection.sendMessage("de.awesome.smarthome.td.networkinterface.appmanager.getIcon", params);
+        QAMessage response = Connection.sendMessage("de.silveryard.basesystem.networkinterface.appmanager.getIcon", params);
         int result = response.getParameters().get(0).getInt();
 
         if(result != 1){
@@ -76,7 +76,7 @@ public abstract class AppManager {
     public static String getAppVersion(String appIdentifier){
         List<Parameter> params = new ArrayList<>();
         params.add(Parameter.createString(appIdentifier));
-        QAMessage response = Connection.sendMessage("de.awesome.smarthome.td.networkinterface.appmanager.getVersion", params);
+        QAMessage response = Connection.sendMessage("de.silveryard.basesystem.networkinterface.appmanager.getVersion", params);
 
         int result = response.getParameters().get(0).getInt();
 

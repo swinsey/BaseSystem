@@ -32,7 +32,7 @@ public abstract class AppManager {
         NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getVersion", AppManager::handleGetVersion);
     }
 
-    private static QAMessage handleGetInstalledApps(QAMessage message, byte[] data){
+    private static QAMessage handleGetInstalledApps(QAMessage message, Path filePath){
         final Wrapper<List<String>> result = new Wrapper<>();
 
         GraphicsManager.getInstance().runNextFrame(new Action() {
@@ -54,7 +54,7 @@ public abstract class AppManager {
 
         return new QAMessage(message, params);
     }
-    private static QAMessage handleUninstallApp(QAMessage message, byte[] data){
+    private static QAMessage handleUninstallApp(QAMessage message, Path filePath){
         final Wrapper<AppManagerResult> result = new Wrapper<>();
 
         GraphicsManager.getInstance().runNextFrame(new Action() {
@@ -71,14 +71,18 @@ public abstract class AppManager {
         params.add(Parameter.createInt(result.value.getValue()));
         return new QAMessage(message, params);
     }
-    private static QAMessage handleInstallApp(QAMessage message, byte[] data){
+    private static QAMessage handleInstallApp(QAMessage message, Path filePath){
         final Wrapper<AppManagerResult> result = new Wrapper<>();
 
         GraphicsManager.getInstance().runNextFrame(new Action() {
             @Override
             public void invoke() {
                 boolean force = message.getParameters().get(0).getBoolean();
-                result.value = de.silveryard.basesystem.app.AppManager.getInstance().installApp(data, force);
+                try {
+                    result.value = de.silveryard.basesystem.app.AppManager.getInstance().installApp(Files.readAllBytes(filePath), force);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -88,7 +92,7 @@ public abstract class AppManager {
         params.add(Parameter.createInt(result.value.getValue()));
         return new QAMessage(message, params);
     }
-    private static QAMessage handleGetIcon(QAMessage message, byte[] data){
+    private static QAMessage handleGetIcon(QAMessage message, Path filePath){
         String appIdentifier = message.getParameters().get(0).getString();
         int desiredSize = message.getParameters().get(1).getInt();
         LRValue<Path, AppManagerResult> result = de.silveryard.basesystem.app.AppManager.getInstance().getAppIcon(appIdentifier, desiredSize);
@@ -123,7 +127,7 @@ public abstract class AppManager {
 
         return new QAMessage(message, params);
     }
-    private static QAMessage handleGetVersion(QAMessage message, byte[] data){
+    private static QAMessage handleGetVersion(QAMessage message, Path filePath){
         String appIdentifier = message.getParameters().get(0).getString();
         LRValue<Short[], AppManagerResult> result = de.silveryard.basesystem.app.AppManager.getInstance().getAppVersion(appIdentifier);
 

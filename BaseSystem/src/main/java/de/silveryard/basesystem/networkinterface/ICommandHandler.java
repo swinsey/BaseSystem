@@ -2,6 +2,8 @@ package de.silveryard.basesystem.networkinterface;
 
 import de.silveryard.transport.Message;
 
+import java.nio.file.Path;
+
 /**
  * Created by Sebif on 15.03.2017.
  */
@@ -10,7 +12,7 @@ public interface ICommandHandler {
     /**
      * Called when a command is called
      * @param message Commands message
-     * @param data Data sent with this command. Optional and null when not used
+     * @param filePath Path to file.  Optional and null when not used
      */
-    void handle(Message message, byte[] data);
+    void handle(Message message, Path filePath);
 }
