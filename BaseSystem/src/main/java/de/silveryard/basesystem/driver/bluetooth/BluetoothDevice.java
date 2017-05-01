@@ -6,6 +6,19 @@ import de.silveryard.basesystem.driver.Device;
  * Created by silveryard on 30.04.17.
  */
 public abstract class BluetoothDevice extends Device {
+    private static int nextId = 1;
+
+    private final int id;
+
+    protected BluetoothDevice(){
+        id = nextId;
+        nextId++;
+    }
+
+    public final int getId(){
+        return id;
+    }
+
     public abstract boolean isBlocked();
     public abstract boolean isConnected();
     public abstract boolean isPaired();
