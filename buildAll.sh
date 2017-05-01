@@ -9,7 +9,7 @@ TRANSPORT_VERSION=1.0-SNAPSHOT
 ARCHITECTURE=$(uname -p)
 
 # Defining Directories
-REPO_PATH=$(dirname "$0")
+REPO_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 OUT_PATH=$REPO_PATH/build
 BUILD_PATH=$OUT_PATH/bin
 TOOLS_PATH=$BUILD_PATH/tools
