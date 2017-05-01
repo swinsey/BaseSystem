@@ -6,6 +6,7 @@ import de.silveryard.transport.Parameter;
 import de.silveryard.transport.filecache.FileCache;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -23,13 +24,13 @@ public class NetworkInterface {
     /**
      * Begins the initialization. Commands can only be registered while initializing
      */
-    public static void beginInitialize(){
+    public static void beginInitialize(Path filesDirPath){
         initializing = true;
 
         network = new Network(NetworkInterface::handleMessage);
         network.listen();
 
-        fileCache = new FileCache(network::send, NetworkInterface::handleFileReceive);
+        fileCache = new FileCache(network::send, NetworkInterface::handleFileReceive, filesDirPath);
 
         commandHashMapping = new HashMap<>();
         commandHandlers = new HashMap<>();
@@ -104,20 +105,20 @@ public class NetworkInterface {
 
         fileCache.handle(message);
     }
-    private static void handleFileReceive(String sourceID, String uuid, String commandHash, List<Parameter> params, byte[] data){
+    private static void handleFileReceive(String sourceID, String uuid, String commandHash, List<Parameter> params, Path filePath){
         Message message = new Message(sourceID, "00000000000000000000000000000000", commandHash, params);
-        handleMessageInternal(message, data);
+        handleMessageInternal(message, filePath);
     }
-    private static boolean handleMessageInternal(Message message, byte[] data){
+    private static boolean handleMessageInternal(Message message, Path filePath){
         if(commandHandlers.containsKey(message.getCommandHash())){
             ICommandHandler handler = commandHandlers.get(message.getCommandHash());
-            handler.handle(message, data);
+            handler.handle(message, filePath);
             return true;
         }
         if(qaCommandHanders.containsKey(message.getCommandHash())){
             QAMessage qaMessage = new QAMessage(message);
             IQACommandHandler handler = qaCommandHanders.get(message.getCommandHash());
-            QAMessage response = handler.handle(qaMessage, data);
+            QAMessage response = handler.handle(qaMessage, filePath);
             network.send(response.getMessage());
             return true;
         }

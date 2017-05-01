@@ -1,5 +1,6 @@
 package de.silveryard.transport;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Objects;
@@ -78,7 +79,12 @@ public class Parameter {
      */
     public static Parameter createString(String str){
         Objects.requireNonNull(str);
-        byte[] data = str.getBytes();
+        byte[] data;
+        try {
+            data  = str.getBytes("UTF8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
 
         if(data.length > PARAM_DATA_MAX_LENGTH){
             throw new IllegalArgumentException("Data array too large (max: " + PARAM_DATA_MAX_LENGTH + ", actual: " + data.length + ")");
@@ -180,7 +186,12 @@ public class Parameter {
      * @return Returns the parameter as string value
      */
     public String getString(){
-        return new String(data);
+        try {
+            return new String(data, "UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

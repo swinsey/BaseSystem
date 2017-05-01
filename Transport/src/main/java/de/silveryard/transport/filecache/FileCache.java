@@ -1,9 +1,15 @@
 package de.silveryard.transport.filecache;
 
+import de.silveryard.transport.Message;
 import de.silveryard.transport.MessageHandler;
 import de.silveryard.transport.Parameter;
-import de.silveryard.transport.Message;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,6 +44,8 @@ public class FileCache implements MessageHandler {
      */
     private static final String UPLOAD_REQUEST_PACKAGE = "47cb0562ea7fdf63d8e5869aa9752370";
 
+    private Path filesDir;
+
     private MessageHandler messageHandler;
     private FileReceiveHandler fileHandler;
 
@@ -51,12 +59,18 @@ public class FileCache implements MessageHandler {
      * @param onSend Handler that can send messages
      * @param onFileReceive Called when a file is received
      */
-    public FileCache(MessageHandler onSend, FileReceiveHandler onFileReceive){
+    public FileCache(MessageHandler onSend, FileReceiveHandler onFileReceive, Path filesDir){
         messageHandler = onSend;
         fileHandler = onFileReceive;
         outgoingTransports = new HashMap<>();
         incomingTransports = new HashMap<>();
         isShuttingDown = false;
+
+        if(!Files.exists(filesDir) || !Files.isDirectory(filesDir)){
+            throw new RuntimeException("Path either doesn't point to directory or directory is not existent");
+        }
+
+        this.filesDir = filesDir;
     }
 
     /**
@@ -149,7 +163,7 @@ public class FileCache implements MessageHandler {
 
                 List<Parameter> initialParams = Stream.of(
                         Parameter.createString(transportID),
-                        Parameter.createInt(data.length),
+                        Parameter.createLong(data.length),
                         Parameter.createString(commandHash),
                         Parameter.createInt(params.size())
                 ).collect(Collectors.toList());
@@ -204,14 +218,24 @@ public class FileCache implements MessageHandler {
         private String transportID;
         private Set<Message> messages;
         private Message initialMessage;
+        private String fileName;
+        private Path filePath;
+        private OutputStream out;
 
-        private int expectedBytes;
+        private long expectedBytes;
 
         public FileReceiver(Message initialMessage){
             this.transportID = initialMessage.getParams().get(0).getString();
-            this.expectedBytes = initialMessage.getParams().get(1).getInt();
+            this.expectedBytes = initialMessage.getParams().get(1).getLong();
             this.initialMessage = initialMessage;
             this.messages = new TreeSet<>(Comparator.comparingInt(m -> m.getParams().get(1).getInt()));
+            this.fileName = UUID.randomUUID().toString().replaceAll("-", "");
+            try {
+                this.filePath = Files.createFile(Paths.get(filesDir.toString(), fileName));//Paths.get(fileName).resolve(filesDir));
+                this.out = Files.newOutputStream(filePath, StandardOpenOption.CREATE);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         public void receive(Message m){
@@ -232,12 +256,25 @@ public class FileCache implements MessageHandler {
                             transportID,
                             initialMessage.getParams().get(2).getString(),  //CommandHash for the receiver
                             initialMessage.getParams().stream().skip(4).collect(Collectors.toList()), //Initial params for actual call
-                            getData()
+                            filePath
                     );
                     incomingTransports.remove(this);
+
+                    if(out != null){
+                        try{ out.close();}
+                        catch (Exception e){}
+                    }
+
                     System.gc();
                 }
             } else {
+                for(int i = 2; i < m.getParams().size(); i++){
+                    try {
+                        out.write(m.getParams().get(i).getData());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
                 messages.add(m);
             }
         }
@@ -249,20 +286,6 @@ public class FileCache implements MessageHandler {
                     .flatMap(params -> params.stream().skip(2))
                     .mapToInt(p -> p.getSize())
                     .sum() == expectedBytes;
-        }
-
-        private byte[] getData() {
-            byte[] b = new byte[expectedBytes];
-            int c = 0;
-
-            for (Message m : messages) {
-                for (int i = 2; i < m.getParams().size(); i++) {
-                    for (int j = 0; j < m.getParams().get(i).getData().length; j++) {
-                        b[c++] = m.getParams().get(i).getData()[j];
-                    }
-                }
-            }
-            return  b;
         }
     }
 }
