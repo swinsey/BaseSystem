@@ -1,4 +1,4 @@
-package de.silveryard.basesystem.driver.bluetooth;
+package de.silveryard.basesystem.driver.bluetooth.dbus;
 
 import org.freedesktop.dbus.DBusInterface;
 import org.freedesktop.dbus.DBusInterfaceName;
@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by silveryard on 01.05.17.
  */
 @DBusInterfaceName("org.freedesktop.DBus.ObjectManager")
-interface ObjectManager extends DBusInterface {
+public interface ObjectManager extends DBusInterface {
 
     public static class InterfacesAdded extends DBusSignal {
 

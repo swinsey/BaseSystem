@@ -13,19 +13,10 @@
     <orderEntry type="library" name="Maven: de.silveryard:Transport:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.15.1" level="project" />
-    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: com.github.hypfvieh:dbus-java:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.hypfvieh:libmatthew:0.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.hypfvieh:java-utils:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: de.silveryard:APF:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: de.silveryard:Transport:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
-    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.15.1" level="project" />
-    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
-    <orderEntry type="library" name="Maven: com.github.hypfvieh:dbus-java:2.7.2" level="project" />
-    <orderEntry type="library" name="Maven: com.github.hypfvieh:libmatthew:0.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.github.hypfvieh:java-utils:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.5" level="project" />
   </component>
 </module>

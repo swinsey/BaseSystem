@@ -2,7 +2,6 @@ package de.silveryard.basesystem.gui;
 
 import de.silveryard.basesystem.util.IDisposable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static de.silveryard.basesystem.gui.SDLLabel.*;
