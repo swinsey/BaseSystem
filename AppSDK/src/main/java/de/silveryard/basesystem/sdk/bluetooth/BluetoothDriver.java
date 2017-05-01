@@ -27,7 +27,7 @@ public abstract class BluetoothDriver {
         return devices;
     }
 
-    public void updateDevices(){
+    public static void updateDevices(){
         systemCallDriverBTBluetoothDriverGetDevices(returnCodeWrapper, btReturnCodeWrapper, intArrayWrapper);
 
         if(btReturnCodeWrapper.value != BtReturnCode.OK){

@@ -47,7 +47,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(false));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(device.isBlocked()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createBoolean(device.isBlocked()));
     }
     private static QAMessage systemCallDriverBTDeviceIsConnected(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -56,7 +56,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(false));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(device.isConnected()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createBoolean(device.isConnected()));
     }
     private static QAMessage systemCallDriverBTDeviceIsPaired(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -65,7 +65,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(false));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(device.isPaired()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createBoolean(device.isPaired()));
     }
     private static QAMessage systemCallDriverBTDeviceIsTrusted(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -74,7 +74,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(false));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createBoolean(device.isTrusted()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createBoolean(device.isTrusted()));
     }
 
     private static QAMessage systemCallDriverBTDeviceGetAddress(RunningApp app, QAMessage message){
@@ -84,7 +84,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(""));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(device.getAddress()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createString(device.getAddress()));
     }
     private static QAMessage systemCallDriverBTDeviceGetAlias(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -93,7 +93,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(""));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(device.getAlias()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createString(device.getAlias()));
     }
     private static QAMessage systemCallDriverBTDeviceGetIcon(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -102,7 +102,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(""));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(device.getIcon()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createString(device.getIcon()));
     }
     private static QAMessage systemCallDriverBTDeviceGetName(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -111,7 +111,7 @@ abstract class Device {
             return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(""));
         }
 
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue(), Parameter.createString(device.getName()));
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(), Parameter.createString(device.getName()));
     }
 
     private static QAMessage systemCallDriverBTDevicePair(RunningApp app, QAMessage message){
@@ -122,7 +122,7 @@ abstract class Device {
         }
 
         device.pair();
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue());
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue());
     }
     private static QAMessage systemCallDriverBTDeviceCancelPairing(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -132,7 +132,7 @@ abstract class Device {
         }
 
         device.cancelPairing();
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue());
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue());
     }
     private static QAMessage systemCallDriverBTDeviceConnect(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
@@ -142,16 +142,16 @@ abstract class Device {
         }
 
         device.connect();
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue());
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue());
     }
     private static QAMessage systemCallDriverBTDeviceDisconnect(RunningApp app, QAMessage message){
         BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
 
         if(device == null){
-            return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue());
+            return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.OK.getValue());
         }
 
         device.disconnect();
-        return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue());
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue());
     }
 }
