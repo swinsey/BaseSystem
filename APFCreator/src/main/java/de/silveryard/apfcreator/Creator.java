@@ -4,6 +4,7 @@ import de.silveryard.apf.ApplicationPackageFile;
 import de.silveryard.apf.Builder;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -90,7 +91,14 @@ public class Creator {
         assertTrue(Files.isDirectory(arguments.splashDir), "splashImages directory cannot be a file");
 
         arguments.fileDir = Paths.get(arguments.baseDir.toString(),  "files");
-        assertTrue(Files.exists(arguments.fileDir), "files directory does not exist");
+        if(!Files.exists(arguments.fileDir)){
+            try {
+                Files.createDirectories(arguments.fileDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }
         assertTrue(Files.isDirectory(arguments.fileDir), "files directory cannot be a file");
 
         return arguments;
