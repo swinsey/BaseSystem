@@ -1,9 +1,11 @@
 package de.silveryard.basesystem.driver.bluetooth;
 
+import de.silveryard.basesystem.driver.DriverManager;
 import de.silveryard.basesystem.driver.bluetooth.dbus.Device;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
 import org.freedesktop.dbus.exceptions.DBusException;
+import org.freedesktop.dbus.exceptions.DBusExecutionException;
 
 /**
  * Created by silveryard on 01.05.17.
@@ -14,6 +16,7 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
     private final String objectPath;
     private final DBus.Properties properties;
     private final Device device;
+    private final BluetoothAgent agent;
 
     public BluetoothDeviceLinux(DBusConnection connection, String objectPath){
         this.objectPath = objectPath;
@@ -24,6 +27,7 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+        agent = ((BluetoothManagerLinux)DriverManager.getInstance().getDriver(BluetoothDriver.class).getManager()).getBluetoothAgent();
     }
 
     public String getObjectPath(){
@@ -65,13 +69,37 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
     }
 
     @Override
-    public void pair() {
-        device.Pair();
+    public boolean pair() {
+        boolean success = false;
+
+        try {
+            device.Pair();
+            success = true;
+        }catch(DBusExecutionException e){
+            System.out.println("Failed to pair with bluetooth device: " + e.getMessage());
+            success = false;
+        }
+
+        if(agent != null) {
+            if (success) {
+                agent.onDevicePaired(this);
+            }else{
+                agent.onDevicePairingFailed(this);
+            }
+        }
+        return success;
     }
     @Override
     public void cancelPairing() {
         device.CancelPairing();
     }
+
+    @Override
+    public void remove() {
+        Adapter adapter = DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter();
+        ((AdapterLinux) adapter).removeDevice(objectPath);
+    }
+
     @Override
     public void connect() {
         device.Connect();

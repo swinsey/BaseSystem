@@ -2,10 +2,15 @@ package de.silveryard.basesystem.driver.bluetooth;
 
 
 import de.silveryard.basesystem.driver.DeviceHandler;
+import de.silveryard.basesystem.driver.bluetooth.dbus.Agent;
+import de.silveryard.basesystem.driver.bluetooth.dbus.AgentManager;
+import de.silveryard.basesystem.driver.bluetooth.dbus.Device;
 import de.silveryard.basesystem.driver.bluetooth.dbus.ObjectManager;
+import de.silveryard.basesystem.sound.FmodCreateSoundExInfo;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
 import org.freedesktop.dbus.DBusInterface;
+import org.freedesktop.dbus.Path;
 import org.freedesktop.dbus.Variant;
 import org.freedesktop.dbus.exceptions.DBusException;
 
@@ -17,15 +22,17 @@ import java.util.function.BiConsumer;
 /**
  * Created by silveryard on 01.05.17.
  */
-final class BluetoothManagerLinux extends BluetoothManager {
+public final class BluetoothManagerLinux extends BluetoothManager {
     private final long REFRESH_DELAY = 1000;
 
     private final DBusConnection connection;
     private final ObjectManager objectManager;
+    private final AgentManager agentManager;
     private final AdapterLinux adapter;
     private final List<BluetoothDeviceLinux> devices;
     private final List<DBusInterface> tmpDevices;
     private long lastTimestamp;
+    private BluetoothAgent bluetoothAgent;
 
     public BluetoothManagerLinux(DeviceHandler<BluetoothDevice> connectedHandler, DeviceHandler<BluetoothDevice> disconnectedHandler) {
         super(connectedHandler, disconnectedHandler);
@@ -33,6 +40,7 @@ final class BluetoothManagerLinux extends BluetoothManager {
         try {
             connection = DBusConnection.getConnection(DBusConnection.SYSTEM);
             objectManager = connection.getRemoteObject("org.bluez", "/", ObjectManager.class);
+            agentManager = connection.getRemoteObject("org.bluez", "/org/bluez", AgentManager.class);
             adapter = new AdapterLinux(
                     connection.getRemoteObject("org.bluez", "/org/bluez/hci0", DBus.Properties.class),
                     connection.getRemoteObject("org.bluez", "/org/bluez/hci0", de.silveryard.basesystem.driver.bluetooth.dbus.Adapter.class)
@@ -109,5 +117,29 @@ final class BluetoothManagerLinux extends BluetoothManager {
                 onDeviceDisconnected(device);
             }
         }
+    }
+    @Override
+    public void dispose(){
+        connection.disconnect();
+    }
+
+    public BluetoothAgent getBluetoothAgent(){
+        return bluetoothAgent;
+    }
+
+    public void registerAgent(BluetoothAgent agent){
+        if(bluetoothAgent != null){
+            throw new RuntimeException("Already added a bluetooth agent");
+        }
+
+        try {
+            connection.exportObject(agent.getObjectPath(), agent);
+        } catch (DBusException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        bluetoothAgent = agent;
+        agentManager.RegisterAgent(new Path(agent.getObjectPath()), agent.getCapability().getValue());
     }
 }

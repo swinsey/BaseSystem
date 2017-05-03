@@ -10,4 +10,5 @@ import org.freedesktop.dbus.DBusInterfaceName;
 public interface Adapter extends DBusInterface {
     void StartDiscovery();
     void StopDiscovery();
+    void RemoveDevice(String device);
 }

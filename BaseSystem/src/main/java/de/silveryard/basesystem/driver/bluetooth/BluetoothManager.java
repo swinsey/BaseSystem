@@ -5,7 +5,7 @@ import de.silveryard.basesystem.driver.DeviceHandler;
 /**
  * Created by silveryard on 01.05.17.
  */
-abstract class BluetoothManager {
+public abstract class BluetoothManager {
     private DeviceHandler<BluetoothDevice> connectedHandler;
     private DeviceHandler<BluetoothDevice> disconnectedHandler;
 
@@ -16,6 +16,7 @@ abstract class BluetoothManager {
     public abstract Adapter getAdapter();
 
     public abstract void update();
+    public abstract void dispose();
 
     protected void onDeviceConnected(BluetoothDevice device){
         connectedHandler.handle(device);

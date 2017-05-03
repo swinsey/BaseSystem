@@ -58,4 +58,8 @@ final class AdapterLinux extends Adapter {
     public void stopDiscovery() {
         adapter.StopDiscovery();
     }
+
+    public void removeDevice(String path){
+        adapter.RemoveDevice(path);
+    }
 }

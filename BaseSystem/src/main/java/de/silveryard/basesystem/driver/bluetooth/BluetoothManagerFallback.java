@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by silveryard on 01.05.17.
  */
-final class BluetoothManagerFallback extends BluetoothManager {
+public final class BluetoothManagerFallback extends BluetoothManager {
     private AdapterFallback adapter;
     private List<BluetoothDevice> devices;
 
@@ -27,6 +27,11 @@ final class BluetoothManagerFallback extends BluetoothManager {
 
     @Override
     public void update() {
+
+    }
+
+    @Override
+    public void dispose() {
 
     }
 }

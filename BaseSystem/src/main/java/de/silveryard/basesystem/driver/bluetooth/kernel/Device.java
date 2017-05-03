@@ -27,6 +27,7 @@ abstract class Device {
 
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.bt.device.pair", Device::systemCallDriverBTDevicePair);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.bt.device.cancelpairing", Device::systemCallDriverBTDeviceCancelPairing);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.bt.device.remove", Device::systemCallDriverBTDeviceRemove);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.bt.device.connect", Device::systemCallDriverBTDeviceConnect);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.bt.device.disconnect", Device::systemCallDriverBTDeviceDisconnect);
     }
@@ -132,6 +133,16 @@ abstract class Device {
         }
 
         device.cancelPairing();
+        return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue());
+    }
+    private static QAMessage systemCallDriverBTDeviceRemove(RunningApp app, QAMessage message){
+        BluetoothDevice device = getDevice(message.getParameters().get(0).getInt());
+
+        if(device == null){
+            return Kernel.getInstance().createResponse(message, ReturnCode.ERROR.getValue(), BtReturnCode.INVALID_ID.getValue());
+        }
+
+        device.remove();
         return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue());
     }
     private static QAMessage systemCallDriverBTDeviceConnect(RunningApp app, QAMessage message){

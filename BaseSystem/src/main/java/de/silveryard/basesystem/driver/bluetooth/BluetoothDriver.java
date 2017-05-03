@@ -24,6 +24,7 @@ public final class BluetoothDriver extends Driver<BluetoothDevice> {
 
     @Override
     public void onUnload(){
+        manager.dispose();
     }
     @Override
     public void update(){
@@ -32,5 +33,9 @@ public final class BluetoothDriver extends Driver<BluetoothDevice> {
 
     public Adapter getAdapter(){
         return manager.getAdapter();
+    }
+
+    public BluetoothManager getManager(){
+        return manager;
     }
 }

@@ -29,8 +29,9 @@ public abstract class BluetoothDevice extends Device {
     public abstract String getIcon();
     public abstract String getName();
 
-    public abstract void pair();
+    public abstract boolean pair();
     public abstract void cancelPairing();
+    public abstract void remove();
     public abstract void connect();
     public abstract void disconnect();
 }

@@ -1,12 +1,14 @@
 package de.silveryard.basesystem.driver;
 
+import de.silveryard.basesystem.util.IDisposable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by silveryard on 29.04.17.
  */
-public final class DriverManager {
+public final class DriverManager implements IDisposable {
     private static DriverManager instance;
     public static void initialize(){
         instance = new DriverManager();
@@ -67,5 +69,14 @@ public final class DriverManager {
         }
 
         return null;
+    }
+
+
+    @Override
+    public void dispose() {
+        for(int i = 0; i < drivers.size(); i++){
+            drivers.get(i).onUnload();
+        }
+        drivers.clear();
     }
 }
