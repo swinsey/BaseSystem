@@ -13,8 +13,8 @@ import java.util.UUID;
 /**
  * Created by silveryard on 03.05.17.
  */
-public abstract class BluetoothAgent implements Agent {
-    private String objectPath;
+public abstract class BluetoothAgent {
+    /*private String objectPath;
     private BluetoothDriver driver;
     private BluetoothCapability capability;
 
@@ -39,10 +39,10 @@ public abstract class BluetoothAgent implements Agent {
     protected abstract void requestAuthorization(BluetoothDevice device) throws Rejected, Canceled;
 
     protected abstract void authorizeService(BluetoothDevice device, String uuid) throws Rejected, Canceled;
-
+*/
     public abstract void onDevicePaired(BluetoothDevice device);
     public abstract void onDevicePairingFailed(BluetoothDevice device);
-
+/*
     private final BluetoothDevice getDevice(Path path){
         List<BluetoothDevice> devices = driver.getDevices();
         for(int i = 0; i < devices.size(); i++){
@@ -104,5 +104,5 @@ public abstract class BluetoothAgent implements Agent {
     @Override
     public final String getObjectPath() {
         return objectPath;
-    }
+    }*/
 }

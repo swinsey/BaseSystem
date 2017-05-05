@@ -131,15 +131,17 @@ public final class BluetoothManagerLinux extends BluetoothManager {
         if(bluetoothAgent != null){
             throw new RuntimeException("Already added a bluetooth agent");
         }
-
+        /*
         try {
             connection.exportObject(agent.getObjectPath(), agent);
         } catch (DBusException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+        */
 
         bluetoothAgent = agent;
-        agentManager.RegisterAgent(new Path(agent.getObjectPath()), agent.getCapability().getValue());
+        //agentManager.RegisterAgent(new Path(agent.getObjectPath()), agent.getCapability().getValue());
+        System.out.println("Registered bluetooth agent");
     }
 }

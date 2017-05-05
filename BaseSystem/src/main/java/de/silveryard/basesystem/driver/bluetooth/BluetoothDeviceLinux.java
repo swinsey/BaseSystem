@@ -77,7 +77,12 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
             success = true;
         }catch(DBusExecutionException e){
             System.out.println("Failed to pair with bluetooth device: " + e.getMessage());
+            e.printStackTrace();
             success = false;
+        }
+
+        if(success){
+            System.out.println("Paired with device: " + getName());
         }
 
         if(agent != null) {
