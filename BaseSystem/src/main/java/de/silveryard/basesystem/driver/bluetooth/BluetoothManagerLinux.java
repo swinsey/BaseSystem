@@ -18,12 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by silveryard on 01.05.17.
  */
 public final class BluetoothManagerLinux extends BluetoothManager {
-    private final long REFRESH_DELAY = 1000;
+    private static final long REFRESH_DELAY = 1000;
+    private static final Pattern PATTERN_DEVICE = Pattern.compile("^\\/org\\/bluez\\/hci0\\/dev(_[0-9A-F]{2}){6}$", Pattern.CASE_INSENSITIVE);
 
     private final DBusConnection connection;
     private final ObjectManager objectManager;
@@ -71,7 +74,9 @@ public final class BluetoothManagerLinux extends BluetoothManager {
         objs.forEach(new BiConsumer<DBusInterface, Map<String, Map<String, Variant>>>() {
             public void accept(DBusInterface obj, Map<String, Map<String, Variant>> stringMapMap) {
                 String path = obj.getObjectPath();
-                if(path.startsWith("/org/bluez/hci0/dev_")){
+                Matcher m = PATTERN_DEVICE.matcher(path);
+
+                if(m.find()){
                     tmpDevices.add(obj);
                 }
             }
