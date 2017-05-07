@@ -9,6 +9,9 @@ import org.apache.commons.lang3.SystemUtils;
 public final class BluetoothAudioDriver extends Driver<BluetoothAudioDevice> {
     private BluetoothAudioManager manager;
 
+    /**
+     * Constructor
+     */
     public BluetoothAudioDriver(){
         if(SystemUtils.IS_OS_LINUX){
             manager = new BluetoothAudioManagerLinux(this::onDeviceConnected, this::onDeviceDisconnected);
@@ -16,6 +19,7 @@ public final class BluetoothAudioDriver extends Driver<BluetoothAudioDevice> {
             manager = new BluetoothAudioManagerFallback();
         }
     }
+
     @Override
     public void update() {
         manager.update();

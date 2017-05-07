@@ -1,8 +1,5 @@
 package de.silveryard.basesystem.driver.bluetooth.dbus;
 
-import de.silveryard.basesystem.driver.bluetooth.dbus.error.AlreadyExists;
-import de.silveryard.basesystem.driver.bluetooth.dbus.error.DoesNotExist;
-import de.silveryard.basesystem.driver.bluetooth.dbus.error.InvalidArguments;
 import org.freedesktop.dbus.DBusInterface;
 import org.freedesktop.dbus.DBusInterfaceName;
 import org.freedesktop.dbus.Path;
@@ -47,10 +44,8 @@ public interface AgentManager extends DBusInterface {
      *
      * @param agent
      * @param capability
-     * @throws InvalidArguments
-     * @throws AlreadyExists
      */
-    void RegisterAgent(Path agent, String capability) throws InvalidArguments, AlreadyExists;
+    void RegisterAgent(Path agent, String capability);
 
     /**
      * This unregisters the agent that has been previously
@@ -60,9 +55,8 @@ public interface AgentManager extends DBusInterface {
      * Possible errors: org.bluez.Error.DoesNotExist
      *
      * @param agent
-     * @throws DoesNotExist
      */
-    void UnregisterAgent(Path agent) throws DoesNotExist;
+    void UnregisterAgent(Path agent);
 
     /**
      * This requests is to make the application agent
@@ -75,7 +69,6 @@ public interface AgentManager extends DBusInterface {
      * Possible errors: org.bluez.Error.DoesNotExist
      *
      * @param agent
-     * @throws DoesNotExist
      */
-    void RequestDefaultAgent(Path agent) throws DoesNotExist;
+    void RequestDefaultAgent(Path agent);
 }

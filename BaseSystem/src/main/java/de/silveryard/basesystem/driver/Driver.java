@@ -12,6 +12,9 @@ public abstract class Driver<TDev extends Device>  {
     private List<DeviceHandler<TDev>> connectedHandlers;
     private List<DeviceHandler<TDev>> disconnectedHandlers;
 
+    /**
+     * Constructor
+     */
     public Driver(){
         loaded = false;
         devices = new ArrayList<>();
@@ -19,9 +22,15 @@ public abstract class Driver<TDev extends Device>  {
         disconnectedHandlers = new ArrayList<>();
     }
 
+    /**
+     * Called when the driver gets loaded
+     */
     public void onLoad(){
         loaded = true;
     }
+    /**
+     * Called when the driver gets unloaded
+     */
     public void onUnload(){
         loaded = false;
         devices = new ArrayList<>();
@@ -29,35 +38,70 @@ public abstract class Driver<TDev extends Device>  {
         disconnectedHandlers = new ArrayList<>();
     }
 
+    /**
+     * Updates the driver
+     */
     public abstract void update();
 
+    /**
+     * Returns if this driver object is currently loaded
+     * @return
+     */
     public final boolean isLoaded(){
         return loaded;
     }
+    /**
+     * Returns a list of all connected devices managed by this driver
+     * @return List of devices
+     */
     public final List<TDev> getDevices(){
         return devices;
     }
 
+    /**
+     * Registers a connected handler.
+     * @param handler Handler. Gets called when a new device connected to this driver
+     */
     public final void registerConnectedHandler(DeviceHandler<TDev> handler){
         connectedHandlers.add(handler);
     }
+    /**
+     * Unregisters a connected handler
+     * @param handler Handler. Will no longer be called when a new device connected to this driver
+     */
     public final void unregisterConnectedHandler(DeviceHandler<TDev> handler){
         connectedHandlers.remove(handler);
     }
 
+    /**
+     * Registers a disconnected handler
+     * @param handler Handler. Gets called when a device disconnected from the driver
+     */
     public final void registerDisconnectedHandler(DeviceHandler<TDev> handler){
         disconnectedHandlers.add(handler);
     }
+    /**
+     * Unregisters a disconnected handler
+     * @param handler Handler. Will no longer be called when a device disconnects from the drievr
+     */
     public final void unregisterDisconnectedHandler(DeviceHandler<TDev> handler){
         disconnectedHandlers.remove(handler);
     }
 
+    /**
+     * Called when a device connected
+     * @param device
+     */
     protected final void onDeviceConnected(TDev device){
         devices.add(device);
         for(int i = 0; i < connectedHandlers.size(); i++){
             connectedHandlers.get(i).handle(device);
         }
     }
+    /**
+     * Called when a device disconnected
+     * @param device
+     */
     protected final void onDeviceDisconnected(TDev device){
         devices.remove(device);
         for(int i = 0; i < disconnectedHandlers.size(); i++){

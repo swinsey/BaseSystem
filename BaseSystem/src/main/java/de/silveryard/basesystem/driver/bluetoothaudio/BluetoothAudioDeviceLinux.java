@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by silveryard on 07.05.17.
  */
-public final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
+final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
     private static final String INTERFACE = "org.bluez.MediaPlayer1";
 
     private final BluetoothDevice device;

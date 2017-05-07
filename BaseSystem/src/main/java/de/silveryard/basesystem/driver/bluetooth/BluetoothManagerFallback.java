@@ -12,6 +12,11 @@ public final class BluetoothManagerFallback extends BluetoothManager {
     private AdapterFallback adapter;
     private List<BluetoothDevice> devices;
 
+    /**
+     * Constructor
+     * @param connectedHandler
+     * @param disconnectedHandler
+     */
     public BluetoothManagerFallback(DeviceHandler<BluetoothDevice> connectedHandler, DeviceHandler<BluetoothDevice> disconnectedHandler) {
         super(connectedHandler, disconnectedHandler);
 

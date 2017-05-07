@@ -1,7 +1,5 @@
 package de.silveryard.basesystem.driver.bluetooth.dbus;
 
-import de.silveryard.basesystem.driver.bluetooth.dbus.error.Canceled;
-import de.silveryard.basesystem.driver.bluetooth.dbus.error.Rejected;
 import org.freedesktop.dbus.DBusInterface;
 import org.freedesktop.dbus.DBusInterfaceName;
 import org.freedesktop.dbus.Path;
@@ -33,10 +31,8 @@ public interface Agent extends DBusInterface {
      * org.bluez.Error.Canceled
      *
      * @return
-     * @throws Rejected
-     * @throws Canceled
      */
-    String RequestPinCode(Path device) throws Rejected, Canceled;
+    String RequestPinCode(Path device);
 
     /**
      * This method gets called when the service daemon
@@ -60,11 +56,8 @@ public interface Agent extends DBusInterface {
      *
      * Possible errors: org.bluez.Error.Rejected
      * org.bluez.Error.Canceled
-     *
-     * @throws Rejected
-     * @throws Canceled
      */
-    void DisplayPinCode(Path device, String pinCode) throws Rejected, Canceled;
+    void DisplayPinCode(Path device, String pinCode);
 
     /**
      * This method gets called when the service daemon
@@ -75,11 +68,8 @@ public interface Agent extends DBusInterface {
      *
      * Possible errors: org.bluez.Error.Rejected
      * org.bluez.Error.Canceled
-     *
-     * @throws Rejected
-     * @throws Canceled
      */
-    UInt32 RequestPasskey(Path device) throws Rejected, Canceled;
+    UInt32 RequestPasskey(Path device);
 
     /**
      * This method gets called when the service daemon
@@ -118,11 +108,8 @@ public interface Agent extends DBusInterface {
      *
      * Possible errors: org.bluez.Error.Rejected
      * org.bluez.Error.Canceled
-     *
-     * @throws Rejected
-     * @throws Canceled
      */
-    void RequestConfirmation(Path device, UInt32 passKey) throws Rejected, Canceled;
+    void RequestConfirmation(Path device, UInt32 passKey);
 
     /**
      *
@@ -133,11 +120,8 @@ public interface Agent extends DBusInterface {
 
      * Possible errors: org.bluez.Error.Rejected
      * org.bluez.Error.Canceled
-     *
-     * @throws Rejected
-     * @throws Canceled
      */
-    void RequestAuthorization(Path device) throws Rejected, Canceled;
+    void RequestAuthorization(Path device);
 
     /**
      * This method gets called when the service daemon
@@ -145,11 +129,8 @@ public interface Agent extends DBusInterface {
      *
      * Possible errors: org.bluez.Error.Rejected
      * org.bluez.Error.Canceled
-     *
-     * @throws Rejected
-     * @throws Canceled
      */
-    void AuthorizeService(Path device, String uuid) throws Rejected, Canceled;
+    void AuthorizeService(Path device, String uuid);
 
     /**
      * This method gets called to indicate that the agent

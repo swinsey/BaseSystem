@@ -5,5 +5,9 @@ package de.silveryard.basesystem.driver;
  */
 @FunctionalInterface
 public interface DeviceHandler<TDev extends Device> {
+    /**
+     * Called when a device event has happened
+     * @param device Affected device
+     */
     void handle(TDev device);
 }

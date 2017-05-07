@@ -12,6 +12,9 @@ import java.util.List;
 public final class BluetoothDriver extends Driver<BluetoothDevice> {
     private final BluetoothManager manager;
 
+    /**
+     * Constructor
+     */
     public BluetoothDriver(){
         if(SystemUtils.IS_OS_LINUX){
             manager = new BluetoothManagerLinux(this::onDeviceConnected, this::onDeviceDisconnected);
@@ -29,10 +32,20 @@ public final class BluetoothDriver extends Driver<BluetoothDevice> {
         manager.update();
     }
 
+    /**
+     * Returns the default adapter
+     * @return Adapter object
+     */
     public Adapter getAdapter(){
         return manager.getAdapter();
     }
 
+    /**
+     * Returns the internal bluetooth manager
+     *
+     * TODO: Make this method unneccesary
+     * @return Manager object
+     */
     public BluetoothManager getManager(){
         return manager;
     }

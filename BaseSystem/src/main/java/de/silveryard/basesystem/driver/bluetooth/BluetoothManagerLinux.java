@@ -37,6 +37,11 @@ public final class BluetoothManagerLinux extends BluetoothManager {
     private long lastTimestamp;
     private BluetoothAgent bluetoothAgent;
 
+    /**
+     * Constructor
+     * @param connectedHandler
+     * @param disconnectedHandler
+     */
     public BluetoothManagerLinux(DeviceHandler<BluetoothDevice> connectedHandler, DeviceHandler<BluetoothDevice> disconnectedHandler) {
         super(connectedHandler, disconnectedHandler);
 
@@ -128,10 +133,18 @@ public final class BluetoothManagerLinux extends BluetoothManager {
         connection.disconnect();
     }
 
+    /**
+     * Returns the currently registered bluetooth agent
+     * @return
+     */
     public BluetoothAgent getBluetoothAgent(){
         return bluetoothAgent;
     }
 
+    /**
+     * Registers a bluetooth agent. You can only register one agent
+     * @param agent
+     */
     public void registerAgent(BluetoothAgent agent){
         if(bluetoothAgent != null){
             throw new RuntimeException("Already added a bluetooth agent");

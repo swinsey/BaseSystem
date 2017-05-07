@@ -1,6 +1,5 @@
 package de.silveryard.basesystem.driver.bluetooth.dbus;
 
-import de.silveryard.basesystem.driver.bluetooth.dbus.error.*;
 import org.freedesktop.dbus.DBusInterface;
 import org.freedesktop.dbus.DBusInterfaceName;
 
@@ -25,16 +24,8 @@ public interface Device extends DBusInterface {
      * org.bluez.Failed
      * org.bluez.InProgress
      * org.bluez.AlreadyConnected
-     * @throws NotReady
-     * @throws Failed
-     * @throws InProgress
-     * @throws AlreadyConnected
      */
-    void Connect() throws
-            NotReady,
-            Failed,
-            InProgress,
-            AlreadyConnected;
+    void Connect();
 
     /**
      * This method gracefully disconnects all connected
@@ -48,11 +39,8 @@ public interface Device extends DBusInterface {
      * Connect call before a reply to it has been received.
      *
      * Possible errors: org.bluez.NotConnected
-     *
-     * @throws NotConnected
      */
-    void Disconnect() throws
-            NotConnected;
+    void Disconnect();
 
     /**
      * This method connects a specific profile of this
@@ -64,14 +52,8 @@ public interface Device extends DBusInterface {
      * org.bluez.ConnectFailed
      *
      * @param uuid
-     * @throws DoesNotExist
-     * @throws AlreadyConnected
-     * @throws ConnectFailed
      */
-    void ConnectProfile(String uuid) throws
-            DoesNotExist,
-            AlreadyConnected,
-            ConnectFailed;
+    void ConnectProfile(String uuid);
     /**
      * This method disconnects a specific profile of
      * this device. The profile needs to be registered
@@ -88,16 +70,8 @@ public interface Device extends DBusInterface {
      *
      *
      * @param uuid
-     * @throws DoesNotExist
-     * @throws Failed
-     * @throws NotConnected
-     * @throws NotSupported
      */
-    void DisconnectProfile(String uuid) throws
-            DoesNotExist,
-            Failed,
-            NotConnected,
-            NotSupported;
+    void DisconnectProfile(String uuid);
 
     /**
      * This method will connect to the remote device,
@@ -124,25 +98,8 @@ public interface Device extends DBusInterface {
      * org.bluez.Error.AuthenticationRejected
      * org.bluez.Error.AuthenticationTimeout
      * org.bluez.Error.ConnectionAttemptFailed
-     *
-     * @throws InvalidArguments
-     * @throws Failed
-     * @throws AlreadyExists
-     * @throws AuthenticationCanceled
-     * @throws AuthenticationFailed
-     * @throws AuthenticationRejected
-     * @throws AuthenticationTimeout
-     * @throws ConnectionAttemptFailed
      */
-    void Pair() throws
-            InvalidArguments,
-            Failed,
-            AlreadyExists,
-            AuthenticationCanceled,
-            AuthenticationFailed,
-            AuthenticationRejected,
-            AuthenticationTimeout,
-            ConnectionAttemptFailed;
+    void Pair();
 
     /**
      * This method can be used to cancel a pairing
@@ -150,11 +107,6 @@ public interface Device extends DBusInterface {
      *
      * Possible errors: org.bluez.DoesNotExist
      * org.bluez.Error.Failed
-     *
-     * @throws DoesNotExist
-     * @throws Failed
      */
-    void CancelPairing() throws
-            DoesNotExist,
-            Failed;
+    void CancelPairing();
 }
