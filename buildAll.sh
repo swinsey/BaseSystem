@@ -150,3 +150,61 @@ TRANSPORT_SRC_PATH=$REPO_PATH/Transport/target/Transport-$TRANSPORT_VERSION.jar
 TRANSPORT_DST_PATH=$LIBS_PATH/Transport.jar
 
 cp "$TRANSPORT_SRC_PATH" "$TRANSPORT_DST_PATH"
+
+# Building Documentation
+echo "Building Documentation"
+
+DOCUMENTATION_DIR_PATH=$BUILD_PATH/Documentation
+
+if [ ! -d "$DOCUMENTATION_DIR_PATH" ]; then
+  mkdir "$DOCUMENTATION_DIR_PATH"
+fi
+
+# Copying Documents
+echo "Copying Documents"
+
+DOCUMENTS_SRC_PATH=$REPO_PATH/Documents
+DOCUMENTS_DST_PATH=$DOCUMENTATION_DIR_PATH/Documents
+
+if [ ! -d "$DOCUMENTS_DST_PATH" ]; then
+  mkdir "$DOCUMENTS_DST_PATH"
+fi
+
+cp -r "$DOCUMENTS_SRC_PATH" "$DOCUMENTS_DST_PATH"
+
+#Building Reference
+echo "Building Reference"
+
+DOC_REFERENCE_PATH=$DOCUMENTATION_DIR_PATH/Reference
+DOC_APF_SRC_PATH=$REPO_PATH/APF
+DOC_APPSDK_SRC_PATH=$REPO_PATH/AppSDK
+DOC_BASESYSTEM_SRC_PATH=$REPO_PATH/BaseSystem
+DOC_TRANSPORT_SRC_PATH=$REPO_PATH/Transport
+
+if [ ! -d "$DOC_REFERENCE_PATH" ]; then
+  mkdir "$DOC_REFERENCE_PATH"
+fi
+if [ ! -d "$DOC_REFERENCE_PATH/APF" ]; then
+  mkdir "$DOC_REFERENCE_PATH/APF"
+fi
+if [ ! -d "$DOC_REFERENCE_PATH/AppSDK" ]; then
+  mkdir "$DOC_REFERENCE_PATH/AppSDK"
+fi
+if [ ! -d "$DOC_REFERENCE_PATH/BaseSystem" ]; then
+  mkdir "$DOC_REFERENCE_PATH/BaseSystem"
+fi
+if [ ! -d "$DOC_REFERENCE_PATH/Transport" ]; then
+  mkdir "$DOC_REFERENCE_PATH/Transport"
+fi
+
+cd "$DOC_APF_SRC_PATH"
+doxygen
+
+cd "$DOC_APPSDK_SRC_PATH"
+doxygen
+
+cd "$DOC_BASESYSTEM_SRC_PATH"
+doxygen
+
+cd "$DOC_TRANSPORT_SRC_PATH"
+doxygen

@@ -58,6 +58,7 @@ public class FileCache implements MessageHandler {
      * Constructor
      * @param onSend Handler that can send messages
      * @param onFileReceive Called when a file is received
+     * @param filesDir Directory where files are cached
      */
     public FileCache(MessageHandler onSend, FileReceiveHandler onFileReceive, Path filesDir){
         messageHandler = onSend;
