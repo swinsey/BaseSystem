@@ -10,11 +10,9 @@ import java.util.List;
  * Created by silveryard on 30.04.17.
  */
 public final class BluetoothDriver extends Driver<BluetoothDevice> {
-    private final List<BluetoothDevice> devices;
     private final BluetoothManager manager;
 
     public BluetoothDriver(){
-        devices = new ArrayList<>();
         if(SystemUtils.IS_OS_LINUX){
             manager = new BluetoothManagerLinux(this::onDeviceConnected, this::onDeviceDisconnected);
         } else {
