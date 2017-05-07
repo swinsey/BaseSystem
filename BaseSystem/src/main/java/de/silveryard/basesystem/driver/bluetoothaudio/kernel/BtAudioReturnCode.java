@@ -1,25 +1,25 @@
-package de.silveryard.basesystem.driver.bluetooth.kernel;
+package de.silveryard.basesystem.driver.bluetoothaudio.kernel;
 
 /**
- * Created by silveryard on 01.05.17.
+ * Created by silveryard on 07.05.17.
  */
-public enum BtReturnCode {
+public enum BtAudioReturnCode {
     /**
      * Everything went fine
      */
-    OK(0),
+    OK(1),
     /**
-     * The specified id is not valid
+     * The spcified id is not valid
      */
-    INVALID_ID(1);
+    INVALID_ID(2);
 
     /**
-     * Converts an integer value to a BtReturnCode value
+     * Converts an integer value to an enum value
      * @param value Integer value
-     * @return BtReturnCode value
+     * @return Enum value
      */
-    public static BtReturnCode getEnumValue(int value){
-        BtReturnCode[] values = BtReturnCode.values();
+    public static BtAudioReturnCode getEnumValue(int value){
+        BtAudioReturnCode[] values = BtAudioReturnCode.values();
         for(int i = 0; i < values.length; i++){
             if(values[i].value == value){
                 return values[i];
@@ -34,12 +34,12 @@ public enum BtReturnCode {
      * Constructor
      * @param value Integer value
      */
-    BtReturnCode(int value){
+    BtAudioReturnCode(int value){
         this.value = value;
     }
 
     /**
-     * Returns the internal integer value
+     * Returns the enums integer value
      * @return Integer value
      */
     public int getValue(){

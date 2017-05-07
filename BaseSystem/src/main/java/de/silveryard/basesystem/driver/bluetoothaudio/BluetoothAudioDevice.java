@@ -7,6 +7,26 @@ import de.silveryard.basesystem.driver.bluetooth.BluetoothDevice;
  * Created by silveryard on 07.05.17.
  */
 public abstract class BluetoothAudioDevice extends Device {
+    private static int nextId = 1;
+
+    private int id;
+
+    /**
+     * Constructor
+     */
+    protected BluetoothAudioDevice(){
+        id = nextId;
+        nextId++;
+    }
+
+    /**
+     * Returns the devices internal identifier
+     * @return Internal id
+     */
+    public int getId(){
+        return id;
+    }
+
     /**
      * Returns the internal bluetooth device
      * @return Bluetooth device
