@@ -107,7 +107,9 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
 
     @Override
     public void connect() {
+        System.out.println("Before");
         device.Connect();
+        System.out.println("After");
     }
     @Override
     public void disconnect() {
