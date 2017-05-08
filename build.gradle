@@ -26,4 +26,4 @@ task buildFmodNative(type: GradleBuild){
   buildFile = './FmodNative/build.gradle'
 }
 
-defaultTasks 'buildAPF', 'buildTransport', 'buildAppSDK', 'buildBaseSystem', 'buildLogViewer', 'buildAppManager', 'buildSDLNative', 'buildFmodNative'
+defaultTasks 'buildAPF', 'buildAPFCreator', 'buildTransport', 'buildAppSDK', 'buildBaseSystem', 'buildLogViewer', 'buildAppManager', 'buildSDLNative', 'buildFmodNative'
