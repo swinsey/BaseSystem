@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/APF.iml" filepath="$PROJECT_DIR$/APF.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/APF.iml" filepath="$PROJECT_DIR$/.idea/modules/APF.iml" />
     </modules>
   </component>
 </project>

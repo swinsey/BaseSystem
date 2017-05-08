@@ -50,3 +50,4 @@ LogViewer/.idea/**/libraries
 build/
 FmodNative/bin/
 SDLNative/bin/
+.gradle/

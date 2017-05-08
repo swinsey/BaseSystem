@@ -1,0 +1,17 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'de.silveryard'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile group: 'de.silveryard', name: 'Transport', version: '1.0-SNAPSHOT'
+}
+
+defaultTasks 'install'

@@ -1,0 +1,29 @@
+task buildAPF(type: GradleBuild){
+  buildFile = './APF/build.gradle'
+}
+task buildAPFCreator(type: GradleBuild){
+  buildFile = './APFCreator/build.gradle'
+}
+task buildAppManager(type: GradleBuild){
+  buildFile = './AppManager/build.gradle'
+}
+task buildAppSDK(type: GradleBuild){
+  buildFile = './AppSDK/build.gradle'
+}
+task buildBaseSystem(type: GradleBuild){
+  buildFile = './BaseSystem/build.gradle'
+}
+task buildLogViewer(type: GradleBuild){
+  buildFile = './LogViewer/build.gradle'
+}
+task buildTransport(type: GradleBuild){
+  buildFile = './Transport/build.gradle'
+}
+task buildSDLNative(type: GradleBuild){
+  buildFile = './SDLNative/build.gradle'
+}
+task buildFmodNative(type: GradleBuild){
+  buildFile = './FmodNative/build.gradle'
+}
+
+defaultTasks 'buildAPF', 'buildTransport', 'buildAppSDK', 'buildBaseSystem', 'buildLogViewer', 'buildAppManager', 'buildSDLNative', 'buildFmodNative'

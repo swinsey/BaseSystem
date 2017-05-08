@@ -12,6 +12,8 @@ import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -48,7 +50,7 @@ public abstract class Connection {
         }
 
         transport = new Transport(outStream, inStream, Connection::handleMessage);
-        fileCache = new FileCache(transport::send, Connection::handleFileReceive);
+        fileCache = new FileCache(transport::send, Connection::handleFileReceive, Paths.get("."));
 
         Thread thread = new Thread(Connection::observerThread);
         thread.isDaemon();
@@ -122,7 +124,7 @@ public abstract class Connection {
             handler.invoke(message);
         }
     }
-    private static void handleFileReceive(String sourceID, String uuid, String commandHash, List<Parameter> params, byte[] data){
+    private static void handleFileReceive(String sourceID, String uuid, String commandHash, List<Parameter> params, Path pathToFile){
 
     }
 

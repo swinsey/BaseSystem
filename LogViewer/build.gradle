@@ -1,0 +1,26 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'de.silveryard'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile group: 'de.silveryard', name: 'Transport', version: '1.0-SNAPSHOT'
+}
+
+defaultTasks 'install', 'fatJar'
+
+task fatJar(type: Jar){
+    manifest{
+        attributes 'Main-Class': 'de.silveryard.logviewer.Main'
+    }
+    baseName = project.name + '-fat'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }}
+    with jar
+}

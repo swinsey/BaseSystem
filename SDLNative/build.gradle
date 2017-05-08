@@ -1,0 +1,27 @@
+ant.condition(property: 'os', value: 'windows' ) { os(family: 'windows') }
+ant.condition(property: 'os', value: 'unix' ) { os(family: 'unix') }
+
+task createBuildDir {
+	doLast{
+		mkdir 'build'
+	}
+}
+task executeCmake(type: Exec, dependsOn:'createBuildDir') {
+	workingDir 'build'
+	executable 'cmake'
+	args '..'
+}
+task buildProject(type: Exec, dependsOn:'executeCmake'){
+	workingDir 'build'
+	
+	switch(ant.properties.os){
+		case 'windows':
+			println 'This is windows. Not implemented yet'
+			break
+		case 'unix':
+			executable 'make'
+			break
+	}
+}
+
+defaultTasks 'buildProject'
