@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.ysb33r.gradle:doxygen:0.3'
+    }
+}
+
+apply plugin : 'org.ysb33r.doxygen'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -10,6 +20,8 @@ repositories {
     mavenLocal()
 }
 
+defaultTasks 'install', 'doxygen'
+
 dependencies {
     compile group: 'de.silveryard', name: 'APF', version: '1.0-SNAPSHOT'
     compile group: 'de.silveryard', name: 'Transport', version: '1.0-SNAPSHOT'
@@ -19,4 +31,11 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 }
 
-defaultTasks 'install'
+doxygen {
+    generate_latex false
+    outputDir new File(buildDir, 'doc')
+    source new File(projectDir, 'src/main/java')
+    recursive true
+    generate_treeview false
+    have_dot false
+}

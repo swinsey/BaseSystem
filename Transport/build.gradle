@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.ysb33r.gradle:doxygen:0.3'
+    }
+}
+
+apply plugin : 'org.ysb33r.doxygen'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -14,4 +24,13 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version:'4.12'
 }
 
-defaultTasks 'install'
+defaultTasks 'install', 'doxygen'
+
+doxygen {
+    generate_latex false
+    outputDir new File(buildDir, 'doc')
+    source new File(projectDir, 'src/main/java')
+    recursive true
+    generate_treeview false
+    have_dot false
+}

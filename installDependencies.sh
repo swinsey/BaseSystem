@@ -1,4 +1,4 @@
-apt-get install libfreetype6-dev autoconf automake openjdk-8-jdk maven xorg-dev openjfx libgl1-mesa-dev libasound2-dev doxygen cloc
+apt-get install libfreetype6-dev autoconf automake cmake openjdk-8-jdk xorg-dev openjfx libgl1-mesa-dev libasound2-dev doxygen cloc
 
 # Defining Directories
 REPO_PATH=$(dirname "$0")
