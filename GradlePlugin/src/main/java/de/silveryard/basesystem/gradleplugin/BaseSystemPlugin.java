@@ -11,5 +11,6 @@ public class BaseSystemPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         Task runCmakeTask = project.getTasks().create("runCmake", RunCmakeTask.class);
+        Task createApfTask = project.getTasks().create("createAPF", CreateAPFTask.class);
     }
 }

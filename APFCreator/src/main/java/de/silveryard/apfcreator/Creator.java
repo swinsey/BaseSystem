@@ -29,7 +29,7 @@ public class Creator {
         assertFalse(Files.isDirectory(configFile), "Configuration input can not be a directory");
 
         try {
-            String content = Files.readAllLines(configFile).stream().collect(Collectors.joining(","));
+            String content = Files.readAllLines(configFile).stream().collect(Collectors.joining("\n"));
             create(content, configFile.getParent(), outputFile);
         } catch (IOException e) {
             e.printStackTrace();
@@ -106,6 +106,7 @@ public class Creator {
 
         try {
             byte[] binary = Files.readAllBytes(binPath);
+            template.setBinary(binary);
         } catch (IOException e) {
             assertTrue(false, "Failed to read binary: " + e.getMessage());
         }
@@ -118,7 +119,7 @@ public class Creator {
             Path path = Paths.get(workingDirectory.toString(), pathString.split("\\/"));
 
             assertTrue(Files.exists(path), "Icon at index " + i + " does not exist");
-            assertFalse(Files.exists(path), "Icon at index " + i + " cannot be a directory");
+            assertFalse(Files.isDirectory(path), "Icon at index " + i + " cannot be a directory");
 
             template.addIcon(path);
         }
@@ -131,7 +132,7 @@ public class Creator {
             Path path = Paths.get(workingDirectory.toString(), pathString.split("\\/"));
 
             assertTrue(Files.exists(path), "Splash at index " + i + " does not exist");
-            assertFalse(Files.exists(path), "Splash at index " + i + " cannot be a directory");
+            assertFalse(Files.isDirectory(path), "Splash at index " + i + " cannot be a directory");
 
             template.addSplashImage(path);
         }
@@ -160,6 +161,7 @@ public class Creator {
             Path file = Paths.get(cur.toString(), files[i]);
             if(Files.isDirectory(file)){
                 addDirectory(template, base, file, baseDestination);
+                continue;
             }
 
             String[] splitsCur = cur.toString().replace("\\", "/").split("/");
@@ -179,6 +181,10 @@ public class Creator {
 
             }
             fileDestination += "/" + file.getFileName().toString();
+
+            if(fileDestination.startsWith("/")){
+                fileDestination = fileDestination.substring(1);
+            }
 
             addFile(template, file, fileDestination);
         }
@@ -260,11 +266,15 @@ public class Creator {
         try{
             return obj.getString(key);
         }catch(Exception e){
-            if(failHard){
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }else{
-                return null;
+            try{
+                return "" + obj.getInt(key);
+            }catch(Exception e2){
+                if(failHard){
+                    e.printStackTrace();
+                    throw new RuntimeException(e);
+                }else{
+                    return null;
+                }
             }
         }
     }

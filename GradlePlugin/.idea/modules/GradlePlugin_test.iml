@@ -9,7 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="GradlePlugin_main" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -28,6 +27,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="GradlePlugin_main" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -48,7 +48,10 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Gradle: de.silveryard:APFCreator:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Gradle: de.silveryard:APF:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: org.json:json:20160810" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="GradlePlugin_main" />
