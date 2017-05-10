@@ -117,7 +117,7 @@ public class ApplicationPackageFileTemplate {
     public void addSplashImage(Path path){
         splashImages.add(new SplashImageTemplate(path));
     }
-    public void addFile(Path filePath, Path basePath){
-        files.add(new FileTemplate(filePath, basePath));
+    public void addFile(Path filePath, String destination){
+        files.add(new FileTemplate(filePath, destination));
     }
 }

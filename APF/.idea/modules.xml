@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/APF.iml" filepath="$PROJECT_DIR$/.idea/modules/APF.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/APF_main.iml" filepath="$PROJECT_DIR$/.idea/modules/APF_main.iml" group="APF" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/APF_test.iml" filepath="$PROJECT_DIR$/.idea/modules/APF_test.iml" group="APF" />
     </modules>
   </component>
 </project>

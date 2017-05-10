@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BaseSystem.iml" filepath="$PROJECT_DIR$/.idea/modules/BaseSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BaseSystem_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BaseSystem_main.iml" group="BaseSystem" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BaseSystem_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BaseSystem_test.iml" group="BaseSystem" />
     </modules>
   </component>
 </project>

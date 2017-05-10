@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     compile group: 'de.silveryard', name: 'APF', version: '1.0-SNAPSHOT'
+    compile group: 'org.json', name: 'json', version: '20160810'
 }
 
 defaultTasks 'install', 'fatJar'

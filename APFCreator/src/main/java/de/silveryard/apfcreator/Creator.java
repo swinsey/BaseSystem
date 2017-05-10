@@ -2,12 +2,15 @@ package de.silveryard.apfcreator;
 
 import de.silveryard.apf.ApplicationPackageFile;
 import de.silveryard.apf.Builder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 import static de.silveryard.apfcreator.Assert.*;
 
@@ -16,52 +19,76 @@ import static de.silveryard.apfcreator.Assert.*;
  */
 public class Creator {
     public static void create(String[] args){
-        assertEqual(args.length, 6, "Invalid amount of arguments");
-        for(int i = 0; i < args.length; i++){
-            assertNotNull(args[i], "Argument " + i + " is null. This should not happen");
-        }
+        assertEqual(args.length, 3, "Invalid amount of arguments");
+        assertTrue(args[0].equals("create"), "First parameter must be create to call Creator.create");
 
-        String appName = args[1];
-        String appIdentifier = args[2];
-        String fileDir = args[5];
+        create(Paths.get(args[1]), Paths.get(args[2]));
+    }
+    public static void create(Path configFile, Path outputFile){
+        assertTrue(Files.exists(configFile), "Configuration file does not exist");
+        assertFalse(Files.isDirectory(configFile), "Configuration input can not be a directory");
+
+        try {
+            String content = Files.readAllLines(configFile).stream().collect(Collectors.joining(","));
+            create(content, configFile.getParent(), outputFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+    public static void create(String config, Path workingDirectory, Path outputFile){
+        JSONObject obj = new JSONObject(config);
+        create(obj, workingDirectory, outputFile);
+    }
+    public static void create(JSONObject config, Path workingDirectory, Path outputFile){
+        JSONObject configMetadata = tryGetObj(config, "metadata", true);
+        JSONArray configIcons = tryGetArray(config, "icons", true);
+        JSONArray configSplashs = tryGetArray(config, "splashs", true);
+        JSONArray configFiles = tryGetArray(config, "files", true);
+
+        //Metadata
+        String appName = tryGetString(configMetadata, "appName", true);
+        String appIdentifier = tryGetString(configMetadata, "appIdentifier", true);
         byte majorVersion = 0;
         byte minorVersion = 0;
-
-        try{
-            majorVersion = Byte.parseByte(args[3]);
-        }catch(Exception e){
-            assertTrue(false, "Failed to parse major version");
+        try {
+            int iMajorVersion = Integer.parseInt(tryGetString(configMetadata, "majorVersion", true));
+            assertGreaterEquals(iMajorVersion, 0, "Major version cannot be negative");
+            assertLowerEquals(iMajorVersion, 255, "Major version cannot be larger than 255");
+            majorVersion = (byte)iMajorVersion;
+        }catch(Throwable t){
+            assertTrue(false, "Failed to parse major version as integer");
         }
         try{
-            minorVersion = Byte.parseByte(args[4]);
-        }catch(Exception e){
-            assertTrue(false, "Failed to parse minor version");
+            int iMinorVersion = Integer.parseInt(tryGetString(configMetadata, "minorVersion", true));
+            assertGreaterEquals(iMinorVersion, 0, "Minor version cannot be negative");
+            assertLowerEquals(iMinorVersion, 255, "Minor version cannot be larger than 255");
+            minorVersion = (byte)iMinorVersion;
+        }catch(Throwable t){
+            assertTrue(false, "Failed to parse minor version as integer");
         }
 
+        //Read Data
         System.out.println("Reading Data");
-
-        Path dir = Paths.get(fileDir);
-        Arguments arguments = checkDir(dir);
-        arguments.outFile = Paths.get(arguments.baseDir.toString(), appIdentifier + "_" + (0xFF&majorVersion) + "_" + (0xFF&minorVersion) + ".apf");
-
         ApplicationPackageFileTemplate template = new ApplicationPackageFileTemplate();
         template.setAppName(appName);
         template.setAppIdentifier(appIdentifier);
         template.setMajorVersion(majorVersion);
         template.setMinorVersion(minorVersion);
 
-        readBinary(template, arguments);
-        readAppIcons(template, arguments);
-        readSplashImages(template, arguments);
-        readFiles(arguments.fileDir, arguments.fileDir, template);
+        readBinary(template, config, workingDirectory);
+        readAppIcons(template, configIcons, workingDirectory);
+        readSplashImages(template, configSplashs, workingDirectory);
+        readFiles(template, configFiles, workingDirectory);
 
+        //Parsing
         System.out.println("Parsing");
         ApplicationPackageFile apf = template.create();
         byte[] data = Builder.build(apf);
 
         System.out.println("Building");
         try {
-            Files.write(arguments.outFile, data);
+            Files.write(outputFile, data);
         }catch(Exception e){
             assertTrue(false, "Could not write output file");
         }
@@ -70,82 +97,191 @@ public class Creator {
         Main.print(apf, data);
     }
 
-    private static Arguments checkDir(Path dir){
-        Arguments arguments = new Arguments();
-        arguments.baseDir = dir;
+    private static void readBinary(ApplicationPackageFileTemplate template, JSONObject config, Path workingDirectory){
+        String binPathString = tryGetString(config, "binary", true);
+        Path binPath = Paths.get(workingDirectory.toString(), binPathString.split("\\/"));
 
-        assertNotNull(arguments.baseDir, "Directory cannot be null");
-        assertTrue(Files.exists(arguments.baseDir), "App Directory not found");
-        assertTrue(Files.isDirectory(arguments.baseDir), "App Directory is no directory");
+        assertTrue(Files.exists(binPath), "Binary file does not exist");
+        assertFalse(Files.isDirectory(binPath), "Binary file cannot be a directory");
 
-        arguments.appFile = Paths.get(arguments.baseDir.toString(), "app.jar");
-        assertTrue(Files.exists(arguments.appFile), "app.jar does not exist");
-        assertFalse(Files.isDirectory(arguments.appFile), "app.jar cannot be a directory");
+        try {
+            byte[] binary = Files.readAllBytes(binPath);
+        } catch (IOException e) {
+            assertTrue(false, "Failed to read binary: " + e.getMessage());
+        }
+    }
+    private static void readAppIcons(ApplicationPackageFileTemplate template, JSONArray config, Path workingDirectory){
+        assertGreater(config.length(), 0, "You have to specify at least one icon!");
 
-        arguments.iconDir = Paths.get(arguments.baseDir.toString(), "icons");
-        assertTrue(Files.exists(arguments.iconDir), "icons directory does not exist");
-        assertTrue(Files.isDirectory(arguments.iconDir), "icons directoy cannot be a file");
+        for(int i = 0; i < config.length(); i++){
+            String pathString = tryGetArrayString(config, i);
+            Path path = Paths.get(workingDirectory.toString(), pathString.split("\\/"));
 
-        arguments.splashDir = Paths.get(arguments.baseDir.toString(), "splashImages");
-        assertTrue(Files.exists(arguments.splashDir), "splashImages directory does not exist");
-        assertTrue(Files.isDirectory(arguments.splashDir), "splashImages directory cannot be a file");
+            assertTrue(Files.exists(path), "Icon at index " + i + " does not exist");
+            assertFalse(Files.exists(path), "Icon at index " + i + " cannot be a directory");
 
-        arguments.fileDir = Paths.get(arguments.baseDir.toString(),  "files");
-        if(!Files.exists(arguments.fileDir)){
-            try {
-                Files.createDirectories(arguments.fileDir);
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
+            template.addIcon(path);
+        }
+    }
+    private static void readSplashImages(ApplicationPackageFileTemplate template, JSONArray config, Path workingDirectory){
+        assertGreater(config.length(), 0, "You have to specify at least one splash image!");
+
+        for(int i = 0; i < config.length(); i++){
+            String pathString = tryGetArrayString(config, i);
+            Path path = Paths.get(workingDirectory.toString(), pathString.split("\\/"));
+
+            assertTrue(Files.exists(path), "Splash at index " + i + " does not exist");
+            assertFalse(Files.exists(path), "Splash at index " + i + " cannot be a directory");
+
+            template.addSplashImage(path);
+        }
+    }
+    private static void readFiles(ApplicationPackageFileTemplate template, JSONArray config, Path workingDirectory){
+        for(int i = 0; i < config.length(); i++){
+            JSONObject obj = tryGetArrayObj(config, i);
+            String sourcePathString = tryGetString(obj, "source", true);
+            String destPathString = tryGetString(obj, "destination", true);
+
+            Path sourcePath = Paths.get(workingDirectory.toString(), sourcePathString.split("\\/"));
+
+            assertTrue(Files.exists(sourcePath), "File at index " + i + " does not exist");
+
+            if(Files.isDirectory(sourcePath)){
+                addDirectory(template, sourcePath, sourcePath, destPathString);
+            }else{
+                addFile(template, sourcePath, destPathString);
             }
         }
-        assertTrue(Files.isDirectory(arguments.fileDir), "files directory cannot be a file");
-
-        return arguments;
     }
-
-    private static void readBinary(ApplicationPackageFileTemplate template, Arguments arguments){
-        try{
-            template.setBinary(Files.readAllBytes(arguments.appFile));
-        }catch(Exception e){
-            assertTrue(false, "Failed to read app.jar: " + e.getMessage());
-        }
-    }
-    private static void readAppIcons(ApplicationPackageFileTemplate template, Arguments arguments){
-        File dirFile = new File(arguments.iconDir.toString());
-        String[] files = dirFile.list();
-        for(int i = 0; i < files.length; i++){
-            Path file = Paths.get(arguments.iconDir.toString(), files[i]);
-            if(Files.isDirectory(file)){
-                continue;
-            }
-
-            template.addIcon(file);
-        }
-    }
-    private static void readSplashImages(ApplicationPackageFileTemplate template, Arguments arguments){
-        File dirFile = new File(arguments.splashDir.toString());
-        String[] files = dirFile.list();
-        for(int i = 0; i < files.length; i++){
-            Path file = Paths.get(arguments.splashDir.toString(), files[i]);
-            if(Files.isDirectory(file)){
-                continue;
-            }
-
-            template.addSplashImage(file);
-        }
-    }
-    private static void readFiles(Path base, Path cur, ApplicationPackageFileTemplate template){
+    private static void addDirectory(ApplicationPackageFileTemplate template, Path base, Path cur, String baseDestination){
         File dirFile = new File(cur.toString());
         String[] files = dirFile.list();
         for(int i = 0; i < files.length; i++){
             Path file = Paths.get(cur.toString(), files[i]);
             if(Files.isDirectory(file)){
-                readFiles(base, file, template);
-                continue;
+                addDirectory(template, base, file, baseDestination);
             }
 
-            template.addFile(file, base);
+            String[] splitsCur = cur.toString().replace("\\", "/").split("/");
+            String[] splitsBase = base.toString().replace("\\", "/").split("/");
+
+            for(int j = 0; j < splitsBase.length; j++){
+                assertEquals(splitsCur[j], splitsBase[j], "Base Path '" + base.toString() + "' is not base of '" + cur.toString() + "'");
+            }
+
+            String fileDestination = baseDestination;
+            if(fileDestination.endsWith("/")){
+                fileDestination = fileDestination.substring(0, fileDestination.length() - 1);
+            }
+
+            for(int j = splitsBase.length; j < splitsCur.length; j++){
+                fileDestination += "/" + splitsCur[j];
+
+            }
+            fileDestination += "/" + file.getFileName().toString();
+
+            addFile(template, file, fileDestination);
+        }
+    }
+    private static void addFile(ApplicationPackageFileTemplate template, Path path, String destination){
+        template.addFile(path, destination);
+    }
+
+    private static JSONObject tryGetObj(JSONObject obj, String key, boolean failHard){
+        if(!obj.has(key)){
+            if(failHard){
+                assertTrue(false, "Expected Key: " + key);
+            }else{
+                return null;
+            }
+        }
+        if(obj.isNull(key)){
+            if(failHard){
+                assertTrue(false, "Key " + key + " is null!");
+            }else{
+                return null;
+            }
+        }
+
+        try{
+            return obj.getJSONObject(key);
+        }catch(Exception e){
+            if(failHard){
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }else{
+                return null;
+            }
+        }
+    }
+    private static JSONArray tryGetArray(JSONObject obj, String key, boolean failHard){
+        if(!obj.has(key)){
+            if(failHard){
+                assertTrue(false, "Expected Key: " + key);
+            }else{
+                return null;
+            }
+        }
+        if(obj.isNull(key)){
+            if(failHard){
+                assertTrue(false, "Key " + key + " is null!");
+            }else{
+                return null;
+            }
+        }
+
+        try{
+            return obj.getJSONArray(key);
+        }catch(Exception e){
+            if(failHard){
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }else{
+                return null;
+            }
+        }
+    }
+    private static String tryGetString(JSONObject obj, String key, boolean failHard){
+        if(!obj.has(key)){
+            if(failHard){
+                assertTrue(false, "Expected Key: " + key);
+            }else{
+                return null;
+            }
+        }
+        if(obj.isNull(key)){
+            if(failHard){
+                assertTrue(false, "Key " + key + " is null!");
+            }else{
+                return null;
+            }
+        }
+
+        try{
+            return obj.getString(key);
+        }catch(Exception e){
+            if(failHard){
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }else{
+                return null;
+            }
+        }
+    }
+    private static String tryGetArrayString(JSONArray arr, int index){
+        try{
+            return arr.getString(index);
+        }catch(Exception e){
+            assertTrue(false, "Failed to read index " + index + " as String");
+            return null;
+        }
+    }
+    private static JSONObject tryGetArrayObj(JSONArray arr, int index){
+        try{
+            return arr.getJSONObject(index);
+        }catch(Exception e){
+            assertTrue(false, "Failed to read index " + index + " as Object");
+            return null;
         }
     }
 }
