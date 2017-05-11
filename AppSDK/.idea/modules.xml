@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppSDK.iml" filepath="$PROJECT_DIR$/.idea/modules/AppSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppSDK_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AppSDK_main.iml" group="AppSDK" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppSDK_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AppSDK_test.iml" group="AppSDK" />
     </modules>
   </component>
 </project>
