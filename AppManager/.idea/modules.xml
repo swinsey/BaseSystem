@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppManager.iml" filepath="$PROJECT_DIR$/.idea/modules/AppManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppManager_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AppManager_main.iml" group="AppManager" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppManager_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AppManager_test.iml" group="AppManager" />
     </modules>
   </component>
 </project>

@@ -31,12 +31,6 @@ import java.util.List;
  * Created by Sebif on 14.03.2017.
  */
 public class ControllerMain extends Application {
-    private class InstallData{
-        public Path path;
-        public boolean force;
-        public boolean done;
-    }
-
     private Stage stage;
 
     @FXML
@@ -66,6 +60,12 @@ public class ControllerMain extends Application {
 
     private List<ControllerAppListItem> appListItems;
     private int selectedApp;
+
+    private class InstallData{
+        public Path path;
+        public boolean force;
+        public boolean done;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

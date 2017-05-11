@@ -49,17 +49,10 @@ class AppLoader {
 
     private Networking networking;
     private volatile InitState initializing;
-    private Path dataDirPath;
-    private Path readonlyDirPath;
-    private String appName;
     private Consumer<Message> systemMessageHandler;
 
     private AppLoader(String appName, Path binaryPath, Path dataDirPath, Path readonlyPath) throws Exception{
         networking = new Networking();
-
-        this.appName = appName;
-        this.dataDirPath = dataDirPath;
-        this.readonlyDirPath = readonlyPath;
 
        /*
         *   [0] Communication Port Number
@@ -123,10 +116,6 @@ class AppLoader {
 
     public void setSystemMessageHandler(Consumer<Message> systemMessageHandler){
         this.systemMessageHandler = systemMessageHandler;
-    }
-
-    public Path getDataDirPath(){
-        return dataDirPath;
     }
 
     public void sendMessage(Message message){

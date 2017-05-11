@@ -30,50 +30,50 @@ abstract class Adapter {
     private static QAMessage systemcallDriverBTAdapterGetAddress(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createString(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().getAddress())
+                Parameter.createString(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().getAddress())
         );
     }
     private static QAMessage systemcallDriverBTAdapterGetAlias(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createString(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().getAlias())
+                Parameter.createString(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().getAlias())
         );
     }
     private static QAMessage systemcallDriverBTAdapterGetModalias(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createString(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().getModalias())
+                Parameter.createString(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().getModalias())
         );
     }
     private static QAMessage systemcallDriverBTAdapterGetName(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createString(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().getName())
+                Parameter.createString(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().getName())
         );
     }
 
     private static QAMessage systemcallDriverBTAdapterIsDiscoverable(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createBoolean(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().isDiscoverable())
+                Parameter.createBoolean(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().isDiscoverable())
         );
     }
     private static QAMessage systemcallDriverBTAdapterIsDiscovering(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createBoolean(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().isDiscovering())
+                Parameter.createBoolean(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().isDiscovering())
         );
     }
     private static QAMessage systemcallDriverBTAdapterIsPairable(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createBoolean(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().isPairable())
+                Parameter.createBoolean(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().isPairable())
         );
     }
     private static QAMessage systemcallDriverBTAdapterIsPowered(RunningApp app, QAMessage message){
         return Kernel.getInstance().createResponse(
                 message, ReturnCode.OK.getValue(), BtReturnCode.OK.getValue(),
-                Parameter.createBoolean(DriverManager.getInstance().getDriver(de.silveryard.basesystem.driver.bluetooth.BluetoothDriver.class).getAdapter().isPowered())
+                Parameter.createBoolean(DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter().isPowered())
         );
     }
 

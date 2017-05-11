@@ -2,7 +2,6 @@ package de.silveryard.basesystem.driver.bluetooth;
 
 
 import de.silveryard.basesystem.driver.DeviceHandler;
-import de.silveryard.basesystem.driver.bluetooth.dbus.AgentManager;
 import de.silveryard.basesystem.driver.bluetooth.dbus.ObjectManager;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
@@ -26,7 +25,6 @@ final class BluetoothManagerLinux extends BluetoothManager {
 
     private final DBusConnection connection;
     private final ObjectManager objectManager;
-    private final AgentManager agentManager;
     private final AdapterLinux adapter;
     private final List<BluetoothDeviceLinux> devices;
     private final List<DBusInterface> tmpDevices;
@@ -43,7 +41,6 @@ final class BluetoothManagerLinux extends BluetoothManager {
         try {
             connection = DBusConnection.getConnection(DBusConnection.SYSTEM);
             objectManager = connection.getRemoteObject("org.bluez", "/", ObjectManager.class);
-            agentManager = connection.getRemoteObject("org.bluez", "/org/bluez", AgentManager.class);
             adapter = new AdapterLinux(
                     connection.getRemoteObject("org.bluez", "/org/bluez/hci0", DBus.Properties.class),
                     connection.getRemoteObject("org.bluez", "/org/bluez/hci0", de.silveryard.basesystem.driver.bluetooth.dbus.Adapter.class)

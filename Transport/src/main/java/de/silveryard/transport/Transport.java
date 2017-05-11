@@ -2,11 +2,7 @@ package de.silveryard.transport;
 
 import de.silveryard.transport.filecache.BufferList;
 
-import javax.xml.bind.DatatypeConverter;
-import java.io.*;
 import java.net.SocketException;
-import java.util.*;
-import java.util.stream.Stream;
 
 /**
  * Created by CHofm on 08.01.2017.

@@ -1,7 +1,6 @@
 package de.silveryard.basesystem.gradleplugin;
 
 import java.io.*;
-import java.util.List;
 
 /**
  * Created by silveryard on 09.05.17.

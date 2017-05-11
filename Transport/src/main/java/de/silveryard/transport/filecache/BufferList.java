@@ -1,7 +1,5 @@
 package de.silveryard.transport.filecache;
 
-import java.util.*;
-
 /**
  * Created by CHofm on 18.01.2017.
  */

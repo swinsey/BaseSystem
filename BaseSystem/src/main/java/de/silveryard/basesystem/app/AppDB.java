@@ -194,15 +194,12 @@ class AppDB implements IDisposable {
             "    WHERE " + COLOUMN_APP_IDENTIFIER + " = '%s'";
 
 
-
-    private Path appDbFile;
     private Path appDirectory;
     private Path dataDirectory;
 
     private Connection dbConnection;
 
     public AppDB(Path appDbFile, Path appDirectory, Path dataDirectory){
-        this.appDbFile = appDbFile;
         this.appDirectory = appDirectory;
         this.dataDirectory = dataDirectory;
 

@@ -1,8 +1,8 @@
 package de.silveryard.transport.highlevelprotocols.qa;
 
 import de.silveryard.transport.InvalidMessageException;
-import de.silveryard.transport.MessageHandler;
 import de.silveryard.transport.Message;
+import de.silveryard.transport.MessageHandler;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;

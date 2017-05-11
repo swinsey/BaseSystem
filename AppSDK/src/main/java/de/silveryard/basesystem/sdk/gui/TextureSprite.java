@@ -17,7 +17,6 @@ public class TextureSprite implements IDisposable {
     private final Wrapper<Integer> integerWrapper = new Wrapper<>();
 
     private final int textureSpriteId;
-    private final Texture texture;
 
     /**
      * Creates a new texture sprite
@@ -48,7 +47,6 @@ public class TextureSprite implements IDisposable {
         }
 
         this.textureSpriteId = integerWrapper.value;
-        this.texture = texture;
     }
     /**
      * Creates a new texture sprite. Uses the whole source texture
@@ -58,16 +56,6 @@ public class TextureSprite implements IDisposable {
             Texture texture
     ){
         this(texture, 0, 0, texture.getWidth(), texture.getHeight());
-    }
-    /**
-     * Wraps an existing textureSprite
-     * @param textureSpriteId ID of the existing textureSprite
-     */
-    public TextureSprite(
-            int textureSpriteId
-    ){
-        this.textureSpriteId = textureSpriteId;
-        this.texture = null; //TODO
     }
 
     /**
