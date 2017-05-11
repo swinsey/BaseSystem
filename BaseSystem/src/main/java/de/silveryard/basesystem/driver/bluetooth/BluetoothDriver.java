@@ -3,9 +3,6 @@ package de.silveryard.basesystem.driver.bluetooth;
 import de.silveryard.basesystem.driver.Driver;
 import org.apache.commons.lang3.SystemUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by silveryard on 30.04.17.
  */
@@ -38,15 +35,5 @@ public final class BluetoothDriver extends Driver<BluetoothDevice> {
      */
     public Adapter getAdapter(){
         return manager.getAdapter();
-    }
-
-    /**
-     * Returns the internal bluetooth manager
-     *
-     * TODO: Make this method unneccesary
-     * @return Manager object
-     */
-    public BluetoothManager getManager(){
-        return manager;
     }
 }

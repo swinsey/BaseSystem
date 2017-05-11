@@ -1,6 +1,5 @@
 package de.silveryard.basesystem.driver.bluetoothaudio;
 
-import de.silveryard.basesystem.driver.Device;
 import de.silveryard.basesystem.driver.DeviceHandler;
 import de.silveryard.basesystem.driver.DriverManager;
 import de.silveryard.basesystem.driver.bluetooth.BluetoothDevice;
@@ -9,7 +8,6 @@ import de.silveryard.basesystem.driver.bluetoothaudio.dbus.MediaPlayer;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
 import org.freedesktop.dbus.exceptions.DBusException;
-import org.sqlite.core.DB;
 
 import java.util.ArrayList;
 import java.util.List;

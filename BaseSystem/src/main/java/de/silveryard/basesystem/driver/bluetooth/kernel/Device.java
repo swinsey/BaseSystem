@@ -4,7 +4,7 @@ import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
 import de.silveryard.basesystem.app.kernel.ReturnCode;
 import de.silveryard.basesystem.driver.DriverManager;
-import de.silveryard.basesystem.driver.bluetooth.*;
+import de.silveryard.basesystem.driver.bluetooth.BluetoothDevice;
 import de.silveryard.transport.Parameter;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 

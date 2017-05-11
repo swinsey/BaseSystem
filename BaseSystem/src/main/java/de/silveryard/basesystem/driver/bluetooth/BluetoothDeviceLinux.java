@@ -16,7 +16,6 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
     private final String objectPath;
     private final DBus.Properties properties;
     private final Device device;
-    private final BluetoothAgent agent;
 
     public BluetoothDeviceLinux(DBusConnection connection, String objectPath){
         this.objectPath = objectPath;
@@ -27,7 +26,6 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        agent = ((BluetoothManagerLinux)DriverManager.getInstance().getDriver(BluetoothDriver.class).getManager()).getBluetoothAgent();
     }
 
     public String getObjectPath(){
@@ -69,7 +67,7 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
     }
 
     @Override
-    public boolean pair() {
+    public boolean pairInternal() {
         boolean success = false;
 
         try {
@@ -78,19 +76,10 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
         }catch(DBusExecutionException e){
             System.out.println("Failed to pair with bluetooth device: " + e.getMessage());
             e.printStackTrace();
-            success = false;
         }
 
         if(success){
             System.out.println("Paired with device: " + getName());
-        }
-
-        if(agent != null) {
-            if (success) {
-                agent.onDevicePaired(this);
-            }else{
-                agent.onDevicePairingFailed(this);
-            }
         }
         return success;
     }
@@ -100,19 +89,27 @@ final class BluetoothDeviceLinux extends BluetoothDevice {
     }
 
     @Override
-    public void remove() {
+    public void removeInternal() {
         Adapter adapter = DriverManager.getInstance().getDriver(BluetoothDriver.class).getAdapter();
         ((AdapterLinux) adapter).removeDevice(objectPath);
     }
 
     @Override
-    public void connect() {
-        System.out.println("Before");
-        device.Connect();
-        System.out.println("After");
+    public boolean connectInternal() {
+        boolean success = false;
+        try{
+            device.Connect();
+        }catch(DBusExecutionException e){
+            System.out.println("Failed to pair with bluetooth device: " + e.getMessage());
+        }
+
+        if(success){
+            System.out.println("Connected to device: " + getName());
+        }
+        return success;
     }
     @Override
-    public void disconnect() {
+    public void disconnectInternal() {
         device.Disconnect();
     }
 }

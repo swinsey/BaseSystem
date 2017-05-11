@@ -2,15 +2,11 @@ package de.silveryard.basesystem.driver.bluetooth;
 
 
 import de.silveryard.basesystem.driver.DeviceHandler;
-import de.silveryard.basesystem.driver.bluetooth.dbus.Agent;
 import de.silveryard.basesystem.driver.bluetooth.dbus.AgentManager;
-import de.silveryard.basesystem.driver.bluetooth.dbus.Device;
 import de.silveryard.basesystem.driver.bluetooth.dbus.ObjectManager;
-import de.silveryard.basesystem.sound.FmodCreateSoundExInfo;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
 import org.freedesktop.dbus.DBusInterface;
-import org.freedesktop.dbus.Path;
 import org.freedesktop.dbus.Variant;
 import org.freedesktop.dbus.exceptions.DBusException;
 
@@ -24,7 +20,7 @@ import java.util.regex.Pattern;
 /**
  * Created by silveryard on 01.05.17.
  */
-public final class BluetoothManagerLinux extends BluetoothManager {
+final class BluetoothManagerLinux extends BluetoothManager {
     private static final long REFRESH_DELAY = 1000;
     private static final Pattern PATTERN_DEVICE = Pattern.compile("^\\/org\\/bluez\\/hci0\\/dev(_[0-9A-F]{2}){6}$", Pattern.CASE_INSENSITIVE);
 
@@ -35,7 +31,6 @@ public final class BluetoothManagerLinux extends BluetoothManager {
     private final List<BluetoothDeviceLinux> devices;
     private final List<DBusInterface> tmpDevices;
     private long lastTimestamp;
-    private BluetoothAgent bluetoothAgent;
 
     /**
      * Constructor
@@ -131,35 +126,5 @@ public final class BluetoothManagerLinux extends BluetoothManager {
     @Override
     public void dispose(){
         connection.disconnect();
-    }
-
-    /**
-     * Returns the currently registered bluetooth agent
-     * @return
-     */
-    public BluetoothAgent getBluetoothAgent(){
-        return bluetoothAgent;
-    }
-
-    /**
-     * Registers a bluetooth agent. You can only register one agent
-     * @param agent
-     */
-    public void registerAgent(BluetoothAgent agent){
-        if(bluetoothAgent != null){
-            throw new RuntimeException("Already added a bluetooth agent");
-        }
-        /*
-        try {
-            connection.exportObject(agent.getObjectPath(), agent);
-        } catch (DBusException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-        */
-
-        bluetoothAgent = agent;
-        //agentManager.RegisterAgent(new Path(agent.getObjectPath()), agent.getCapability().getValue());
-        System.out.println("Registered bluetooth agent");
     }
 }

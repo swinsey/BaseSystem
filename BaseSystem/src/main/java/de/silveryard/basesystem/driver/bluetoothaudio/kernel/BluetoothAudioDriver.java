@@ -3,13 +3,11 @@ package de.silveryard.basesystem.driver.bluetoothaudio.kernel;
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
 import de.silveryard.basesystem.app.kernel.ReturnCode;
-import de.silveryard.basesystem.driver.Driver;
 import de.silveryard.basesystem.driver.DriverManager;
 import de.silveryard.basesystem.driver.bluetoothaudio.BluetoothAudioDevice;
 import de.silveryard.transport.Parameter;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

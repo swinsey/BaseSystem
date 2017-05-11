@@ -1,15 +1,11 @@
 package de.silveryard.basesystem.driver.bluetoothaudio;
 
-import com.sun.org.apache.regexp.internal.RE;
 import de.silveryard.basesystem.driver.bluetooth.BluetoothDevice;
 import de.silveryard.basesystem.driver.bluetoothaudio.dbus.MediaPlayer;
 import org.freedesktop.DBus;
-import org.freedesktop.dbus.DBusConnection;
 import org.freedesktop.dbus.UInt32;
 import org.freedesktop.dbus.Variant;
-import org.freedesktop.dbus.exceptions.DBusException;
 
-import javax.print.attribute.standard.Media;
 import java.util.HashMap;
 import java.util.Map;
 
