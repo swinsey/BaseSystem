@@ -18,12 +18,21 @@ import static de.silveryard.apfcreator.Assert.*;
  * Created by Sebif on 25.02.2017.
  */
 public class Creator {
-    public static void create(String[] args){
+    /**
+     * Creates an apf file based on argument args
+     * @param args
+     */
+    public static void create(String... args){
         assertEqual(args.length, 3, "Invalid amount of arguments");
         assertTrue(args[0].equals("create"), "First parameter must be create to call Creator.create");
 
         create(Paths.get(args[1]), Paths.get(args[2]));
     }
+    /**
+     * Creates an apf file based on a config file
+     * @param configFile
+     * @param outputFile
+     */
     public static void create(Path configFile, Path outputFile){
         assertTrue(Files.exists(configFile), "Configuration file does not exist");
         assertFalse(Files.isDirectory(configFile), "Configuration input can not be a directory");
@@ -36,10 +45,22 @@ public class Creator {
             throw new RuntimeException(e);
         }
     }
+    /**
+     * Creates an apf file based on a config string
+     * @param config
+     * @param workingDirectory
+     * @param outputFile
+     */
     public static void create(String config, Path workingDirectory, Path outputFile){
         JSONObject obj = new JSONObject(config);
         create(obj, workingDirectory, outputFile);
     }
+    /**
+     * Creates an apf file based on config json object
+     * @param config
+     * @param workingDirectory
+     * @param outputFile
+     */
     public static void create(JSONObject config, Path workingDirectory, Path outputFile){
         JSONObject configMetadata = tryGetObj(config, "metadata", true);
         JSONArray configIcons = tryGetArray(config, "icons", true);
@@ -56,7 +77,7 @@ public class Creator {
             assertGreaterEquals(iMajorVersion, 0, "Major version cannot be negative");
             assertLowerEquals(iMajorVersion, 255, "Major version cannot be larger than 255");
             majorVersion = (byte)iMajorVersion;
-        }catch(Throwable t){
+        }catch(Exception e){
             assertTrue(false, "Failed to parse major version as integer");
         }
         try{
@@ -64,7 +85,7 @@ public class Creator {
             assertGreaterEquals(iMinorVersion, 0, "Minor version cannot be negative");
             assertLowerEquals(iMinorVersion, 255, "Minor version cannot be larger than 255");
             minorVersion = (byte)iMinorVersion;
-        }catch(Throwable t){
+        }catch(Exception e){
             assertTrue(false, "Failed to parse minor version as integer");
         }
 
@@ -294,4 +315,6 @@ public class Creator {
             return null;
         }
     }
+
+    private Creator(){}
 }

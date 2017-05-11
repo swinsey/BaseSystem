@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/APFCreator.iml" filepath="$PROJECT_DIR$/.idea/modules/APFCreator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/APFCreator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/APFCreator_main.iml" group="APFCreator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/APFCreator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/APFCreator_test.iml" group="APFCreator" />
     </modules>
   </component>
 </project>

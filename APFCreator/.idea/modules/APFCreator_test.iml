@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module version="4">
+<module external.linked.project.id="APFCreator:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="de.silveryard" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output-test url="file://$MODULE_DIR$/../../build/classes/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="APFCreator_main" />
+    <orderEntry type="library" name="Gradle: de.silveryard:APF:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: org.json:json:20160810" level="project" />
+  </component>
   <component name="TestModuleProperties" production-module="APFCreator_main" />
 </module>
