@@ -125,13 +125,13 @@ class AppLoader {
     private void handleMessage(Message message){
         switch(initializing){
             case PHASE_1:{
-                if(!message.getCommandHash().equals(COMMANDHASH_INITAPP)){
-                    initializing = InitState.PHASE_2;
-                    return;
-                }else{
+                if(message.getCommandHash().equals(COMMANDHASH_INITAPP)){
                     Message initsystem = new Message(SYSTEM_ID, SYSTEM_ID, COMMANDHASH_INITSYSTEM, new ArrayList<>());
                     networking.send(initsystem);
                     initializing = InitState.PHASE_2;
+                }else{
+                    initializing = InitState.PHASE_2;
+                    return;
                 }
                 break;
             }

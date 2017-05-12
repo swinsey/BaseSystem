@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static de.silveryard.apfcreator.Assert.*;
@@ -38,7 +39,12 @@ public class Creator {
         assertFalse(Files.isDirectory(configFile), "Configuration input can not be a directory");
 
         try {
-            String content = Files.readAllLines(configFile).stream().collect(Collectors.joining("\n"));
+            List<String> lines = Files.readAllLines(configFile);
+            String content = "";
+
+            for(int i = 0; i < lines.size(); i++){
+                content += lines.get(i) + "\n";
+            }
             create(content, configFile.getParent(), outputFile);
         } catch (IOException e) {
             e.printStackTrace();
