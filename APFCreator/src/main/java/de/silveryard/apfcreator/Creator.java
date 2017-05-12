@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -39,7 +40,7 @@ public class Creator {
         assertFalse(Files.isDirectory(configFile), "Configuration input can not be a directory");
 
         try {
-            List<String> lines = Files.readAllLines(configFile);
+            List<String> lines = Files.readAllLines(configFile, Charset.defaultCharset());
             String content = "";
 
             for(int i = 0; i < lines.size(); i++){

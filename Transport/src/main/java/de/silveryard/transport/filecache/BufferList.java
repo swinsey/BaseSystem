@@ -1,5 +1,7 @@
 package de.silveryard.transport.filecache;
 
+import java.util.Arrays;
+
 /**
  * Created by CHofm on 18.01.2017.
  */
