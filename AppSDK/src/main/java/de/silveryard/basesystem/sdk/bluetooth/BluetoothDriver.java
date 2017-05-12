@@ -23,10 +23,17 @@ public abstract class BluetoothDriver {
     private static final List<DeviceHandler> disconnectedHandlers = new ArrayList<>();
     private static final List<Device> devices = new ArrayList<>();
 
+    /**
+     * Returns all currently avaliable devices
+     * @return
+     */
     public static List<Device> getDevices(){
         return devices;
     }
 
+    /**
+     * Updates the internal device list. Will invoke events when nececary
+     */
     public static void updateDevices(){
         systemCallDriverBTBluetoothDriverGetDevices(returnCodeWrapper, btReturnCodeWrapper, intArrayWrapper);
 
@@ -78,15 +85,31 @@ public abstract class BluetoothDriver {
         }
     }
 
+    /**
+     * Registers a new handler to the event 'connected'. This handler will be called when a new device in range is found
+     * @param handler
+     */
     public static void registerConnectedHandler(DeviceHandler handler){
         connectedHandlers.add(handler);
     }
+    /**
+     * Unregisters a handler from the event 'connected'. This handler will no longer be called when a new device in range is found
+     * @param handler
+     */
     public static void unregisterConnectedHandler(DeviceHandler handler){
         connectedHandlers.remove(handler);
     }
+    /**
+     * Registers a new handler to the event 'disconnected'. This handler will be called when a device will no longer be avaliable
+     * @param handler
+     */
     public static void registerDisconnectedHandler(DeviceHandler handler){
         disconnectedHandlers.add(handler);
     }
+    /**
+     * Removes a handler from the event 'disconnected'. This handler will no longer be called when a device will no longer be avaliable
+     * @param handler
+     */
     public static void unregisterDisconnectedHandler(DeviceHandler handler){
         disconnectedHandlers.remove(handler);
     }

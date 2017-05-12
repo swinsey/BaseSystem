@@ -53,6 +53,7 @@ public class FmodSound {
     /**
      * FMOD::Sound::getLength
      * @param length
+     * @param lengthType
      * @return
      */
     public synchronized FmodResult getLength(Wrapper<Integer> length, int lengthType){

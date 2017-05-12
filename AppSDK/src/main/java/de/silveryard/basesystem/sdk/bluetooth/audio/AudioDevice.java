@@ -30,14 +30,26 @@ public class AudioDevice {
 
     private final int id;
 
+    /**
+     * Constructor
+     * @param id Internal identifier
+     */
     public AudioDevice(int id){
         this.id = id;
     }
 
+    /**
+     * Returns the devices internal identifier
+     * @return Internal id
+     */
     public int getId(){
         return id;
     }
 
+    /**
+     * Returns the internal bluetooth device
+     * @return Bluetooth device
+     */
     public synchronized Device getDevice(){
         systemCallBluetoothAudioDeviceGetDevice(id, returnCodeWrapper, btAudioReturnCodeWrapper, integerWrapper);
 
@@ -61,6 +73,10 @@ public class AudioDevice {
         return null;
     }
 
+    /**
+     * Returns the repeat mode
+     * @return Repeat mode
+     */
     public synchronized RepeatMode getRepeat(){
         systemCallBluetoothAudioDeviceGetRepeat(id, returnCodeWrapper, btAudioReturnCodeWrapper, repeatModeWrapper);
 
@@ -74,6 +90,10 @@ public class AudioDevice {
 
         return repeatModeWrapper.value;
     }
+    /**
+     * Sets the repeat mode
+     * @param repeat Repeat mode
+     */
     public synchronized void setRepeat(RepeatMode repeat){
         systemCallBluetoothAudioSetRepeat(id, repeat, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -86,6 +106,10 @@ public class AudioDevice {
         }
     }
 
+    /**
+     * Returns the shuffle mode
+     * @return Shuffle mode
+     */
     public synchronized ShuffleMode getShuffle(){
         systemCallBluetoothAudioDeviceGetShuffle(id, returnCodeWrapper, btAudioReturnCodeWrapper, shuffleModeWrapper);
 
@@ -99,6 +123,10 @@ public class AudioDevice {
 
         return shuffleModeWrapper.value;
     }
+    /**
+     * Sets the shuffle mode
+     * @param shuffle Shuffle mode
+     */
     public synchronized void setShuffle(ShuffleMode shuffle){
         systemCallBluetoothAudioDeviceSetShuffle(id, shuffle, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -111,6 +139,10 @@ public class AudioDevice {
         }
     }
 
+    /**
+     * Returns the playback status
+     * @return Playback status
+     */
     public synchronized AudioStatus getStatus(){
         systemCallBluetoothAudioDeviceGetStatus(id, returnCodeWrapper, btAudioReturnCodeWrapper, audioStatusWrapper);
 
@@ -125,6 +157,10 @@ public class AudioDevice {
         return audioStatusWrapper.value;
     }
 
+    /**
+     * Returns the current tracks title
+     * @return Title of the current track played back
+     */
     public synchronized String getCurrentTrackTitle(){
         systemCallBluetoothAudioDeviceGetCurrentTrackTitle(id, returnCodeWrapper, btAudioReturnCodeWrapper, stringWrapper);
 
@@ -138,6 +174,10 @@ public class AudioDevice {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the current tracks artist
+     * @return Artist of the current track played back
+     */
     public synchronized String getCurrentTrackArtist(){
         systemCallBluetoothAudioDeviceGetCurrentTrackArtist(id, returnCodeWrapper, btAudioReturnCodeWrapper, stringWrapper);
 
@@ -151,6 +191,10 @@ public class AudioDevice {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the current tracks album
+     * @return Album of the current track played back
+     */
     public synchronized String getCurrentTrackAlbum(){
         systemCallBluetoothAudioDeviceGetCurrentTrackAlbum(id, returnCodeWrapper, btAudioReturnCodeWrapper, stringWrapper);
 
@@ -164,6 +208,10 @@ public class AudioDevice {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the current tracks duration
+     * @return Duration of the current track played back
+     */
     public synchronized long getCurrentTrackDuration(){
         systemCallBluetoothAudioDeviceGetCurrentTrackDuration(id, returnCodeWrapper, btAudioReturnCodeWrapper, longWrapper);
 
@@ -178,6 +226,9 @@ public class AudioDevice {
         return longWrapper.value;
     }
 
+    /**
+     * Resumes playback
+     */
     public synchronized void play(){
         systemCallBluetoothAudioDevicePlay(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -189,6 +240,9 @@ public class AudioDevice {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Pauses playback
+     */
     public synchronized void pause(){
         systemCallBluetoothAudioDevicePause(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -200,6 +254,9 @@ public class AudioDevice {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Stops playback
+     */
     public synchronized void stop(){
         systemCallBluetoothAudioDeviceStop(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -211,6 +268,9 @@ public class AudioDevice {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Plays the next title
+     */
     public synchronized void next(){
         systemCallBluetoothAudioDeviceNext(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -222,6 +282,9 @@ public class AudioDevice {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Plays the previous title
+     */
     public synchronized void previous(){
         systemCallBluetoothAudioDevicePrevious(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -233,6 +296,9 @@ public class AudioDevice {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Starts fast forward
+     */
     public synchronized void fastForward(){
         systemCallBluetoothAudioDeviceFastForward(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 
@@ -244,6 +310,9 @@ public class AudioDevice {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Starts rewind
+     */
     public synchronized void rewind(){
         systemCallBluetoothAudioDeviceRewind(id, returnCodeWrapper, btAudioReturnCodeWrapper);
 

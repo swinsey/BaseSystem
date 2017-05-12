@@ -13,6 +13,13 @@ import java.util.List;
  * Created by silveryard on 01.05.17.
  */
 public abstract class Device {
+    /**
+     * Returns if a given device is blocked
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outIsBlocked True if blocked. False otherwise
+     */
     public static void systemCallDriverBTDeviceIsBlocked(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -28,6 +35,13 @@ public abstract class Device {
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outIsBlocked.value = response.getParameters().get(2).getBoolean();
     }
+    /**
+     * Returns if a given device is connected
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outIsConnected True if connected. False otherwise
+     */
     public static void systemCallDriverBTDeviceIsConnected(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -43,6 +57,13 @@ public abstract class Device {
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outIsConnected.value = response.getParameters().get(2).getBoolean();
     }
+    /**
+     * Returns if a given device is paired
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outIsPaired True if paired. False otherwise
+     */
     public static void systemCallDriverBTDeviceIsPaired(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -58,6 +79,13 @@ public abstract class Device {
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outIsPaired.value = response.getParameters().get(2).getBoolean();
     }
+    /**
+     * Returns if a given device is trusted
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Reteurn Code
+     * @param outIsTrusted True if trusted. False otherwise
+     */
     public static void systemCallDriverBTDeviceIsTrusted(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -74,6 +102,13 @@ public abstract class Device {
         outIsTrusted.value = response.getParameters().get(2).getBoolean();
     }
 
+    /**
+     * Returns the MAC address of a given device
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outAddress MAC address
+     */
     public static void systemCallDriverBTDeviceGetAddress(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -89,6 +124,13 @@ public abstract class Device {
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outAddress.value = response.getParameters().get(2).getString();
     }
+    /**
+     * Returns the alias of a given device
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outAlias Alias name
+     */
     public static void systemCallDriverBTDeviceGetAlias(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -104,6 +146,14 @@ public abstract class Device {
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outAlias.value = response.getParameters().get(2).getString();
     }
+    /**
+     * Returns the icon of a given device.
+     * You can use this as 'device type'
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outIcon Icon type
+     */
     public static void systemCallDriverBTDeviceGetIcon(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -119,6 +169,13 @@ public abstract class Device {
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outIcon.value = response.getParameters().get(2).getString();
     }
+    /**
+     * Returns the name of a given device
+     * @param deviceId ID of the device to fetch data from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outName Device name
+     */
     public static void systemCallDriverBTDeviceGetName(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -135,6 +192,12 @@ public abstract class Device {
         outName.value = response.getParameters().get(2).getString();
     }
 
+    /**
+     * Pairs with a given device
+     * @param deviceId ID of the device to pair with
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     */
     public static void systemCallDriverBTDevicePair(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -148,6 +211,12 @@ public abstract class Device {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Cancels an active pairing process with a given device
+     * @param deviceId ID of the device to cancel the pairing
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     */
     public static void systemCallDriverBTDeviceCancelPairing(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -161,6 +230,12 @@ public abstract class Device {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Connects to a given device
+     * @param deviceId ID of the device to connect to
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     */
     public static void systemCallDriverBTDeviceConnect(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
@@ -174,6 +249,12 @@ public abstract class Device {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Disconnects from a given device
+     * @param deviceId ID of the device to disconnect from
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     */
     public static void systemCallDriverBTDeviceDisconnect(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,

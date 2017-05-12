@@ -19,6 +19,10 @@ public class Device {
 
     private final int id;
 
+    /**
+     * Constructor
+     * @param id Internal identifier
+     */
     public Device(int id){
         this.id = id;
 
@@ -28,10 +32,18 @@ public class Device {
         booleanWrapper = new Wrapper<>();
     }
 
+    /**
+     * Returns the internal identifier
+     * @return Internal id
+     */
     public int getId(){
         return id;
     }
 
+    /**
+     * Returns the devices MAC address
+     * @return MAC address
+     */
     public String getAddress(){
         systemCallDriverBTDeviceGetAddress(id, returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -45,6 +57,10 @@ public class Device {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the devices alias name
+     * @return Alias
+     */
     public String getAlias(){
         systemCallDriverBTDeviceGetAlias(id, returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -58,6 +74,11 @@ public class Device {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the devices icon name
+     * TODO: Change to 'getType' with enum return type
+     * @return Icon type
+     */
     public String getIcon(){
         systemCallDriverBTDeviceGetIcon(id, returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -71,6 +92,10 @@ public class Device {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the devices name
+     * @return Device name
+     */
     public String getName(){
         systemCallDriverBTDeviceGetName(id, returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -85,6 +110,10 @@ public class Device {
         return stringWrapper.value;
     }
 
+    /**
+     * Returns if this device is blocked
+     * @return True if blocked. False otherwise
+     */
     public boolean isBlocked(){
         systemCallDriverBTDeviceIsBlocked(id, returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -98,6 +127,10 @@ public class Device {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns if this device is connected
+     * @return True if connected. False otherwise
+     */
     public boolean isConnected(){
         systemCallDriverBTDeviceIsConnected(id, returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -111,6 +144,10 @@ public class Device {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns if this device is paired
+     * @return True if paired. False otherwise
+     */
     public boolean isPaired(){
         systemCallDriverBTDeviceIsPaired(id, returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -124,6 +161,10 @@ public class Device {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns if this device is trusted
+     * @return True if trusted. False otherwise
+     */
     public boolean isTrusted(){
         systemCallDriverBTDeviceIsTrusted(id, returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -138,6 +179,10 @@ public class Device {
         return booleanWrapper.value;
     }
 
+    /**
+     * Pairs with this device
+     * @return
+     */
     public void pair(){
         systemCallDriverBTDevicePair(id, returnCodeWrapper, btReturnCodeWrapper);
 
@@ -149,6 +194,9 @@ public class Device {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Cancels an active pairing process
+     */
     public void cancelPairing(){
         systemCallDriverBTDeviceCancelPairing(id, returnCodeWrapper, btReturnCodeWrapper);
 
@@ -160,6 +208,9 @@ public class Device {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Connects to this device
+     */
     public void connect(){
         systemCallDriverBTDeviceConnect(id, returnCodeWrapper, btReturnCodeWrapper);
 
@@ -171,6 +222,9 @@ public class Device {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Disconnects from this device
+     */
     public void disconnect(){
         systemCallDriverBTDeviceDisconnect(id, returnCodeWrapper, btReturnCodeWrapper);
 

@@ -13,6 +13,13 @@ import java.util.List;
  * Created by silveryard on 11.05.17.
  */
 public abstract class BtAudioDevice {
+    /**
+     * Returns the internal bluetooth device
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outBtDeviceID Bluetooth device ID
+     */
     public static void systemCallBluetoothAudioDeviceGetDevice(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -28,6 +35,13 @@ public abstract class BtAudioDevice {
         outBtDeviceID.value = response.getParameters().get(2).getInt();
     }
 
+    /**
+     * Returns the repeat mode
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outRepeatMode Repeat mode
+     */
     public static void systemCallBluetoothAudioDeviceGetRepeat(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -42,6 +56,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outRepeatMode.value = RepeatMode.getEnumValue(response.getParameters().get(2).getInt());
     }
+    /**
+     * Sets the repeat mode
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param repeatMode Repeat mode
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioSetRepeat(
             int audioDeviceID,
             RepeatMode repeatMode,
@@ -57,6 +78,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
 
+    /**
+     * Returns the shuffle mode
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outShuffleMode Shuffle mode
+     */
     public static void systemCallBluetoothAudioDeviceGetShuffle(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -71,6 +99,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outShuffleMode.value = ShuffleMode.getEnumValue(response.getParameters().get(2).getInt());
     }
+    /**
+     * Sets the shuffle mode
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param shuffleMode Shuffle mode
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDeviceSetShuffle(
             int audioDeviceID,
             ShuffleMode shuffleMode,
@@ -86,6 +121,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
 
+    /**
+     * Returns the playback status
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outAudioStatus Playback status
+     */
     public static void systemCallBluetoothAudioDeviceGetStatus(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -101,6 +143,13 @@ public abstract class BtAudioDevice {
         outAudioStatus.value = AudioStatus.getEnumValue(response.getParameters().get(2).getInt());
     }
 
+    /**
+     * Returns the current tracks title
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outTrackTitle Title of the current track played back
+     */
     public static void systemCallBluetoothAudioDeviceGetCurrentTrackTitle(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -115,6 +164,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outTrackTitle.value = response.getParameters().get(2).getString();
     }
+    /**
+     * Returns the current tracks artist
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outTrackArtist Artist of the current track played back
+     */
     public static void systemCallBluetoothAudioDeviceGetCurrentTrackArtist(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -129,6 +185,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outTrackArtist.value = response.getParameters().get(2).getString();
     }
+    /**
+     * Returns the current tracks album
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outTrackAlbum Album of the current track played back
+     */
     public static void systemCallBluetoothAudioDeviceGetCurrentTrackAlbum(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -143,6 +206,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outTrackAlbum.value = response.getParameters().get(2).getString();
     }
+    /**
+     * Returns the current tracks duration
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outTrackDuration Duration of the current track played back
+     */
     public static void systemCallBluetoothAudioDeviceGetCurrentTrackDuration(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -158,6 +228,12 @@ public abstract class BtAudioDevice {
         outTrackDuration.value = response.getParameters().get(2).getLong();
     }
 
+    /**
+     * Resumes playback
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDevicePlay(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -170,6 +246,12 @@ public abstract class BtAudioDevice {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Pauses playback
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDevicePause(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -182,6 +264,12 @@ public abstract class BtAudioDevice {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Stops playback
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDeviceStop(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -194,6 +282,12 @@ public abstract class BtAudioDevice {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Plays the next title
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDeviceNext(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -206,6 +300,12 @@ public abstract class BtAudioDevice {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Plays the previous title
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDevicePrevious(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -218,6 +318,12 @@ public abstract class BtAudioDevice {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Starts fast forward
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDeviceFastForward(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,
@@ -230,6 +336,12 @@ public abstract class BtAudioDevice {
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
     }
+    /**
+     * Starts rewind
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     */
     public static void systemCallBluetoothAudioDeviceRewind(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,

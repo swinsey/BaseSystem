@@ -461,6 +461,7 @@ public abstract class FmodChannel {
     /**
      * Fetches the position value of a given channel
      * @param channelID  The given channels id
+     * @param posType Format to store position in
      * @param outReturnCode General Return Code
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result

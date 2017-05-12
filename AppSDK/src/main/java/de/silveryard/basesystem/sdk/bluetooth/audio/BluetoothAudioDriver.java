@@ -23,10 +23,17 @@ public abstract class BluetoothAudioDriver {
     private static final List<DeviceHandler> disconnectedHandlers = new ArrayList<>();
     private static final List<AudioDevice> devices = new ArrayList<>();
 
+    /**
+     * Returns all currently known audio devices
+     * @return
+     */
     public static synchronized List<AudioDevice> getDevices() {
         return devices;
     }
 
+    /**
+     * Updates the internal list of devices. Will trigger events when nececary
+     */
     public static synchronized void updateDevices() {
         systemCallDriverBtAudioBluetoothAudioDriverGetDevices(returnCodeWrapper, btAudioReturnCodeWrapper, intArrayWrapper);
 
@@ -78,15 +85,31 @@ public abstract class BluetoothAudioDriver {
         }
     }
 
+    /**
+     * Registers a new handler to the event 'connected'. This handler will be called when a new audio device has connected
+     * @param handler
+     */
     public static synchronized void registerConnectedHandler(DeviceHandler handler) {
         connectedHandlers.add(handler);
     }
+    /**
+     * Unregisters a handler from the event 'connected'. This handler will no longer be called when a new audio device has connected
+     * @param handler
+     */
     public static synchronized void unregisterConnectedHandler(DeviceHandler handler) {
         connectedHandlers.remove(handler);
     }
+    /**
+     * Registers a new handler to the event 'disconnected'. This handler will be called when a connected audio device will no longer be avaliable
+     * @param handler
+     */
     public static synchronized void registerDisconnectedHandler(DeviceHandler handler) {
         disconnectedHandlers.add(handler);
     }
+    /**
+     * Unregisters a handler from the event 'disconnected'. This handler will no longer be called when a connected audio device will no longer be avaliable
+     * @param handler
+     */
     public static synchronized void unregisterDisconnectedHandler(DeviceHandler handler) {
         disconnectedHandlers.remove(handler);
     }

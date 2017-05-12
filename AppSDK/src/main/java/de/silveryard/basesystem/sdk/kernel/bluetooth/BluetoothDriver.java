@@ -11,6 +11,12 @@ import java.util.ArrayList;
  * Created by silveryard on 01.05.17.
  */
 public abstract class BluetoothDriver {
+    /**
+     * Fetches all currently avaliable devices
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     * @param outDeviceIds List of device IDs
+     */
     public static void systemCallDriverBTBluetoothDriverGetDevices(
             Wrapper<ReturnCode> outReturnCode,
             Wrapper<BtReturnCode> outBtReturnCode,

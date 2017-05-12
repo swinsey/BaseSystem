@@ -11,6 +11,12 @@ import java.util.ArrayList;
  * Created by silveryard on 11.05.17.
  */
 public abstract class BtAudioDriver {
+    /**
+     * Returns all currently avaliable audio devices
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode BtAudio Return Code
+     * @param outDeviceIDs List of AudioDevice IDs
+     */
     public static void systemCallDriverBtAudioBluetoothAudioDriverGetDevices(
             Wrapper<ReturnCode> outReturnCode,
             Wrapper<BtAudioReturnCode> outBtAudioReturnCode,

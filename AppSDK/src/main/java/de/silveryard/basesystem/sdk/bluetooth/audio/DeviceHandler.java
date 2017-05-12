@@ -5,5 +5,9 @@ package de.silveryard.basesystem.sdk.bluetooth.audio;
  */
 @FunctionalInterface
 public interface DeviceHandler {
+    /**
+     * Handler
+     * @param device
+     */
     void handle(AudioDevice device);
 }

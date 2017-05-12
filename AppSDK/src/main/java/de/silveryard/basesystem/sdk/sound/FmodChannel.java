@@ -378,6 +378,7 @@ public class FmodChannel {
     /**
      * FMOD::Channel::getPosition
      * @param position
+     * @param posType
      * @return
      */
     public synchronized FmodResult getPosition(Wrapper<Integer> position, int posType){

@@ -17,6 +17,10 @@ public abstract class Adapter {
     private static final Wrapper<String> stringWrapper = new Wrapper<>();
     private static final Wrapper<Boolean> booleanWrapper = new Wrapper<>();
 
+    /**
+     * Returns the MAC address of this adapter
+     * @return MAC address
+     */
     public static String getAddress(){
         systemcallDriverBTAdapterGetAddress(returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -30,6 +34,10 @@ public abstract class Adapter {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the alias name of this adapter
+     * @return Alias name
+     */
     public static String getAlias(){
         systemcallDriverBTAdapterGetAlias(returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -43,6 +51,10 @@ public abstract class Adapter {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the modalias name of this adapter
+     * @return Modalias name
+     */
     public static String getModalias(){
         systemcallDriverBTAdapterGetModalias(returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -56,6 +68,10 @@ public abstract class Adapter {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the name of this adapter
+     * @return Name value
+     */
     public static String getName(){
         systemcallDriverBTAdapterGetName(returnCodeWrapper, btReturnCodeWrapper, stringWrapper);
 
@@ -69,7 +85,10 @@ public abstract class Adapter {
 
         return stringWrapper.value;
     }
-
+    /**
+     * Returns the discoverable flag of this adapter
+     * @return True if this adapter is set to discoverable. False otherwise
+     */
     public static boolean isDiscoverable(){
         systemcallDriverBTAdapterIsDiscoverable(returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -83,6 +102,10 @@ public abstract class Adapter {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns the discovering flag of this adapter
+     * @return True if this adapter is currently discovering. False otherwise
+     */
     public static boolean isDiscovering(){
         systemcallDriverBTAdapterIsDiscovering(returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -96,6 +119,10 @@ public abstract class Adapter {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns the pariable flag of this adapter
+     * @return True if this adapter is currently pairable. False otherwise
+     */
     public static boolean isPairable(){
         systemcallDriverBTAdapterIsPairable(returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -109,6 +136,10 @@ public abstract class Adapter {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns the powered flag of this adapter
+     * @return True if this adapter is currently powered. False otherwise
+     */
     public static boolean isPowered(){
         systemcallDriverBTAdapterIsPowered(returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
@@ -123,6 +154,9 @@ public abstract class Adapter {
         return booleanWrapper.value;
     }
 
+    /**
+     * Starts the discovery
+     */
     public static void startDiscovery(){
         systemcallDriverBTAdapterStartDiscovery(returnCodeWrapper, btReturnCodeWrapper);
 
@@ -134,6 +168,9 @@ public abstract class Adapter {
             throw new KernelException(returnCodeWrapper.value);
         }
     }
+    /**
+     * Stops the discovery
+     */
     public static void stopDiscovery(){
         systemcallDriverBTAdapterStopDiscovery(returnCodeWrapper, btReturnCodeWrapper);
 

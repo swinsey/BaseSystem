@@ -35,6 +35,7 @@ public abstract class FmodSound {
     /**
      * Fetches the length of a given sound
      * @param channelID ID of the FmodSound
+     * @param lengthType Format to store length in
      * @param outReturnCode General Return Code
      * @param outSoundReturnCode Sound Return Code
      * @param outFmodResult Fmod Result
