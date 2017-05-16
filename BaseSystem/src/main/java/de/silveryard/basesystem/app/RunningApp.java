@@ -16,9 +16,12 @@ import java.util.Map;
 public class RunningApp implements IDisposable {
     private static final int FRAME_LAYER = 5;
 
-    private String appIdentifier;
-    private AppLoader appLoader;
-    private Frame frame;
+    private static int nextIdentifier = 1;
+
+    private final String appIdentifier;
+    private final AppLoader appLoader;
+    private final Frame frame;
+    private final int processId;
 
     private int nextObjectId;
     private Map<Integer, Object> objects;
@@ -35,10 +38,21 @@ public class RunningApp implements IDisposable {
         this.frame = GraphicsManager.getInstance().createFrame();
         this.frame.setLayer(FRAME_LAYER);
 
+        this.processId = nextIdentifier;
+        nextIdentifier++;
+
         nextObjectId = 1;
         objects = new HashMap<>();
 
         appLoader.setSystemMessageHandler(this::handleMessage);
+    }
+
+    /**
+     * Returns an identifier that uniquelly identifies this process
+     * @return Process ID
+     */
+    public int getProcessId(){
+        return processId;
     }
 
     /**

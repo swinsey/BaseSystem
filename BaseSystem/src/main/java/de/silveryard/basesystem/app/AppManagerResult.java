@@ -29,6 +29,21 @@ public enum AppManagerResult {
      */
     ALREADY_RUNNING(6);
 
+    /**
+     * Converts an integer value to an enum value
+     * @param value Integer value
+     * @return Enum value
+     */
+    public static AppManagerResult getEnumValue(int value){
+        AppManagerResult[] values = AppManagerResult.values();
+        for(int i = 0; i < values.length; i++){
+            if(values[i].getValue() == value){
+                return values[i];
+            }
+        }
+        return null;
+    }
+
     private int value;
 
     /**

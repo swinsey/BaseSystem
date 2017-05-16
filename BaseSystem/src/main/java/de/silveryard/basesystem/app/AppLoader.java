@@ -50,6 +50,7 @@ class AppLoader {
     private Networking networking;
     private volatile InitState initializing;
     private Consumer<Message> systemMessageHandler;
+    private final Process process;
 
     private AppLoader(String appName, Path binaryPath, Path dataDirPath, Path readonlyPath) throws Exception{
         networking = new Networking();
@@ -67,14 +68,14 @@ class AppLoader {
         cmdBuilder.append(readonlyPath.toString());
 
         initializing = InitState.PHASE_1;
-        Process p = Runtime.getRuntime().exec(cmdBuilder.toString());
+        process = Runtime.getRuntime().exec(cmdBuilder.toString());
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                         try {
                             String line;
                             BufferedReader in = new BufferedReader(
-                                    new InputStreamReader(p.getInputStream()));
+                                    new InputStreamReader(process.getInputStream()));
                             while ((line = in.readLine()) != null) {
                                 LogManager.getInstance().log(appName, line, LogMessageType.OUT);
                             }
@@ -92,7 +93,7 @@ class AppLoader {
                 try {
                     String line;
                     BufferedReader in = new BufferedReader(
-                            new InputStreamReader(p.getErrorStream()));
+                            new InputStreamReader(process.getErrorStream()));
                     while ((line = in.readLine()) != null) {
                         LogManager.getInstance().log(appName, line, LogMessageType.ERROR);
                     }
@@ -156,5 +157,18 @@ class AppLoader {
     }
     public void dispose(){
         networking.closeConnection();
+        long timer = 0;
+        long last = System.currentTimeMillis();
+
+        while(process.isAlive()){
+            long stamp = System.currentTimeMillis();
+            timer += (stamp - last);
+            last = stamp;
+
+            if(timer >= 5000){
+                System.out.println("App does not shut down");
+                return;
+            }
+        }
     }
 }

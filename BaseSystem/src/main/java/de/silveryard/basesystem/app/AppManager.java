@@ -68,6 +68,13 @@ public class AppManager implements IDisposable {
     public synchronized List<String> getInstalledApps(){
         return appDB.getInstalledApps();
     }
+    /**
+     * Returns all currently running apps
+     * @return
+     */
+    public synchronized List<RunningApp> getRunningApps() {
+        return runningApps;
+    }
 
     /**
      * Registers a handler that is called when an app is installed successfully
