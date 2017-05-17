@@ -1,5 +1,6 @@
-package de.silveryard.basesystem.sdk;
+package de.silveryard.basesystem.sdk.sound;
 
+import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.sound.SoundReturnCode;
 

@@ -1,5 +1,6 @@
-package de.silveryard.basesystem.sdk;
+package de.silveryard.basesystem.sdk.bluetooth;
 
+import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.bluetooth.BtReturnCode;
 

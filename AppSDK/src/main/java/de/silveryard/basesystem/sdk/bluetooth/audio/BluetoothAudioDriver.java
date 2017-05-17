@@ -1,7 +1,6 @@
 package de.silveryard.basesystem.sdk.bluetooth.audio;
 
-import de.silveryard.basesystem.sdk.BtAudioKernelException;
-import de.silveryard.basesystem.sdk.KernelException;
+import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.Wrapper;
 import de.silveryard.basesystem.sdk.kernel.bluetooth.audio.BtAudioReturnCode;

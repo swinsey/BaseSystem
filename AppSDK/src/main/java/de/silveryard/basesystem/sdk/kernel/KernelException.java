@@ -1,6 +1,4 @@
-package de.silveryard.basesystem.sdk;
-
-import de.silveryard.basesystem.sdk.kernel.ReturnCode;
+package de.silveryard.basesystem.sdk.kernel;
 
 /**
  * Created by Sebif on 08.04.2017.
