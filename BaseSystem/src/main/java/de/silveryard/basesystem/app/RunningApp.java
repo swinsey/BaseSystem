@@ -3,11 +3,15 @@ package de.silveryard.basesystem.app;
 import de.silveryard.basesystem.app.kernel.Kernel;
 import de.silveryard.basesystem.gui.Frame;
 import de.silveryard.basesystem.gui.GraphicsManager;
+import de.silveryard.basesystem.logging.LogMessageType;
 import de.silveryard.basesystem.util.IDisposable;
+import de.silveryard.basesystem.util.Utils;
 import de.silveryard.transport.Message;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,7 +28,8 @@ public class RunningApp implements IDisposable {
     private final int processId;
 
     private int nextObjectId;
-    private Map<Integer, Object> objects;
+    private final Map<Integer, Object> objects;
+    private final Map<Integer, IDisposable> disposables;
 
     /**
      * Constructor
@@ -43,6 +48,7 @@ public class RunningApp implements IDisposable {
 
         nextObjectId = 1;
         objects = new HashMap<>();
+        disposables = new HashMap<>();
 
         appLoader.setSystemMessageHandler(this::handleMessage);
     }
@@ -90,6 +96,10 @@ public class RunningApp implements IDisposable {
         int i = nextObjectId;
         nextObjectId++;
         objects.put(i, obj);
+
+        if(Utils.as(IDisposable.class, obj) != null){
+            disposables.put(i, (IDisposable)obj);
+        }
         return i;
     }
     /**
@@ -110,6 +120,29 @@ public class RunningApp implements IDisposable {
      */
     public void unregisterObject(int objectId){
         objects.remove(objectId);
+        IDisposable disposable = disposables.get(objectId);
+
+        if(disposable != null){
+            disposable.dispose();
+        }
+    }
+    /**
+     * Unregisters all objects fromt the apps internal cache
+     */
+    public void unregisterAllObjects(){
+        int numObjects = objects.size();
+        int numDisposables = disposables.size();
+
+        List<Integer> ids = new ArrayList<>(objects.size());
+        for(Integer key : objects.keySet()){
+            ids.add(key);
+        }
+
+        for(int i = 0; i < ids.size(); i++){
+            unregisterObject(ids.get(i));
+        }
+
+        appLoader.logAsApp("Unregistered " + numObjects + " Objects. " + numDisposables + " Disposables", LogMessageType.OUT);
     }
     /**
      * Returns the reference identifier from a given registered object
@@ -125,9 +158,18 @@ public class RunningApp implements IDisposable {
         return -1;
     }
 
+    /**
+     * Returns if this application is still running
+     * @return
+     */
+    public boolean isAppRunning(){
+        return appLoader.isRunning();
+    }
+
     @Override
     public void dispose() {
         frame.dispose();
         appLoader.dispose();
+        unregisterAllObjects();
     }
 }

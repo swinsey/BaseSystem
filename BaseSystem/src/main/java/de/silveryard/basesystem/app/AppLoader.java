@@ -51,9 +51,11 @@ class AppLoader {
     private volatile InitState initializing;
     private Consumer<Message> systemMessageHandler;
     private final Process process;
+    private final String appName;
 
     private AppLoader(String appName, Path binaryPath, Path dataDirPath, Path readonlyPath) throws Exception{
         networking = new Networking();
+        this.appName = appName;
 
        /*
         *   [0] Communication Port Number
@@ -72,13 +74,13 @@ class AppLoader {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                        try {
-                            String line;
-                            BufferedReader in = new BufferedReader(
-                                    new InputStreamReader(process.getInputStream()));
-                            while ((line = in.readLine()) != null) {
-                                LogManager.getInstance().log(appName, line, LogMessageType.OUT);
-                            }
+                try {
+                    String line;
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    while ((line = in.readLine()) != null) {
+                        logAsApp(line, LogMessageType.OUT);
+                    }
                     in.close();
                 }catch(Exception e){
                     throw new RuntimeException(e);
@@ -95,7 +97,7 @@ class AppLoader {
                     BufferedReader in = new BufferedReader(
                             new InputStreamReader(process.getErrorStream()));
                     while ((line = in.readLine()) != null) {
-                        LogManager.getInstance().log(appName, line, LogMessageType.ERROR);
+                        logAsApp(line, LogMessageType.ERROR);
                     }
                     in.close();
                 }catch(Exception e){
@@ -115,12 +117,20 @@ class AppLoader {
         }
     }
 
+    public void logAsApp(String message, LogMessageType type){
+        LogManager.getInstance().log(appName, message, type);
+    }
+
     public void setSystemMessageHandler(Consumer<Message> systemMessageHandler){
         this.systemMessageHandler = systemMessageHandler;
     }
 
     public void sendMessage(Message message){
         networking.send(message);
+    }
+
+    public boolean isRunning(){
+        return process.isAlive();
     }
 
     private void handleMessage(Message message){

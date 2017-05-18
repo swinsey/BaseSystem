@@ -35,13 +35,14 @@ public class AppManager implements IDisposable {
         return instance;
     }
 
-    private AppDB appDB;
-    private List<RunningApp> runningApps;
+    private final AppDB appDB;
+    private final List<RunningApp> runningApps;
+    private final List<RunningApp> tmpRunningApps;
 
-    private List<ActionP1<String>> onAppInstalledHandlers;
-    private List<ActionP1<String>> onAppUninstalledHandlers;
-    private List<ActionP1<String>> onAppStartedHandlers;
-    private List<ActionP1<String>> onAppStoppedHandlers;
+    private final List<ActionP1<String>> onAppInstalledHandlers;
+    private final List<ActionP1<String>> onAppUninstalledHandlers;
+    private final List<ActionP1<String>> onAppStartedHandlers;
+    private final List<ActionP1<String>> onAppStoppedHandlers;
 
     private AppManager(Path appDirectory, Path dataDirectory){
         if(!Files.exists(appDirectory))
@@ -55,6 +56,7 @@ public class AppManager implements IDisposable {
 
         appDB = new AppDB(Paths.get(appDirectory.toString(), "appdb.sqlite"), appDirectory, dataDirectory);
         runningApps = new ArrayList<>();
+        tmpRunningApps = new ArrayList<>();
 
         onAppInstalledHandlers = new ArrayList<>();
         onAppUninstalledHandlers = new ArrayList<>();
@@ -236,6 +238,23 @@ public class AppManager implements IDisposable {
     }
 
     /**
+     * Updates this manager
+     */
+    public synchronized void update(){
+        tmpRunningApps.clear();
+        tmpRunningApps.addAll(runningApps);
+
+        for(int i = 0; i < tmpRunningApps.size(); i++){
+            RunningApp app = tmpRunningApps.get(i);
+            if(!app.isAppRunning()){
+                stopApp(app.getAppIdentifier());
+            }
+        }
+
+        tmpRunningApps.clear();
+    }
+
+    /**
      * Starts a given app
      * @param appIdentifier Application identifier
      * @return RunningApp instance on success. A value of AppManagerResult otherwise
@@ -299,6 +318,7 @@ public class AppManager implements IDisposable {
             app = runningAppResult.getLValue();
         }
 
+        runningApps.remove(app);
         app.dispose();
         try{
             Thread.sleep(2000);
