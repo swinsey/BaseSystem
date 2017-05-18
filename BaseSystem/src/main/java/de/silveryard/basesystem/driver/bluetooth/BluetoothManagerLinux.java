@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * Created by silveryard on 01.05.17.
  */
 final class BluetoothManagerLinux extends BluetoothManager {
-    private static final long REFRESH_DELAY = 1000;
+    private static final long REFRESH_DELAY = 2000;
     private static final Pattern PATTERN_DEVICE = Pattern.compile("^\\/org\\/bluez\\/hci0\\/dev(_[0-9A-F]{2}){6}$", Pattern.CASE_INSENSITIVE);
 
     private final DBusConnection connection;

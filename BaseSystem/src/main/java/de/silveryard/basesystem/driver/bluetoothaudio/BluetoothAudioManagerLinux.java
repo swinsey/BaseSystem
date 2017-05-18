@@ -16,7 +16,7 @@ import java.util.List;
  * Created by silveryard on 07.05.17.
  */
 final class BluetoothAudioManagerLinux extends BluetoothAudioManager {
-    private static final long UPDATE_DELAY = 1000;
+    private static final long UPDATE_DELAY = 2000;
     private static final String EMPTY_OBJECT =
             "<!DOCTYPE node PUBLIC \"-//freedesktop//DTD D-BUS Object Introspection 1.0//EN\"\n" +
             "\"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd\">\n" +
@@ -60,6 +60,7 @@ final class BluetoothAudioManagerLinux extends BluetoothAudioManager {
         lastCheck = timestamp;
         connectedDevices.clear();
 
+        System.gc();
         List<BluetoothDevice> devices = bluetoothDriver.getDevices();
         for(int i = 0; i < devices.size(); i++){
             BluetoothDevice device = devices.get(i);
