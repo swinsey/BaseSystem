@@ -48,6 +48,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Gradle: de.silveryard:APFCreator:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.5" level="project" />
+    <orderEntry type="library" name="Gradle: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Gradle: de.silveryard:APF:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.json:json:20160810" level="project" />
   </component>
