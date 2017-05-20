@@ -26,6 +26,7 @@ public class GraphicsManager implements IDisposable{
             throw new RuntimeException("Already initialized");
         }
 
+        System.loadLibrary("SDLNative");
         int result = SDLWindow.windowInit(title, width, height, showCursor);
         if(result != 0){
             throw new RuntimeException("Failed initializing window. Error Code: " + result);
@@ -118,6 +119,13 @@ public class GraphicsManager implements IDisposable{
         Frame frame = new Frame(this::setDirty);
         frames.add(frame);
         return frame;
+    }
+    /**
+     * Disposes a frame created by this manager
+     */
+    public void disposeFrame(Frame frame){
+        frames.remove(frame);
+        frame.dispose();
     }
 
     /**
