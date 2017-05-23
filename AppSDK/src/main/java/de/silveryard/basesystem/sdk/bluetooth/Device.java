@@ -180,10 +180,10 @@ public class Device {
 
     /**
      * Pairs with this device
-     * @return
+     * @return Success Flag
      */
-    public void pair(){
-        systemCallDriverBTDevicePair(id, returnCodeWrapper, btReturnCodeWrapper);
+    public boolean pair(){
+        systemCallDriverBTDevicePair(id, returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
 
         if(btReturnCodeWrapper.value != BtReturnCode.OK){
             throw new BtKernelException(btReturnCodeWrapper.value);
@@ -192,6 +192,8 @@ public class Device {
         if(returnCodeWrapper.value != ReturnCode.OK){
             throw new KernelException(returnCodeWrapper.value);
         }
+
+        return booleanWrapper.value;
     }
     /**
      * Cancels an active pairing process
@@ -209,9 +211,26 @@ public class Device {
     }
     /**
      * Connects to this device
+     * @return Success flag
      */
-    public void connect(){
-        systemCallDriverBTDeviceConnect(id, returnCodeWrapper, btReturnCodeWrapper);
+    public boolean connect(){
+        systemCallDriverBTDeviceConnect(id, returnCodeWrapper, btReturnCodeWrapper, booleanWrapper);
+
+        if(btReturnCodeWrapper.value != BtReturnCode.OK){
+            throw new BtKernelException(btReturnCodeWrapper.value);
+        }
+
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return booleanWrapper.value;
+    }
+    /**
+     * Disconnects from this device
+     */
+    public void disconnect(){
+        systemCallDriverBTDeviceDisconnect(id, returnCodeWrapper, btReturnCodeWrapper);
 
         if(btReturnCodeWrapper.value != BtReturnCode.OK){
             throw new BtKernelException(btReturnCodeWrapper.value);
@@ -222,10 +241,10 @@ public class Device {
         }
     }
     /**
-     * Disconnects from this device
+     * Removes the device and its pairing
      */
-    public void disconnect(){
-        systemCallDriverBTDeviceDisconnect(id, returnCodeWrapper, btReturnCodeWrapper);
+    public void remove(){
+        systemCallDriverBTDeviceRemove(id, returnCodeWrapper, btReturnCodeWrapper);
 
         if(btReturnCodeWrapper.value != BtReturnCode.OK){
             throw new BtKernelException(btReturnCodeWrapper.value);

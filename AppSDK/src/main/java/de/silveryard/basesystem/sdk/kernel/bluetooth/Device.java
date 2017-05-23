@@ -197,11 +197,13 @@ public abstract class Device {
      * @param deviceId ID of the device to pair with
      * @param outReturnCode General Return Code
      * @param outBtReturnCode Bt Return Code
+     * @param outSuccess Success Flag
      */
     public static void systemCallDriverBTDevicePair(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
-            Wrapper<BtReturnCode> outBtReturnCode
+            Wrapper<BtReturnCode> outBtReturnCode,
+            Wrapper<Boolean> outSuccess
     ){
 
         List<Parameter> params = new ArrayList<>(1);
@@ -210,6 +212,7 @@ public abstract class Device {
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
+        outSuccess.value = response.getParameters().get(2).getBoolean();
     }
     /**
      * Cancels an active pairing process with a given device
@@ -235,11 +238,13 @@ public abstract class Device {
      * @param deviceId ID of the device to connect to
      * @param outReturnCode General Return Code
      * @param outBtReturnCode Bt Return Code
+     * @param outSuccess Success Flag
      */
     public static void systemCallDriverBTDeviceConnect(
             int deviceId,
             Wrapper<ReturnCode> outReturnCode,
-            Wrapper<BtReturnCode> outBtReturnCode
+            Wrapper<BtReturnCode> outBtReturnCode,
+            Wrapper<Boolean> outSuccess
     ){
 
         List<Parameter> params = new ArrayList<>(1);
@@ -248,6 +253,7 @@ public abstract class Device {
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
+        outSuccess.value = response.getParameters().get(2).getBoolean();
     }
     /**
      * Disconnects from a given device
@@ -264,6 +270,25 @@ public abstract class Device {
         List<Parameter> params = new ArrayList<>(1);
         params.add(Parameter.createInt(deviceId));
         QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.driver.bt.device.disconnect", params);
+
+        outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
+        outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
+    }
+    /**
+     * Removes the device and its pairing
+     * @param deviceId ID of the device to remove
+     * @param outReturnCode General Return Code
+     * @param outBtReturnCode Bt Return Code
+     */
+    public static void systemCallDriverBTDeviceRemove(
+            int deviceId,
+            Wrapper<ReturnCode> outReturnCode,
+            Wrapper<BtReturnCode> outBtReturnCode
+    ){
+
+        List<Parameter> params = new ArrayList<>(1);
+        params.add(Parameter.createInt(deviceId));
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.driver.bt.device.remove", params);
 
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
         outBtReturnCode.value = BtReturnCode.getEnumValue(response.getParameters().get(1).getInt());
