@@ -30,6 +30,7 @@ public class RunningApp implements IDisposable {
     private int nextObjectId;
     private final Map<Integer, Object> objects;
     private final Map<Integer, IDisposable> disposables;
+    private final Map<String, QAMessage> pendingMessages;
 
     /**
      * Constructor
@@ -49,6 +50,7 @@ public class RunningApp implements IDisposable {
         nextObjectId = 1;
         objects = new HashMap<>();
         disposables = new HashMap<>();
+        pendingMessages = new HashMap<>();
 
         appLoader.setSystemMessageHandler(this::handleMessage);
     }
@@ -81,10 +83,30 @@ public class RunningApp implements IDisposable {
     public void sendMessage(Message message){
         appLoader.sendMessage(message);
     }
+    public QAMessage sendQAMessage(QAMessage message){
+        pendingMessages.put(message.getUUID(), null);
+        appLoader.sendMessage(message.getMessage());
+        QAMessage response = null;
+
+        while((response = pendingMessages.get(message.getUUID())) == null){
+            try {
+                Thread.sleep(16);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return response;
+    }
     private void handleMessage(Message message){
         QAMessage qaMessage = new QAMessage(message);
-        QAMessage qaResponse = Kernel.getInstance().handleSystemCall(this, qaMessage);
-        appLoader.sendMessage(qaResponse.getMessage());
+
+        if(pendingMessages.containsKey(qaMessage.getUUID())){
+            pendingMessages.put(qaMessage.getUUID(), qaMessage);
+        }else {
+            QAMessage qaResponse = Kernel.getInstance().handleSystemCall(this, qaMessage);
+            appLoader.sendMessage(qaResponse.getMessage());
+        }
     }
 
     /**

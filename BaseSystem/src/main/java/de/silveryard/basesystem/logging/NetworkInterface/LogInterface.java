@@ -8,12 +8,12 @@ import java.nio.file.Path;
 /**
  * Created by Sebif on 12.04.2017.
  */
-public abstract class LogManager {
+public abstract class LogInterface {
     /**
      * Enables the interface
      */
     public static void enableInterface(){
-        NetworkInterface.registerCommand("de.silveryard.basesystem.networkinterface.logviewer.registerLogListener", LogManager::registerLogListener);
+        NetworkInterface.registerCommand("de.silveryard.basesystem.networkinterface.logviewer.registerLogListener", LogInterface::registerLogListener);
     }
 
     private static void registerLogListener(Message message, Path filePath){

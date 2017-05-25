@@ -13,6 +13,7 @@ import java.util.*;
  * Created by Sebif on 15.03.2017.
  */
 public class NetworkInterface {
+    private static boolean allowRuntimeRegister;
     private static Network network;
     private static FileCache fileCache;
     private static boolean initializing;
@@ -25,7 +26,14 @@ public class NetworkInterface {
      * Begins the initialization. Commands can only be registered while initializing
      */
     public static void beginInitialize(Path filesDirPath){
+        beginInitialize(filesDirPath, false);
+    }
+    /**
+     * Begins the initialization. If allowRuntimeRegister == false: Commands can only be registered while initializing
+     */
+    public static void beginInitialize(Path filesDirPath, boolean allowRuntimeRegister){
         initializing = true;
+        NetworkInterface.allowRuntimeRegister = allowRuntimeRegister;
 
         network = new Network(NetworkInterface::handleMessage);
         network.listen();
@@ -52,7 +60,7 @@ public class NetworkInterface {
      * @param handler Handler to handle the event
      */
     public static void registerCommand(String command, ICommandHandler handler){
-        if(!initializing){
+        if(!initializing && !allowRuntimeRegister){
             throw new RuntimeException("Cannot register command after initialization has finished");
         }
 
@@ -66,13 +74,32 @@ public class NetworkInterface {
      * @param handler Handler to handle the event
      */
     public static void registerQaCommand(String command, IQACommandHandler handler){
-        if(!initializing){
+        if(!initializing && !allowRuntimeRegister){
             throw new RuntimeException("Cannot register command after initialization has finished");
         }
 
         String md5 = Utils.generateMd5(command);
         commandHashMapping.put(md5, command);
         qaCommandHanders.put(md5, handler);
+    }
+
+    public static void unregisterCommand(String command){
+        if(!initializing && !allowRuntimeRegister){
+            throw new RuntimeException("Cannot unregister command after initialization has finished");
+        }
+
+        String md5 = Utils.generateMd5(command);
+        commandHashMapping.remove(md5);
+        commandHandlers.remove(md5);
+    }
+    public static void unregisterQACommand(String command){
+        if(!initializing && !allowRuntimeRegister){
+            throw new RuntimeException("Cannot unregister command after initialization has finished");
+        }
+
+        String md5 = Utils.generateMd5(command);
+        commandHashMapping.remove(md5);
+        qaCommandHanders.remove(md5);
     }
 
     /**
