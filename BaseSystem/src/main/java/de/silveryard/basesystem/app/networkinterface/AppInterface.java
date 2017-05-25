@@ -20,16 +20,16 @@ import java.util.List;
 /**
  * Created by Sebif on 16.03.2017.
  */
-public abstract class AppManager {
+public abstract class AppInterface {
     /**
      * Enables the NetworkInterface
      */
     public static void enableInterface(){
-        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getInstalledApps", AppManager::handleGetInstalledApps);
-        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.uninstallApp", AppManager::handleUninstallApp);
-        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.installApp", AppManager::handleInstallApp);
-        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getIcon", AppManager::handleGetIcon);
-        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getVersion", AppManager::handleGetVersion);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getInstalledApps", AppInterface::handleGetInstalledApps);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.uninstallApp", AppInterface::handleUninstallApp);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.installApp", AppInterface::handleInstallApp);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getIcon", AppInterface::handleGetIcon);
+        NetworkInterface.registerQaCommand("de.silveryard.basesystem.networkinterface.appmanager.getVersion", AppInterface::handleGetVersion);
     }
 
     private static QAMessage handleGetInstalledApps(QAMessage message, Path filePath){
