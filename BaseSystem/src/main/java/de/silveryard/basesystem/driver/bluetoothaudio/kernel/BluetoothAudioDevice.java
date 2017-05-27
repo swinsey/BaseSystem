@@ -32,6 +32,7 @@ abstract class BluetoothAudioDevice {
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.getcurrenttrackartist", BluetoothAudioDevice::systemCallBluetoothAudioDeviceGetCurrentTrackArtist);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.getcurrenttrackalbum", BluetoothAudioDevice::systemCallBluetoothAudioDeviceGetCurrentTrackAlbum);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.getcurrenttrackduration", BluetoothAudioDevice::systemCallBluetoothAudioDeviceGetCurrentTrackDuration);
+        Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.getcurrenttrackposition", BluetoothAudioDevice::systemCallBluetoothAudioDeviceGetCurrentTrackPosition);
 
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.play", BluetoothAudioDevice::systemCallBluetoothAudioDevicePlay);
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.pause", BluetoothAudioDevice::systemCallBluetoothAudioDevicePause);
@@ -243,6 +244,25 @@ abstract class BluetoothAudioDevice {
                 ReturnCode.OK.getValue(),
                 BtAudioReturnCode.OK.getValue(),
                 Parameter.createLong(device.getCurrentTrackDuration())
+        );
+    }
+    private static QAMessage systemCallBluetoothAudioDeviceGetCurrentTrackPosition(RunningApp app, QAMessage message){
+        de.silveryard.basesystem.driver.bluetoothaudio.BluetoothAudioDevice device = getDevice(message.getParameters().get(0).getInt());
+
+        if(device == null){
+            return Kernel.getInstance().createResponse(
+                    message,
+                    ReturnCode.ERROR.getValue(),
+                    BtAudioReturnCode.INVALID_ID.getValue(),
+                    Parameter.createLong(0)
+            );
+        }
+
+        return Kernel.getInstance().createResponse(
+                message,
+                ReturnCode.OK.getValue(),
+                BtAudioReturnCode.OK.getValue(),
+                Parameter.createLong(device.getCurrentTrackPosition())
         );
     }
 

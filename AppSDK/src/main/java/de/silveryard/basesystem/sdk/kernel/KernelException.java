@@ -11,7 +11,7 @@ public class KernelException extends RuntimeException {
      * @param returnCode ReturnCode enum value
      */
     public KernelException(ReturnCode returnCode){
-        super();
+        super("Return Code: " + returnCode);
         this.returnCode = returnCode;
     }
     /**

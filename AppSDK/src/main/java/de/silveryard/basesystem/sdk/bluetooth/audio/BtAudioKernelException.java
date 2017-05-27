@@ -16,7 +16,7 @@ public class BtAudioKernelException extends KernelException {
      * @param btAudioReturnCode
      */
     public BtAudioKernelException(BtAudioReturnCode btAudioReturnCode) {
-        super(ReturnCode.ERROR);
+        super(ReturnCode.ERROR, "BtAudioReturnCode: " + btAudioReturnCode);
         this.btAudioReturnCode = btAudioReturnCode;
     }
     /**

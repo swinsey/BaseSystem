@@ -81,6 +81,11 @@ public abstract class BluetoothAudioDevice extends Device {
      * @return Duration of the current track played back
      */
     public abstract long getCurrentTrackDuration();
+    /**
+     * Returns the current tracks position of playback
+     * @return
+     */
+    public abstract long getCurrentTrackPosition();
 
     /**
      * Resumes playback

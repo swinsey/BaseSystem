@@ -15,7 +15,7 @@ public class BtKernelException extends KernelException {
      * @param btReturnCode
      */
     public BtKernelException(BtReturnCode btReturnCode) {
-        super(ReturnCode.ERROR);
+        super(ReturnCode.ERROR, "BtReturnCode: " + btReturnCode);
         this.btReturnCode = btReturnCode;
     }
     /**

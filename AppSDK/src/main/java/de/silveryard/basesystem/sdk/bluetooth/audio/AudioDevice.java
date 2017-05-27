@@ -224,6 +224,19 @@ public class AudioDevice {
 
         return longWrapper.value;
     }
+    public synchronized long getCurrentTrackPosition(){
+        systemCallBluetoothAudioDeviceGetCurrentTrackPosition(id, returnCodeWrapper, btAudioReturnCodeWrapper, longWrapper);
+
+        if(btAudioReturnCodeWrapper.value != BtAudioReturnCode.OK){
+            throw new BtAudioKernelException(btAudioReturnCodeWrapper.value);
+        }
+
+        if(returnCodeWrapper.value != ReturnCode.OK){
+            throw new KernelException(returnCodeWrapper.value);
+        }
+
+        return longWrapper.value;
+    }
 
     /**
      * Resumes playback

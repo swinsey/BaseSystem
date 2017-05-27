@@ -33,6 +33,7 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
     @Override
     public RepeatMode getRepeat() {
         try{
+            Map<String, Variant<?>> aaa = properties.GetAll(INTERFACE);
             String repeat = properties.Get(INTERFACE, "Repeat");
 
             if(repeat.equals("off")){
@@ -175,45 +176,54 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
     @Override
     public String getCurrentTrackTitle() {
         Map<String, Variant> trackData = getTrackData();
-        String title = (String)trackData.get("Title").getValue();
-
-        if(title == null){
+        Variant variant = trackData.get("Title");
+        if(variant == null){
+            System.out.println("Failed to fetch Current Track Title");
             return "";
-        } else {
-            return title;
+        }else{
+            return (String)variant.getValue();
         }
     }
     @Override
     public String getCurrentTrackArtist() {
         Map<String, Variant> trackData = getTrackData();
-        String artist = (String)trackData.get("Artist").getValue();
-
-        if(artist == null){
+        Variant variant = trackData.get("Artist");
+        if(variant == null){
+            System.out.println("Failed to fetch Current Track Artist");
             return "";
         }else{
-            return artist;
+            return (String)variant.getValue();
         }
     }
     @Override
     public String getCurrentTrackAlbum() {
         Map<String, Variant> trackData = getTrackData();
-        String album = (String)trackData.get("Album").getValue();
-
-        if(album == null){
+        Variant variant = trackData.get("Album");
+        if(variant == null){
+            System.out.println("Failed to fetch Current Track Album");
             return "";
         }else{
-            return album;
+            return (String)variant.getValue();
         }
     }
     @Override
     public long getCurrentTrackDuration() {
         Map<String, Variant> trackData = getTrackData();
-        UInt32 duration = (UInt32)trackData.get("Duration").getValue();
-
-        if(duration == null){
+        Variant variant = trackData.get("Duration");
+        if(variant == null){
+            System.out.println("Failed to fetch Current Track Duration");
             return 0;
         }else{
-            return duration.longValue();
+            return ((UInt32)variant.getValue()).longValue();
+        }
+    }
+    @Override
+    public long getCurrentTrackPosition() {
+        UInt32 position = properties.Get(INTERFACE, "Position");
+        if(position == null){
+            return 0;
+        }else{
+            return position.longValue();
         }
     }
 
@@ -274,8 +284,12 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
      */
     private Map<String, Variant> getTrackData(){
         try {
-            return properties.Get(INTERFACE, "Track");
+            //TODO find way to use properties.Get
+            Map<String, Variant<?>> data = properties.GetAll(INTERFACE);
+            Map<String, Variant> trackData = (Map<String, Variant>)data.get("Track").getValue();
+            return trackData;
         }catch(Throwable t){
+            t.printStackTrace();
             System.out.println("Failed to get track data: " + t.getMessage());
             return new HashMap<>();
         }

@@ -15,7 +15,7 @@ public class GuiKernelException extends KernelException {
      * @param guiReturnCode GuiReturnCode enum value
      */
     public GuiKernelException(GuiReturnCode guiReturnCode) {
-        super(ReturnCode.ERROR);
+        super(ReturnCode.ERROR, "GuiReturnCode: " + guiReturnCode);
         this.guiReturnCode = guiReturnCode;
     }
     /**

@@ -7,11 +7,11 @@ public enum BtAudioReturnCode {
     /**
      * Everything went fine
      */
-    OK(1),
+    OK(0),
     /**
      * The spcified id is not valid
      */
-    INVALID_ID(2);
+    INVALID_ID(1);
 
     /**
      * Converts an integer value to an enum value

@@ -15,7 +15,7 @@ public class SoundKernelException extends KernelException {
      * @param SoundReturnCode SoundReturnCode enum value
      */
     public SoundKernelException(SoundReturnCode SoundReturnCode) {
-        super(ReturnCode.ERROR);
+        super(ReturnCode.ERROR, "SoundReturnCode: " + SoundReturnCode);
         this.soundReturnCode = SoundReturnCode;
     }
     /**

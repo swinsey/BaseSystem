@@ -227,6 +227,20 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outTrackDuration.value = response.getParameters().get(2).getLong();
     }
+    public static void systemCallBluetoothAudioDeviceGetCurrentTrackPosition(
+            int audioDeviceID,
+            Wrapper<ReturnCode> outReturnCode,
+            Wrapper<BtAudioReturnCode> outBtAudioReturnCode,
+            Wrapper<Long> outTrackPosition
+    ){
+        List<Parameter> params = new ArrayList<>(1);
+        params.add(Parameter.createInt(audioDeviceID));
+        QAMessage response = Kernel.systemCall("de.silveryard.basesystem.systemcall.driver.btaudio.bluetoothaudiodevice.getcurrenttrackposition", params);
+
+        outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
+        outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
+        outTrackPosition.value = response.getParameters().get(2).getLong();
+    }
 
     /**
      * Resumes playback
