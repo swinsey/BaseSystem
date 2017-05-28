@@ -15,6 +15,7 @@ public abstract class GraphicsKernel {
         Label.enableKernel();
         Texture.enableKernel();
         TextureSprite.enableKernel();
+        NineSliceSprite.enableKernel();
         Sprite.enableKernel();
         Moveable.enableKernel();
         Sizeable.enableKernel();
