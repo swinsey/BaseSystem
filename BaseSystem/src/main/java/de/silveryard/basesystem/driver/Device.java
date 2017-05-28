@@ -18,7 +18,14 @@ public abstract class Device {
      */
     public final void invalidate(){
         valid = false;
+        onInvalidate();
     }
+
+    /**
+     * Called when invalidate has been called
+     */
+    protected void onInvalidate(){}
+
     /**
      * Checks if this device is still valid and connected
      * @return True if valid. False otherwise

@@ -3,7 +3,6 @@ package de.silveryard.basesystem.gui.kernel;
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
 import de.silveryard.basesystem.app.kernel.ReturnCode;
-import de.silveryard.basesystem.gui.*;
 import de.silveryard.basesystem.gui.TextureSprite;
 import de.silveryard.basesystem.util.Utils;
 import de.silveryard.transport.Parameter;

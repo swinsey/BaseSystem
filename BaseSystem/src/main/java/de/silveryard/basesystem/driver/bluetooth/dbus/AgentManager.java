@@ -8,7 +8,7 @@ import org.freedesktop.dbus.Path;
  * Created based on documentation: https://github.com/hmallat/bluez5-5.18/blob/master/doc/agent-api.txt
  * Created by silveryard on 02.05.17.
  */
-@DBusInterfaceName("org.bluez.AgentManager1")
+@DBusInterfaceName("org.bluez.Client1")
 public interface AgentManager extends DBusInterface {
     /**
      * This registers an agent handler.

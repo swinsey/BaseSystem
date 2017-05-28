@@ -1,7 +1,7 @@
 package de.silveryard.basesystem.app.kernel;
 
-import de.silveryard.basesystem.app.*;
 import de.silveryard.basesystem.app.AppManager;
+import de.silveryard.basesystem.app.AppManagerResult;
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.util.LRValue;
 import de.silveryard.transport.Parameter;

@@ -2,6 +2,7 @@ package de.silveryard.basesystem.driver.bluetooth.dbus;
 
 import org.freedesktop.dbus.DBusInterface;
 import org.freedesktop.dbus.DBusInterfaceName;
+import org.freedesktop.dbus.Path;
 
 /**
  * Created based on documentation: https://github.com/r10r/bluez/blob/master/doc/adapter-api.txt
@@ -43,5 +44,5 @@ public interface Adapter extends DBusInterface {
      * org.bluez.Error.Failed
      * @param device
      */
-    void RemoveDevice(String device);
+    void RemoveDevice(Path device);
 }

@@ -1,11 +1,10 @@
 package de.silveryard.basesystem.app.kernel;
 
-import de.silveryard.basesystem.app.*;
+import de.silveryard.basesystem.app.AppManagerResult;
 import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.transport.Parameter;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

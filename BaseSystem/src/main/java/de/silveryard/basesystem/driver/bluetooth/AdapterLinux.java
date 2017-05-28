@@ -1,6 +1,7 @@
 package de.silveryard.basesystem.driver.bluetooth;
 
 import org.freedesktop.DBus;
+import org.freedesktop.dbus.Path;
 
 /**
  * Created by silveryard on 01.05.17.
@@ -60,6 +61,6 @@ final class AdapterLinux extends Adapter {
     }
 
     public void removeDevice(String path){
-        adapter.RemoveDevice(path);
+        adapter.RemoveDevice(new Path(path));
     }
 }
