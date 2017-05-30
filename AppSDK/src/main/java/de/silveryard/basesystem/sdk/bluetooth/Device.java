@@ -93,7 +93,7 @@ public class Device {
     }
     /**
      * Returns the devices name
-     * @return Device name
+     * @return BtPhoneDevice name
      */
     public String getName(){
         systemCallDriverBTDeviceGetName(id, returnCodeWrapper, btReturnCodeWrapper, stringWrapper);

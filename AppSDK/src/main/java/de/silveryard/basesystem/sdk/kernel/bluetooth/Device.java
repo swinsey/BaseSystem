@@ -174,7 +174,7 @@ public abstract class Device {
      * @param deviceId ID of the device to fetch data from
      * @param outReturnCode General Return Code
      * @param outBtReturnCode Bt Return Code
-     * @param outName Device name
+     * @param outName BtPhoneDevice name
      */
     public static void systemCallDriverBTDeviceGetName(
             int deviceId,

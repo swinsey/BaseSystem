@@ -14,7 +14,7 @@ public abstract class AppManager {
     /**
      * Returns the app identifiers of all installed apps
      * @param outReturnCode General Return Code
-     * @param outAppManagerResult App Manager Result
+     * @param outAppManagerResult App BtPhoneManager Result
      * @param outInstalledApps List of installed apps
      */
     public static void systemCallAppAppManagerGetInstalledApps(
@@ -37,7 +37,7 @@ public abstract class AppManager {
     /**
      * Returns the app identifiers of all running apps
      * @param outReturnCode General Return Code
-     * @param outAppManagerResult App Manager Result
+     * @param outAppManagerResult App BtPhoneManager Result
      * @param outRunningApps List of running apps
      */
     public static void systemCallAppAppManagerGetRunningApps(

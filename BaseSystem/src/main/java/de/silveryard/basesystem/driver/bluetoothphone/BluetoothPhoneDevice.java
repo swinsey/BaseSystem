@@ -1,12 +1,38 @@
 package de.silveryard.basesystem.driver.bluetoothphone;
 
 import de.silveryard.basesystem.driver.Device;
+import de.silveryard.basesystem.driver.DriverManager;
+
+import java.util.List;
 
 /**
  * Created by silveryard on 28.05.17.
  */
 public abstract class BluetoothPhoneDevice extends Device {
+    public static BluetoothPhoneDevice getDevice(int id){
+        List<BluetoothPhoneDevice> devices = DriverManager.getInstance().getDriver(BluetoothPhoneDriver.class).getDevices();
+
+        for(int i = 0; i < devices.size(); i++){
+            if(devices.get(i).getId() == id){
+                return devices.get(i);
+            }
+        }
+
+        return null;
+    }
+
     private static int nextId = 1;
+
+    private int id;
+
+    public BluetoothPhoneDevice(){
+        id = nextId;
+        nextId++;
+    }
+
+    public int getId(){
+        return id;
+    }
 
     //////
     ///General Data
@@ -150,5 +176,46 @@ public abstract class BluetoothPhoneDevice extends Device {
     //////
     ///Phonebook
     //////
-    //TODO
+    public abstract boolean supportsContactsPhonebook();
+    public abstract boolean supportsIncomingHistoryPhonebook();
+    public abstract boolean supportsOutgoingHistoryPhonebook();
+    public abstract boolean supportsMissedHistoryPhonebook();
+
+    public final Phonebook getContactsPhonebook(){
+        if(supportsContactsPhonebook()){
+            return getContactsPhonebookInternal();
+        }else{
+            System.out.println("BT Phone: Could not get contacts phonebook. Information is not avaliable");
+            return new PhonebookFallback();
+        }
+    }
+    public final Phonebook getIncomingHistoryPhonebook(){
+        if(supportsIncomingHistoryPhonebook()){
+            return getIncomingHistoryPhonebookInternal();
+        }else{
+            System.out.println("BT Phone: Could not get incoming history phonebook. Information is not avaliable");
+            return new PhonebookFallback();
+        }
+    }
+    public final Phonebook getOutgoingHistoryPhonebook(){
+        if(supportsOutgoingHistoryPhonebook()){
+            return getOutgoingHistoryPhonebookInternal();
+        }else{
+            System.out.println("BT Phone: Could not get outgoing history phonebook. Information is not avaliable");
+            return new PhonebookFallback();
+        }
+    }
+    public final Phonebook getMissedHistoryPhonebook(){
+        if(supportsMissedHistoryPhonebook()){
+            return getMissedHistoryPhonebookInternal();
+        }else{
+            System.out.println("BT Phone: Could not get missed history phonebook. Information is not avaliable");
+            return new PhonebookFallback();
+        }
+    }
+
+    protected abstract Phonebook getContactsPhonebookInternal();
+    protected abstract Phonebook getIncomingHistoryPhonebookInternal();
+    protected abstract Phonebook getOutgoingHistoryPhonebookInternal();
+    protected abstract Phonebook getMissedHistoryPhonebookInternal();
 }

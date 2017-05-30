@@ -28,4 +28,34 @@ final class ObexPhonebook extends Phonebook {
 
         System.out.println("Parsed Phonebook: " + path + ". " + cards.size() + " Entries");
     }
+
+    @Override
+    public int getNumEntries() {
+        return cards.size();
+    }
+
+    @Override
+    public String getEntryName(int entry) {
+        return cards.get(entry).getFormattedName().getValue();
+    }
+
+    @Override
+    public int getEntryNumNumbers(int entry) {
+        return cards.get(entry).getTelephoneNumbers().size();
+    }
+
+    @Override
+    public String getEntryNumberType(int entry, int number) {
+        List<TelephoneType> types = cards.get(entry).getTelephoneNumbers().get(number).getTypes();
+        if(types.size() == 0){
+            return "";
+        }else{
+            return types.get(0).getValue();
+        }
+    }
+
+    @Override
+    public String getEntryNumber(int entry, int number) {
+        return cards.get(entry).getTelephoneNumbers().get(number).getText();
+    }
 }

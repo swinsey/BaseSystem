@@ -1,7 +1,7 @@
-package de.silveryard.basesystem.driver.bluetoothphone;
+package de.silveryard.basesystem.sdk.kernel.bluetooth.phone;
 
 /**
- * Created by silveryard on 28.05.17.
+ * Created by silveryard on 29.05.17.
  */
 public enum NetworkStatus {
     UNREGISTERED(0),
@@ -31,3 +31,4 @@ public enum NetworkStatus {
         return value;
     }
 }
+

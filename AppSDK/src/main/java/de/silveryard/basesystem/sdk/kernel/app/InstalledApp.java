@@ -17,7 +17,7 @@ public abstract class InstalledApp {
      * Returns the app name of an app
      * @param appIdentifier App Identifier of the app to fetch data from
      * @param outReturnCode General Return Code
-     * @param outAppManagerResult App Manager Result
+     * @param outAppManagerResult App BtPhoneManager Result
      * @param outAppName Readable App Name
      */
     public static void systemCallAppInstalledAppGetAppName(
@@ -39,7 +39,7 @@ public abstract class InstalledApp {
      * Returns the version of an app
      * @param appIdentifier App Identifier of the app to fetch data from
      * @param outReturnCode General Return Code
-     * @param outAppManagerResult App Manager Result
+     * @param outAppManagerResult App BtPhoneManager Result
      * @param outMajorVersion Applications major version
      * @param outMinorVersion Applications minor version
      */
@@ -65,7 +65,7 @@ public abstract class InstalledApp {
      * Starts an application
      * @param appIdentifier App Identifier of the app to start
      * @param outReturnCode General Return Code
-     * @param outAppManagerResult App Manager Result
+     * @param outAppManagerResult App BtPhoneManager Result
      */
     public static void systemCallAppInstalledAppStartApp(
             String appIdentifier,
@@ -84,7 +84,7 @@ public abstract class InstalledApp {
      * Stops an application
      * @param appIdentifier App Identifier of the app to stop
      * @param outReturnCode General Return Code
-     * @param outAppManagerResult App Manager Result
+     * @param outAppManagerResult App BtPhoneManager Result
      */
     public static void systemCallAppInstalledAppStopApp(
             String appIdentifier,

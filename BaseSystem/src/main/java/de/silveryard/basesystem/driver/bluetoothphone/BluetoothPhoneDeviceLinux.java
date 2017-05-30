@@ -36,6 +36,11 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
     private final Client1 obexClient;
     private final String obexObjectPath;
 
+    private final Phonebook phonebookContacts;
+    private final Phonebook phonebookIncomingHistory;
+    private final Phonebook phoneBookOutgoingHistory;
+    private final Phonebook phoneBookMissedHistory;
+
     public BluetoothPhoneDeviceLinux(DBusConnection systemConnection, DBusConnection sessionsConnection, Client1 obexClient, String ofonoObjectPath){
         this.systemConnection = systemConnection;
         this.sessionsConnection = sessionsConnection;
@@ -88,13 +93,18 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
         }
 
         //Try to fetch phonebook data
+        String tmpObexObjectPath = null;
+        Phonebook tmpPhonebookContacts = null;
+        Phonebook tmpPhonebookIncomingHistory = null;
+        Phonebook tmpPhoneBookOutgoingHistory = null;
+        Phonebook tmpPhoneBookMissedHistory = null;
         try{
             //Create new obex session
             Map<String, Variant<?>> options = new HashMap<>(1);
             options.put("Target", new Variant<String>("pbap"));
-            obexObjectPath = obexClient.CreateSession(getAddress(), options).getPath();
+            tmpObexObjectPath = obexClient.CreateSession(getAddress(), options).getPath();
 
-            PhonebookAccess1 phonebookAccess = sessionsConnection.getRemoteObject(BUS_OBEX, obexObjectPath, PhonebookAccess1.class);
+            PhonebookAccess1 phonebookAccess = sessionsConnection.getRemoteObject(BUS_OBEX, tmpObexObjectPath, PhonebookAccess1.class);
             String tmpDir = SystemUtils.JAVA_IO_TMPDIR;
 
             //Import phonebook
@@ -118,14 +128,18 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
 
             Thread.sleep(5000); //TODO find a better way to determine if operation has finished
 
-            ObexPhonebook phonebookContacts = new ObexPhonebook(tmpFileContacts);
-            ObexPhonebook phonebookIncomingHistory = new ObexPhonebook(tmpFileIncoming);
-            ObexPhonebook phoneBookOutgoingHistory = new ObexPhonebook(tmpFileOutgoing);
-            ObexPhonebook phoneBookMissingHistory = new ObexPhonebook(tmpFileMissing);
+            tmpPhonebookContacts = new ObexPhonebook(tmpFileContacts);
+            tmpPhonebookIncomingHistory = new ObexPhonebook(tmpFileIncoming);
+            tmpPhoneBookOutgoingHistory = new ObexPhonebook(tmpFileOutgoing);
+            tmpPhoneBookMissedHistory = new ObexPhonebook(tmpFileMissing);
         }catch(Exception e){
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
+        obexObjectPath = tmpObexObjectPath;
+        phonebookContacts = tmpPhonebookContacts;
+        phonebookIncomingHistory = tmpPhonebookIncomingHistory;
+        phoneBookOutgoingHistory = tmpPhoneBookOutgoingHistory;
+        phoneBookMissedHistory = tmpPhoneBookMissedHistory;
     }
 
     @Override
@@ -238,5 +252,43 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
                 System.out.println("BT Phone: Unknown network status");
                 return NetworkStatus.UNKNOWN;
         }
+    }
+
+    //////
+    ///Phonebook
+    //////
+
+    @Override
+    public boolean supportsContactsPhonebook() {
+        return phonebookContacts != null;
+    }
+    @Override
+    public boolean supportsIncomingHistoryPhonebook() {
+        return phonebookIncomingHistory != null;
+    }
+    @Override
+    public boolean supportsOutgoingHistoryPhonebook() {
+        return phoneBookOutgoingHistory != null;
+    }
+    @Override
+    public boolean supportsMissedHistoryPhonebook() {
+        return phoneBookMissedHistory != null;
+    }
+
+    @Override
+    protected Phonebook getContactsPhonebookInternal() {
+        return phonebookContacts;
+    }
+    @Override
+    protected Phonebook getIncomingHistoryPhonebookInternal() {
+        return phonebookIncomingHistory;
+    }
+    @Override
+    protected Phonebook getOutgoingHistoryPhonebookInternal() {
+        return phoneBookOutgoingHistory;
+    }
+    @Override
+    protected Phonebook getMissedHistoryPhonebookInternal() {
+        return phoneBookMissedHistory;
     }
 }
