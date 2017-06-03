@@ -227,6 +227,13 @@ public abstract class BtAudioDevice {
         outBtAudioReturnCode.value = BtAudioReturnCode.getEnumValue(response.getParameters().get(1).getInt());
         outTrackDuration.value = response.getParameters().get(2).getLong();
     }
+    /**
+     * Returns the current tracks position in time
+     * @param audioDeviceID ID of the AudioDevice in question
+     * @param outReturnCode General Return Code
+     * @param outBtAudioReturnCode Audio Return Code
+     * @param outTrackPosition Position of the current track played back
+     */
     public static void systemCallBluetoothAudioDeviceGetCurrentTrackPosition(
             int audioDeviceID,
             Wrapper<ReturnCode> outReturnCode,

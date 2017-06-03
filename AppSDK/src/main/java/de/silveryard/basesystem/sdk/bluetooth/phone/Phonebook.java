@@ -20,6 +20,11 @@ public final class Phonebook {
     private final Wrapper<Integer> integerWrapper;
     private final Wrapper<String> stringWrapper;
 
+    /**
+     * Constructor
+     * @param device Device to fetch data from
+     * @param type Phonebook to fetch data from
+     */
     public Phonebook(PhoneDevice device, PhonebookType type){
         this.device = device;
         this.type = type;
@@ -30,6 +35,10 @@ public final class Phonebook {
         stringWrapper = new Wrapper<>();
     }
 
+    /**
+     * Returns the number of entries in this phonebook
+     * @return Number of entries
+     */
     public synchronized int getEntryCount(){
         systemCallBtPhoneDeviceGetPhoneBookNumEntries(device.getId(), type, returnCodeWrapper, btPhoneReturnCodeWrapper, integerWrapper);
 
@@ -43,6 +52,11 @@ public final class Phonebook {
 
         return integerWrapper.value;
     }
+    /**
+     * Returns the name stored in an entry in this phonebook
+     * @param entry Entry index
+     * @return Name
+     */
     public synchronized String getEntryName(int entry){
         systemCallBtPhoneDeviceGetPhoneBookEntryName(device.getId(), type, entry, returnCodeWrapper, btPhoneReturnCodeWrapper, stringWrapper);
 
@@ -56,6 +70,11 @@ public final class Phonebook {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the amount of numbers stored in an entry in this phonebook
+     * @param entry Entry index
+     * @return Amount of numbers
+     */
     public synchronized int getEntryNumberCount(int entry){
         systemCallBtPhoneDeviceGetPhoneBookEntryNumNumbers(device.getId(), type, entry, returnCodeWrapper, btPhoneReturnCodeWrapper, integerWrapper);
 
@@ -69,6 +88,12 @@ public final class Phonebook {
 
         return integerWrapper.value;
     }
+    /**
+     * Returns the number stored in an entry in this phonebook
+     * @param entry Entry index
+     * @param number Number index
+     * @return Phone number
+     */
     public synchronized String getEntryNumber(int entry, int number){
         systemCallBtPhoneDeviceGetPhoneBookEntryNumber(device.getId(), type, entry, number, returnCodeWrapper, btPhoneReturnCodeWrapper, stringWrapper);
 
@@ -82,6 +107,12 @@ public final class Phonebook {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the type of an number stored in an entry in this phonebook
+     * @param entry Entry index
+     * @param number Number index
+     * @return Phone number type
+     */
     public synchronized String getEntryNumberType(int entry, int number){
         systemCallBtPhoneDeviceGetPhoneBookEntryNumberType(device.getId(), type, entry, number, returnCodeWrapper, btPhoneReturnCodeWrapper, stringWrapper);
 

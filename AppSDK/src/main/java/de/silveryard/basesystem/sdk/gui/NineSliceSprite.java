@@ -21,6 +21,18 @@ public class NineSliceSprite extends RenderObject implements ISizeable, IMoveabl
     private final int id;
     private final TextureSprite textureSprite;
 
+    /**
+     * Creates a new nine slice sprite
+     * @param textureSprite Texture sprite to be drawn
+     * @param leftSlice Left border
+     * @param rightSlice Right border
+     * @param topSlice Top border
+     * @param bottomSlice Bottom border
+     * @param positionX X position
+     * @param positionY Y position
+     * @param width Width
+     * @param height Height
+     */
     public NineSliceSprite(
             TextureSprite textureSprite,
             int leftSlice, int rightSlice,

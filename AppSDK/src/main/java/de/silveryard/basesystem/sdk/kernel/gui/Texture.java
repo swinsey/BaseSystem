@@ -15,11 +15,29 @@ import java.util.concurrent.CompletableFuture;
  * Created by Sebif on 20.02.2017.
  */
 public abstract class Texture {
+    /**
+     * Information returned by calling systemCallTextureLoadASync
+     */
     public static class TextureLoadResponse {
+        /**
+         * General Return Code
+         */
         public final ReturnCode returnCode;
+        /**
+         * Gui Return Code
+         */
         public final GuiReturnCode guiReturnCode;
+        /**
+         * Texture Id
+         */
         public final int textureId;
 
+        /**
+         * Constructor
+         * @param returnCode
+         * @param guiReturnCode
+         * @param textureId
+         */
         public TextureLoadResponse(ReturnCode returnCode, GuiReturnCode guiReturnCode, int textureId){
             this.returnCode = returnCode;
             this.guiReturnCode = guiReturnCode;
@@ -49,6 +67,12 @@ public abstract class Texture {
         outGuiReturnCode.value = GuiReturnCode.getEnumValue(guiReturnCodeInt);
         outTextureId.value = textureId;
     }
+    /**
+     * Loads a texture from the file system
+     * This operation is asynchronous
+     * @param path Path to an image file to load
+     * @return CompletableFuture object
+     */
     public static CompletableFuture<TextureLoadResponse> systemCallTextureLoadAsync(
             Path path
     ){

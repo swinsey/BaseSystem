@@ -13,6 +13,21 @@ import java.util.List;
  * Created by Sebif on 20.02.2017.
  */
 public abstract class NineSliceSprite {
+    /**
+     * Creates a new nine slice sprite
+     * @param textureSpriteId ID of the texture sprite to use
+     * @param leftSlice Left border
+     * @param rightSlice Right border
+     * @param topSlice Top border
+     * @param bottomSlice Bottom border
+     * @param posX X position
+     * @param posY Y position
+     * @param width Width
+     * @param height Height
+     * @param outReturnCode General Return Code
+     * @param outGuiReturnCode Gui Return Code
+     * @param outObjectId ID of the created object
+     */
     public static void systemCallNineSliceSpriteCreate(
             int textureSpriteId,
             int leftSlice, int rightSlice, int topSlice, int bottomSlice,

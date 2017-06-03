@@ -27,6 +27,10 @@ public final class PhoneDevice {
     private final Wrapper<Float> floatWrapper;
     private final Wrapper<NetworkStatus> networkStatusWrapper;
 
+    /**
+     * Constructor
+     * @param id Internal phone id
+     */
     public PhoneDevice(int id){
         this.id = id;
 
@@ -43,6 +47,10 @@ public final class PhoneDevice {
         networkStatusWrapper = new Wrapper<>();
     }
 
+    /**
+     * Returns the internal phone id
+     * @return Phone id
+     */
     public int getId(){
         return id;
     }
@@ -51,6 +59,10 @@ public final class PhoneDevice {
     ///General
     //////
 
+    /**
+     * Returns the devices name
+     * @return Name
+     */
     public synchronized String getName(){
         systemCallBtPhoneDeviceGetName(id, returnCodeWrapper, btPhoneReturnCodeWrapper, stringWrapper);
 
@@ -64,6 +76,11 @@ public final class PhoneDevice {
 
         return stringWrapper.value;
     }
+
+    /**
+     * Returns the devices address
+     * @return Address
+     */
     public synchronized String getAddress(){
         systemCallBtPhoneDeviceGetAddress(id, returnCodeWrapper, btPhoneReturnCodeWrapper, stringWrapper);
 
@@ -82,6 +99,10 @@ public final class PhoneDevice {
     ///Volume Information
     //////
 
+    /**
+     * Returns if this device supports volume information
+     * @return True if this device supports volume information
+     */
     public synchronized boolean supportsVolumeInformation(){
         systemCallBtPhoneDeviceSupportsVolumeInformation(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -96,6 +117,10 @@ public final class PhoneDevice {
         return booleanWrapper.value;
     }
 
+    /**
+     * Returns the devices speaker volume
+     * @return Volume. Ranges from 0-1
+     */
     public synchronized float getVolumeSpeaker(){
         systemCallBtPhoneDeviceGetVolumeSpeaker(id, returnCodeWrapper, btPhoneReturnCodeWrapper, floatWrapper);
 
@@ -109,6 +134,10 @@ public final class PhoneDevice {
 
         return floatWrapper.value;
     }
+    /**
+     * Sets the devices speaker volume
+     * @param volume Volume. ranges from 0-1
+     */
     public synchronized void setVolumeSpeaker(float volume){
         systemCallBtPhoneDeviceSetVolumeSpeaker(id, volume, returnCodeWrapper, btPhoneReturnCodeWrapper);
 
@@ -121,6 +150,10 @@ public final class PhoneDevice {
         }
     }
 
+    /**
+     * Returns the devices microphone volume
+     * @return Volume. Ranges from 0-1
+     */
     public synchronized float getVolumeMicrophone(){
         systemCallBtPhoneDeviceGetVolumeMicrophone(id, returnCodeWrapper, btPhoneReturnCodeWrapper, floatWrapper);
 
@@ -134,6 +167,10 @@ public final class PhoneDevice {
 
         return floatWrapper.value;
     }
+    /**
+     * Sets the devices microphone volume
+     * @param volume Volume. Ranges from 0-1
+     */
     public synchronized void setVolumeMicrophone(float volume){
         systemCallBtPhoneDeviceSetVolumeMicrophone(id, volume, returnCodeWrapper, btPhoneReturnCodeWrapper);
 
@@ -146,6 +183,10 @@ public final class PhoneDevice {
         }
     }
 
+    /**
+     * Returns if this device is muted
+     * @return True if this device is muted
+     */
     public synchronized boolean getVolumeMuted(){
         systemCallBtPhoneDeviceGetVolumeMuted(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -159,6 +200,10 @@ public final class PhoneDevice {
 
         return booleanWrapper.value;
     }
+    /**
+     * Sets the mute flag of this device
+     * @param muted Mute flag
+     */
     public synchronized void setVolumeMuted(boolean muted){
         systemCallBtPhoneDeviceSetVolumeMuted(id, muted, returnCodeWrapper, btPhoneReturnCodeWrapper);
 
@@ -175,6 +220,10 @@ public final class PhoneDevice {
     ///Battery Level
     //////
 
+    /**
+     * Returns if this device supports battery level information
+     * @return True if this device supports battery level information
+     */
     public synchronized boolean supportsBatteryLevel(){
         systemCallBtPhoneDeviceSupportsBatteryLevel(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -189,6 +238,10 @@ public final class PhoneDevice {
         return booleanWrapper.value;
     }
 
+    /**
+     * Returns the battery level of this device
+     * @return Battery Lavel. Ranges from 0-1
+     */
     public synchronized float getBatteryLevel(){
         systemCallBtPhoneDeviceGetBatteryLevel(id, returnCodeWrapper, btPhoneReturnCodeWrapper, floatWrapper);
 
@@ -207,6 +260,10 @@ public final class PhoneDevice {
     ///Network Information
     //////
 
+    /**
+     * Returns if this device supports network information
+     * @return True if this device supports network information
+     */
     public synchronized boolean supportsNetworkInformation(){
         systemCallBtPhoneDeviceSupportsNetworkInformation(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -221,6 +278,10 @@ public final class PhoneDevice {
         return booleanWrapper.value;
     }
 
+    /**
+     * Returns the networks name
+     * @return Network name
+     */
     public synchronized String getNetworkName(){
         systemCallBtPhoneDeviceGetNetworkName(id, returnCodeWrapper, btPhoneReturnCodeWrapper, stringWrapper);
 
@@ -234,6 +295,10 @@ public final class PhoneDevice {
 
         return stringWrapper.value;
     }
+    /**
+     * Returns the networks current connection strength
+     * @return Strength. Ranges from 0-1
+     */
     public synchronized float getNetworkStrength(){
         systemCallBtPhoneDeviceGetNetworkStrength(id, returnCodeWrapper, btPhoneReturnCodeWrapper, floatWrapper);
 
@@ -247,6 +312,10 @@ public final class PhoneDevice {
 
         return floatWrapper.value;
     }
+    /**
+     * Returns the networks status
+     * @return Network Status
+     */
     public synchronized NetworkStatus getNetworkStatus(){
         systemCallBtPhoneDeviceGetNetworkStatus(id, returnCodeWrapper, btPhoneReturnCodeWrapper, networkStatusWrapper);
 
@@ -265,6 +334,10 @@ public final class PhoneDevice {
     ///Phonebook
     //////
 
+    /**
+     * Returns if this device supports contacts phonebook information
+     * @return True if this device supports contacts phonebook information
+     */
     public synchronized boolean supportsContactsPhonebook(){
         systemCallBtPhoneDeviceSupportsContactsPhonebook(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -278,6 +351,10 @@ public final class PhoneDevice {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns if this device supports incoming history information
+     * @return True if this device supports incoming history information
+     */
     public synchronized boolean supportsIncomingHistoryPhonebook(){
         systemCallBtPhoneDeviceSupportsIncomingHistoryPhonebook(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -291,6 +368,10 @@ public final class PhoneDevice {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns if this device supports ougoing history information
+     * @return True if this device supports outgoing history information
+     */
     public synchronized boolean supportsOutgoingHistoryPhonebook(){
         systemCallBtPhoneDeviceSupportsOutgoingHistoryPhonebook(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -304,6 +385,10 @@ public final class PhoneDevice {
 
         return booleanWrapper.value;
     }
+    /**
+     * Returns if this device supports missed history information
+     * @return True if this device supports missed history information
+     */
     public synchronized boolean supportsMissedHistoryPhonebook(){
         systemCallBtPhoneDeviceSupportsMissedHistoryPhonebook(id, returnCodeWrapper, btPhoneReturnCodeWrapper, booleanWrapper);
 
@@ -318,15 +403,31 @@ public final class PhoneDevice {
         return booleanWrapper.value;
     }
 
+    /**
+     * Returns the contacts phonebook
+     * @return Phonebook that contains the devices contacts
+     */
     public Phonebook getPhonebookContacts(){
         return phonebookContacts;
     }
+    /**
+     * Returns the incoming history phonebook
+     * @return Phonebook that contains all incoming calls
+     */
     public Phonebook getPhonebookIncomingHistory(){
         return phonebookIncomingHistory;
     }
+    /**
+     * Returns the outgoing history phonebook
+     * @return Phonebook that contains all outgoing calls
+     */
     public Phonebook getPhonebookOutgoingHistory(){
         return phonebookOutgoingHistory;
     }
+    /**
+     * Returns the missed history phonebook
+     * @return Phonebook that contains all missed calls
+     */
     public Phonebook getPhonebookMissedHistory(){
         return phonebookMissedHistory;
     }

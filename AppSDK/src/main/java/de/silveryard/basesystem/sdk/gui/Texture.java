@@ -14,9 +14,21 @@ import static de.silveryard.basesystem.sdk.kernel.gui.Texture.*;
  * Created by Sebif on 08.04.2017.
  */
 public class Texture implements IDisposable {
+    /**
+     * Loads a texture from the file system
+     * @param path Path to an image file to load
+     * @return Loaded Texture
+     */
     public static Texture create(Path path){
         return new Texture(path);
     }
+
+    /**
+     * Returns a texture from the file system
+     * This opertation is asynchronous
+     * @param path Path to an image file to load
+     * @return CompletableFuture object
+     */
     public static CompletableFuture<Texture> createAsync(Path path){
         return systemCallTextureLoadAsync(path)
                 .thenApply((de.silveryard.basesystem.sdk.kernel.gui.Texture.TextureLoadResponse resp) -> {

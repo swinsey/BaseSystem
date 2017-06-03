@@ -11,6 +11,12 @@ import java.util.ArrayList;
  * Created by silveryard on 29.05.17.
  */
 public abstract class BtPhoneManager {
+    /**
+     * Fetches all bluetooth phone devices from the system
+     * @param outReturnCode General Return Code
+     * @param outBtPhoneReturnCode Bt Phone Return Code
+     * @param outDeviceIds List of phone device ids
+     */
     public static void systemCallDriverBtPhoneManagerGetDevices(
         Wrapper<ReturnCode> outReturnCode,
         Wrapper<BtPhoneReturnCode> outBtPhoneReturnCode,

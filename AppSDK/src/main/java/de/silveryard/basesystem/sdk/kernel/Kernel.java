@@ -143,6 +143,14 @@ public abstract class Kernel {
         return qaMessage;
     }
 
+    /**
+     * Sends a systemcall to the base system. You may want to use the provided classes for this functionality
+     * (which in turn call this function with the right arguments)
+     * This operation is asynchronous
+     * @param command Command Name
+     * @param params List of parameters
+     * @return CompletableFuture object
+     */
     public static CompletableFuture<QAMessage> systemCallAsync(String command, List<Parameter> params){
         return CompletableFuture.supplyAsync(() -> systemCall(command, params));
     }

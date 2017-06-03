@@ -224,6 +224,10 @@ public class AudioDevice {
 
         return longWrapper.value;
     }
+    /**
+     * Returns the current tacks playback position
+     * @return Position in tame of the current track played back
+     */
     public synchronized long getCurrentTrackPosition(){
         systemCallBluetoothAudioDeviceGetCurrentTrackPosition(id, returnCodeWrapper, btAudioReturnCodeWrapper, longWrapper);
 
