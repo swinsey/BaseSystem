@@ -6,6 +6,7 @@ import de.silveryard.basesystem.sdk.kernel.Wrapper;
 import de.silveryard.basesystem.sdk.kernel.gui.GuiReturnCode;
 
 import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 import static de.silveryard.basesystem.sdk.kernel.gui.Texture.*;
 
@@ -13,6 +14,24 @@ import static de.silveryard.basesystem.sdk.kernel.gui.Texture.*;
  * Created by Sebif on 08.04.2017.
  */
 public class Texture implements IDisposable {
+    public static Texture create(Path path){
+        return new Texture(path);
+    }
+    public static CompletableFuture<Texture> createAsync(Path path){
+        return systemCallTextureLoadAsync(path)
+                .thenApply((de.silveryard.basesystem.sdk.kernel.gui.Texture.TextureLoadResponse resp) -> {
+                    if(resp.guiReturnCode != GuiReturnCode.OK){
+                        throw new GuiKernelException(resp.guiReturnCode);
+                    }
+
+                    if(resp.returnCode != ReturnCode.OK){
+                        throw new KernelException(resp.returnCode);
+                    }
+
+                    return new Texture(resp.textureId);
+                });
+    }
+
     private final Wrapper<ReturnCode> returnCodeWrapper = new Wrapper<>();
     private final Wrapper<GuiReturnCode> guiReturnCodeWrapper = new Wrapper<>();
     private final Wrapper<Integer> integerWrapper = new Wrapper<>();
@@ -23,6 +42,7 @@ public class Texture implements IDisposable {
      * Loads a texture from the file system
      * @param path Path to an image file to load
      */
+    @Deprecated
     public Texture(Path path){
         systemCallTextureLoad(path, returnCodeWrapper, guiReturnCodeWrapper, integerWrapper);
 
@@ -35,6 +55,9 @@ public class Texture implements IDisposable {
         }
 
         textureId = integerWrapper.value;
+    }
+    private Texture(int textureId){
+        this.textureId = textureId;
     }
 
     /**

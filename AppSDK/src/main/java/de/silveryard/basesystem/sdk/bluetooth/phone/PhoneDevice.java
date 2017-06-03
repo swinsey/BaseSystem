@@ -3,11 +3,9 @@ package de.silveryard.basesystem.sdk.bluetooth.phone;
 import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.Wrapper;
-import de.silveryard.basesystem.sdk.kernel.bluetooth.BtReturnCode;
 import de.silveryard.basesystem.sdk.kernel.bluetooth.phone.BtPhoneReturnCode;
 import de.silveryard.basesystem.sdk.kernel.bluetooth.phone.NetworkStatus;
 import de.silveryard.basesystem.sdk.kernel.bluetooth.phone.PhonebookType;
-import sun.net.NetworkServer;
 
 import static de.silveryard.basesystem.sdk.kernel.bluetooth.phone.BtPhoneDevice.*;
 

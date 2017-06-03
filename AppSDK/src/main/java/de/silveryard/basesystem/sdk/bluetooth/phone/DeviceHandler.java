@@ -1,7 +1,5 @@
 package de.silveryard.basesystem.sdk.bluetooth.phone;
 
-import de.silveryard.basesystem.sdk.bluetooth.audio.AudioDevice;
-
 /**
  * Created by silveryard on 30.05.17.
  */

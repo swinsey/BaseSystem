@@ -5,6 +5,7 @@ import de.silveryard.basesystem.driver.bluetoothaudio.dbus.MediaPlayer;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.UInt32;
 import org.freedesktop.dbus.Variant;
+import org.freedesktop.dbus.exceptions.DBusExecutionException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,10 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
     private final BluetoothDevice device;
     private final DBus.Properties properties;
     private final MediaPlayer mediaPlayer;
+
+    private String trackCache = "";
+    private String albumCache = "";
+    private String artistCache = "";
 
     public BluetoothAudioDeviceLinux(BluetoothDevice device, DBus.Properties properties, MediaPlayer mediaPlayer){
         this.device = device;
@@ -178,9 +183,9 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
         Map<String, Variant> trackData = getTrackData();
         Variant variant = trackData.get("Title");
         if(variant == null){
-            System.out.println("Failed to fetch Current Track Title");
-            return "";
+            return trackCache;
         }else{
+            trackCache = (String)variant.getValue();
             return (String)variant.getValue();
         }
     }
@@ -189,9 +194,9 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
         Map<String, Variant> trackData = getTrackData();
         Variant variant = trackData.get("Artist");
         if(variant == null){
-            System.out.println("Failed to fetch Current Track Artist");
-            return "";
+            return artistCache;
         }else{
+            artistCache = (String)variant.getValue();
             return (String)variant.getValue();
         }
     }
@@ -200,9 +205,9 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
         Map<String, Variant> trackData = getTrackData();
         Variant variant = trackData.get("Album");
         if(variant == null){
-            System.out.println("Failed to fetch Current Track Album");
-            return "";
+            return albumCache;
         }else{
+            albumCache = (String)variant.getValue();
             return (String)variant.getValue();
         }
     }
@@ -219,11 +224,16 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
     }
     @Override
     public long getCurrentTrackPosition() {
-        UInt32 position = properties.Get(INTERFACE, "Position");
-        if(position == null){
+        try {
+            UInt32 position = properties.Get(INTERFACE, "Position");
+            if (position == null) {
+                return 0;
+            } else {
+                return position.longValue();
+            }
+        }catch(DBusExecutionException e){
+            System.out.println("Failed to fetch track position");
             return 0;
-        }else{
-            return position.longValue();
         }
     }
 
@@ -288,9 +298,8 @@ final class BluetoothAudioDeviceLinux extends BluetoothAudioDevice {
             Map<String, Variant<?>> data = properties.GetAll(INTERFACE);
             Map<String, Variant> trackData = (Map<String, Variant>)data.get("Track").getValue();
             return trackData;
-        }catch(Throwable t){
-            t.printStackTrace();
-            System.out.println("Failed to get track data: " + t.getMessage());
+        }catch(DBusExecutionException e){
+            System.out.println("Failed to get track data: " + e.getMessage());
             return new HashMap<>();
         }
     }

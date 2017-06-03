@@ -2,9 +2,7 @@ package de.silveryard.basesystem.driver.bluetoothphone;
 
 import ezvcard.Ezvcard;
 import ezvcard.VCard;
-import ezvcard.io.chain.ChainingTextParser;
 import ezvcard.parameter.TelephoneType;
-import ezvcard.property.Telephone;
 
 import java.io.File;
 import java.io.IOException;

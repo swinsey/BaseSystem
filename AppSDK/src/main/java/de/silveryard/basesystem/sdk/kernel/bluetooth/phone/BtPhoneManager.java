@@ -6,7 +6,6 @@ import de.silveryard.basesystem.sdk.kernel.Wrapper;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 
 /**
  * Created by silveryard on 29.05.17.

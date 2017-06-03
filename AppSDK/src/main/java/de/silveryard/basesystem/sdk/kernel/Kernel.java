@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by Sebif on 20.02.2017.
@@ -119,7 +120,7 @@ public abstract class Kernel {
      * @param params List of parameters
      * @return Response of the systemcall
      */
-    public static synchronized QAMessage systemCall(String command, List<Parameter> params){
+    public static QAMessage systemCall(String command, List<Parameter> params){
         if((logging & KERNEL_LOGGING_SYSTEMCALLS) == KERNEL_LOGGING_SYSTEMCALLS){
             System.out.println("SystemCall: " + command);
         }
@@ -140,6 +141,10 @@ public abstract class Kernel {
         qaMessage = qaMessageCache.get(qaMessage.getUUID());
         qaMessageCache.remove(qaMessage.getUUID());
         return qaMessage;
+    }
+
+    public static CompletableFuture<QAMessage> systemCallAsync(String command, List<Parameter> params){
+        return CompletableFuture.supplyAsync(() -> systemCall(command, params));
     }
 
     /**

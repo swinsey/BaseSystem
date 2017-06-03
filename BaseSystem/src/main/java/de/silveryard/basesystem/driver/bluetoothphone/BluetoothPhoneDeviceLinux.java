@@ -7,7 +7,6 @@ import de.silveryard.basesystem.driver.bluetoothphone.ofono.Handsfree;
 import de.silveryard.basesystem.driver.bluetoothphone.ofono.Modem;
 import de.silveryard.basesystem.driver.bluetoothphone.ofono.NetworkRegistration;
 import org.apache.commons.lang3.SystemUtils;
-import org.freedesktop.DBus;
 import org.freedesktop.dbus.DBusConnection;
 import org.freedesktop.dbus.Path;
 import org.freedesktop.dbus.Variant;

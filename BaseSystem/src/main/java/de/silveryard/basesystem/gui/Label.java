@@ -32,7 +32,13 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
                         VerticalAlignment verticalAlignment,
                         int x, int y, int width, int height,
                         byte r, byte g, byte b, byte a){
-        int result = labelCreate(font.getId(), text, r, g, b, a, width);
+        int result;
+        if(text.trim().isEmpty()){
+            result = labelCreate(font.getId(), "<no text>", r, g, b, a, width);
+        }else{
+            result = labelCreate(font.getId(), text, r, g, b, a, width);
+        }
+
         if(result < 0){
             //TODO do error reporting
             return null;
@@ -131,7 +137,11 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      */
     public void setText(String text){
         this.text = text;
-        labelSetText(id, text);
+        if(text.trim().isEmpty()) {
+            this.text = "";
+        }else{
+            labelSetText(id, text);
+        }
         setDirty();
     }
     /**
@@ -319,6 +329,10 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      */
     @Override
     public void draw() {
+        if(text.isEmpty()){
+            return;
+        }
+
         int internalWidth   = labelGetWidth(id);
         int internalHeight  = labelGetHeight(id);
 
