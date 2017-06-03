@@ -111,5 +111,14 @@ final class BluetoothPhoneManagerLinux extends BluetoothPhoneManager {
                 onDisconnected.handle(device);
             }
         }
+
+        for(int i = 0; i < devices.size(); i++){
+            devices.get(i).update();
+            System.out.println("Num Calls: " + devices.get(i).getNumberCalls());
+            for(int j = 0; j < devices.get(i).getNumberCalls(); j++){
+                Call call = devices.get(i).getCall(j);
+                System.out.println("Call " + j + " start: " + call.getStartTime() + " Sys: " + System.currentTimeMillis());
+            }
+        }
     }
 }

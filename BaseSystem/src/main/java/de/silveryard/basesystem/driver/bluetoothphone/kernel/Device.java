@@ -4,6 +4,7 @@ import de.silveryard.basesystem.app.RunningApp;
 import de.silveryard.basesystem.app.kernel.Kernel;
 import de.silveryard.basesystem.app.kernel.ReturnCode;
 import de.silveryard.basesystem.driver.bluetoothphone.BluetoothPhoneDevice;
+import de.silveryard.basesystem.driver.bluetoothphone.Call;
 import de.silveryard.basesystem.driver.bluetoothphone.NetworkStatus;
 import de.silveryard.basesystem.driver.bluetoothphone.Phonebook;
 import de.silveryard.transport.Parameter;
@@ -609,6 +610,25 @@ abstract class Device {
                 BtPhoneReturnCode.INVALID_ID.getValue(),
                 Parameter.createString(phonebook.getEntryNumberType(entry, number))
         );
+    }
+
+    private static QAMessage systemCallBtPhoneDeviceGetNumberCalls(RunningApp app, QAMessage message){
+        return null;
+
+    }
+    private static QAMessage systemCallBtPhoneDeviceGetCallDirection(RunningApp app, QAMessage message){
+        return null;
+
+    }
+    private static QAMessage systemCallBtPhoneDeviceGetCallState(RunningApp app, QAMessage message){
+        return null;
+
+    }
+    private static QAMessage systemCallBtPhoneDeviceGetCallLineIdentification(RunningApp app, QAMessage message){
+        return null;
+    }
+    private static QAMessage systemCallBtPhoneDeviceGetCallName(RunningApp app, QAMessage message){
+    return null;
     }
 
 

@@ -2,6 +2,7 @@ package de.silveryard.basesystem.driver.bluetoothphone;
 
 import de.silveryard.basesystem.driver.bluetoothphone.dbus.obex.Client1;
 import de.silveryard.basesystem.driver.bluetoothphone.dbus.obex.PhonebookAccess1;
+import de.silveryard.basesystem.driver.bluetoothphone.dbus.ofono.VoiceCallManager;
 import de.silveryard.basesystem.driver.bluetoothphone.ofono.CallVolume;
 import de.silveryard.basesystem.driver.bluetoothphone.ofono.Handsfree;
 import de.silveryard.basesystem.driver.bluetoothphone.ofono.Modem;
@@ -12,9 +13,7 @@ import org.freedesktop.dbus.Path;
 import org.freedesktop.dbus.Variant;
 import org.freedesktop.dbus.exceptions.DBusException;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created by silveryard on 28.05.17.
@@ -31,6 +30,10 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
     private final CallVolume callVolume;
     private final Handsfree handsfree;
     private final NetworkRegistration networkRegistration;
+    private final VoiceCallManager voiceCallManager;
+
+    private final List<CallLinux> calls;
+    private final List<String> tmpCalls;
 
     private final Client1 obexClient;
     private final String obexObjectPath;
@@ -45,6 +48,9 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
         this.sessionsConnection = sessionsConnection;
         this.obexClient = obexClient;
         this.ofonoObjectPath = ofonoObjectPath;
+
+        this.calls = new ArrayList<>();
+        this.tmpCalls = new ArrayList<>();
 
         try {
             modem = new Modem(systemConnection.getRemoteObject(BUS_OFONO, ofonoObjectPath, de.silveryard.basesystem.driver.bluetoothphone.dbus.ofono.Modem.class));
@@ -89,6 +95,14 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
             }
         }else{
             networkRegistration = null;
+        }
+
+        //Load VoiceCallManager
+        try {
+            voiceCallManager = systemConnection.getRemoteObject(BUS_OFONO, ofonoObjectPath, VoiceCallManager.class);
+        } catch (DBusException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         //Try to fetch phonebook data
@@ -153,6 +167,52 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
 
     public String getOfonoObjectPath(){
         return ofonoObjectPath;
+    }
+
+    public void update(){
+        Vector<Object[]> callData = (Vector<Object[]>)voiceCallManager.GetCalls();
+
+        tmpCalls.clear();
+        for(int i = 0; i < callData.size(); i++){
+            tmpCalls.add(((Path)callData.get(i)[0]).getPath());
+        }
+
+        for(int i = 0; i < tmpCalls.size(); i++){
+            boolean alreadyActive = false;
+            String tPth = tmpCalls.get(i);
+
+            for(int j = 0; j < calls.size(); j++){
+                String cPth = calls.get(j).getPath();
+
+                if(tPth.equals(cPth)){
+                    alreadyActive = true;
+                    break;
+                }
+            }
+
+            if(!alreadyActive){
+                CallLinux call = new CallLinux(systemConnection, BUS_OFONO, tPth);
+                calls.add(call);
+            }
+        }
+
+        for(int i = 0; i < calls.size(); i++){
+            boolean stillActive = false;
+            String cPth = calls.get(i).getPath();
+
+            for(int j = 0; j < tmpCalls.size(); j++){
+                String tPth = tmpCalls.get(j);
+
+                if(cPth.equals(tPth)){
+                    stillActive = true;
+                    break;
+                }
+            }
+
+            if(!stillActive){
+                calls.remove(i);
+            }
+        }
     }
 
     //////
@@ -251,6 +311,23 @@ final class BluetoothPhoneDeviceLinux extends BluetoothPhoneDevice {
                 System.out.println("BT Phone: Unknown network status");
                 return NetworkStatus.UNKNOWN;
         }
+    }
+
+    //////
+    ///Calling
+    //////
+    @Override
+    public void dial(String number){
+        voiceCallManager.Dial(number, "");
+    }
+    @Override
+    public int getNumberCalls() {
+        return calls.size();
+    }
+
+    @Override
+    public Call getCall(int index) {
+        return calls.get(index);
     }
 
     //////

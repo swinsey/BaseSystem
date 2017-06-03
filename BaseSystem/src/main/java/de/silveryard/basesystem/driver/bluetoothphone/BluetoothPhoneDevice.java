@@ -171,7 +171,9 @@ public abstract class BluetoothPhoneDevice extends Device {
     //////
     ///Calling
     //////
-    //TODO
+    public abstract void dial(String number);
+    public abstract int getNumberCalls();
+    public abstract Call getCall(int index);
 
     //////
     ///Phonebook
