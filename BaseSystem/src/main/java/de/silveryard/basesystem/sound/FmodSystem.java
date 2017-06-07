@@ -107,6 +107,8 @@ public class FmodSystem {
      * @return
      */
     public native FmodResult createStream(String nameOrData, int mode, FmodCreateSoundExInfo exInfo, FmodSound sound);
+    public native FmodResult createDSPByType(FmodDSPType type, FmodDSP dsp);
+    public native FmodResult createChannelGroup(String name, FmodChannelGroup channelGroup);
 
     /**
      * FMOD::System::playSound
@@ -116,6 +118,7 @@ public class FmodSystem {
      * @return
      */
     public native FmodResult playSound(FmodSound sound, boolean paused, FmodChannel channel);
+    public native FmodResult getMasterChannelGroup(FmodChannelGroup channelGroup);
 
     /**
      * FMOD::System::update

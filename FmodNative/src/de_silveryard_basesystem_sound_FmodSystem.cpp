@@ -6,8 +6,11 @@
 #include "FmodResult.h"
 #include "FmodOutputType.h"
 #include "FmodSpeakerMode.h"
+#include "FmodDSPType.h"
+#include "de_silveryard_basesystem_sound_FmodDSP.h"
 #include "de_silveryard_basesystem_sound_FmodSound.h"
 #include "de_silveryard_basesystem_sound_FmodChannel.h"
+#include "de_silveryard_basesystem_sound_FmodChannelGroup.h"
 #include "de_silveryard_basesystem_sound_FmodCreateSoundExInfo.h"
 #include "de_silveryard_basesystem_sound_FmodSystem.h"
 #include <iostream>
@@ -220,6 +223,36 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 
 	return fmodresult_get_enum_value(env, result);
 }
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createDSPByType
+(JNIEnv* env, jobject obj, jobject type, jobject dsp) {
+	_init(env);
+
+	FMOD::System* system = get_handle<FMOD::System>(env, _field_handle, obj);
+	FMOD_DSP_TYPE native_type = (FMOD_DSP_TYPE)fmoddsptype_get_value(env, type);
+	jlong dspHandle = Java_de_silveryard_basesystem_sound_FmodDSP_getHandle(env, dsp);
+	FMOD::DSP* native_dsp;
+	FMOD_RESULT result = system->createDSPByType(native_type, &native_dsp);
+
+	Java_de_silveryard_basesystem_sound_FmodDSP_setHandle(env, dsp, reinterpret_cast<long long>(native_dsp));
+
+	return fmodresult_get_enum_value(env, result);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createChannelGroup
+(JNIEnv* env, jobject obj, jstring name, jobject channelGroup) {
+	_init(env);
+
+	FMOD::System* system = get_handle<FMOD::System>(env, _field_handle, obj);
+	const char* native_name = NULL;
+	if (name != NULL) {
+		native_name = env->GetStringUTFChars(name, NULL);
+	}
+	FMOD::ChannelGroup* native_group;
+	FMOD_RESULT result = system->createChannelGroup(native_name, &native_group);
+
+	Java_de_silveryard_basesystem_sound_FmodChannelGroup_setHandle(env, channelGroup, reinterpret_cast<long long>(native_group));
+
+	return fmodresult_get_enum_value(env, result);
+}
 
 JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_playSound
 (JNIEnv* env, jobject obj, jobject sound, jboolean paused, jobject channel) {
@@ -232,6 +265,18 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_playSou
 	FMOD_RESULT result = system->playSound(native_sound, NULL, paused, &native_channel);
 
 	Java_de_silveryard_basesystem_sound_FmodChannel_setHandle(env, channel, reinterpret_cast<long long>(native_channel));
+
+	return fmodresult_get_enum_value(env, result);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_getMasterChannelGroup
+(JNIEnv* env, jobject obj, jobject channelGroup) {
+	_init(env);
+
+	FMOD::System* system = get_handle<FMOD::System>(env, _field_handle, obj);
+	FMOD::ChannelGroup* native_group;
+	FMOD_RESULT result = system->getMasterChannelGroup(&native_group);
+
+	Java_de_silveryard_basesystem_sound_FmodChannelGroup_setHandle(env, obj, reinterpret_cast<long long>(native_group));
 
 	return fmodresult_get_enum_value(env, result);
 }

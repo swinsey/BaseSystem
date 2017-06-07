@@ -4,6 +4,10 @@ import de.silveryard.basesystem.app.kernel.Kernel;
 import de.silveryard.basesystem.gui.Frame;
 import de.silveryard.basesystem.gui.GraphicsManager;
 import de.silveryard.basesystem.logging.LogMessageType;
+import de.silveryard.basesystem.sound.FmodChannelGroup;
+import de.silveryard.basesystem.sound.FmodResult;
+import de.silveryard.basesystem.sound.FmodSpeakerMode;
+import de.silveryard.basesystem.sound.FmodSystem;
 import de.silveryard.basesystem.util.IDisposable;
 import de.silveryard.basesystem.util.Utils;
 import de.silveryard.transport.Message;
@@ -26,6 +30,7 @@ public class RunningApp implements IDisposable {
     private final AppLoader appLoader;
     private final Frame frame;
     private final int processId;
+    private final FmodChannelGroup channelGroup;
 
     private int nextObjectId;
     private final Map<Integer, Object> objects;
@@ -41,8 +46,21 @@ public class RunningApp implements IDisposable {
         this.appIdentifier = appIdentifier;
         this.appLoader = appLoader;
 
-        this.frame = GraphicsManager.getInstance().createFrame();
-        this.frame.setLayer(FRAME_LAYER);
+        if(GraphicsManager.getInstance() != null) {
+            this.frame = GraphicsManager.getInstance().createFrame();
+            this.frame.setLayer(FRAME_LAYER);
+        }else{
+            this.frame = null;
+        }
+        if(FmodSystem.getInstance() != null){
+            channelGroup = new FmodChannelGroup();
+            FmodResult result = FmodSystem.getInstance().createChannelGroup(appIdentifier, channelGroup);
+            if(result != FmodResult.FMOD_OK){
+                throw new RuntimeException("Failed to create channel group for app " + appIdentifier);
+            }
+        }else{
+            channelGroup = null;
+        }
 
         this.processId = nextIdentifier;
         nextIdentifier++;

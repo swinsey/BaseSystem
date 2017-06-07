@@ -105,11 +105,35 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createS
 
 /*
  * Class:     de_silveryard_basesystem_sound_FmodSystem
+ * Method:    createDSPByType
+ * Signature: (Lde/silveryard/basesystem/sound/FmodDSPType;Lde/silveryard/basesystem/sound/FmodDSP;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createDSPByType
+  (JNIEnv *, jobject, jobject, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodSystem
+ * Method:    createChannelGroup
+ * Signature: (Ljava/lang/String;Lde/silveryard/basesystem/sound/FmodChannelGroup;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_createChannelGroup
+  (JNIEnv *, jobject, jstring, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodSystem
  * Method:    playSound
  * Signature: (Lde/silveryard/basesystem/sound/FmodSound;ZLde/silveryard/basesystem/sound/FmodChannel;)Lde/silveryard/basesystem/sound/FmodResult;
  */
 JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_playSound
   (JNIEnv *, jobject, jobject, jboolean, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodSystem
+ * Method:    getMasterChannelGroup
+ * Signature: (Lde/silveryard/basesystem/sound/FmodChannelGroup;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_getMasterChannelGroup
+  (JNIEnv *, jobject, jobject);
 
 /*
  * Class:     de_silveryard_basesystem_sound_FmodSystem

@@ -6,6 +6,7 @@
 #include "Float.h"
 #include "Integer.h"
 #include "Wrapper.h"
+#include "de_silveryard_basesystem_sound_FmodChannelGroup.h"
 #include "de_silveryard_basesystem_sound_FmodChannel.h"
 
 namespace {
@@ -248,6 +249,30 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getPos
 
 	jobject position_boxed = integer_create(env, native_position);
 	wrapper_set_value(env, position, position_boxed);
+
+	return fmodresult_get_enum_value(env, result);
+}
+
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_setChannelGroup
+(JNIEnv* env, jobject obj, jobject channelGroup) {
+	_init(env);
+
+	FMOD::Channel* channel = get_handle<FMOD::Channel>(env, _field_handle, obj);
+	jlong group_handle = Java_de_silveryard_basesystem_sound_FmodChannelGroup_getHandle(env, channelGroup);
+	FMOD::ChannelGroup* native_group = reinterpret_cast<FMOD::ChannelGroup*>(group_handle);
+	FMOD_RESULT result = channel->setChannelGroup(native_group);
+
+	return fmodresult_get_enum_value(env, result);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getChannelGroup
+(JNIEnv* env, jobject obj, jobject channelGroup) {
+	_init(env);
+
+	FMOD::Channel* channel = get_handle<FMOD::Channel>(env, _field_handle, obj);
+	FMOD::ChannelGroup* native_group;
+	FMOD_RESULT result = channel->setChannelGroup(native_group);
+
+	Java_de_silveryard_basesystem_sound_FmodChannelGroup_setHandle(env, channelGroup, reinterpret_cast<long long>(native_group));
 
 	return fmodresult_get_enum_value(env, result);
 }

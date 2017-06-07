@@ -175,6 +175,22 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_setPos
 JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getPosition
   (JNIEnv *, jobject, jobject, jint);
 
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannel
+ * Method:    setChannelGroup
+ * Signature: (Lde/silveryard/basesystem/sound/FmodChannelGroup;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_setChannelGroup
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannel
+ * Method:    getChannelGroup
+ * Signature: (Lde/silveryard/basesystem/sound/FmodChannelGroup;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getChannelGroup
+  (JNIEnv *, jobject, jobject);
+
 #ifdef __cplusplus
 }
 #endif

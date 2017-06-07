@@ -142,4 +142,7 @@ public class FmodChannel {
      * @return Fmod Result
      */
     public native FmodResult getPosition(Wrapper<Integer> position, int posType);
+
+    public native FmodResult setChannelGroup(FmodChannelGroup channelGroup);
+    public native FmodResult getChannelGroup(FmodChannelGroup channelGroup);
 }
