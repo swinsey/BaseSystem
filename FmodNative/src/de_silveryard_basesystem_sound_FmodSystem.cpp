@@ -276,7 +276,7 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodSystem_getMast
 	FMOD::ChannelGroup* native_group;
 	FMOD_RESULT result = system->getMasterChannelGroup(&native_group);
 
-	Java_de_silveryard_basesystem_sound_FmodChannelGroup_setHandle(env, obj, reinterpret_cast<long long>(native_group));
+	Java_de_silveryard_basesystem_sound_FmodChannelGroup_setHandle(env, channelGroup, reinterpret_cast<long long>(native_group));
 
 	return fmodresult_get_enum_value(env, result);
 }
