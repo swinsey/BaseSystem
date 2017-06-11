@@ -167,8 +167,8 @@ public enum FmodDSPType {
      * @param value Integer value
      * @return Enum value
      */
-    public static FmodOutputType getEnumValue(int value){
-        FmodOutputType[] values = FmodOutputType.values();
+    public static FmodDSPType getEnumValue(int value){
+        FmodDSPType[] values = FmodDSPType.values();
         for(int i = 0; i < values.length; i++){
             if(values[i].getValue() == value){
                 return values[i];

@@ -79,6 +79,54 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_g
 JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_getChannel
   (JNIEnv *, jobject, jint, jobject);
 
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannelGroup
+ * Method:    getDSP
+ * Signature: (ILde/silveryard/basesystem/sound/FmodDSP;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_getDSP
+  (JNIEnv *, jobject, jint, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannelGroup
+ * Method:    addDSP
+ * Signature: (ILde/silveryard/basesystem/sound/FmodDSP;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_addDSP
+  (JNIEnv *, jobject, jint, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannelGroup
+ * Method:    removeDSP
+ * Signature: (Lde/silveryard/basesystem/sound/FmodDSP;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_removeDSP
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannelGroup
+ * Method:    getNumDSPs
+ * Signature: (Lde/silveryard/basesystem/util/Wrapper;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_getNumDSPs
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannelGroup
+ * Method:    setDSPIndex
+ * Signature: (Lde/silveryard/basesystem/sound/FmodDSP;I)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_setDSPIndex
+  (JNIEnv *, jobject, jobject, jint);
+
+/*
+ * Class:     de_silveryard_basesystem_sound_FmodChannelGroup
+ * Method:    getDSPIndex
+ * Signature: (Lde/silveryard/basesystem/sound/FmodDSP;Lde/silveryard/basesystem/util/Wrapper;)Lde/silveryard/basesystem/sound/FmodResult;
+ */
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannelGroup_getDSPIndex
+  (JNIEnv *, jobject, jobject, jobject);
+
 #ifdef __cplusplus
 }
 #endif

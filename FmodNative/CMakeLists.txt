@@ -43,6 +43,7 @@ set(SOURCE_FILES
 	src/FmodChannelOrder.cpp 
 	src/FmodDSPType.cpp
 	src/FmodDSPConnectionType.cpp
+	src/FmodChannelControl.cpp
 	src/de_silveryard_basesystem_sound_FmodSystem.cpp 
 	src/de_silveryard_basesystem_sound_FmodSound.cpp
 	src/de_silveryard_basesystem_sound_FmodChannel.cpp

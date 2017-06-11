@@ -43,4 +43,11 @@ public class FmodChannelGroup {
     public native FmodResult getName(Wrapper<String> name);
     public native FmodResult getNumChannels(Wrapper<Integer> numChannels);
     public native FmodResult getChannel(int index, FmodChannel channel);
+
+    public native FmodResult getDSP(int index, FmodDSP dsp);
+    public native FmodResult addDSP(int index, FmodDSP dsp);
+    public native FmodResult removeDSP(FmodDSP dsp);
+    public native FmodResult getNumDSPs(Wrapper<Integer> numDSPs);
+    public native FmodResult setDSPIndex(FmodDSP dsp, int index);
+    public native FmodResult getDSPIndex(FmodDSP dsp, Wrapper<Integer> index);
 }

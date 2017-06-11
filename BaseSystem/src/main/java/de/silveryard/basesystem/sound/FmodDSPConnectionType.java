@@ -41,8 +41,8 @@ public enum FmodDSPConnectionType {
      * @param value Integer value
      * @return Enum value
      */
-    public static FmodOutputType getEnumValue(int value){
-        FmodOutputType[] values = FmodOutputType.values();
+    public static FmodDSPConnectionType getEnumValue(int value){
+        FmodDSPConnectionType[] values = FmodDSPConnectionType.values();
         for(int i = 0; i < values.length; i++){
             if(values[i].getValue() == value){
                 return values[i];
