@@ -41,6 +41,8 @@ set(SOURCE_FILES
 	src/FmodSoundFormat.cpp 
 	src/FmodSoundType.cpp
 	src/FmodChannelOrder.cpp 
+	src/FmodDSPType.cpp
+	src/FmodDSPConnectionType.cpp
 	src/de_silveryard_basesystem_sound_FmodSystem.cpp 
 	src/de_silveryard_basesystem_sound_FmodSound.cpp
 	src/de_silveryard_basesystem_sound_FmodChannel.cpp
@@ -48,6 +50,7 @@ set(SOURCE_FILES
 	src/de_silveryard_basesystem_sound_FmodCreateSoundExInfo.cpp
 	src/de_silveryard_basesystem_sound_FmodDSPMeteringInfo.cpp
 	src/de_silveryard_basesystem_sound_FmodDSP.cpp
+	src/de_silveryard_basesystem_sound_FmodDSPConnection.cpp
 	src/FmodDSPType.cpp
 	src/de_silveryard_basesystem_sound_SystemVolume.cpp
 	src/SystemVolumeWindows.cpp

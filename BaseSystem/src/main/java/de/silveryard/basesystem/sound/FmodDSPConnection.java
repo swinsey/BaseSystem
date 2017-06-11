@@ -30,7 +30,5 @@ public class FmodDSPConnection {
     public native FmodResult getOuput(FmodDSP output);
     public native FmodResult setMix(float volume);
     public native FmodResult getMix(Wrapper<Float> volume);
-    public native FmodResult setMixMatrix(float[][] matrix);
-    public native FmodResult getMixMatrix(Wrapper<Float[][]> matrix);
     public native FmodResult getType(Wrapper<FmodDSPConnectionType> type);
 }

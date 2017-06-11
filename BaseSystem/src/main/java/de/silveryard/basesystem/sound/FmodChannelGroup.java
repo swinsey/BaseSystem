@@ -1,5 +1,7 @@
 package de.silveryard.basesystem.sound;
 
+import de.silveryard.basesystem.util.Wrapper;
+
 /**
  * Created by Sebif on 06.06.2017.
  */
@@ -23,4 +25,22 @@ public class FmodChannelGroup {
      * @return Internal handle
      */
     public native long getHandle();
+
+    public FmodResult addGroup(FmodChannelGroup group){
+        return addGroup(group, true, null);
+    }
+    public FmodResult addGroup(FmodChannelGroup group, boolean propagatedSpClock){
+        return addGroup(group, propagatedSpClock, null);
+    }
+    public FmodResult addGroup(FmodChannelGroup group, FmodDSPConnection connection){
+        return addGroup(group, true, connection);
+    }
+    public native FmodResult addGroup(FmodChannelGroup group, boolean propagatedSpClock, FmodDSPConnection connection);
+    public native FmodResult getNumGroups(Wrapper<Integer> numGroups);
+    public native FmodResult getGroup(int index, FmodChannelGroup group);
+    public native FmodResult getParentGroup(FmodChannelGroup group);
+
+    public native FmodResult getName(Wrapper<String> name);
+    public native FmodResult getNumChannels(Wrapper<Integer> numChannels);
+    public native FmodResult getChannel(int index, FmodChannel channel);
 }
