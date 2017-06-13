@@ -3,6 +3,7 @@ package de.silveryard.basesystem.sound;
 import de.silveryard.basesystem.util.IDisposable;
 
 /**
+ * FMOD_CREATE_SOUND_EX_INFO
  * Created by Sebif on 27.03.2017.
  */
 public class FmodCreateSoundExInfo implements IDisposable{

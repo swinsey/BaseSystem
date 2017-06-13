@@ -3,9 +3,11 @@ package de.silveryard.basesystem.sound;
 import de.silveryard.basesystem.util.Wrapper;
 
 /**
+ * FMOD::DSP
  * Created by Sebif on 06.06.2017.
  */
 public class FmodDSP {
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private long handle;
 
     /**
@@ -32,6 +34,10 @@ public class FmodDSP {
      *
      */
 
+    /**
+     *
+     * @return
+     */
     public native FmodResult release();
 
     /**
@@ -40,9 +46,29 @@ public class FmodDSP {
      *
      */
 
+    /**
+     *
+     * @param active
+     * @return
+     */
     public native FmodResult setActive(boolean active);
+    /**
+     *
+     * @param active
+     * @return
+     */
     public native FmodResult getActive(Wrapper<Boolean> active);
+    /**
+     *
+     * @param bypass
+     * @return
+     */
     public native FmodResult setBypass(boolean bypass);
+    /**
+     *
+     * @param bypass
+     * @return
+     */
     public native FmodResult getBypass(Wrapper<Boolean> bypass);
 
     /**
@@ -51,12 +77,53 @@ public class FmodDSP {
      *
      */
 
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public native FmodResult setParameterFloat(int index, float value);
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public native FmodResult setParameterInt(int index, int value);
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public native FmodResult setParameterBool(int index, boolean value);
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public native FmodResult getParameterFloat(int index, Wrapper<Float> value);
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public native FmodResult getParameterInt(int index, Wrapper<Integer> value);
+    /**
+     *
+     * @param index
+     * @param value
+     * @return
+     */
     public native FmodResult getParameterBool(int index, Wrapper<Boolean> value);
+    /**
+     *
+     * @param numParams
+     * @return
+     */
     public native FmodResult getNumParameters(Wrapper<Integer> numParams);
 
     /**
@@ -65,8 +132,27 @@ public class FmodDSP {
      *
      */
 
+    /**
+     *
+     * @param name
+     * @param version
+     * @param channels
+     * @param configWidth
+     * @param configHeight
+     * @return
+     */
     public native FmodResult getInfo(Wrapper<String> name, Wrapper<Integer> version, Wrapper<Integer> channels, Wrapper<Integer> configWidth, Wrapper<Integer> configHeight);
+    /**
+     *
+     * @param type
+     * @return
+     */
     public native FmodResult getType(Wrapper<FmodDSPType> type);
+    /**
+     *
+     * @param idle
+     * @return
+     */
     public native FmodResult getIdle(Wrapper<Boolean> idle);
 
     /**
@@ -75,7 +161,25 @@ public class FmodDSP {
      *
      */
 
+    /**
+     *
+     * @param inputEnabled
+     * @param outputEnabled
+     * @return
+     */
     public native FmodResult setMeteringEnabled(boolean inputEnabled, boolean outputEnabled);
+    /**
+     *
+     * @param inputEnabled
+     * @param outputEnabled
+     * @return
+     */
     public native FmodResult getMeteringEnabled(Wrapper<Boolean> inputEnabled, Wrapper<Boolean> outputEnabled);
+    /**
+     *
+     * @param inputInfo
+     * @param outputInfo
+     * @return
+     */
     public native FmodResult getMeteringInfo(FmodDSPMeteringInfo inputInfo, FmodDSPMeteringInfo outputInfo);
 }
