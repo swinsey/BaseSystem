@@ -3,9 +3,11 @@ package de.silveryard.basesystem.sound;
 import de.silveryard.basesystem.util.Wrapper;
 
 /**
+ * FMOD::Channel
  * Created by Sebif on 27.03.2017.
  */
 public class FmodChannel {
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private long handle;
 
     /**
@@ -143,6 +145,57 @@ public class FmodChannel {
      */
     public native FmodResult getPosition(Wrapper<Integer> position, int posType);
 
+    /**
+     * FMOD::Channel::setChannelGroup
+     * @param channelGroup ChannelGroup Value
+     * @return Fmod Result
+     */
     public native FmodResult setChannelGroup(FmodChannelGroup channelGroup);
+    /**
+     * FMOD::Channel::getChannelGroup
+     * @param channelGroup ChannelGroup Value
+     * @return Fmod Result
+     */
     public native FmodResult getChannelGroup(FmodChannelGroup channelGroup);
+
+    /**
+     * FMOD::Channel:getDSP
+     * @param index Index Value
+     * @param dsp DSP Value
+     * @return Fmod Result
+     */
+    public native FmodResult getDSP(int index, FmodDSP dsp);
+    /**
+     * FMOD::Channel::addDSP
+     * @param index Index Value
+     * @param dsp DSP Value
+     * @return Fmod Result
+     */
+    public native FmodResult addDSP(int index, FmodDSP dsp);
+    /**
+     * FMOD::Channel::removeDSP
+     * @param dsp DSP Value
+     * @return Fmod Result
+     */
+    public native FmodResult removeDSP(FmodDSP dsp);
+    /**
+     * FMOD::Channel:getNumDSPs
+     * @param numDSPs NumDSPs Value
+     * @return Fmod Result
+     */
+    public native FmodResult getNumDSPs(Wrapper<Integer> numDSPs);
+    /**
+     * FMOD::Channel::setDSPIndex
+     * @param dsp DSP Value
+     * @param index Index Value
+     * @return Fmod Result
+     */
+    public native FmodResult setDSPIndex(FmodDSP dsp, int index);
+    /**
+     * FMOD::Channel::getDSPIndex
+     * @param dsp DSP Value
+     * @param index Index Value
+     * @return Fmod Result
+     */
+    public native FmodResult getDSPIndex(FmodDSP dsp, Wrapper<Integer> index);
 }

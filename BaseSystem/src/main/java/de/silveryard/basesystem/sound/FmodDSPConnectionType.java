@@ -5,19 +5,25 @@ package de.silveryard.basesystem.sound;
  */
 public enum FmodDSPConnectionType {
     /**
-     * Default connection type.         Audio is mixed from the input to the output DSP's audible buffer.
+     * Default connection type.
+     * Audio is mixed from the input to the output DSP's audible buffer.
      */
     FMOD_DSPCONNECTION_TYPE_STANDARD(0),
     /**
-     * Sidechain connection type.       Audio is mixed from the input to the output DSP's sidechain buffer.
+     * Sidechain connection type.
+     * Audio is mixed from the input to the output DSP's sidechain buffer.
      */
     FMOD_DSPCONNECTION_TYPE_SIDECHAIN(1),
     /**
-     * Send connection type.            Audio is mixed from the input to the output DSP's audible buffer, but the input is NOT executed, only copied from.  A standard connection or sidechain needs to make an input execute to generate data.
+     * Send connection type.
+     * Audio is mixed from the input to the output DSP's audible buffer, but the input is NOT executed, only copied from.
+     * A standard connection or sidechain needs to make an input execute to generate data.
      */
     FMOD_DSPCONNECTION_TYPE_SEND(2),
     /**
-     * Send sidechain connection type.  Audio is mixed from the input to the output DSP's sidechain buffer, but the input is NOT executed, only copied from.  A standard connection or sidechain needs to make an input execute to generate data.
+     * Send sidechain connection type.
+     * Audio is mixed from the input to the output DSP's sidechain buffer, but the input is NOT executed, only copied from.
+     * A standard connection or sidechain needs to make an input execute to generate data.
      */
     FMOD_DSPCONNECTION_TYPE_SEND_SIDECHAIN(3),
 
@@ -35,8 +41,8 @@ public enum FmodDSPConnectionType {
      * @param value Integer value
      * @return Enum value
      */
-    public static FmodOutputType getEnumValue(int value){
-        FmodOutputType[] values = FmodOutputType.values();
+    public static FmodDSPConnectionType getEnumValue(int value){
+        FmodDSPConnectionType[] values = FmodDSPConnectionType.values();
         for(int i = 0; i < values.length; i++){
             if(values[i].getValue() == value){
                 return values[i];

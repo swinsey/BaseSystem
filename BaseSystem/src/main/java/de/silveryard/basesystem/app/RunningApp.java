@@ -56,7 +56,18 @@ public class RunningApp implements IDisposable {
             channelGroup = new FmodChannelGroup();
             FmodResult result = FmodSystem.getInstance().createChannelGroup(appIdentifier, channelGroup);
             if(result != FmodResult.FMOD_OK){
-                throw new RuntimeException("Failed to create channel group for app " + appIdentifier);
+                throw new RuntimeException("Failed to create channel group for app " + appIdentifier + ": " + result);
+            }
+
+            FmodChannelGroup masterGroup = new FmodChannelGroup();
+            result = FmodSystem.getInstance().getMasterChannelGroup(masterGroup);
+            if(result != FmodResult.FMOD_OK){
+                throw new RuntimeException("Failed to get master channel group while creating app " + appIdentifier + ": " + result);
+            }
+
+            result = masterGroup.addGroup(channelGroup);
+            if(result != FmodResult.FMOD_OK){
+                throw new RuntimeException("Failed to assing new channel group to master group while creating app " + appIdentifier + ": " + result);
             }
         }else{
             channelGroup = null;

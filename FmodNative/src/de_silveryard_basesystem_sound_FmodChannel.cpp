@@ -6,6 +6,7 @@
 #include "Float.h"
 #include "Integer.h"
 #include "Wrapper.h"
+#include "FmodChannelControl.h"
 #include "de_silveryard_basesystem_sound_FmodChannelGroup.h"
 #include "de_silveryard_basesystem_sound_FmodChannel.h"
 
@@ -275,4 +276,35 @@ JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getCha
 	Java_de_silveryard_basesystem_sound_FmodChannelGroup_setHandle(env, channelGroup, reinterpret_cast<long long>(native_group));
 
 	return fmodresult_get_enum_value(env, result);
+}
+
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getDSP
+(JNIEnv* env, jobject obj, jint index, jobject dsp) {
+	_init(env);
+	return fmodchannelcontrol_getDSP(env, obj, _field_handle, index, dsp);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_addDSP
+(JNIEnv* env, jobject obj, jint index, jobject dsp) {
+	_init(env);
+	return fmodchannelcontrol_addDSP(env, obj, _field_handle, index, dsp);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_removeDSP
+(JNIEnv* env, jobject obj, jobject dsp) {
+	_init(env);
+	return fmodchannelcontrol_removeDSP(env, obj, _field_handle, dsp);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getNumDSPs
+(JNIEnv* env, jobject obj, jobject numDSPs) {
+	_init(env);
+	return fmodchannelcontrol_getNumDSPs(env, obj, _field_handle, numDSPs);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_setDSPIndex
+(JNIEnv* env, jobject obj, jobject dsp, jint index) {
+	_init(env);
+	return fmodchannelcontrol_setDSPIndex(env, obj, _field_handle, dsp, index);
+}
+JNIEXPORT jobject JNICALL Java_de_silveryard_basesystem_sound_FmodChannel_getDSPIndex
+(JNIEnv* env, jobject obj, jobject dsp, jobject index) {
+	_init(env);
+	return fmodchannelcontrol_getDSPIndex(env, obj, _field_handle, dsp, index);
 }
