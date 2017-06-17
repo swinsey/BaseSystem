@@ -90,10 +90,10 @@ final class SettingsDB implements IDisposable {
                     "    container = ? " +
                     "  AND " +
                     "    key = ?");
-            stmtUpdate.setString(1, container);
-            stmtUpdate.setString(2, key);
-            stmtUpdate.setBytes(3, value);
-            stmtUpdate.execute();
+            stmtUpdate.setString(2, container);
+            stmtUpdate.setString(3, key);
+            stmtUpdate.setBytes(1, value);
+            stmtUpdate.executeUpdate();
         }catch (Exception e){
             throw new RuntimeException(e);
         }
