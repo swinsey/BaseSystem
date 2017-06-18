@@ -21,57 +21,22 @@ import java.util.Map;
 /**
  * Created by Sebif on 12.03.2017.
  */
-public class RunningApp implements IDisposable {
-    private static final int FRAME_LAYER = 5;
-
+public abstract class RunningApp implements IDisposable {
     private static int nextIdentifier = 1;
 
-    private final String appIdentifier;
-    private final AppLoader appLoader;
-    private final Frame frame;
+    protected final String appIdentifier;
     private final int processId;
-    private final FmodChannelGroup channelGroup;
 
     private int nextObjectId;
     private final Map<Integer, Object> objects;
     private final Map<Integer, IDisposable> disposables;
-    private final Map<String, QAMessage> pendingMessages;
 
     /**
      * Constructor
      * @param appIdentifier Application identifier
-     * @param appLoader AppLoader that loaded the application
      */
-    public RunningApp(String appIdentifier, AppLoader appLoader){
+    public RunningApp(String appIdentifier){
         this.appIdentifier = appIdentifier;
-        this.appLoader = appLoader;
-
-        if(GraphicsManager.getInstance() != null) {
-            this.frame = GraphicsManager.getInstance().createFrame();
-            this.frame.setLayer(FRAME_LAYER);
-        }else{
-            this.frame = null;
-        }
-        if(FmodSystem.getInstance() != null){
-            channelGroup = new FmodChannelGroup();
-            FmodResult result = FmodSystem.getInstance().createChannelGroup(appIdentifier, channelGroup);
-            if(result != FmodResult.FMOD_OK){
-                throw new RuntimeException("Failed to create channel group for app " + appIdentifier + ": " + result);
-            }
-
-            FmodChannelGroup masterGroup = new FmodChannelGroup();
-            result = FmodSystem.getInstance().getMasterChannelGroup(masterGroup);
-            if(result != FmodResult.FMOD_OK){
-                throw new RuntimeException("Failed to get master channel group while creating app " + appIdentifier + ": " + result);
-            }
-
-            result = masterGroup.addGroup(channelGroup);
-            if(result != FmodResult.FMOD_OK){
-                throw new RuntimeException("Failed to assing new channel group to master group while creating app " + appIdentifier + ": " + result);
-            }
-        }else{
-            channelGroup = null;
-        }
 
         this.processId = nextIdentifier;
         nextIdentifier++;
@@ -79,71 +44,40 @@ public class RunningApp implements IDisposable {
         nextObjectId = 1;
         objects = new HashMap<>();
         disposables = new HashMap<>();
-        pendingMessages = new HashMap<>();
-
-        appLoader.setSystemMessageHandler(this::handleMessage);
     }
 
     /**
      * Returns an identifier that uniquelly identifies this process
      * @return Process ID
      */
-    public int getProcessId(){
+    public final int getProcessId(){
         return processId;
     }
 
     /**
      * @return Returns the application identifier of this RunningApp
      */
-    public String getAppIdentifier(){
+    public final String getAppIdentifier(){
         return appIdentifier;
     }
     /**
      * @return Returns the gui frame of this RunningApp
      */
-    public Frame getFrame(){
-        return frame;
-    }
+    public abstract Frame getFrame();
 
     /**
      * Sends a message to the app
      * @param message Message to send
      */
-    public void sendMessage(Message message){
-        appLoader.sendMessage(message);
-    }
-    public QAMessage sendQAMessage(QAMessage message){
-        pendingMessages.put(message.getUUID(), null);
-        appLoader.sendMessage(message.getMessage());
-        QAMessage response = null;
-
-        while((response = pendingMessages.get(message.getUUID())) == null){
-            try {
-                Thread.sleep(16);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return response;
-    }
-    private void handleMessage(Message message){
-        QAMessage qaMessage = new QAMessage(message);
-
-        if(pendingMessages.containsKey(qaMessage.getUUID())){
-            pendingMessages.put(qaMessage.getUUID(), qaMessage);
-        }else {
-            QAMessage qaResponse = Kernel.getInstance().handleSystemCall(this, qaMessage);
-            appLoader.sendMessage(qaResponse.getMessage());
-        }
-    }
+    public abstract void sendMessage(Message message);
+    public abstract QAMessage sendQAMessage(QAMessage message);
 
     /**
      * Registers a new object to the apps internal cache
      * @param obj Object to register
      * @return Identifier that uniquely identifies the registered object
      */
-    public int registerObject(Object obj){
+    public final int registerObject(Object obj){
         int i = nextObjectId;
         nextObjectId++;
         objects.put(i, obj);
@@ -158,7 +92,7 @@ public class RunningApp implements IDisposable {
      * @param objectId Identifier that references a registered object
      * @return An object instance on success. Null otherwise
      */
-    public Object getRegisteredObject(int objectId){
+    public final Object getRegisteredObject(int objectId){
         if(objects.containsKey(objectId)){
             return objects.get(objectId);
         }else{
@@ -169,7 +103,7 @@ public class RunningApp implements IDisposable {
      * Unregisters an object from the apps internal cache based on an identifier
      * @param objectId Identifier that references a registered object
      */
-    public void unregisterObject(int objectId){
+    public final void unregisterObject(int objectId){
         objects.remove(objectId);
         IDisposable disposable = disposables.get(objectId);
 
@@ -180,7 +114,7 @@ public class RunningApp implements IDisposable {
     /**
      * Unregisters all objects fromt the apps internal cache
      */
-    public void unregisterAllObjects(){
+    public final void unregisterAllObjects(){
         int numObjects = objects.size();
         int numDisposables = disposables.size();
 
@@ -193,14 +127,14 @@ public class RunningApp implements IDisposable {
             unregisterObject(ids.get(i));
         }
 
-        appLoader.logAsApp("Unregistered " + numObjects + " Objects. " + numDisposables + " Disposables", LogMessageType.OUT);
+        System.out.println(appIdentifier + ": Unregistered " + numObjects + " Objects. " + numDisposables + " Disposables");
     }
     /**
      * Returns the reference identifier from a given registered object
      * @param obj A already registered object
      * @return Reference identifier on success. -1 otherwise
      */
-    public Integer getId(Object obj){
+    public final Integer getId(Object obj){
         for(Integer key : objects.keySet()){
             if(objects.get(key) == obj){
                 return key;
@@ -213,14 +147,12 @@ public class RunningApp implements IDisposable {
      * Returns if this application is still running
      * @return
      */
-    public boolean isAppRunning(){
-        return appLoader.isRunning();
-    }
+    public abstract boolean isAppRunning();
 
     @Override
-    public void dispose() {
-        frame.dispose();
-        appLoader.dispose();
+    public final void dispose() {
+        disposeApp();
         unregisterAllObjects();
     }
+    protected abstract void disposeApp();
 }

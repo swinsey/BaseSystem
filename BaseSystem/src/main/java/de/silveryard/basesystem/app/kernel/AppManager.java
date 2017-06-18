@@ -16,7 +16,11 @@ abstract class AppManager {
         Kernel.getInstance().registerSystemCall("de.silveryard.basesystem.systemcall.app.appmanager.getrunningapps", AppManager::systemCallAppAppManagerGetRunningApps);
     }
 
-    private static QAMessage systemCallAppAppManagerGetInstalledApps(de.silveryard.basesystem.app.RunningApp app, QAMessage message){
+    public static QAMessage systemCallAppAppManagerGetInstalledApps(de.silveryard.basesystem.app.RunningApp app, QAMessage message){
+        if(message.getParameters().size() != 0){
+            return Kernel.getInstance().createErrorResponse(message, ReturnCode.INVALID_MESSAGE);
+        }
+
         List<String> installedApps = de.silveryard.basesystem.app.AppManager.getInstance().getInstalledApps();
 
         Parameter[] params = new Parameter[installedApps.size() + 1];
@@ -27,7 +31,11 @@ abstract class AppManager {
 
         return Kernel.getInstance().createResponse(message, ReturnCode.OK.getValue(), AppManagerResult.OK.getValue(), params);
     }
-    private static QAMessage systemCallAppAppManagerGetRunningApps(de.silveryard.basesystem.app.RunningApp app, QAMessage message){
+    public static QAMessage systemCallAppAppManagerGetRunningApps(de.silveryard.basesystem.app.RunningApp app, QAMessage message){
+        if(message.getParameters().size() != 0){
+            return Kernel.getInstance().createErrorResponse(message, ReturnCode.INVALID_MESSAGE);
+        }
+
         List<RunningApp> runningApps = de.silveryard.basesystem.app.AppManager.getInstance().getRunningApps();
 
         Parameter[] params = new Parameter[runningApps.size() + 1];

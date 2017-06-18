@@ -115,13 +115,26 @@ public class Kernel {
      * @return Response message
      */
     public QAMessage createResponse(QAMessage source, int genericReturnCode, int specificReturnCode, Parameter... result){
-        List<Parameter> params = new ArrayList<>();
+        List<Parameter> params = new ArrayList<>(2 + result.length);
         params.add(Parameter.createInt(genericReturnCode));
         params.add(Parameter.createInt(specificReturnCode));
 
         for(Parameter param : result){
             params.add(param);
         }
+
+        return new QAMessage(source, params);
+    }
+    public QAMessage createErrorResponse(QAMessage source, ReturnCode returnCode){
+        List<Parameter> params = new ArrayList<>(1);
+        params.add(Parameter.createInt(returnCode.getValue()));
+
+        return new QAMessage(source, params);
+    }
+    public QAMessage createErrorResponse(QAMessage source, ReturnCode returnCode, int specificReturnCode){
+        List<Parameter> params = new ArrayList<>(1);
+        params.add(Parameter.createInt(returnCode.getValue()));
+        params.add(Parameter.createInt(specificReturnCode));
 
         return new QAMessage(source, params);
     }

@@ -292,7 +292,7 @@ public class AppManager implements IDisposable {
         String appName = appNameResult.getLValue();
 
         AppLoader appLoader = AppLoader.create(appName, binaryPath, dataPath, readonlyPath);
-        RunningApp runningApp = new RunningApp(appIdentifier, appLoader);
+        RunningApp runningApp = new RunningAppImpl(appIdentifier, appLoader);
         runningApps.add(runningApp);
         onAppStarted(appIdentifier);
         return LRValue.createLValue(runningApp);
