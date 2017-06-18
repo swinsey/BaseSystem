@@ -88,8 +88,8 @@ public class QAMessage {
         messageParams.add(Parameter.createString(uuid)); //Unique Identifier
 
         messageParams.addAll(params);
-
         message = new Message(senderID, destinationID, commandHash, messageParams);
+
         parameters = params;
     }
 

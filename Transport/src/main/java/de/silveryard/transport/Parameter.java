@@ -73,17 +73,18 @@ public class Parameter {
     }
 
     /**
-     * Creates a new parameter that contains a string value
+     * Creates a new parameter that contains a ASCII string value
+     * Use this over createStringUTF8 when you are sure you are only using ASCII values as it is
+     * way faster.
      * @param str Value
      * @return Created parameter
      */
     public static Parameter createString(String str){
         Objects.requireNonNull(str);
-        byte[] data;
-        try {
-            data  = str.getBytes("UTF8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
+
+        byte[] data = new byte[str.length()];
+        for(int i = 0; i < data.length; i++){
+            data[i] = (byte)str.charAt(i);
         }
 
         if(data.length > PARAM_DATA_MAX_LENGTH){
@@ -92,6 +93,30 @@ public class Parameter {
             return new Parameter(data);
         }
     }
+    /**
+     * Creates a new parameter that contains a UTF8 string value
+     * Consider using createString if you are using only ASCII strings as for performance
+     * @param str Value
+     * @return Created parameter
+     */
+    public static Parameter createStringUTF8(String str){
+        Objects.requireNonNull(str);
+
+         byte[] data;
+
+         try {
+            data  = str.getBytes("UTF8");
+         } catch (UnsupportedEncodingException e) {
+         throw new RuntimeException(e);
+         }
+
+        if(data.length > PARAM_DATA_MAX_LENGTH){
+            throw new IllegalArgumentException("Data array too large (max: " + PARAM_DATA_MAX_LENGTH + ", actual: " + data.length + ")");
+        }else{
+            return new Parameter(data);
+        }
+    }
+
 
     /**
      * Creates a new parameter that contains a byte array value

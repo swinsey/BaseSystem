@@ -81,7 +81,8 @@ public class Transport {
      */
     public synchronized boolean send(Message m){
         try {
-            outStream.write(m.toBytes());
+            byte[] data = m.toBytes();
+            outStream.write(data);
             return true;
         } catch (IOException e) {
             return false;

@@ -140,6 +140,7 @@ public abstract class Kernel {
 
         qaMessage = qaMessageCache.get(qaMessage.getUUID());
         qaMessageCache.remove(qaMessage.getUUID());
+
         return qaMessage;
     }
 

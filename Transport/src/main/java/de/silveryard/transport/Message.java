@@ -43,9 +43,9 @@ public class Message {
         Objects.requireNonNull(commandHash);
         Objects.requireNonNull(params);
 
-        String tmpSenderID = senderID.toLowerCase().replaceAll("-", "");
-        String tmpDestinationID = destinationID.toLowerCase().replaceAll("-", "");
-        String tmpCmdHash = commandHash.toLowerCase().replaceAll("-", "");
+        String tmpSenderID = senderID;//senderID.toLowerCase().replaceAll("-", "");
+        String tmpDestinationID = destinationID;//destinationID.toLowerCase().replaceAll("-", "");
+        String tmpCmdHash = commandHash;//commandHash.toLowerCase().replaceAll("-", "");
 
         checkValidHexString(tmpSenderID);
         checkValidHexString(tmpDestinationID);
@@ -132,7 +132,6 @@ public class Message {
      *  Dissembles this message into a byte array
      */
     public byte[] toBytes(){
-
         hashToBinary(senderID, senderBuffer);
         hashToBinary(destinationID, receiverBuffer);
         hashToBinary(commandHash, commandBuffer);
