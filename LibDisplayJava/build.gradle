@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.ysb33r.gradle:doxygen:0.3'
+    }
+}
+
+apply plugin: 'org.ysb33r.doxygen'
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group 'de.silveryard.basesystem'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+defaultTasks 'install', 'doxygen'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+doxygen {
+    generate_latex false
+    outputDir new File(buildDir, 'doc')
+    source new File(projectDir, 'src/main/java')
+    recursive true
+    generate_treeview false
+    have_dot false
+}
+

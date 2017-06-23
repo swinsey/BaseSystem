@@ -7,3 +7,6 @@
 [submodule "SDLNative/sdl/linux/SDL2_ttf"]
 	path = SDLNative/sdl/linux/SDL2_ttf
 	url = https://github.com/davidsiaw/SDL2_ttf
+[submodule "LibGui/stub/userland"]
+	path = LibGui/stub/userland
+	url = https://github.com/Silveryard/userland
