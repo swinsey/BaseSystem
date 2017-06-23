@@ -33,4 +33,3 @@ doxygen {
     generate_treeview false
     have_dot false
 }
-

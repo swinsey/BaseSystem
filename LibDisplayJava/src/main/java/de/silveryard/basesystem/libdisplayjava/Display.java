@@ -25,6 +25,12 @@ public abstract class Display {
         int result = getHandleNative(handle);
         return DisplayResult.getEnumValue(result);
     }
+    public static DisplayResult getScreenSize(Handle handle, ScreenSize screenSize){
+        initialize();
+
+        int result = getWindowSizeNative(handle, screenSize);
+        return DisplayResult.getEnumValue(result);
+    }
 
     public static boolean isError(DisplayResult result){
         initialize();
@@ -37,6 +43,7 @@ public abstract class Display {
 
     private static native boolean compareHandlesNative(Handle h1, Handle h2);
     private static native int getHandleNative(Handle handle);
+    private static native int getWindowSizeNative(Handle handle, ScreenSize size);
 
     private static native boolean isSuccessNative(int result);
     private static native boolean isErrorNative(int result);

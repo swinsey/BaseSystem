@@ -10,3 +10,6 @@
 [submodule "LibGui/stub/userland"]
 	path = LibGui/stub/userland
 	url = https://github.com/Silveryard/userland
+[submodule "3rdParty/boost"]
+	path = 3rdParty/boost
+	url = https://github.com/boostorg/boost

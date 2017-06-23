@@ -11,6 +11,10 @@ namespace {
 	jfieldID _field_handle_data3;
 	jfieldID _field_handle_data4;
 
+	jclass _class_size;
+	jfieldID _field_size_width;
+	jfieldID _field_size_height;
+
 	void _initialize(JNIEnv* env) {
 		if (_is_initialized) {
 			return;
@@ -22,6 +26,10 @@ namespace {
 		_field_handle_data2 = env->GetFieldID(_class_handle, "data2", "J");
 		_field_handle_data3 = env->GetFieldID(_class_handle, "data3", "J");
 		_field_handle_data4 = env->GetFieldID(_class_handle, "data4", "J");
+
+		_class_size = env->FindClass("de/silveryard/basesystem/libdisplayjava/ScreenSize");
+		_field_size_width = env->GetFieldID(_class_size, "width", "I");
+		_field_size_height = env->GetFieldID(_class_size, "height", "I");
 	}
 	void _read_handle(JNIEnv* env, jobject obj, bs::display::handle_t& native_handle) {
 		native_handle.data1 = env->GetLongField(obj, _field_handle_data1);
@@ -58,6 +66,20 @@ JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_libdisplayjava_Display_getH
 	bs::result_t result = bs::display::get_handle(&n_handle);
 
 	_write_handle(env, handle, n_handle);
+	return result;
+}
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_libdisplayjava_Display_getWindowSizeNative
+(JNIEnv* env, jclass clazz, jobject handle, jobject screenSize) {
+	_initialize(env);
+
+	bs::display::handle_t n_handle;
+	uint16_t width, height;
+	_read_handle(env, handle, n_handle);
+	bs::result_t result = bs::display::get_window_size(n_handle, &width, &height);
+
+	env->SetIntField(screenSize, _field_size_width, width);
+	env->SetIntField(screenSize, _field_size_height, height);
+
 	return result;
 }
 
