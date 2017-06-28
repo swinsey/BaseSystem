@@ -10,6 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="LibDisplaySysJava_main" />
+    <orderEntry type="library" name="Gradle: de.silveryard.basesystem:LibDisplayJava:1.0-SNAPSHOT" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="LibDisplaySysJava_main" />
 </module>

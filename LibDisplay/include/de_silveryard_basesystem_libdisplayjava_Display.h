@@ -26,10 +26,10 @@ JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_libdisplayjava_Display_getH
 /*
  * Class:     de_silveryard_basesystem_libdisplayjava_Display
  * Method:    getWindowSizeNative
- * Signature: (Lde/silveryard/basesystem/libdisplayjava/Handle;Lde/silveryard/basesystem/libdisplayjava/ScreenSize;)I
+ * Signature: (Lde/silveryard/basesystem/libdisplayjava/Handle;Lde/silveryard/basesystem/libdisplayjava/Wrapper;Lde/silveryard/basesystem/libdisplayjava/Wrapper;)I
  */
 JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_libdisplayjava_Display_getWindowSizeNative
-  (JNIEnv *, jclass, jobject, jobject);
+  (JNIEnv *, jclass, jobject, jobject, jobject);
 
 /*
  * Class:     de_silveryard_basesystem_libdisplayjava_Display

@@ -1,7 +1,7 @@
 #include "display_os.h"
 
 #if defined(BS_DISPLAY_USE_DISPMANX)
-#include <interface\vmcs_host\vc_dispmanx.h>
+#include <interface/vmcs_host/vc_dispmanx.h>
 #include "display.h"
 
 BSEXPORT bs::result_t bs::display::get_handle(bs::display::handle_t* handle) {
@@ -25,7 +25,7 @@ BSEXPORT bs::result_t bs::display::get_window_size(const bs::display::handle_t& 
 	DISPMANX_MODEINFO_T info;
 
 	DISPMANX_DISPLAY_HANDLE_T display = vc_dispmanx_display_open(0);
-	int ret = vc_dispmanx_get_info(display, &info);
+	int ret = vc_dispmanx_display_get_info(display, &info);
 	if (ret != 0) {
 		return bs::display::display_result::ERROR_UNKNOWN;
 	}

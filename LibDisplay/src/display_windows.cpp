@@ -3,6 +3,8 @@
 #if defined(BS_DISPLAY_USE_WINDOWS)
 #include "display.h"
 #include <Windows.h>
+#include <assert.h>
+#include <iostream>
 #include "bs_util.h"
 
 //Fix for ERROR_INVALID_HANDLE defined in winerror.h
@@ -38,14 +40,35 @@ BSEXPORT bs::result_t bs::display::get_window_size(const bs::display::handle_t& 
 		return bs::display::display_result::ERROR_UNKNOWN;
 	}
 
-	*width = rect.right - rect.left;
-	*height = rect.bottom - rect.top;
+	LONG w_width = rect.right - rect.left;
+	LONG w_height = rect.bottom - rect.top;
+
+	assert(w_width >= INT16_MIN);
+	assert(w_width <= INT16_MAX);
+
+	assert(w_height >= INT16_MIN);
+	assert(w_height <= INT16_MAX);
+
+	*width = static_cast<int16_t>(w_width);
+	*height = static_cast<int16_t>(w_height);
+
 
 	return bs::display::display_result::SUCCESS;
 }
 
 #if defined(BS_DISPLAY_SYS)
-BSEXPORT bs::result_t show_window(const bs::display::handle_t& handle) {
+BSEXPORT bs::result_t bs::display::sys::show_window(const bs::display::handle_t& handle) {
+	HWND hwnd;
+	if (!_get_hwnd(handle, &hwnd)) {
+		return bs::display::display_result::ERROR_INVALID_HANDLE;
+	}
+
+	//TODO check for error. BOOL return does not denote success/failure on this method but the previous window state
+	ShowWindow(hwnd, SW_SHOW);
+
+	return bs::display::display_result::SUCCESS;
+}
+BSEXPORT bs::result_t bs::display::sys::hide_window(const bs::display::handle_t& handle) {
 	HWND hwnd;
 	if (!_get_hwnd(handle, &hwnd)) {
 		return bs::display::display_result::ERROR_INVALID_HANDLE;
@@ -57,29 +80,17 @@ BSEXPORT bs::result_t show_window(const bs::display::handle_t& handle) {
 
 	return bs::display::display_result::SUCCESS;
 }
-BSEXPORT bs::result_t hide_window(const bs::display::handle_t& handle) {
-	HWND hwnd;
-	if (!_get_hwnd(handle, &hwnd)) {
-		return bs::display::display_result::ERROR_INVALID_HANDLE;
-	}
 
-	if (!ShowWindow(hwnd, SW_SHOW)) {
-		return bs::display::display_result::ERROR_UNKNOWN;
-	}
-
-	return bs::display::display_result::SUCCESS;
-}
-
-BSEXPORT bs::result_t get_window_layer(const bs::display::handle_t& handle, bs::display::sys::layer_t* layer) {
+BSEXPORT bs::result_t bs::display::sys::get_window_layer(const bs::display::handle_t& handle, bs::display::sys::layer_t* layer) {
 	*layer = 0;
 
 	return bs::display::display_result::SUCCESS_NOOP;
 }
-BSEXPORT bs::result_t set_window_layer(const bs::display::handle_t& handle, bs::display::sys::layer_t layer) {
+BSEXPORT bs::result_t bs::display::sys::set_window_layer(const bs::display::handle_t& handle, bs::display::sys::layer_t layer) {
 	return bs::display::display_result::SUCCESS_NOOP;
 }
 
-BSEXPORT bs::result_t get_window_position(const bs::display::handle_t& handle, int16_t* pos_x, int16_t* pos_y) {
+BSEXPORT bs::result_t bs::display::sys::get_window_position(const bs::display::handle_t& handle, int16_t* pos_x, int16_t* pos_y) {
 	HWND hwnd;
 	if (!_get_hwnd(handle, &hwnd)) {
 		return bs::display::display_result::ERROR_INVALID_HANDLE;
@@ -90,37 +101,34 @@ BSEXPORT bs::result_t get_window_position(const bs::display::handle_t& handle, i
 		return bs::display::display_result::ERROR_UNKNOWN;
 	}
 
-	*pos_x = rect.left;
-	*pos_y = rect.top;
+	LONG w_x = rect.left;
+	LONG w_y = rect.top;
+
+	assert(w_x >= INT16_MIN);
+	assert(w_x <= INT16_MAX);
+
+	assert(w_y >= INT16_MIN);
+	assert(w_y <= INT16_MAX);
+
+	*pos_x = static_cast<int16_t>(w_x);
+	*pos_y = static_cast<int16_t>(w_y);
 
 	return bs::display::display_result::SUCCESS;
 }
-BSEXPORT bs::result_t set_window_position(const bs::display::handle_t& handle, int16_t pos_x, int16_t pos_y) {
+BSEXPORT bs::result_t bs::display::sys::set_window_position(const bs::display::handle_t& handle, int16_t pos_x, int16_t pos_y) {
 	HWND hwnd;
 	if (!_get_hwnd(handle, &hwnd)) {
 		return bs::display::display_result::ERROR_INVALID_HANDLE;
 	}
 
-	uint16_t width, height;
-	bs::result_t result = bs::display::get_window_size(handle, &width, &height);
-	if (bs::is_error(result)) {
-		return result;
-	}
-
-	RECT rect;
-	if (!GetWindowRect(hwnd, &rect)) {
+	if (!SetWindowPos(hwnd, HWND_TOP, pos_x, pos_y, 0, 0, SWP_NOSIZE)) {
 		return bs::display::display_result::ERROR_UNKNOWN;
 	}
-
-	rect.left = pos_x;
-	rect.right = pos_x + width;
-	rect.top = pos_y;
-	rect.bottom = pos_y + height;
 
 	return bs::display::display_result::SUCCESS;
 }
 
-BSEXPORT bs::result_t get_window_opacity(const bs::display::handle_t& handle, bs::display::sys::opacity_t* opacity) {
+BSEXPORT bs::result_t bs::display::sys::get_window_opacity(const bs::display::handle_t& handle, bs::display::sys::opacity_t* opacity) {
 	HWND hwnd;
 	if (!_get_hwnd(handle, &hwnd)) {
 		return bs::display::display_result::ERROR_INVALID_HANDLE;
@@ -141,7 +149,7 @@ BSEXPORT bs::result_t get_window_opacity(const bs::display::handle_t& handle, bs
 
 	return bs::display::display_result::SUCCESS;
 }
-BSEXPORT bs::result_t set_window_opacity(const bs::display::handle_t& handle, bs::display::sys::opacity_t opacity) {
+BSEXPORT bs::result_t bs::display::sys::set_window_opacity(const bs::display::handle_t& handle, bs::display::sys::opacity_t opacity) {
 	HWND hwnd;
 	if (!_get_hwnd(handle, &hwnd)) {
 		return bs::display::display_result::ERROR_INVALID_HANDLE;

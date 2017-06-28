@@ -28,5 +28,17 @@ task buildSDLNative(type: GradleBuild){
 task buildFmodNative(type: GradleBuild){
   buildFile = './FmodNative/build.gradle'
 }
+task buildLibBS(type: GradleBuild){
+  buildFile = './LibBS/build.gradle'
+}
+task buildLibDisplay(type: GradleBuild){
+  buildFile = './LibDisplay/build.gradle'
+}
+task buildLibDisplayJava(type: GradleBuild){
+  buildFile = './LibDisplayJava/build.gradle'
+}
+task buildLibDisplaySysJava(type: GradleBuild){
+  buildFile = './LibDisplaySysJava/build.gradle'
+}
 
-defaultTasks 'buildAPF', 'buildAPFCreator', 'buildGradlePlugin', 'buildTransport', 'buildAppSDK', 'buildBaseSystem', 'buildLogViewer', 'buildAppManager', 'buildSDLNative', 'buildFmodNative'
+defaultTasks 'buildAPF', 'buildAPFCreator', 'buildGradlePlugin', 'buildTransport', 'buildAppSDK', 'buildBaseSystem', 'buildLogViewer', 'buildAppManager', 'buildSDLNative', 'buildFmodNative', 'buildLibBS', 'buildLibDisplay', 'buildLibDisplayJava', 'buildLibDisplaySysJava'

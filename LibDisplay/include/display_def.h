@@ -3,25 +3,27 @@
 
 #include <stdint.h>
 
-#define BS_DISPLAY_SYS
-
 namespace bs {
 	namespace display {
+		const bs::scope_t scope = bs::SCOPE_MIXED;
+		const bs::library_t library = 2;
+		const bs::subset_t subset = 1;
+
 		enum display_result {
-			SUCCESS_NOOP = 1,
-			SUCCESS = 0,
-			ERROR_UNKNOWN = -1,
-			ERROR_INVALID_HANDLE = -2,
+			SUCCESS_NOOP = bs::create_result(true, scope, library, subset, 1),
+			SUCCESS = bs::create_result(true, scope, library, subset, 0),
+			ERROR_UNKNOWN = bs::create_result(false, scope, library, subset, 1),
+			ERROR_INVALID_HANDLE = bs::create_result(false, scope, library, subset, 2),
 
 			//Fallback
-			ERROR_UNKNOWN_PLATFORM = -1000,
+			ERROR_UNKNOWN_PLATFORM = bs::create_result(false, scope, library, subset, 10),
 
 			//DispmanX
-			ERROR_DISPMANX_NO_UPDATE_HANDLE = -2000,
-			ERROR_DISPMANX_NO_ELEMENT_HANDLE = -2001,
+			ERROR_DISPMANX_NO_UPDATE_HANDLE = bs::create_result(false, scope, library, subset, 20),
+			ERROR_DISPMANX_NO_ELEMENT_HANDLE = bs::create_result(false, scope, library, subset, 21),
 
 			//Windows
-			ERROR_WINDOWS_NO_HWND = -3000,
+			ERROR_WINDOWS_NO_HWND = bs::create_result(false, scope, library, subset, 30),
 		};
 
 		struct handle_t {

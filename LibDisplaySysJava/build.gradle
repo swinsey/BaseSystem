@@ -18,11 +18,13 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 defaultTasks 'install', 'doxygen'
 
 dependencies {
+    compile group: 'de.silveryard.basesystem', name: 'LibDisplayJava', version: '1.0-SNAPSHOT'
 }
 
 doxygen {
