@@ -7,3 +7,6 @@
 [submodule "SDLNative/sdl/linux/SDL2_ttf"]
 	path = SDLNative/sdl/linux/SDL2_ttf
 	url = https://github.com/davidsiaw/SDL2_ttf
+[submodule "3rdParty/universal-tween-engine"]
+	path = 3rdParty/universal-tween-engine
+	url = https://github.com/AurelienRibon/universal-tween-engine
