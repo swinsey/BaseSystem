@@ -1,3 +1,24 @@
+ant.importBuild('3rdParty/universal-tween-engine/java/build.xml') { 
+	antTargetName -> 'ant_ute_' + antTargetName
+}
+
+task createUniversalTweenEngine(dependsOn: ant_ute_package){}
+task installUniversalTweenEngine(){
+	doLast {
+		exec{
+			def cmdline = 'install:install-file -Dfile=../../universal-tween-engine/java/build/api/tween-engine-api.jar -DgroupId=com.aurelienribon -DartifactId=tween-engine-api -Dversion=6.3.3 -Dpackaging=jar'
+		
+			workingDir = '3rdParty/apache-maven-3.3.9/bin'
+			if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+				commandLine 'cmd', '/c', 'mvn.cmd ' + cmdline
+			} else {
+				commandLine 'mvn ' + cmdline
+			} 
+		}
+	}
+}
+task buildUniversalTweenEngine(dependsOn: [createUniversalTweenEngine, installUniversalTweenEngine]){}
+
 task buildGradlePlugin(type: GradleBuild){
   buildFile = './GradlePlugin/build.gradle'
 }
@@ -29,4 +50,9 @@ task buildFmodNative(type: GradleBuild){
   buildFile = './FmodNative/build.gradle'
 }
 
-defaultTasks 'buildAPF', 'buildAPFCreator', 'buildGradlePlugin', 'buildTransport', 'buildAppSDK', 'buildBaseSystem', 'buildLogViewer', 'buildAppManager', 'buildSDLNative', 'buildFmodNative'
+defaultTasks 	'buildUniversalTweenEngine', 						//Build UniversalTweenEngine
+				'buildAPF', 'buildAPFCreator', 						//Build Projects needed by GradlePlugin
+				'buildGradlePlugin', 								//Build Gradle Plugin
+				'buildTransport', 'buildAppSDK', 'buildBaseSystem', //Build Base System
+				'buildLogViewer', 'buildAppManager', 				//Build utility tools
+				'buildSDLNative', 'buildFmodNative' 				//Build native libraries
