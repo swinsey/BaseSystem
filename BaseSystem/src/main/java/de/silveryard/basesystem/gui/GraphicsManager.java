@@ -1,5 +1,7 @@
 package de.silveryard.basesystem.gui;
 
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
 import de.silveryard.basesystem.util.Action;
 import de.silveryard.basesystem.util.IDisposable;
 import de.silveryard.basesystem.util.SortedList;
@@ -51,9 +53,13 @@ public class GraphicsManager implements IDisposable{
     private boolean dirtyFlag;
     private boolean mouseDown;
 
+    private TweenManager    tweenManager;
+    private long            lastTimestamp;
+    private float           deltaTime;
+
     private List<Frame>                       frames;
     private List<Frame>                       fRenderList;
-    private SortedList<Integer, Frame> frameOrder;
+    private SortedList<Integer, Frame>      frameOrder;
     private SortedList<Integer, RenderObject> renderList;
 
     private List<Action> nextFrameActions;
@@ -66,6 +72,9 @@ public class GraphicsManager implements IDisposable{
 
         this.dirtyFlag = true;
         this.mouseDown = false;
+
+        tweenManager = new TweenManager();
+        lastTimestamp = System.currentTimeMillis();
 
         frames = new ArrayList<>();
         fRenderList = new ArrayList<>();
@@ -102,6 +111,10 @@ public class GraphicsManager implements IDisposable{
      */
     public FontCollection getSystemFontCollection(){
         return systemFontCollection;
+    }
+
+    public TweenManager getTweenManager(){
+        return tweenManager;
     }
 
     /**
@@ -175,8 +188,15 @@ public class GraphicsManager implements IDisposable{
      * Renders the screen
      */
     public void render(){
+        //Calculate deltaTime
+        long timestamp = System.currentTimeMillis();
+        long delta = timestamp - lastTimestamp;
+        deltaTime = delta / 1000f;
+        lastTimestamp = timestamp;
+
         runActions();
         handleEvents();
+        updateTweens();
         renderInternal();
     }
 
@@ -186,7 +206,6 @@ public class GraphicsManager implements IDisposable{
         for(Action action : tmpAction){
             action.invoke();
         }
-
     }
     private void handleEvents(){
         while (SDLWindow.windowPollEvent() != 0) {
@@ -227,6 +246,9 @@ public class GraphicsManager implements IDisposable{
             }
         }
     }
+    private void updateTweens(){
+        tweenManager.update(deltaTime);
+    }
     private void renderInternal(){
         if(!dirtyFlag){
             try{
@@ -239,7 +261,7 @@ public class GraphicsManager implements IDisposable{
         dirtyFlag = false;
 
         //Clear screen
-        SDLWindow.windowSetDrawColor((byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF);
+        SDLWindow.windowSetDrawColor((byte)0x00, (byte)0x00, (byte)0x00, (byte)0x00);
         SDLWindow.windowClear();
 
         //Create frame order

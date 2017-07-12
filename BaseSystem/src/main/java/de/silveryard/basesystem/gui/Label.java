@@ -1,5 +1,6 @@
 package de.silveryard.basesystem.gui;
 
+import aurelienribon.tweenengine.TweenAccessor;
 import de.silveryard.basesystem.util.IDisposable;
 
 import java.util.List;
@@ -10,7 +11,9 @@ import static de.silveryard.basesystem.gui.SDLWindow.windowDrawLabel;
 /**
  * Created by beppo on 04/02/17.
  */
-public class Label extends RenderObject implements IDisposable, IMoveable, ISizeable, IFadeable {
+public class Label extends RenderObject implements
+        IDisposable, TweenAccessor<Label>,
+        IMoveable, ISizeable, IFadeable, IColorizable {
     /**
      * Creates a new label. You should call Frame.createLabel instead
      * @param font Font to use for rendering this label
@@ -187,6 +190,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * Sets the labels red value
      * @param r Red value. 0-255
      */
+    @Override
     public void setColorR(byte r){
         this.r = r;
         labelSetColor(id, r, g, b, a);
@@ -196,6 +200,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * Sets the labels green value
      * @param g Green value. 0-255
      */
+    @Override
     public void setColorG(byte g){
         this.g = g;
         labelSetColor(id, r, g, b, a);
@@ -205,6 +210,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * Sets the labels blue value
      * @param b Blue value. 0-255
      */
+    @Override
     public void setColorB(byte b){
         this.b = b;
         labelSetColor(id, r, g, b, a);
@@ -216,6 +222,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * @param g Green value. 0-255
      * @param b Blue value. 0-255
      */
+    @Override
     public void setColor(byte r, byte g, byte b){
         this.r = r;
         this.g = g;
@@ -227,6 +234,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * Returns the labels red value
      * @return Red value. 0-255
      */
+    @Override
     public byte getColorR(){
         return r;
     }
@@ -234,6 +242,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * Returns the labels green value
      * @return Green value. 0-255
      */
+    @Override
     public byte getColorG(){
         return g;
     }
@@ -241,6 +250,7 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
      * Returns the labels blue value
      * @return Blue value. 0-255
      */
+    @Override
     public byte getColorB(){
         return b;
     }
@@ -377,5 +387,28 @@ public class Label extends RenderObject implements IDisposable, IMoveable, ISize
     @Override
     public void dispose(){
         labelDestroy(id);
+    }
+
+    @Override
+    public int getValues(Label target, int tweenType, float[] returnValues) {
+        int i;
+
+        if((i = moveableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+        if((i = sizeableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+        if((i = fadeableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+        if((i = colorizableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+
+        return -1;
+    }
+    @Override
+    public void setValues(Label target, int tweenType, float[] newValues) {
+        moveableSetTweenValues(target, tweenType, newValues);
+        sizeableSetTweenValues(target, tweenType, newValues);
+        fadebleSetTweenValues(target, tweenType, newValues);
+        colorizableSetTweenValues(target, tweenType, newValues);
     }
 }

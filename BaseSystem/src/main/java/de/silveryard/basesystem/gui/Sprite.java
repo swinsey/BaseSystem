@@ -1,9 +1,13 @@
 package de.silveryard.basesystem.gui;
 
+import aurelienribon.tweenengine.TweenAccessor;
+
 /**
  * Created by beppo on 03/02/17.
  */
-public class Sprite extends RenderObject implements IMoveable, ISizeable, IFadeable {
+public class Sprite extends RenderObject implements
+        TweenAccessor<Sprite>,
+        IMoveable, ISizeable, IFadeable {
     private TextureSprite textureSprite;
 
     private int targetX;
@@ -129,5 +133,37 @@ public class Sprite extends RenderObject implements IMoveable, ISizeable, IFadea
                 targetX, targetY, targetWidth, targetHeight,
                 angle
         );
+    }
+
+    @Override
+    public int getValues(Sprite target, int tweenType, float[] returnValues) {
+        int i;
+
+        if((i = fadeableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+        if((i = moveableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+        if((i = sizeableGetTweenValues(target, tweenType, returnValues)) != -1)
+            return i;
+
+        switch (tweenType){
+            case TweenTable.SPRITE_ANGLE:
+                returnValues[0] = (float)getAngle();
+                return 1;
+        }
+
+        return -1;
+    }
+    @Override
+    public void setValues(Sprite target, int tweenType, float[] newValues) {
+        fadebleSetTweenValues(target, tweenType, newValues);
+        moveableSetTweenValues(target, tweenType, newValues);
+        sizeableSetTweenValues(target, tweenType, newValues);
+
+        switch(tweenType){
+            case TweenTable.SPRITE_ANGLE:
+                setAngle(newValues[0]);
+                break;
+        }
     }
 }
