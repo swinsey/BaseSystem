@@ -32,6 +32,7 @@ endif(WIN32)
 find_package(JNI)
 
 include_directories(
+		${PROJECT_SOURCE_DIR}/../LibBS/include
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
         ${SDL2_TTF_INCLUDE_DIR}
@@ -62,4 +63,5 @@ target_link_libraries(SDLNative
         ${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARIES}
         ${SDL2_TTF_LIBRARIES}
-		${GLEW_LIBRARIES})
+		${GLEW_LIBRARIES}
+		${PROJECT_SOURCE_DIR}/../LibBS/build/bin/BS.lib)
