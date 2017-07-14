@@ -34,7 +34,7 @@ public class RunCmakeTask extends DefaultTask {
 
     @TaskAction
     public void invoke() throws Exception {
-        String commandLine = "cmake ../.. -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=" + getBinDirectory().getAbsolutePath() + " -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + getBinDirectory().getAbsolutePath();
+        String commandLine = "cmake ../.. -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=" + getBinDirectory().getAbsolutePath() + " -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + getBinDirectory().getAbsolutePath()  + " -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=" + getBinDirectory().getAbsolutePath();
 
         if(SystemUtils.IS_OS_WINDOWS){
             commandLine += " -G \"Visual Studio 15 2017 Win64\"";
