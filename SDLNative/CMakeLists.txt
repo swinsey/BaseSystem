@@ -5,6 +5,10 @@ project(SDLNative)
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin/")
 message(STATUS "Runtime: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
+if(MSVC)
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /NODEFAULTLIB:library") #Needed for glew
+endif()
+
 if(WIN32)
 	set(SDL2_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/sdl/win/debug/sdl2/include)
 	set(SDL2_LIBRARY ${PROJECT_SOURCE_DIR}/sdl/win/debug/sdl2/lib/x64/SDL2.lib)
@@ -14,6 +18,9 @@ if(WIN32)
 	
 	set(SDL2_TTF_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/sdl/win/debug/sdl2_ttf/include)
 	set(SDL2_TTF_LIBRARIES ${PROJECT_SOURCE_DIR}/sdl/win/debug/sdl2_ttf/lib/x64/SDL2_ttf.lib)
+	
+	set(GLEW_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/../3rdParty/glew/win/include)
+	set(GLEW_LIBRARIES 	${PROJECT_SOURCE_DIR}/../3rdParty/glew/win/lib/Release/x64/glew32s.lib glu32.lib opengl32.lib)
 else()
 	# includes cmake/FindSDL2.cmake
 	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
@@ -28,7 +35,7 @@ include_directories(
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
         ${SDL2_TTF_INCLUDE_DIR}
-        ${JNI_INCLUDE_DIRS})
+		${GLEW_INCLUDE_DIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
@@ -55,4 +62,4 @@ target_link_libraries(SDLNative
         ${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARIES}
         ${SDL2_TTF_LIBRARIES}
-        ${JNI_LIBRARIES})
+		${GLEW_LIBRARIES})

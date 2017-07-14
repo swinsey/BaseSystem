@@ -27,6 +27,9 @@ task buildLogViewer(type: GradleBuild){
 task buildTransport(type: GradleBuild){
   buildFile = './Transport/build.gradle'
 }
+task buildLibBS(type: GradleBuild){
+	buildFile = './LibBS/build.gradle'
+}
 task buildSDLNative(type: GradleBuild){
   buildFile = './SDLNative/build.gradle'
 }
@@ -39,4 +42,4 @@ defaultTasks 	'buildUniversalTweenEngine', 						//Build UniversalTweenEngine
 				'buildGradlePlugin', 								//Build Gradle Plugin
 				'buildTransport', 'buildAppSDK', 'buildBaseSystem', //Build Base System
 				'buildLogViewer', 'buildAppManager', 				//Build utility tools
-				'buildSDLNative', 'buildFmodNative' 				//Build native libraries
+				'buildLibBS', 'buildSDLNative', 'buildFmodNative'	//Build native libraries
