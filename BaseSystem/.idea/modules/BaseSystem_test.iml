@@ -12,6 +12,7 @@
     <orderEntry type="module" module-name="BaseSystem_main" />
     <orderEntry type="library" name="Gradle: de.silveryard:APF:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: de.silveryard:Transport:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: net.java.dev.jna:platform:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: org.json:json:20160810" level="project" />
     <orderEntry type="library" name="Gradle: org.xerial:sqlite-jdbc:3.15.1" level="project" />
     <orderEntry type="library" name="Gradle: com.github.hypfvieh:dbus-java:2.7.2" level="project" />
@@ -20,6 +21,7 @@
     <orderEntry type="library" name="Gradle: com.aurelienribon:tween-engine-api:6.3.3" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:2.5" level="project" />
+    <orderEntry type="library" name="Gradle: net.java.dev.jna:jna:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.github.hypfvieh:libmatthew:0.8.1" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.21" level="project" />
     <orderEntry type="library" name="Gradle: com.github.mangstadt:vinnie:2.0.0" level="project" />
