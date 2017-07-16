@@ -20,6 +20,13 @@ namespace bs {
 	///Assert
 	//////
 #undef assert
+	void assert(bool expr);
+	void assert_msg(bool expr, std::string msg);
+	void assert_msg(bool expr, const char* msg);
+	void assert_always(bool expr);
+	void assert_msg_always(bool expr, std::string msg);
+	void assert_msg_always(bool expr, const char* msg);
+
 	inline void assert(bool expr) {
 #ifndef NDEBUG
 		assert_always(expr);
