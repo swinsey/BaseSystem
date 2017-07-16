@@ -10,3 +10,6 @@
 [submodule "3rdParty/universal-tween-engine"]
 	path = 3rdParty/universal-tween-engine
 	url = https://github.com/Silveryard/universal-tween-engine
+[submodule "3rdParty/boost"]
+	path = 3rdParty/boost
+	url = https://github.com/boostorg/boost

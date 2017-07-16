@@ -36,6 +36,7 @@ include_directories(
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
         ${SDL2_TTF_INCLUDE_DIR}
+		${JNI_INCLUDE_DIRS}
 		${GLEW_INCLUDE_DIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -64,4 +65,5 @@ target_link_libraries(SDLNative
         ${SDL2_IMAGE_LIBRARIES}
         ${SDL2_TTF_LIBRARIES}
 		${GLEW_LIBRARIES}
+		${JNI_LIBRARIES}
 		${PROJECT_SOURCE_DIR}/../LibBS/build/bin/BS.lib)

@@ -1,10 +1,30 @@
 #ifndef _SHARED_BS_UTIL_H_
 #define _SHARED_BS_UTIL_H_
 
-#include <boost\type_traits.hpp>
+#include <climits>
+#include <boost/type_traits.hpp>
 
 namespace bs {
 	namespace util {
+		template<typename T>
+		constexpr bool bit_set(T value, size_t bit) {
+			static_assert(bit > 0);
+			
+			return (value >> bit) & 1;
+		}
+
+		template<typename T>
+		struct size_in_bits {
+			static const size_t value = sizeof(T) * CHAR_BIT;
+		};
+
+		template<uint8_t size, typename T>
+		struct bitmask {
+			//static_assert(1i64 << size <= size_in_bits<int64_t>::value, "Cannot create a bitmask that big"); //TODO why is this not working for size=32?
+
+			static const T value = (1i64 << size) - 1;
+		};
+
 		template<typename T>
 		T clamp(T val, T low, T high) {
 			static_assert(boost::has_less<T>::value, "T less operator required");

@@ -1,3 +1,6 @@
+#ifndef _SHARED_BS_JNI_H_
+#define _SHARED_BS_JNI_H_
+
 #include <jni.h>
 #include "../bs_def.h"
 
@@ -9,7 +12,7 @@ namespace bs {
 
 		typedef uint16_t wrapper_handle_t;
 
-		enum jni_result {
+		enum jni_result : result_t {
 			SUCCESS = create_result(true, scope, library, subset, 0),
 
 			ERROR_UNKNOWN = create_result(false, scope, library, subset, 1),
@@ -37,3 +40,5 @@ namespace bs {
 		BSEXPORT result_t wrapper_get_value(JNIEnv* env, wrapper_handle_t handle, jobject wrapper, jobject* out_value);
 	}
 }
+
+#endif
