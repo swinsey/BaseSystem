@@ -51,3 +51,4 @@ build/
 FmodNative/bin/
 SDLNative/bin/
 .gradle/
+/VisualVMPlugin/nbproject/private/
