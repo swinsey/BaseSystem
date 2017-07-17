@@ -1,5 +1,6 @@
 package de.silveryard.basesystem.sdk.gui;
 
+import de.silveryard.basesystem.sdk.kernel.Kernel;
 import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.Wrapper;
@@ -117,6 +118,6 @@ public class Texture implements IDisposable {
 
     @Override
     public void dispose() {
-        //TODOs
+        Kernel.systemCallDispose(getTextureId());
     }
 }

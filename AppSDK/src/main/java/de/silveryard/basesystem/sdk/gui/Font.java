@@ -1,5 +1,6 @@
 package de.silveryard.basesystem.sdk.gui;
 
+import de.silveryard.basesystem.sdk.kernel.Kernel;
 import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.Wrapper;
@@ -78,6 +79,6 @@ public class Font implements IDisposable {
             return;
         }
 
-        //TODO
+        Kernel.systemCallDispose(fontId);
     }
 }

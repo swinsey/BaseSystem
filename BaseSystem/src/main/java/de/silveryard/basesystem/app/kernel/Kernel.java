@@ -1,6 +1,7 @@
 package de.silveryard.basesystem.app.kernel;
 
 import de.silveryard.basesystem.app.RunningApp;
+import de.silveryard.basesystem.util.IDisposable;
 import de.silveryard.basesystem.util.Utils;
 import de.silveryard.transport.Parameter;
 import de.silveryard.transport.highlevelprotocols.qa.QAMessage;
@@ -55,6 +56,7 @@ public class Kernel {
         }
 
         registerSystemCall("de.silveryard.basesystem.systemcall.dummy", this::systemCallDummy);
+        registerSystemCall("de.silveryard.basesystem.systemcall.dispose", this::systemCallDispose);
         initializing = false;
     }
 
@@ -140,6 +142,11 @@ public class Kernel {
     }
 
     private QAMessage systemCallDummy(RunningApp app, QAMessage message){
-        return createResponse(message, ReturnCode.OK.getValue(), -1);
+        return createResponse(message, ReturnCode.OK.getValue(), 0);
+    }
+    private QAMessage systemCallDispose(RunningApp app, QAMessage message){
+        int objId = message.getParameters().get(0).getInt();
+        app.unregisterObject(objId);
+        return createResponse(message, ReturnCode.OK.getValue(), 0);
     }
 }

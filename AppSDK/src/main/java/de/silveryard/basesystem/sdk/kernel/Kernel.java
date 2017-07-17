@@ -178,6 +178,11 @@ public abstract class Kernel {
         QAMessage response = systemCall("de.silveryard.basesystem.systemcall.dummy", new ArrayList<>());
         outReturnCode.value = ReturnCode.getEnumValue(response.getParameters().get(0).getInt());
     }
+    public static void systemCallDispose(int objectId){
+        List<Parameter> params = new ArrayList<>(1);
+        params.add(Parameter.createInt(objectId));
+        QAMessage response = systemCall("de.silveryard.basesystem.systemcall.dispose", params);
+    }
 
     private static void handleMessage(Message message){
         if(isInitializing){

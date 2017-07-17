@@ -1,5 +1,6 @@
 package de.silveryard.basesystem.sdk.gui;
 
+import de.silveryard.basesystem.sdk.kernel.Kernel;
 import de.silveryard.basesystem.sdk.kernel.KernelException;
 import de.silveryard.basesystem.sdk.kernel.ReturnCode;
 import de.silveryard.basesystem.sdk.kernel.Wrapper;
@@ -83,6 +84,6 @@ public abstract class RenderObject implements IDisposable {
 
     @Override
     public synchronized void dispose() {
-        //TODO
+        Kernel.systemCallDispose(getId());
     }
 }
