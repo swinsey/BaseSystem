@@ -17,6 +17,13 @@ version = '1.0-SNAPSHOT'
 
 defaultTasks 'install', 'doxygen'
 
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile group: 'org.json', name: 'json', version: '20170516'
+}
+
 doxygen {
     generate_latex false
     outputDir new File(buildDir, 'doc')
