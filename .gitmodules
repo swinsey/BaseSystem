@@ -13,3 +13,6 @@
 [submodule "3rdParty/boost"]
 	path = 3rdParty/boost
 	url = https://github.com/boostorg/boost
+[submodule "TransportProtocol"]
+	path = TransportProtocol
+	url = https://github.com/Silveryard/TransportProtocol

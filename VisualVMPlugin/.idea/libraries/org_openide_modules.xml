@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="org-openide-modules">
-    <CLASSES>
-      <root url="jar://C:/Program Files/Java/jdk1.8.0_131/lib/visualvm/platform/lib/org-openide-modules.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
