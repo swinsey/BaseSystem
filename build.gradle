@@ -33,7 +33,7 @@ task buildLibBS(type: GradleBuild){
 }
 task buildLibDisplayManager(type: GradleBuild){
   startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
-  buildFile = './Libraries/System/Native/DisplayManager/build.gradle'
+  buildFile = './Libraries/System/Native/lib-bs-sys-dspmngr/build.gradle'
 }
 task buildSDLNative(type: GradleBuild){
   startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
@@ -43,11 +43,15 @@ task buildFmodNative(type: GradleBuild){
   startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
   buildFile = './Libraries/System/Native/FmodNative/build.gradle'
 }
+task buildLibSystem(type: GradleBuild){
+  startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
+  buildFile = './Libraries/System/Native/lib-bs-sys-system/build.gradle'
+}
 
 defaultTasks 	'buildUniversalTweenEngine', 						//Build UniversalTweenEngine
 				'buildAPF', 'buildAPFCreator',						//Build Projects needed by GradlePlugin
 				'buildGradlePlugin', 								//Build Gradle Plugin
 				'buildTransport', 'buildAppSDK', 'buildBaseSystem', //Build Base System
 				'buildLogViewer', 'buildAppManager', 				//Build utility tools
-				'buildLibBS', 'buildSDLNative', 'buildFmodNative',	//Build native libraries
-				'buildLibDisplayManager'
+				'buildLibBS', 'buildLibSystem',						//Build native libraries
+				'buildSDLNative', 'buildFmodNative', 'buildLibDisplayManager'

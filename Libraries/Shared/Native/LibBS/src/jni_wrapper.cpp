@@ -1,5 +1,5 @@
 #include <map>
-#include "jni/bs_jni.h"
+#include "bs/jni/bs_jni.h"
 
 using namespace std;
 

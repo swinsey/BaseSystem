@@ -14,8 +14,14 @@ public class LogManager {
      * @param logToConsole When true, everything will be logged to the console
      */
     public static void initialize(boolean logToConsole){
+
         instance = new LogManager(logToConsole);
+
+        System.loadLibrary("lib-bs-sys-system-1-0-0");
+        initNative();
     }
+    private static native void initNative();
+
     /**
      * Singleton getter
      * @return LogManager instance

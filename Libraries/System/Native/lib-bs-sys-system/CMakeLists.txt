@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.3)
-project(DisplayManager)
+project(System)
 
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/build")
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin/")
@@ -16,18 +16,21 @@ include_directories(${JNI_INCLUDE_DIRS})
 
 include_directories(
 ${PROJECT_SOURCE_DIR}/../../../../3rdParty/boost/
+${PROJECT_SOURCE_DIR}/../../../Shared/Native/LibBS/include
 ${PROJECT_SOURCE_DIR}/include
+${PROJECT_SOURCE_DIR}/include_private
 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-	src/test.cpp
+	src/logger.cpp
+	src/jni/de_silveryard_basesystem_logging_LogManager.cpp
 )
 
-add_library(DisplayManager SHARED ${SOURCE_FILES})
-target_link_libraries(DisplayManager
+add_library(System SHARED ${SOURCE_FILES})
+target_link_libraries(System
         ${JNI_LIBRARIES}
 		${PLATFORM_LIBS})
-set_target_properties(DisplayManager PROPERTIES OUTPUT_NAME "lib-bs-sys-dspmngr-1-0-0")
+set_target_properties(System PROPERTIES OUTPUT_NAME "lib-bs-sys-system-1-0-0")
 

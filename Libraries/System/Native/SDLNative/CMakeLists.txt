@@ -66,5 +66,5 @@ target_link_libraries(SDLNative
         ${SDL2_TTF_LIBRARIES}
 		${GLEW_LIBRARIES}
 		${JNI_LIBRARIES}
-		${PROJECT_SOURCE_DIR}/../../../../build/lib/shared/native/lib-sha-bs-1-0-0.lib)
+		${PROJECT_SOURCE_DIR}/../../../../build/lib/shared/native/lib-bs-sha-1-0-0.lib)
 set_target_properties(SDLNative PROPERTIES OUTPUT_NAME "lib-bs-sys-sdlnative-1-0-0")
