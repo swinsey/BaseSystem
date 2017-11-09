@@ -33,4 +33,4 @@ add_library(BS SHARED ${SOURCE_FILES})
 target_link_libraries(BS
         ${JNI_LIBRARIES}
 		${PLATFORM_LIBS})
-set_target_properties(BS PROPERTIES OUTPUT_NAME "lib-sha-bs-1-0-0")
+set_target_properties(BS PROPERTIES OUTPUT_NAME "lib-bs-sha-1-0-0")

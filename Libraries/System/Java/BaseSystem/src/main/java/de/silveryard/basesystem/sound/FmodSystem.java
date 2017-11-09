@@ -12,7 +12,7 @@ public class FmodSystem {
      * Creates the Singleton instance
      */
     public static void createFmodSystem(){
-        System.loadLibrary("FmodNative");
+        System.loadLibrary("lib-bs-sys-fmodnative-1-0-0");
         instance = createSystem();
     }
     /**

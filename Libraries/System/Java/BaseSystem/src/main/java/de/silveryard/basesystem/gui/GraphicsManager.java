@@ -28,7 +28,7 @@ public class GraphicsManager implements IDisposable{
             throw new RuntimeException("Already initialized");
         }
 
-        System.loadLibrary("SDLNative");
+        System.loadLibrary("lib-bs-sys-sdlnative-1-0-0");
         int result = SDLWindow.windowInit(title, width, height, showCursor);
         if(result != 0){
             throw new RuntimeException("Failed initializing window. Error Code: " + result);
