@@ -1,10 +1,10 @@
-[submodule "SDLNative/sdl/linux/SDL2"]
+[submodule "Libraries/System/Native/SDLNative/sdl/linux/SDL2"]
 	path = Libraries/System/Native/SDLNative/sdl/linux/SDL2
 	url = https://github.com/davidsiaw/SDL2
-[submodule "SDLNative/sdl/linux/SDL2_image"]
+[submodule "Libraries/System/Native/SDLNative/sdl/linux/SDL2_image"]
 	path = Libraries/System/Native/SDLNative/sdl/linux/SDL2_image
 	url = https://github.com/davidsiaw/SDL2_image
-[submodule "SDLNative/sdl/linux/SDL2_ttf"]
+[submodule "Libraries/System/Native/SDLNative/sdl/linux/SDL2_ttf"]
 	path = Libraries/System/Native/SDLNative/sdl/linux/SDL2_ttf
 	url = https://github.com/davidsiaw/SDL2_ttf
 [submodule "3rdParty/universal-tween-engine"]
@@ -13,6 +13,6 @@
 [submodule "3rdParty/boost"]
 	path = 3rdParty/boost
 	url = https://github.com/boostorg/boost
-[submodule "TransportProtocol"]
+[submodule "Libraries/Shared/Java/TransportProtocol"]
 	path = Libraries/Shared/Java/TransportProtocol
 	url = https://github.com/Silveryard/TransportProtocol

@@ -29,7 +29,11 @@ public class RunCmakeTask extends DefaultTask {
     }
     @OutputDirectory
     public File getBinDirectory(){
-        return getProject().file("build/bin");
+        if(getProject().hasProperty("outputDir")){
+            return (File)getProject().property("outputDir");
+        }else {
+            return getProject().file("build/bin");
+        }
     }
 
     @TaskAction
