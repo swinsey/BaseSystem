@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.java.dev.jna:platform:3.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/platform/3.5.0/e494cdabbe649d4a660d6fb259d89d21fbd69cca/platform-3.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/platform/3.5.0/fcf5594bc14c5d6e42ca32c2f821e91ae0770e26/platform-3.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

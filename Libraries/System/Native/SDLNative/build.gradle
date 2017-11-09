@@ -1,0 +1,14 @@
+buildscript{
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies{
+		classpath group: 'de.silveryard.basesystem', name: 'GradlePlugin', version: '1.0-SNAPSHOT'	
+	}
+}
+
+apply plugin: 'basesystemplugin' 
+
+defaultTasks 'runCmake'
+

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.hypfvieh:dbus-java:2.7.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hypfvieh/dbus-java/2.7.2/d75844a4b1e70694b8a65d21f313861f75f45a37/dbus-java-2.7.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.hypfvieh/dbus-java/2.7.2/7cc4292f8b856145036c48d261d7208ef25f1b64/dbus-java-2.7.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

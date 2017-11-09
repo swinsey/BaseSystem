@@ -7,34 +7,41 @@ task buildGradlePlugin(type: GradleBuild){
   buildFile = './GradlePlugin/build.gradle'
 }
 task buildAPF(type: GradleBuild){
-  buildFile = './APF/build.gradle'
+  buildFile = './Libraries/Shared/Java/APF/build.gradle'
 }
 task buildAPFCreator(type: GradleBuild){
-  buildFile = './APFCreator/build.gradle'
+  buildFile = './Tools/APFCreator/build.gradle'
 }
 task buildAppManager(type: GradleBuild){
-  buildFile = './AppManager/build.gradle'
+  buildFile = './Tools/AppManager/build.gradle'
 }
 task buildAppSDK(type: GradleBuild){
-  buildFile = './AppSDK/build.gradle'
+  buildFile = './Libraries/App/Java/AppSDK/build.gradle'
 }
 task buildBaseSystem(type: GradleBuild){
-  buildFile = './BaseSystem/build.gradle'
+  buildFile = './Libraries/System/Java/BaseSystem/build.gradle'
 }
 task buildLogViewer(type: GradleBuild){
-  buildFile = './LogViewer/build.gradle'
+  buildFile = './Tools/LogViewer/build.gradle'
 }
 task buildTransport(type: GradleBuild){
-  buildFile = './TransportProtocol/lib/java/Transport/build.gradle'
+  buildFile = './Libraries/Shared/Java/TransportProtocol/lib/java/Transport/build.gradle'
 }
 task buildLibBS(type: GradleBuild){
-	buildFile = './LibBS/build.gradle'
+  startParameter.projectProperties = [ 'outputDir': file('./build/lib/shared/native') ]
+  buildFile = './Libraries/Shared/Native/LibBS/build.gradle'
+}
+task buildLibDisplayManager(type: GradleBuild){
+  startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
+  buildFile = './Libraries/System/Native/DisplayManager/build.gradle'
 }
 task buildSDLNative(type: GradleBuild){
-  buildFile = './SDLNative/build.gradle'
+  startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
+  buildFile = './Libraries/System/Native/SDLNative/build.gradle' 
 }
 task buildFmodNative(type: GradleBuild){
-  buildFile = './FmodNative/build.gradle'
+  startParameter.projectProperties = [ 'outputDir': file('./build/lib/system/native') ]
+  buildFile = './Libraries/System/Native/FmodNative/build.gradle'
 }
 
 defaultTasks 	'buildUniversalTweenEngine', 						//Build UniversalTweenEngine
@@ -42,4 +49,5 @@ defaultTasks 	'buildUniversalTweenEngine', 						//Build UniversalTweenEngine
 				'buildGradlePlugin', 								//Build Gradle Plugin
 				'buildTransport', 'buildAppSDK', 'buildBaseSystem', //Build Base System
 				'buildLogViewer', 'buildAppManager', 				//Build utility tools
-				'buildLibBS', 'buildSDLNative', 'buildFmodNative'	//Build native libraries
+				'buildLibBS', 'buildSDLNative', 'buildFmodNative',	//Build native libraries
+				'buildLibDisplayManager'
