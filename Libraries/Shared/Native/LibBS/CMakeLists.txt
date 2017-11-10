@@ -26,6 +26,7 @@ set(SOURCE_FILES
 	src/jni_bool.cpp
 	src/jni_float.cpp
 	src/jni_int.cpp
+	src/jni_byte.cpp
 	src/jni_wrapper.cpp
 )
 

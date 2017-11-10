@@ -16,6 +16,14 @@ JNIEXPORT void JNICALL Java_de_silveryard_basesystem_gui_DisplayManager_initNati
   (JNIEnv *, jclass);
 
 /*
+* Class:     de_silveryard_basesystem_gui_DisplayManager
+* Method:    nativeGetProcessHandle
+* Signature: (JLde/silveryard/basesystem/gui/DisplayHandle;)I
+*/
+JNIEXPORT jint JNICALL Java_de_silveryard_basesystem_gui_DisplayManager_nativeGetProcessHandle
+(JNIEnv *, jobject, jlong, jobject);
+
+/*
  * Class:     de_silveryard_basesystem_gui_DisplayManager
  * Method:    nativeRegisterHandle
  * Signature: (Lde/silveryard/basesystem/gui/DisplayHandle;)I

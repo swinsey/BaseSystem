@@ -25,7 +25,7 @@ ${PROJECT_SOURCE_DIR}/include_private
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-	src/test.cpp
+	src/manager_windows.cpp
 	src/jni/de_silveryard_basesystem_gui_DisplayManager.cpp
 )
 

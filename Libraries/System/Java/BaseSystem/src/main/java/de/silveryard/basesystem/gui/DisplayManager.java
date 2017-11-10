@@ -21,6 +21,8 @@ public final class DisplayManager {
 
     private DisplayManager(){}
 
+    public native int nativeGetProcessHandle(long processId, DisplayHandle processHandle);
+
     private native int nativeRegisterHandle(DisplayHandle handle);
     private native int nativeUnregisterHandle(DisplayHandle handle);
 

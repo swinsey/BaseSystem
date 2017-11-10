@@ -154,6 +154,12 @@ namespace bs {
 	//////
 	const library_t LIBRARY_SDLNATIVE = 2;
 	const subset_t SUBSET_SDLNATIVE = 1;
+
+    //////
+    ///DisplayManager Library
+    //////
+    const library_t LIBRARY_DSPMNGR = 3;
+    const subset_t SUBSET_DSPMNGR = 1;
 }
 
 #endif

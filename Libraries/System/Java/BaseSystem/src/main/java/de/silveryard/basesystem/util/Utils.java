@@ -2,6 +2,7 @@ package de.silveryard.basesystem.util;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.*;
+import java.lang.management.ManagementFactory;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 
@@ -141,5 +142,10 @@ public class Utils {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public static long getProcessId(){
+        String strId = ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
+        return Long.parseLong(strId);
     }
 }

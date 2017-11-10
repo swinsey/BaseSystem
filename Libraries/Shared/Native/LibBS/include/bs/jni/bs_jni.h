@@ -33,6 +33,9 @@ namespace bs {
 		BSEXPORT result_t int_create(JNIEnv* env, int value, jobject* out_instance);
 		BSEXPORT result_t int_get(JNIEnv* env, jobject boxed, int* out_value);
 
+        BSEXPORT result_t byte_create(JNIEnv* env, char value, jobject* out_instance);
+        BSEXPORT result_t byte_get(JNIEnv* env, jobject boxed, char* out_value);
+
 		BSEXPORT result_t wrapper_create_handle(JNIEnv* env, const char* class_name, wrapper_handle_t* out_handle);
 		BSEXPORT result_t wrapper_create(JNIEnv* env, wrapper_handle_t handle, jobject* out_instance);
 		BSEXPORT result_t wrapper_create(JNIEnv* env, wrapper_handle_t handle, jobject value, jobject* out_instance);
